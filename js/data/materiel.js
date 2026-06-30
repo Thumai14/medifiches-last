@@ -28,7 +28,7 @@ const MATERIEL_DB = [
     },
     otc: ['Crème veinotonique', 'Gel apaisant jambes lourdes', 'Complément veinotonique (vigne rouge, marron d\'Inde)'],
     pathologies_liees: ['diabete-type-2', 'hypertension'],
-    sources: ["HAS — Compression médicale en cas d'insuffisance veineuse chronique", "Nomenclature LPP — Titre II Chapitre 1 (orthèses de compression élastique)", "ANSM — Dispositifs médicaux de compression"] },
+    sources: [{label: "HAS — Compression médicale en insuffisance veineuse", url: "https://www.has-sante.fr/jcms/c_272500/fr/la-compression-medicale"}, {label: "Nomenclature LPP — Titre II Ch.1", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANSM — Dispositifs de compression", url: "https://ansm.sante.fr"}] },
   { id: 'm9', slug: 'oxymetre-pouls', nom: 'Oxymètre de pouls', categorie: 'cardiaque', icone: '__SVG__oxymetre de pouls.svg__',
     description: 'Pléthysmographe portable mesurant par voie transcutanée (au doigt généralement) la saturation pulsée en oxygène (SpO2) et la fréquence cardiaque, par absorption différentielle de lumière à deux longueurs d\'onde. Mesure instantanée, non invasive, en quelques secondes.',
     indication: 'Surveillance à domicile de patients asthmatiques, BPCO, insuffisants cardiaques ou respiratoires chroniques ; suivi des infections respiratoires (grippe, bronchiolite, COVID) pour repérer une désaturation ; usage sportif ou altitude (non médical).',
@@ -49,7 +49,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: ['asthme', 'hypertension'],
-    sources: ["HAS — Oxymétrie de pouls : indications et limites", "ANSM — Dispositifs de mesure de la SpO2", "Nomenclature LPP (hors liste pour usage grand public)"] },
+    sources: [{label: "HAS — Oxymétrie de pouls", url: "https://www.has-sante.fr"}, {label: "ANSM — Dispositifs de mesure SpO2", url: "https://ansm.sante.fr"}, {label: "Nomenclature LPP", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}] },
   { id: 'm10', slug: 'tensiometre-bras', nom: 'Tensiomètre bras homologué', categorie: 'cardiaque', icone: '__SVG__Tensiometre de bras homologue.svg__',
     description: 'Appareil automatique de mesure de la pression artérielle par brassard huméral (bras), homologué selon la norme NF C 74-313. Certains modèles intègrent une détection de fibrillation auriculaire et une mémoire de plusieurs dizaines de mesures avec moyennage automatique.',
     indication: 'Hypertension artérielle connue ou suspectée, automesure tensionnelle dans le cadre du suivi cardiologique (règle des 3), dépistage à domicile, suivi de l\'efficacité d\'un traitement antihypertenseur.',
@@ -70,7 +70,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: ['hypertension'],
-    sources: ["HAS — Automesure tensionnelle et MAPA", "Société Française d'Hypertension Artérielle (SFHTA)", "Nomenclature LPP (non remboursable en ambulatoire)"] },
+    sources: [{label: "HAS — Automesure tensionnelle", url: "https://www.has-sante.fr/jcms/c_1600164/fr/fiche-de-bon-usage-automesure-tensionnelle"}, {label: "SFHTA — Recommandations", url: "https://www.sfhta.eu"}, {label: "Nomenclature LPP", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}] },
 
   // ─── DIABÈTE & SURVEILLANCE ───
   { id: 'm11', slug: 'capteur-glycemie-continue', nom: 'Capteur de glycémie en continu (CGM)', categorie: 'diabete', icone: '__SVG__capteur de glycemie.svg__',
@@ -96,7 +96,7 @@ const MATERIEL_DB = [
     },
     otc: ['Bandelettes de cétonurie/cétonémie (en cas d\'hyperglycémie)'],
     pathologies_liees: ['diabete-type-2'],
-    sources: ["HAS — Capteurs de mesure en continu du glucose interstitiel (flash glucose)", "Nomenclature LPP — Titre I Chapitre 1 (Freestyle Libre et équivalents)", "SFD — Recommandations autosurveillance glycémique"] },
+    sources: [{label: "HAS — Capteurs de glycémie en continu", url: "https://www.has-sante.fr/jcms/p_3361754/fr/systemes-de-mesure-en-continu-du-glucose-interstitiel"}, {label: "Nomenclature LPP — Titre I Ch.1", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "SFD — Recommandations autosurveillance", url: "https://www.sfdiabete.org"}] },
   { id: 'm12', slug: 'lecteur-glycemie', nom: 'Lecteur de glycémie', categorie: 'diabete', icone: '__SVG__lecteur de glycemie.svg__',
     description: 'Appareil de mesure de la glycémie capillaire par prélèvement au doigt (bandelette réactive + autopiqueur), résultat en quelques secondes. Mémoire de plusieurs centaines de mesures avec courbes de tendance, certains modèles transmettent les données par Bluetooth.',
     indication: 'Diabète de type 1 et de type 2 traités par insuline ou par sulfamides hypoglycémiants, surveillance des hypoglycémies, vérification ponctuelle en complément d\'un capteur de glycémie en continu (CGM).',
@@ -118,7 +118,7 @@ const MATERIEL_DB = [
     },
     otc: ['Resucrage (gel ou comprimés de glucose)', 'Bandelettes de cétonurie'],
     pathologies_liees: ['diabete-type-2'],
-    sources: ["HAS — Autosurveillance glycémique dans le diabète de type 2", "Nomenclature LPP — Titre I Chapitre 1 (lecteurs et bandelettes)", "SFD — Recommandations 2023 sur l'autosurveillance glycémique"] },
+    sources: [{label: "HAS — Autosurveillance glycémique", url: "https://www.has-sante.fr/jcms/c_1242816/fr/autosurveillance-glycemique"}, {label: "Nomenclature LPP — Titre I Ch.1", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "SFD — Recommandations 2023", url: "https://www.sfdiabete.org"}] },
   { id: 'm13', slug: 'stylo-insuline', nom: 'Stylo injecteur d\'insuline', categorie: 'diabete', icone: '__SVG__stylo-a-insuline.svg__',
     description: 'Dispositif d\'injection sous-cutanée d\'insuline, réutilisable (avec cartouche remplaçable) ou jetable pré-rempli, à dose réglable par crans. Aiguille fine et courte adaptable, à usage unique.',
     indication: 'Diabète insulino-requérant (type 1 ou type 2 en échec des traitements oraux), nécessitant une ou plusieurs injections quotidiennes d\'insuline.',
@@ -141,7 +141,7 @@ const MATERIEL_DB = [
     },
     otc: ['Resucrage (gel ou comprimés de glucose)', 'Conteneur DASTRI pour aiguilles usagées'],
     pathologies_liees: ['diabete-type-2'],
-    sources: ["HAS — Insulinothérapie dans le diabète de type 1 et 2", "Nomenclature LPP — Titre I Chapitre 1 (stylos injecteurs d'insuline)", "SFD — Recommandations insulinothérapie 2023"] },
+    sources: [{label: "HAS — Insulinothérapie", url: "https://www.has-sante.fr/jcms/c_1242557/fr/strategie-medicamenteuse-du-controle-glycemique-du-diabete-de-type-2"}, {label: "Nomenclature LPP — Titre I Ch.1", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "SFD — Recommandations insulinothérapie", url: "https://www.sfdiabete.org"}] },
 
   // ─── HYGIÈNE & CONFORT ───
   { id: 'm14', slug: 'lit-medicalise', nom: 'Lit médicalisé électrique', categorie: 'hygiene', icone: '__SVG__lit medicalise.svg__',
@@ -165,7 +165,7 @@ const MATERIEL_DB = [
     },
     otc: ['Crème ou mousse de prévention des escarres'],
     pathologies_liees: [],
-    sources: ["HAS — Lits médicaux à domicile : critères de prescription", "Nomenclature LPP — Titre II Chapitre 2 (lits médicaux et accessoires)", "ANSM — Dispositifs médicaux de maintien à domicile"] },
+    sources: [{label: "HAS — Lits médicaux à domicile", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.2", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANSM — Dispositifs MAD", url: "https://ansm.sante.fr"}] },
   { id: 'm15', slug: 'protections-incontinence', nom: 'Protections anatomiques incontinence', categorie: 'hygiene', icone: '__SVG__couche.svg__',
     description: 'Protections absorbantes anatomiques à usage unique (forme culotte, change complet ou protection anatomique avec filet de maintien), discrètes sous les vêtements, avec indice d\'absorption croissant selon le niveau de fuite (léger, modéré, fort, très fort).',
     indication: 'Incontinence urinaire ou mixte (urinaire et fécale) légère à sévère, période post-opératoire urologique ou gynécologique, perte d\'autonomie, troubles neurologiques avec incontinence.',
@@ -185,7 +185,7 @@ const MATERIEL_DB = [
     },
     otc: ['Crème protectrice périnéale (oxyde de zinc)', 'Lingettes nettoyantes sans rinçage'],
     pathologies_liees: [],
-    sources: ["HAS — Prise en charge de l'incontinence urinaire de la femme adulte", "Nomenclature LPP — Titre II Chapitre 7 (absorbants pour incontinence)", "AFU — Recommandations incontinence urinaire"] },
+    sources: [{label: "HAS — Incontinence urinaire de la femme", url: "https://www.has-sante.fr/jcms/c_1511578/fr/incontinence-urinaire-de-la-femme"}, {label: "Nomenclature LPP — Titre II Ch.7", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "AFU — Recommandations", url: "https://www.urofrance.org"}] },
   { id: 'm16', slug: 'siege-de-bain', nom: 'Siège de bain / douche', categorie: 'hygiene', icone: '__SVG__siege de bain.svg__',
     description: 'Siège ou tabouret antidérapant, hauteur réglable, à poser dans la baignoire ou la douche pour sécuriser la toilette en position assise. Fixation par ventouses ou pieds antidérapants, poids maximal supporté généralement autour de 130 kg selon les modèles.',
     indication: 'Perte d\'autonomie, période post-opératoire (notamment orthopédique), personnes âgées, troubles de l\'équilibre, prévention des chutes dans la salle de bain.',
@@ -205,7 +205,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: [],
-    sources: ["HAS — Aides techniques pour le maintien à domicile", "Nomenclature LPP — Titre II Chapitre 4 (sièges de bain et accessoires)", "ANAP — Référentiel d'aides techniques"] },
+    sources: [{label: "HAS — Aides techniques MAD", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.4", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel aides techniques", url: "https://www.anap.fr"}] },
 
   // ─── MOBILITÉ ───
   { id: 'm1', slug: 'canne-ergonomique', nom: 'Canne ergonomique réglable', categorie: 'mobilite', icone: '__SVG__cane.svg__',
@@ -229,7 +229,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: ['douleur-arthrose'],
-    sources: ["HAS — Aides à la marche : cannes et béquilles", "Nomenclature LPP — Titre II Chapitre 3 (cannes, béquilles, cadres de marche)", "ANSM — Dispositifs d'aide à la marche"] },
+    sources: [{label: "HAS — Aides à la marche", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANSM — Dispositifs aide à la marche", url: "https://ansm.sante.fr"}] },
   { id: 'm2', slug: 'deambulateur', nom: 'Déambulateur 4 roues', categorie: 'mobilite', icone: '__SVG__deambulateur 4 roues.svg__',
     description: 'Cadre de marche sur 4 roues pivotantes, avec siège intégré, panier de rangement et freins de type vélo (frein de parking à l\'arrêt). Plus fluide à manier que le 2 roues, adapté aux sols réguliers.',
     indication: 'Troubles de l\'équilibre, faiblesse musculaire des membres inférieurs, suites d\'AVC, besoin de sécurisation de la marche sur de longues distances ou pour les sorties à l\'extérieur.',
@@ -252,7 +252,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: ['douleur-arthrose'],
-    sources: ["HAS — Aides à la marche : déambulateurs et cadres de marche", "Nomenclature LPP — Titre II Chapitre 3 (déambulateurs 4 roues)", "ANAP — Référentiel d'aides techniques à la mobilité"] },
+    sources: [{label: "HAS — Déambulateurs et cadres de marche", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel mobilité", url: "https://www.anap.fr"}] },
   { id: 'm3', slug: 'fauteuil-roulant', nom: 'Fauteuil roulant manuel', categorie: 'mobilite', icone: '__SVG__fauteuil roulant.svg__',
     description: 'Fauteuil roulant pliant léger à propulsion manuelle, repose-pieds amovibles, accoudoirs rabattables facilitant les transferts. Catégorie FMP (fauteuil manuel pliant) dans la classification officielle, la plus simple et la plus courante.',
     indication: 'Incapacité à la marche prolongée ou totale, période post-opératoire, pathologies neurologiques limitant la mobilité, besoin de déplacement autonome ou avec tierce assistance.',
@@ -274,7 +274,7 @@ const MATERIEL_DB = [
     },
     otc: ['Coussin anti-escarres (si non déjà fourni)'],
     pathologies_liees: [],
-    sources: ["HAS — Fauteuils roulants : critères et conditions de prescription", "Nomenclature LPP — Titre II Chapitre 3 (fauteuils roulants manuels et électriques)", "APF France handicap — Guide du fauteuil roulant"] },
+    sources: [{label: "HAS — Fauteuils roulants", url: "https://www.has-sante.fr/jcms/c_1739369/fr/fauteuils-roulants-et-autres-vehicules-pour-personnes-handicapees"}, {label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "APF France handicap", url: "https://www.apf-francehandicap.org"}] },
   { id: 'm4', slug: 'semelles-orthopediques', nom: 'Semelles orthopédiques sur mesure', categorie: 'mobilite', icone: '__SVG__semelle orthopedique.svg__',
     description: 'Orthèses plantaires thermoformées, réalisées sur mesure après examen podologique (podoscope, podogramme), corrigeant la posture du pied et répartissant les zones d\'appui plantaire. À distinguer des semelles de confort en vente libre, non personnalisées.',
     indication: 'Arthrose du genou ou de la hanche avec trouble de l\'appui, pied diabétique à risque (décharge des zones de pression), fasciite plantaire, troubles de la statique du pied (pied plat, pied creux), métatarsalgies.',
@@ -296,7 +296,7 @@ const MATERIEL_DB = [
     },
     otc: ['Crème podologique réparatrice (talons, callosités)'],
     pathologies_liees: ['douleur-arthrose', 'diabete-type-2'],
-    sources: ["HAS — Orthèses plantaires sur mesure", "Nomenclature LPP — Titre II Chapitre 1 (orthèses plantaires)", "SOFCOT — Recommandations orthopédie du pied"] },
+    sources: [{label: "HAS — Orthèses plantaires", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.1", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "SOFCOT — Recommandations", url: "https://www.sofcot.fr"}] },
 
   // ─── NUTRITION ───
   { id: 'm17', slug: 'complement-nutritionnel', nom: 'Compléments nutritionnels oraux (CNO)', categorie: 'nutrition', icone: '__SVG__nutrition.svg__',
@@ -321,7 +321,7 @@ const MATERIEL_DB = [
     },
     otc: ['Vitamine D', 'Complexe multivitaminé adapté à la personne âgée'],
     pathologies_liees: [],
-    sources: ["HAS — Compléments nutritionnels oraux (CNO) : indications", "Nomenclature LPP — Titre III Chapitre 1 (nutrition entérale et CNO remboursés)", "SFNCM — Recommandations nutrition clinique"] },
+    sources: [{label: "HAS — Compléments nutritionnels oraux", url: "https://www.has-sante.fr/jcms/c_1264980/fr/complementation-nutritionnelle-orale"}, {label: "Nomenclature LPP — Titre III Ch.1", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "SFNCM — Recommandations nutrition", url: "https://www.sfncm.org"}] },
   { id: 'm18', slug: 'epaississants', nom: 'Épaississants alimentaires', categorie: 'nutrition', icone: '__SVG__nutrition.svg__',
     description: 'Poudre instantanée sans saveur ajoutée, à diluer dans les liquides ou aliments pour en modifier la texture selon plusieurs niveaux de consistance (nectar, miel, pudding/crème) afin de sécuriser la déglutition.',
     indication: 'Troubles de la déglutition oropharyngée (dysphagie) chez les personnes de plus de 3 ans, le plus souvent dans un contexte post-AVC, maladie neurologique (Parkinson, sclérose en plaques) ou démence évoluée.',
@@ -343,7 +343,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: [],
-    sources: ["HAS — Prise en charge des troubles de la déglutition", "Nomenclature LPP — Titre III (produits diététiques adaptés)", "SFNEP — Recommandations dysphagies et épaississants"] },
+    sources: [{label: "HAS — Troubles de la déglutition", url: "https://www.has-sante.fr/jcms/c_1260376/fr/prise-en-charge-de-la-dysphagie"}, {label: "Nomenclature LPP — Titre III", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "SFNEP — Recommandations dysphagies", url: "https://www.sfnep.org"}] },
 
   // ─── POST-OPÉRATOIRE ───
   { id: 'm19', slug: 'attelle-poignet', nom: 'Attelle de repos poignet', categorie: 'mobilite', icone: '__SVG__atelle de repos poignet.svg__',
@@ -368,7 +368,7 @@ const MATERIEL_DB = [
     },
     otc: ['Gel ou patch anti-inflammatoire local', 'Bande de contention/strapping'],
     pathologies_liees: ['douleur-arthrose'],
-    sources: ["HAS — Orthèses du membre supérieur", "Nomenclature LPP — Titre II Chapitre 1 (orthèses de membres supérieurs)", "SFCM — Recommandations chirurgie de la main et attelles"] },
+    sources: [{label: "HAS — Orthèses du membre supérieur", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.1", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "SFCM — Recommandations main", url: "https://www.sfcm.fr"}] },
   { id: 'm20', slug: 'bequilles', nom: 'Béquilles axillaires / avant-bras', categorie: 'mobilite', icone: '__SVG__Bequilles axillaires.svg__',
     description: 'Béquilles réglables en aluminium, modèle axillaire (appui sous le bras, avec barre de préhension) ou modèle avant-bras dit "canadienne" (appui sur l\'avant-bras avec poignée), selon la prescription et le type d\'appui recherché.',
     indication: 'Fracture du membre inférieur, suites de chirurgie orthopédique (prothèse de hanche ou de genou), entorse grave de la cheville ou du genou, décharge totale ou partielle d\'un membre.',
@@ -390,7 +390,7 @@ const MATERIEL_DB = [
     },
     otc: ['Crème apaisante mains/paumes (en cas d\'usage prolongé)'],
     pathologies_liees: ['douleur-arthrose'],
-    sources: ["HAS — Aides à la marche : cannes et béquilles", "Nomenclature LPP — Titre II Chapitre 3 (cannes anglaises, béquilles axillaires)", "ANSM — Dispositifs d'aide à la marche"] },
+    sources: [{label: "HAS — Aides à la marche", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANSM — Dispositifs aide à la marche", url: "https://ansm.sante.fr"}] },
 
   // ─── RESPIRATOIRE ───
   { id: 'm5', slug: 'aerosol-compresseur', nom: 'Aérosolthérapie par compresseur', categorie: 'respiratoire', icone: '__SVG__aerosol therapy.svg__',
@@ -414,7 +414,7 @@ const MATERIEL_DB = [
     },
     otc: ['Sérum physiologique pour dilution si besoin'],
     pathologies_liees: ['asthme'],
-    sources: ["HAS — Aérosolthérapie dans l'asthme et les pathologies respiratoires", "Nomenclature LPP — Titre II Chapitre 6 (aérosols-doseurs et nébuliseurs)", "SPLF — Recommandations aérosolthérapie"] },
+    sources: [{label: "HAS — Aérosolthérapie", url: "https://www.has-sante.fr/jcms/c_272507/fr/asthme-et-rhinite-allergique"}, {label: "Nomenclature LPP — Titre II Ch.6", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "SPLF — Recommandations aérosolthérapie", url: "https://splf.fr"}] },
   { id: 'm6', slug: 'aspirateur-nasal', nom: 'Aspirateur nasal électrique', categorie: 'respiratoire', icone: '__SVG__sinusite aigue.svg__',
     description: 'Dispositif d\'aspiration douce des sécrétions nasales par embout adapté, puissance réglable selon l\'âge et la tolérance, à pile ou sur secteur selon les modèles (à distinguer du mouche-bébé manuel buccal).',
     indication: 'Nourrissons et jeunes enfants ne sachant pas se moucher seuls, rhinite allergique sévère encombrante, sinusite chronique avec sécrétions difficiles à évacuer.',
@@ -435,7 +435,7 @@ const MATERIEL_DB = [
     },
     otc: ['Sérum physiologique unidose', 'Spray nasal eau de mer isotonique'],
     pathologies_liees: ['rhinite-allergique', 'allergie-pollen'],
-    sources: ["HAS — Prise en charge des rhinopharyngites du nourrisson", "ANSM — Dispositifs de désobstruction nasale", "Nomenclature LPP (non inscrit — usage courant sans remboursement)"] },
+    sources: [{label: "HAS — Rhinopharyngites du nourrisson", url: "https://www.has-sante.fr/jcms/c_272486/fr/rhinopharyngite-aigue-du-nourrisson"}, {label: "ANSM — Dispositifs de désobstruction nasale", url: "https://ansm.sante.fr"}, {label: "Nomenclature LPP", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}] },
   { id: 'm7', slug: 'peak-flow-meter', nom: 'Peak-flow meter', categorie: 'respiratoire', icone: '__SVG__peakflow meter.svg__',
     description: 'Débitmètre de pointe portable mesurant le débit expiratoire maximal (DEP) lors d\'une expiration forcée, outil simple d\'autosurveillance permettant de détecter une dégradation de la fonction respiratoire avant l\'apparition de symptômes francs.',
     indication: 'Asthme modéré à sévère, suivi à domicile de la fonction respiratoire, adaptation du traitement de fond en lien avec le médecin, identification précoce d\'une exacerbation.',
@@ -455,7 +455,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: ['asthme'],
-    sources: ["HAS — Asthme de l'adulte : prise en charge à domicile", "GINA Guidelines 2024 — Autosurveillance de l'asthme par peak-flow", "SPLF — Recommandations suivi asthme avec DEP"] },
+    sources: [{label: "HAS — Suivi de l'asthme à domicile", url: "https://www.has-sante.fr/jcms/c_1005214/fr/asthme"}, {label: "GINA Guidelines 2024", url: "https://ginasthma.org"}, {label: "SPLF — Recommandations suivi asthme", url: "https://splf.fr"}] },
 
   // ─── MATERNITÉ & PÉRINÉE ───
   { id: 'm21', slug: 'tire-lait', nom: 'Tire-lait électrique', categorie: 'maternite', icone: '__SVG__tire lait.svg__',
@@ -480,7 +480,7 @@ const MATERIEL_DB = [
     },
     otc: ['Coussinets d\'allaitement', 'Crème protectrice mamelons (lanoline purifiée)'],
     pathologies_liees: [],
-    sources: ["HAS — Allaitement maternel : mise en œuvre et poursuite dans les 6 premiers mois", "Nomenclature LPP — Titre III (tire-lait remboursables sous conditions)", "ANSM — Dispositifs d'allaitement"] },
+    sources: [{label: "HAS — Allaitement maternel", url: "https://www.has-sante.fr/jcms/c_1729367/fr/allaitement-maternel"}, {label: "Nomenclature LPP — Titre III", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANSM — Dispositifs allaitement", url: "https://ansm.sante.fr"}] },
   { id: 'm22', slug: 'urostimulateur', nom: 'Urostimulateur (rééducation périnéale)', categorie: 'maternite', icone: '__SVG__neurostim.svg__',
     description: 'Dispositif d\'électrostimulation des muscles du plancher pelvien par sonde vaginale (femme) ou anale (homme/femme), permettant un renforcement musculaire périnéal actif en complément ou en relais d\'une rééducation manuelle.',
     indication: 'Incontinence urinaire d\'effort, rééducation périnéale post-partum, prolapsus débutant (stade peu avancé), incontinence post-prostatectomie chez l\'homme.',
@@ -504,7 +504,7 @@ const MATERIEL_DB = [
     },
     otc: ['Gel lubrifiant hydrosoluble (pour la sonde)'],
     pathologies_liees: ['hbp-prostate'],
-    sources: ["HAS — Stimulation du nerf tibial postérieur dans l'incontinence par impériosité", "Nomenclature LPP — Titre II Chapitre 5 (neurostimulateurs remboursés)", "AFU — Recommandations incontinence par impériosité 2023"] },
+    sources: [{label: "HAS — Stimulation nerf tibial", url: "https://www.has-sante.fr/jcms/p_3208766/fr/stimulation-du-nerf-tibial-posterieur"}, {label: "Nomenclature LPP — Titre II Ch.5", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "AFU — Recommandations incontinence", url: "https://www.urofrance.org"}] },
 
   // ─── DOULEUR & NEUROSTIMULATION ───
   { id: 'm23', slug: 'neurostimulateur', nom: 'Neurostimulateur électrique transcutané (TENS)', categorie: 'douleur', icone: '__SVG__neurostim.svg__',
@@ -530,7 +530,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: ['lombalgie', 'douleur-arthrose'],
-    sources: ["HAS — Neurostimulation transcutanée (TENS) : efficacité dans les douleurs chroniques", "Nomenclature LPP — Titre II Chapitre 5 (neurostimulateurs électriques)", "SFETD — Recommandations douleur chronique et TENS"] },
+    sources: [{label: "HAS — Neurostimulation transcutanée (TENS)", url: "https://www.has-sante.fr/jcms/c_1066790/fr/douleur-chronique"}, {label: "Nomenclature LPP — Titre II Ch.5", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "SFETD — Recommandations douleur chronique", url: "https://www.sfetd-douleur.org"}] },
 
   // ─── HYGIÈNE & CONFORT (ajouts) ───
   { id: 'm24', slug: 'table-de-lit', nom: 'Table de lit réglable', categorie: 'hygiene', icone: '__SVG__table-de-lit.svg__',
@@ -552,7 +552,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: [],
-    sources: ["HAS — Aides techniques pour le maintien à domicile", "Nomenclature LPP — Titre II Chapitre 2 (accessoires de lit médicalisé)", "ANAP — Référentiel aides techniques au maintien à domicile"] },
+    sources: [{label: "HAS — Aides techniques MAD", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.2", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel MAD", url: "https://www.anap.fr"}] },
   { id: 'm25', slug: 'potence-de-lit', nom: 'Potence de lit (lève-personne d\'appoint)', categorie: 'hygiene', icone: '__SVG__potence.svg__',
     description: 'Structure verticale fixée au cadre ou au sommier du lit, équipée d\'une poignée suspendue (trapèze ou anneau), permettant au patient de se redresser ou de se hisser seul en position assise grâce à la force des bras.',
     indication: 'Perte d\'autonomie modérée, suites de chirurgie orthopédique, maintien à domicile, difficulté à se redresser seul dans le lit sans aide complète.',
@@ -573,7 +573,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: ['osteoporose'],
-    sources: ["HAS — Aides techniques pour le maintien à domicile", "Nomenclature LPP — Titre II Chapitre 2 (potences et triangles de relevage)", "ANAP — Référentiel aides techniques au maintien à domicile"] },
+    sources: [{label: "HAS — Aides techniques MAD", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.2", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel MAD", url: "https://www.anap.fr"}] },
 
   // ─── MOBILITÉ (ajouts) ───
   { id: 'm26', slug: 'deambulateur-2-roues', nom: 'Déambulateur 2 roues', categorie: 'mobilite', icone: '__SVG__deambulateur 2 roues.svg__',
@@ -597,7 +597,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: ['osteoporose'],
-    sources: ["HAS — Aides à la marche : déambulateurs et cadres de marche", "Nomenclature LPP — Titre II Chapitre 3 (déambulateurs 2 roues avant)", "ANAP — Référentiel d'aides techniques à la mobilité"] },
+    sources: [{label: "HAS — Déambulateurs et cadres de marche", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel mobilité", url: "https://www.anap.fr"}] },
   { id: 'm27', slug: 'fauteuil-transfert', nom: 'Fauteuil de transfert', categorie: 'mobilite', icone: '__SVG__fauteuil de transfert.svg__',
     description: 'Fauteuil roulant léger et pliable, conçu pour des déplacements courts et des transferts ponctuels (lit-fauteuil, domicile-véhicule), généralement plus compact et moins confortable qu\'un fauteuil roulant principal destiné à un usage prolongé.',
     indication: 'Transferts ponctuels, sorties courtes (rendez-vous médical, transport), perte d\'autonomie temporaire, complément à un fauteuil roulant principal pour les déplacements occasionnels hors domicile.',
@@ -617,7 +617,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: [],
-    sources: ["HAS — Fauteuils roulants de transfert et de positionnement", "Nomenclature LPP — Titre II Chapitre 3 (fauteuils de transfert)", "APF France handicap — Guide des aides à la mobilité"] },
+    sources: [{label: "HAS — Fauteuils roulants de transfert", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "APF France handicap", url: "https://www.apf-francehandicap.org"}] },
   { id: 'm28', slug: 'fauteuil-releveur', nom: 'Fauteuil releveur électrique', categorie: 'mobilite', icone: '__SVG__fauteuil-inclinable.svg__',
     description: 'Fauteuil de repos avec assise motorisée s\'inclinant et se relevant progressivement pour faciliter le passage assis-debout et debout-assis, télécommande de réglage de l\'inclinaison du dossier et de l\'assise.',
     indication: 'Perte d\'autonomie, arthrose sévère des membres inférieurs ou du rachis, difficulté majeure à se relever d\'un fauteuil standard, besoin de confort prolongé en position assise/semi-allongée.',
@@ -637,7 +637,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: ['douleur-arthrose'],
-    sources: ["HAS — Aides techniques à la verticalisation", "Nomenclature LPP — Titre II Chapitre 3 (fauteuils releveurs électriques)", "ANAP — Référentiel fauteuils releveurs et verticalisation"] },
+    sources: [{label: "HAS — Aides à la verticalisation", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel fauteuils releveurs", url: "https://www.anap.fr"}] },
   { id: 'm29', slug: 'fauteuil-coquille', nom: 'Fauteuil coquille (maintien postural)', categorie: 'mobilite', icone: '__SVG__fauteuil.svg__',
     description: 'Fauteuil à coque enveloppante avec inclinaison réglable, conçu pour assurer un maintien postural global chez les patients à mobilité très réduite ne pouvant se maintenir assis sans soutien latéral et dorsal important.',
     indication: 'Troubles neurologiques sévères (séquelles d\'AVC majeur, maladies neurodégénératives avancées), perte d\'autonomie majeure, patients ne pouvant se maintenir assis sans soutien complet du tronc et de la tête.',
@@ -657,7 +657,7 @@ const MATERIEL_DB = [
     },
     otc: ['Crème ou mousse de prévention des escarres'],
     pathologies_liees: ['parkinson', 'alzheimer'],
-    sources: ["HAS — Fauteuils coquilles et systèmes de positionnement complexe", "Nomenclature LPP — Titre II Chapitre 3 (fauteuils sur mesure, positionnement complexe)", "APF France handicap — Positionnement et fauteuils coquilles"] },
+    sources: [{label: "HAS — Fauteuils coquilles et positionnement", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "APF France handicap", url: "https://www.apf-francehandicap.org"}] },
 
   // ─── HYGIÈNE & CONFORT (ajouts prévention escarres) ───
   { id: 'm30', slug: 'matelas-classe2-anti-escarres', nom: 'Matelas anti-escarres classe 2', categorie: 'hygiene', icone: '__SVG__matelas classe 2.svg__',
@@ -682,7 +682,7 @@ const MATERIEL_DB = [
     },
     otc: ['Crème ou mousse de prévention des escarres'],
     pathologies_liees: [],
-    sources: ["HAS — Prévention et traitement des escarres", "Nomenclature LPP — Titre II Chapitre 2 (matelas et surmatelas anti-escarres, classe 2)", "NPUAP/EPUAP — Recommandations internationales escarres"] },
+    sources: [{label: "HAS — Prévention et traitement des escarres", url: "https://www.has-sante.fr/jcms/c_272971/fr/prevention-et-traitement-des-escarres-de-l-adulte-et-du-sujet-age"}, {label: "Nomenclature LPP — Titre II Ch.2", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "EPUAP — Recommandations escarres", url: "https://www.epuap.org"}] },
   { id: 'm31', slug: 'matelas-a-air', nom: 'Matelas à air motorisé', categorie: 'hygiene', icone: '__SVG__matelas-a air.svg__',
     description: 'Matelas ou surmatelas à air motorisé à pression alternée, associé à un compresseur réglable qui gonfle et dégonfle alternativement des cellules d\'air pour répartir et faire varier les zones d\'appui dans le temps, offrant un niveau de prévention/traitement supérieur à la mousse simple.',
     indication: 'Aide à la prévention de l\'escarre chez les patients à risque moyen à élevé (selon jugement clinique et échelles), alités plus de 15 heures par jour, aide au traitement ou en post-chirurgie d\'escarre chez des patients à risque moyen à élevé avec escarres de stade 1 à 4 selon localisation.',
@@ -705,7 +705,7 @@ const MATERIEL_DB = [
     },
     otc: ['Crème ou mousse de prévention des escarres'],
     pathologies_liees: [],
-    sources: ["HAS — Prévention et traitement des escarres : supports d'aide à la prévention", "Nomenclature LPP — Titre II Chapitre 2 (matelas à air alternants et statiques)", "NPUAP/EPUAP — Recommandations internationales escarres"] },
+    sources: [{label: "HAS — Supports anti-escarres", url: "https://www.has-sante.fr/jcms/c_272971/fr/prevention-et-traitement-des-escarres-de-l-adulte-et-du-sujet-age"}, {label: "Nomenclature LPP — Titre II Ch.2", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "EPUAP — Recommandations escarres", url: "https://www.epuap.org"}] },
 
   // ─── MOBILITÉ (ajout déambulateur fixe) ───
   { id: 'm32', slug: 'deambulateur-sans-roues', nom: 'Déambulateur sans roues (fixe)', categorie: 'mobilite', icone: '__SVG__deambulateur.svg__',
@@ -730,7 +730,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: ['osteoporose'],
-    sources: ["HAS — Aides à la marche : déambulateurs et cadres de marche", "Nomenclature LPP — Titre II Chapitre 3 (cadres de marche fixes)", "ANAP — Référentiel d'aides techniques à la mobilité"] },
+    sources: [{label: "HAS — Aides à la marche", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel mobilité", url: "https://www.anap.fr"}] },
 ];
 
 // Tri alphabétique dans chaque catégorie
