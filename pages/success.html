@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bienvenue — MediFiches</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/app.css">
+  <style>
+    body { background: var(--bg); display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: var(--space-5); }
+    .shell { max-width: 480px; width: 100%; text-align: center; }
+    .icon { font-size: 56px; margin-bottom: var(--space-4); }
+    .title { font-family: var(--font-display); font-size: 32px; color: var(--text); margin-bottom: var(--space-3); }
+    .title em { color: var(--brand-mid); font-style: italic; }
+    .sub { font-size: 16px; color: var(--text-2); line-height: 1.6; margin-bottom: var(--space-8); }
+    .btn { display: inline-block; background: var(--brand); color: white; padding: var(--space-4) var(--space-8); border-radius: var(--r-md); font-family: var(--font-body); font-size: 15px; font-weight: 500; text-decoration: none; transition: background 0.15s; }
+    .btn:hover { background: var(--brand-mid); }
+    .note { font-size: 13px; color: var(--text-3); margin-top: var(--space-6); }
+  </style>
+</head>
+<body>
+<div class="shell">
+  <div class="icon">🎉</div>
+  <h1 class="title">Bienvenue sur Medi<em>Fiches</em> !</h1>
+  <p class="sub">Votre abonnement est actif. Vous avez 30 jours d'essai gratuit — aucun prélèvement avant la fin de la période.</p>
+  <a href="/" class="btn">Accéder à l'application →</a>
+  <p class="note">Un email de confirmation vous a été envoyé par Stripe.</p>
+</div>
+</body>
+</html>

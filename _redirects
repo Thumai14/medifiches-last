@@ -1,0 +1,6 @@
+/login          /pages/login.html           200
+/admin          /pages/admin.html           200
+/reset-password /pages/reset-password.html  200
+/subscribe      /pages/subscribe.html       200
+/tarifs         /pages/pricing.html         200
+/success        /pages/success.html         200

@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MediFiches — Assistant comptoir pour préparateurs en pharmacie. Conseils patients, contre-indications, régime alimentaire et matériel médical.">
+  <meta name="version" content="MVP-prod-1.0">
+  <!-- MediFiches MVP prod — Corrections critiques appliquées:
+       ✅ MF.Core : esc(), modal factory, Store v2, EventBus
+       ✅ localStorage schema v2 + migration auto mf- → mf_
+       ✅ MEDNAT_SIMPLE_DB encapsulée (hors window.*)
+       ✅ innerHTML : esc() sur données utilisateur
+       ✅ Backup : confirm() non-bloquant, export v2
+       ✅ 17 blocs JS validés node --check
+  -->
+  <meta name="theme-color" content="#1B6B52">
+  <meta name="color-scheme" content="light dark">
+  <title>MediFiches — Assistant comptoir</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/app.css">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/apothecary-hero.css">
+  <style>
+    /* Barre utilisateur */
+    #user-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 8000;
+      background: #8B1A14; color: white;
+      display: none; align-items: center; justify-content: space-between;
+      padding: 8px 20px; font-size: 12px; font-family: var(--font-body);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    body.has-user-bar .nav { top: 37px; }
+    #user-bar.visible { display: flex; }
+    #user-bar a, #user-bar button {
+      color: rgba(255,255,255,0.7); background: none; border: none;
+      cursor: pointer; font-family: var(--font-body); font-size: 12px;
+      text-decoration: none; padding: 4px 10px; border-radius: 4px;
+      transition: all 0.15s;
+    }
+    #user-bar a:hover, #user-bar button:hover {
+      background: rgba(255,255,255,0.12); color: white;
+    }
+    #user-bar .bar-admin {
+      background: rgba(255,255,255,0.15); color: white;
+      font-weight: 500; border: 1px solid rgba(255,255,255,0.2);
+    }
+  </style>
+</head>
+<body>
+<!-- Sprite SVG partagé des icônes de contenu — chargé une fois, référencé via <use> partout (cf. PATH_ICONS / contentIconSVG dans js/icons/icon-registry.js) -->
+<script>
+  fetch('icons/icons-sprite.svg').then(r => r.text()).then(svg => {
+    const div = document.createElement('div');
+    div.innerHTML = svg;
+    document.body.insertBefore(div.firstElementChild, document.body.firstChild);
+  }).catch(() => {});
+</script>
+<!-- Barre utilisateur (visible quand connecté) -->
+  <div id="user-bar">
+    <span id="user-bar-label" style="font-weight:600;letter-spacing:0.04em;">—</span>
+    <div style="display:flex;gap:4px;align-items:center;">
+      <a href="/pages/admin.html" id="user-bar-admin" class="bar-admin" style="display:none;">⚙️ Dashboard admin</a>
+      <button onclick="Auth.signOut()">Déconnexion</button>
+    </div>
+  </div>
+
+  <div class="app-shell">
+
+  <!-- ═══ NAV ═══ -->
+  <nav class="nav" role="navigation">
+    <div class="nav__inner" style="position:relative;">
+      <a href="#" class="nav__logo" onclick="Router.navigate('pathologies'); return false;" style="flex-shrink:0;">
+        <div class="nav__logo-dot"></div>Medi<span class="nav__logo-accent">Fiches</span>
+      </a>
+      <div style="position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;">
+        <span class="nav__badge">Assistant comptoir</span>
+        <span class="nav__version">v1.0</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-left:auto;">
+        <button class="dark-toggle" id="btn-export" onclick="Backup.exportData()" title="Exporter les personnalisations" style="display:none;">💾 Export</button>
+        <button class="dark-toggle" id="btn-import" onclick="document.getElementById('backup-file-input').click()" title="Importer des personnalisations" style="display:none;">📂 Import</button>
+        <input type="file" id="backup-file-input" accept=".json" style="display:none" onchange="Backup.importData(this)">
+        <span id="nav-user-label" style="display:none;font-size:12px;color:var(--text-2);font-weight:500;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"></span>
+        <button id="nav-signout-btn" onclick="Auth.signOut()" style="display:none;" class="dark-toggle">Déconnexion</button>
+        <a href="pages/pricing.html" class="dark-toggle" title="Voir les tarifs" style="text-decoration:none;font-size:13px;font-weight:500;">💳 Tarifs</a>
+        <button class="dark-toggle" id="dark-toggle" onclick="DarkMode.toggle()" title="Mode nuit / jour">
+          <span id="dark-icon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ PAGE NAV (router tabs) ═══ -->
+  <div class="page-nav" role="tablist">
+    <button class="page-nav__tab active" id="tab-pathologies" onclick="Router.navigate('pathologies')" role="tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px;"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>Pathologies</button>
+    <button class="page-nav__tab" id="tab-materiel" onclick="Router.navigate('materiel')" role="tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px;"><path d="M12 6v12M6 12h12"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg>Dispositifs</button>
+    <button class="page-nav__tab" id="tab-dermato" onclick="Router.navigate('dermato')" role="tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px;"><path d="M12 3c3.5 4.2 6 7.3 6 10.5a6 6 0 0 1-12 0C6 10.3 8.5 7.2 12 3Z"/></svg>Dermatologie</button>
+    <button class="page-nav__tab" id="tab-formation" onclick="Router.navigate('formation')" role="tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px;"><path d="M2.5 8 12 4l9.5 4L12 12 2.5 8Z"/><path d="M6 10v4.5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5V10"/><path d="M21.5 8v5"/></svg>Formation</button>
+  </div>
+
+  <!-- ═══ DISCLAIMER ═══ -->
+  <!-- ════════════════════════════
+       PAGE PATHOLOGIES
+  ════════════════════════════ -->
+  <div id="page-pathologies" class="page-view active">
+
+    <div class="apo">
+      <div class="apo__paper"></div>
+      <div class="apo__glow"></div>
+      <div class="apo__grain"></div>
+
+      <section class="apo-alert">
+        <div class="apo-alert__grain"></div>
+        <div class="apo-alert__inner">
+          <div class="apo-alert__title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fbe6c8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3Z"/><path d="M12 10v5M12 18h.01"/></svg>
+            Vérifier systématiquement avant tout conseil
+          </div>
+          <p class="apo-alert__disclaimer">Les informations fournies constituent une aide documentaire au conseil officinal et ne remplacent pas l'évaluation d'un professionnel de santé. En cas de doute ou de signes de gravité, orienter le patient vers un médecin.</p>
+          <div class="apo-alert__pills">
+            <span class="apo-pill">Âge</span>
+            <span class="apo-pill">Grossesse</span>
+            <span class="apo-pill">Traitements en cours</span>
+            <span class="apo-pill">Antécédents</span>
+            <span class="apo-pill">Allergies</span>
+            <span class="apo-pill">Contre-indications</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="apo-hero">
+        <div class="apo-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5.5L5.5 17a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 8.5V3"/><path d="M7.5 13h9"/></svg>
+          <span>Outil officinal</span>
+        </div>
+        <h1 class="apo-title">Votre assistant <em>comptoir</em></h1>
+        <div class="apo-sub">
+          <span>Conseils patients</span><span class="apo-sub__dot"></span>
+          <span>Contre-indications</span><span class="apo-sub__dot"></span>
+          <span>Conseil hygiéno-diététique</span><span class="apo-sub__dot"></span>
+          <span>Signes d'alerte</span>
+        </div>
+        <div class="search-block" role="search">
+          <div class="apo-search">
+            <div class="apo-search__field">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+              <input type="search" id="search-input" class="apo-search__input"
+                placeholder="Ex : diabète, allergie, rhinite, asthme…"
+                autocomplete="off" autocorrect="off" spellcheck="false"
+                aria-label="Rechercher une pathologie" />
+              <button id="search-btn" class="apo-search__btn" type="button">Rechercher</button>
+            </div>
+          </div>
+          <div id="autocomplete" class="autocomplete" role="listbox"></div>
+        </div>
+        <div class="apo-cats">
+          <a href="#" class="apo-cat apo-cat--pat apo-cat--active" onclick="return false;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>
+            Pathologies
+          </a>
+          <a href="#" class="apo-cat apo-cat--mad" onclick="Router.navigate('materiel'); return false;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v12M6 12h12"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
+            Dispositifs <span class="apo-cat__arrow">→</span>
+          </a>
+          <a href="#" class="apo-cat apo-cat--derm" onclick="Router.navigate('dermato'); return false;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.5 4.2 6 7.3 6 10.5a6 6 0 0 1-12 0C6 10.3 8.5 7.2 12 3Z"/></svg>
+            Dermatologie <span class="apo-cat__arrow">→</span>
+          </a>
+          <a href="#" class="apo-cat apo-cat--form" onclick="Router.navigate('formation'); return false;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8 12 4l9.5 4L12 12 2.5 8Z"/><path d="M6 10v4.5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5V10"/><path d="M21.5 8v5"/></svg>
+            Formation <span class="apo-cat__arrow">→</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="apo-green">
+        <div class="apo-green__grain"></div>
+        <svg class="apo-green__flourish apo-green__flourish--l" width="70" height="70" viewBox="0 0 80 80" fill="none" stroke="#c8a85a" stroke-width="1.1"><path d="M40 70C40 45 25 30 10 25M40 70C40 50 50 38 64 32M40 70V20"/><circle cx="10" cy="25" r="3"/><circle cx="64" cy="32" r="3"/></svg>
+        <svg class="apo-green__flourish apo-green__flourish--r" width="70" height="70" viewBox="0 0 80 80" fill="none" stroke="#c8a85a" stroke-width="1.1"><path d="M40 70C40 45 25 30 10 25M40 70C40 50 50 38 64 32M40 70V20"/><circle cx="10" cy="25" r="3"/><circle cx="64" cy="32" r="3"/></svg>
+        <div class="apo-green__inner">
+          <div class="apo-green__badge"><span>Conseil officinal</span></div>
+          <h2 class="apo-green__title">Pathologies <em>& thérapeutiques</em></h2>
+          <div class="apo-stats">
+            <div class="apo-stat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>
+              <span><strong>53</strong> pathologies</span>
+            </div>
+            <div class="apo-stats__sep"></div>
+            <div class="apo-stat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-6 4-9 4-13a4 4 0 0 0-8 0c0 4 4 7 4 13Z"/></svg>
+              <span>Médecine naturelle <strong>incluse</strong></span>
+            </div>
+            <div class="apo-stats__sep"></div>
+            <div class="apo-stat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="11" rx="2"/><path d="M9 8V6a3 3 0 0 1 6 0v2M12 12v3"/></svg>
+              <span>Médicaments <strong>OTC</strong></span>
+            </div>
+            <div class="apo-stats__sep"></div>
+            <div class="apo-stat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2 6 4-14 2 8h6"/></svg>
+              <span>Conseils <strong>régime</strong></span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <main class="main">
+      <div class="container">
+        <div id="fiche-result" class="fiche-result" role="region" aria-live="polite"></div>
+        <div id="no-result" class="no-result" role="alert"></div>
+
+        <!-- Filtres thématiques -->
+        <div class="theme-filters-wrap">
+          <div id="theme-filters" class="theme-filters"></div>
+        </div>
+
+        <!-- Section saisonnière (limitée à 6) -->
+        <section class="section" id="saison-section">
+          <div class="section__header">
+            <div class="section__label">📅 En ce moment</div>
+            <button onclick="UI.openSaisonEditor()" style="background:none;border:1px solid var(--brand-border);color:var(--brand-dark);border-radius:14px;padding:3px 10px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;">✏️ Modifier</button>
+          </div>
+          <div id="saison-grid" class="cards-grid" role="list"></div>
+        </section>
+
+        <hr class="divider" id="theme-divider">
+
+        <!-- Grille par thème -->
+        <section class="section">
+          <div class="section__header">
+            <div class="section__label" id="theme-label">📋 Toutes les pathologies</div>
+          </div>
+          <div id="theme-grid"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- ════════════════════════════
+       PAGE MATÉRIEL MÉDICAL
+  ════════════════════════════ -->
+  <div id="page-materiel" class="page-view">
+
+    <div class="apo">
+      <div class="apo__paper"></div><div class="apo__glow"></div><div class="apo__grain"></div>
+      <section class="apo-alert"><div class="apo-alert__grain"></div><div class="apo-alert__inner">
+        <div class="apo-alert__title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fbe6c8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3Z"/><path d="M12 10v5M12 18h.01"/></svg> Vérifier systématiquement avant toute délivrance <span class="apo-alert__count" id="mad-alert-count"></span></div>
+        <p class="apo-alert__disclaimer">Les informations fournies constituent une aide documentaire au conseil officinal et ne remplacent pas l'évaluation d'un professionnel de santé. En cas de doute ou de signes de gravité, orienter le patient vers un médecin.</p>
+        <div class="apo-alert__pills">
+          <span class="apo-pill">Âge</span><span class="apo-pill">Grossesse / allaitement</span><span class="apo-pill">Traitements en cours</span><span class="apo-pill">Pathologies associées</span><span class="apo-pill">Maintien à domicile</span>
+        </div>
+      </div></section>
+
+      <section class="apo-hero">
+        <div class="apo-badge apo-badge--mad">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5.5L5.5 17a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 8.5V3"/><path d="M7.5 13h9"/></svg>
+          <span>Outil officinal</span>
+        </div>
+        <h1 class="apo-title apo-title--mad">Votre assistant <em>comptoir</em></h1>
+        <div class="apo-sub"><span>Indications</span><span class="apo-sub__dot"></span><span>Conseils de délivrance</span><span class="apo-sub__dot"></span><span>Pathologies associées</span></div>
+        <div class="search-block hero-search" id="mad-search-block" role="search">
+          <div class="apo-search"><div class="apo-search__field">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+            <input class="apo-search__input" id="mad-search-input" type="search" placeholder="Rechercher dans le matériel médical…"
+              autocomplete="off" autocorrect="off" spellcheck="false"
+              oninput="MAD._filterSearch(this.value);Search.suggest(this.value,this)"
+              onkeydown="if(event.key==='Enter'){Search.closeAC();}if(event.key==='Escape'){this.value='';MAD._filterSearch('');Search.closeAC();}" />
+            <button class="apo-search__btn" type="button"
+              onclick="MAD._filterSearch(document.getElementById('mad-search-input').value);Search.closeAC()">Rechercher</button>
+          </div></div>
+        </div>
+        <div class="apo-cats">
+          <a href="#" class="apo-cat apo-cat--pat" onclick="Router.navigate('pathologies'); return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg> Pathologies <span class="apo-cat__arrow">→</span></a>
+          <a href="#" class="apo-cat apo-cat--mad apo-cat--active" onclick="return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v12M6 12h12"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg> Dispositifs</a>
+          <a href="#" class="apo-cat apo-cat--derm" onclick="Router.navigate('dermato'); return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.5 4.2 6 7.3 6 10.5a6 6 0 0 1-12 0C6 10.3 8.5 7.2 12 3Z"/></svg> Dermatologie <span class="apo-cat__arrow">→</span></a>
+          <a href="#" class="apo-cat apo-cat--form" onclick="Router.navigate('formation'); return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8 12 4l9.5 4L12 12 2.5 8Z"/><path d="M6 10v4.5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5V10"/><path d="M21.5 8v5"/></svg> Formation <span class="apo-cat__arrow">→</span></a>
+        </div>
+      </section>
+
+      <section class="apo-band apo-band--sapphire"><div class="apo-green__grain"></div>
+        <svg class="apo-green__flourish apo-green__flourish--l" width="70" height="70" viewBox="0 0 80 80" fill="none" stroke="#c8a85a" stroke-width="1.1"><path d="M40 70C40 45 25 30 10 25M40 70C40 50 50 38 64 32M40 70V20"/><circle cx="10" cy="25" r="3"/><circle cx="64" cy="32" r="3"/></svg>
+        <svg class="apo-green__flourish apo-green__flourish--r" width="70" height="70" viewBox="0 0 80 80" fill="none" stroke="#c8a85a" stroke-width="1.1"><path d="M40 70C40 45 25 30 10 25M40 70C40 50 50 38 64 32M40 70V20"/><circle cx="10" cy="25" r="3"/><circle cx="64" cy="32" r="3"/></svg>
+        <div class="apo-green__inner">
+          <div class="apo-green__badge"><span>Catalogue officinal</span></div>
+          <h2 class="apo-green__title">Dispositifs <em>& délivrance</em></h2>
+          <div class="apo-stats">
+            <div class="apo-stat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg><span><strong>32</strong> dispositifs</span></div>
+            <div class="apo-stats__sep"></div>
+            <div class="apo-stat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 12 3l9 6v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/></svg><span>Maintien à <strong>domicile</strong></span></div>
+            <div class="apo-stats__sep"></div>
+            <div class="apo-stat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg><span><strong>Dispositifs</strong> médicaux</span></div>
+            <div class="apo-stats__sep"></div>
+            <div class="apo-stat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4L3 21l1.1-3a8.4 8.4 0 1 1 16.9-6.5Z"/></svg><span>Conseils de <strong>délivrance</strong></span></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="mad-filters-wrap">
+      <div id="mad-filters"></div>
+    </div>
+
+    <div class="mad-main">
+      <div class="mad-section-header">
+        <div class="mad-section-label">Catalogue</div>
+        <div class="mad-count" id="mad-count"></div>
+      </div>
+      <div id="mad-detail" class="mad-detail" role="region" aria-live="polite"></div>
+      <div id="mad-grid"></div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════
+       PAGE DERMATOLOGIE
+  ════════════════════════════ -->
+  <div id="page-dermato" class="page-view">
+
+    <div class="apo">
+      <div class="apo__paper"></div><div class="apo__glow"></div><div class="apo__grain"></div>
+      <section class="apo-alert"><div class="apo-alert__grain"></div><div class="apo-alert__inner">
+        <div class="apo-alert__title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fbe6c8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3Z"/><path d="M12 10v5M12 18h.01"/></svg> Vérifier systématiquement avant tout conseil dermatologique <span class="apo-alert__count" id="derm-alert-count"></span></div>
+        <p class="apo-alert__disclaimer">Les informations fournies constituent une aide documentaire au conseil officinal et ne remplacent pas l'évaluation d'un professionnel de santé. En cas de doute ou de signes de gravité, orienter le patient vers un médecin.</p>
+        <div class="apo-alert__pills">
+          <span class="apo-pill">Âge</span><span class="apo-pill">Grossesse / allaitement</span><span class="apo-pill">Traitements en cours</span><span class="apo-pill">Produits utilisés</span><span class="apo-pill">Allergies cutanées</span>
+        </div>
+      </div></section>
+
+      <section class="apo-hero">
+        <div class="apo-badge apo-badge--derm">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5.5L5.5 17a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 8.5V3"/><path d="M7.5 13h9"/></svg>
+          <span>Outil officinal</span>
+        </div>
+        <h1 class="apo-title apo-title--derm">Votre assistant <em>comptoir</em></h1>
+        <div class="apo-sub"><span>Pathologies cutanées</span><span class="apo-sub__dot"></span><span>Crèmes adaptées</span><span class="apo-sub__dot"></span><span>Conseils pratiques</span></div>
+        <div class="search-block hero-search" id="derm-search-block" role="search">
+          <div class="apo-search"><div class="apo-search__field">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+            <input class="apo-search__input" id="derm-search-input" type="search" placeholder="Rechercher une pathologie cutanée…"
+              autocomplete="off" autocorrect="off" spellcheck="false"
+              oninput="DERMATO._filterSearch(this.value);Search.suggest(this.value,this)"
+              onkeydown="if(event.key==='Enter'){Search.closeAC();}if(event.key==='Escape'){this.value='';DERMATO._filterSearch('');Search.closeAC();}" />
+            <button class="apo-search__btn" type="button"
+              onclick="DERMATO._filterSearch(document.getElementById('derm-search-input').value);Search.closeAC()">Rechercher</button>
+          </div></div>
+        </div>
+        <div class="apo-cats">
+          <a href="#" class="apo-cat apo-cat--pat" onclick="Router.navigate('pathologies'); return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg> Pathologies <span class="apo-cat__arrow">→</span></a>
+          <a href="#" class="apo-cat apo-cat--mad" onclick="Router.navigate('materiel'); return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v12M6 12h12"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg> Dispositifs <span class="apo-cat__arrow">→</span></a>
+          <a href="#" class="apo-cat apo-cat--derm apo-cat--active" onclick="return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.5 4.2 6 7.3 6 10.5a6 6 0 0 1-12 0C6 10.3 8.5 7.2 12 3Z"/></svg> Dermatologie</a>
+          <a href="#" class="apo-cat apo-cat--form" onclick="Router.navigate('formation'); return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8 12 4l9.5 4L12 12 2.5 8Z"/><path d="M6 10v4.5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5V10"/><path d="M21.5 8v5"/></svg> Formation <span class="apo-cat__arrow">→</span></a>
+        </div>
+      </section>
+
+      <section class="apo-band apo-band--bordeaux"><div class="apo-green__grain"></div>
+        <svg class="apo-green__flourish apo-green__flourish--l" width="70" height="70" viewBox="0 0 80 80" fill="none" stroke="#c8a85a" stroke-width="1.1"><path d="M40 70C40 45 25 30 10 25M40 70C40 50 50 38 64 32M40 70V20"/><circle cx="10" cy="25" r="3"/><circle cx="64" cy="32" r="3"/></svg>
+        <svg class="apo-green__flourish apo-green__flourish--r" width="70" height="70" viewBox="0 0 80 80" fill="none" stroke="#c8a85a" stroke-width="1.1"><path d="M40 70C40 45 25 30 10 25M40 70C40 50 50 38 64 32M40 70V20"/><circle cx="10" cy="25" r="3"/><circle cx="64" cy="32" r="3"/></svg>
+        <div class="apo-green__inner">
+          <div class="apo-green__badge"><span>Conseil officinal</span></div>
+          <h2 class="apo-green__title">Peau <em>& cosmétologie</em></h2>
+          <div class="apo-stats">
+            <div class="apo-stat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg><span><strong>20</strong> pathologies cutanées</span></div>
+            <div class="apo-stats__sep"></div>
+            <div class="apo-stat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="3"/><path d="M9 3v4h6"/></svg><span>Crèmes <strong>adaptées</strong></span></div>
+            <div class="apo-stats__sep"></div>
+            <div class="apo-stat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4L3 21l1.1-3a8.4 8.4 0 1 1 16.9-6.5Z"/></svg><span>Conseils <strong>pratiques</strong></span></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="mad-filters-wrap">
+      <div id="dermato-filters"></div>
+    </div>
+
+    <div class="mad-main">
+      <div class="mad-section-header">
+        <div class="mad-section-label">Pathologies cutanées</div>
+        <div class="mad-count" id="dermato-count"></div>
+      </div>
+      <div id="dermato-grid"></div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════
+       PAGE FORMATION
+  ════════════════════════════ -->
+  <div id="page-formation" class="page-view">
+
+    <div class="apo">
+      <div class="apo__paper"></div><div class="apo__glow"></div><div class="apo__grain"></div>
+      <section class="apo-alert"><div class="apo-alert__grain"></div><div class="apo-alert__inner">
+        <div class="apo-alert__title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fbe6c8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3Z"/><path d="M12 10v5M12 18h.01"/></svg> Outils d'aide au conseil officinal</div>
+        <p class="apo-alert__disclaimer">Les informations fournies constituent une aide documentaire au conseil officinal et ne remplacent pas l'évaluation d'un professionnel de santé. En cas de doute ou de signes de gravité, orienter le patient vers un médecin.</p>
+        <div class="apo-alert__pills">
+          <span class="apo-pill">Formation continue</span><span class="apo-pill">Mécanismes d'action</span><span class="apo-pill">Classes pharmacologiques</span><span class="apo-pill">Ne remplace pas une prescription</span>
+        </div>
+      </div></section>
+
+      <section class="apo-hero">
+        <div class="apo-badge apo-badge--form">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5.5L5.5 17a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 8.5V3"/><path d="M7.5 13h9"/></svg>
+          <span>Outil officinal</span>
+        </div>
+        <h1 class="apo-title apo-title--form">Votre assistant <em>comptoir</em></h1>
+        <div class="apo-sub"><span>Physiopathologie</span><span class="apo-sub__dot"></span><span>Mécanismes d'action</span><span class="apo-sub__dot"></span><span>Classes pharmacologiques</span><span class="apo-sub__dot"></span><span>Points clés comptoir</span></div>
+        <div class="search-block hero-search" role="search">
+          <div class="apo-search"><div class="apo-search__field">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+            <input class="apo-search__input" id="form-search-input" type="search" placeholder="Rechercher une fiche de formation…"
+              autocomplete="off" autocorrect="off" spellcheck="false"
+              oninput="FORMATION._filterSearch(this.value);Search.suggest(this.value,this)"
+              onkeydown="if(event.key==='Enter'){Search.closeAC();}if(event.key==='Escape'){this.value='';FORMATION._filterSearch('');Search.closeAC();}" />
+            <button class="apo-search__btn" type="button"
+              onclick="FORMATION._filterSearch(document.getElementById('form-search-input').value);Search.closeAC()">Rechercher</button>
+          </div></div>
+        </div>
+        <div class="apo-cats">
+          <a href="#" class="apo-cat apo-cat--pat" onclick="Router.navigate('pathologies'); return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg> Pathologies <span class="apo-cat__arrow">→</span></a>
+          <a href="#" class="apo-cat apo-cat--mad" onclick="Router.navigate('materiel'); return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v12M6 12h12"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg> Dispositifs <span class="apo-cat__arrow">→</span></a>
+          <a href="#" class="apo-cat apo-cat--derm" onclick="Router.navigate('dermato'); return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.5 4.2 6 7.3 6 10.5a6 6 0 0 1-12 0C6 10.3 8.5 7.2 12 3Z"/></svg> Dermatologie <span class="apo-cat__arrow">→</span></a>
+          <a href="#" class="apo-cat apo-cat--form apo-cat--active" onclick="return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8 12 4l9.5 4L12 12 2.5 8Z"/><path d="M6 10v4.5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5V10"/><path d="M21.5 8v5"/></svg> Formation</a>
+        </div>
+      </section>
+
+      <section class="apo-band apo-band--aubergine"><div class="apo-green__grain"></div>
+        <svg class="apo-green__flourish apo-green__flourish--l" width="70" height="70" viewBox="0 0 80 80" fill="none" stroke="#c8a85a" stroke-width="1.1"><path d="M40 70C40 45 25 30 10 25M40 70C40 50 50 38 64 32M40 70V20"/><circle cx="10" cy="25" r="3"/><circle cx="64" cy="32" r="3"/></svg>
+        <svg class="apo-green__flourish apo-green__flourish--r" width="70" height="70" viewBox="0 0 80 80" fill="none" stroke="#c8a85a" stroke-width="1.1"><path d="M40 70C40 45 25 30 10 25M40 70C40 50 50 38 64 32M40 70V20"/><circle cx="10" cy="25" r="3"/><circle cx="64" cy="32" r="3"/></svg>
+        <div class="apo-green__inner">
+          <div class="apo-green__badge"><span>Formation continue</span></div>
+          <h2 class="apo-green__title">Pharmacologie <em>& mécanismes</em></h2>
+          <div class="apo-stats">
+            <div class="apo-stat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8 12 4l9.5 4L12 12 2.5 8Z"/><path d="M6 10v4.5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5V10"/></svg><span><strong>69</strong> fiches formation</span></div>
+            <div class="apo-stats__sep"></div>
+            <div class="apo-stat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg><span><strong>Mécanismes</strong> d'action</span></div>
+            <div class="apo-stats__sep"></div>
+            <div class="apo-stat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 12h16M4 19h10"/></svg><span><strong>Classes</strong> pharmacologiques</span></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="mad-filters-wrap">
+      <div id="formation-filters"></div>
+    </div>
+
+    <div class="formation-main">
+      <div class="formation-section-header">
+        <div class="mad-section-label">Fiches de formation <span style="font-size:12px;font-weight:400;color:var(--text-3);">(classées par ordre alphabétique)</span></div>
+        <div class="mad-count" id="formation-count"></div>
+      </div>
+      <div id="formation-list"></div>
+    </div>
+  </div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="footer__logo">Medi<span>Fiches</span></div>
+    <p class="footer__disclaimer">
+      Les informations fournies constituent une aide documentaire au conseil officinal et ne remplacent pas l'évaluation d'un professionnel de santé qualifié. En cas de doute ou de signes de gravité, orienter le patient vers un médecin. MediFiches n'est pas un outil de diagnostic médical.
+    </p>
+    <nav class="footer__nav" aria-label="Liens légaux">
+      <button class="footer__nav-link" onclick="LegalPages.open('mentions-legales')">Mentions légales</button>
+      <button class="footer__nav-link" onclick="LegalPages.open('cgu')">CGU</button>
+      <button class="footer__nav-link" onclick="LegalPages.open('cgv')">CGV</button>
+      <button class="footer__nav-link" onclick="LegalPages.open('confidentialite')">Politique de confidentialité</button>
+      <button class="footer__nav-link" onclick="LegalPages.open('contact')">Contact</button>
+    </nav>
+    <div class="footer__meta">© 2026 MediFiches · v1.0 · Normandie, France · <a href="pages/pricing.html" style="color:inherit;opacity:0.7;">Tarifs</a></div>
+  </footer>
+
+  <!-- ═══ PAGES LÉGALES (overlays SPA) ═══ -->
+  <div id="legal-overlay" class="legal-overlay" role="dialog" aria-modal="true" aria-labelledby="legal-page-title">
+    <header class="legal-header">
+      <button class="legal-header__back" onclick="LegalPages.close()" aria-label="Retour à l'application">
+        ← Retour
+      </button>
+      <span id="legal-page-title" class="legal-header__title"></span>
+      <span class="legal-header__badge">medifiches.fr</span>
+    </header>
+    <div id="legal-body" class="legal-body"></div>
+  </div>
+
+</div>
+
+  <!-- ═══ BOUTON SCROLL HAUT/BAS ═══ -->
+  <div id="scroll-fab" aria-label="Navigation rapide">
+    <button class="scroll-fab-btn" id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Haut de page" aria-label="Retour en haut">↑</button>
+    <button class="scroll-fab-btn" id="scroll-bot-btn" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})" title="Bas de page" aria-label="Aller en bas">↓</button>
+  </div>
+
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js" defer></script>
+  <!-- Config & Auth (chargés en premier) -->
+  <script src="js/core/config.js" defer></script>
+  <!-- Scripts MediFiches -->
+  <!-- ═══ CORE — fondations partagées ═══ -->
+  <script src="js/core/mf-store.js" defer></script>
+  <!-- ═══ ICONS — registre SVG (extrait de mf-core.js — Phase 1 refactoring) ═══ -->
+  <script src="js/icons/icon-registry.js" defer></script>
+  <!-- mf-core.js conservé comme stub pour compatibilité ascendante -->
+  <script src="js/core/mf-core.js" defer></script>
+  <!-- ═══ ROUTER — navigation SPA (extrait de ui.js — Phase 1 refactoring) ═══ -->
+  <script src="js/core/router.js" defer></script>
+  <!-- ═══ DATA — données statiques ═══ -->
+  <script src="js/data/pathologies.js" defer></script>
+  <script src="js/data/materiel.js" defer></script>
+  <script src="js/data/mednat.js" defer></script>
+  <script src="js/data/dermato.js" defer></script>
+  <script src="js/data/schemas.js" defer></script>
+  <script src="js/data/schemas-extra.js" defer></script>
+  <script src="js/data/pathologies-extra.js" defer></script>
+  <script src="js/data/formation.js" defer></script>
+  <script src="js/data/formation-extra.js" defer></script>
+  <script src="js/data/formation-niveaux.js" defer></script>
+  <!-- ═══ SERVICES — logique métier (Phase 2 refactoring) ═══ -->
+  <script src="js/services/search.service.js" defer></script>
+  <script src="js/services/analytics.service.js" defer></script>
+  <!-- ═══ MODULES — UI par domaine ═══ -->
+  <script src="js/data/derm-brands.js" defer></script>
+  <script src="js/modules/customizer.js" defer></script>
+  <script src="js/modules/ui.js" defer></script>
+  <script src="js/modules/mad.js" defer></script>
+  <script src="js/modules/dermato.js" defer></script>
+  <script src="js/modules/formation.js" defer></script>
+  <script src="js/modules/darkmode.js" defer></script>
+  <script src="js/modules/fiche-documents.js" defer></script>
+  <script src="js/modules/backup.js" defer></script>
+  <script src="js/modules/legal.js" defer></script>
+  <!-- ═══ AUTH ═══ -->
+  <script src="js/core/auth.js" defer></script>
+  <script src="js/core/impersonate-bar.js" defer></script>
+  <script>
+  // Initialiser l'auth au chargement (non-bloquant)
+  document.addEventListener('DOMContentLoaded', async () => {
+    await Auth.init();
+    await Auth.requireAuth('/pages/login.html');
+
+    // Sync données depuis Supabase → localStorage (source de vérité cloud)
+    await MF.Store.syncFromCloud();
+
+    // Afficher la barre utilisateur
+    const user = Auth.getUser();
+    const profile = Auth.getProfile();
+    if (user) {
+      const bar    = document.getElementById('user-bar');
+      const label  = document.getElementById('user-bar-label');
+      const adminBtn = document.getElementById('user-bar-admin');
+      if (bar) { bar.classList.add('visible'); document.body.classList.add('has-user-bar'); }
+
+      // Afficher le label et vérifier le rôle admin
+      const refreshBar = async (attempt = 0) => {
+        const p = Auth.getProfile();
+        const role = p?.role || user.app_metadata?.role || user.user_metadata?.role;
+        if (role === 'admin') {
+          // Admin → barre rouge en haut
+          if (label) label.textContent = 'Nima — ADMIN MODE';
+          if (adminBtn) adminBtn.style.display = 'inline-flex';
+          var btnExport = document.getElementById('btn-export');
+          var btnImport = document.getElementById('btn-import');
+          if (btnExport) btnExport.style.display = 'inline-flex';
+          if (btnImport) btnImport.style.display = 'inline-flex';
+        } else {
+          // User normal → email dans la nav, pas de barre rouge
+          var bar = document.getElementById('user-bar');
+          if (bar) { bar.style.display = 'none'; }
+          document.body.classList.remove('has-user-bar');
+          var navLabel = document.getElementById('nav-user-label');
+          var navSignout = document.getElementById('nav-signout-btn');
+          if (navLabel) { navLabel.textContent = user.email; navLabel.style.display = 'inline'; }
+          if (navSignout) navSignout.style.display = 'inline-flex';
+        }
+        // Max 5 tentatives (3 s) pour éviter une boucle infinie si profil absent
+        if (!p && attempt < 5) setTimeout(() => refreshBar(attempt + 1), 600);
+      };
+      refreshBar();
+    }
+    // Restaurer l'onglet actif + scroll top après tout le reste
+    setTimeout(() => { if (window.Router) Router.restore(); }, 50);
+  });
+  </script>
+</body>
+</html>

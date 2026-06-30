@@ -1,0 +1,265 @@
+/* ===========================================================
+   MediFiches — "Digital Apothecary"
+   Hero + bandeau alerte + section pathologies
+   Polices : Instrument Serif (titres) + DM Sans (texte)
+   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+   =========================================================== */
+
+:root {
+  --apo-font-serif: 'Instrument Serif', Georgia, serif;
+  --apo-font-body:  'DM Sans', system-ui, sans-serif;
+
+  --apo-ink:        #2c2114;   /* texte titres   */
+  --apo-ink-soft:   #3a2e1e;   /* texte courant  */
+  --apo-muted:      #6b5a42;   /* sous-titres    */
+
+  --apo-copper:     #a8572b;   /* accent cuivre  */
+  --apo-brass:      #b78f47;   /* laiton         */
+  --apo-brass-lt:   #e4c47e;
+  --apo-brass-dk:   #8a6a31;
+}
+
+/* ---------- Wrapper paper texture ---------- */
+.apo {
+  position: relative;
+  font-family: var(--apo-font-body);
+  color: var(--apo-ink-soft);
+  background: #e6dcc1;
+  overflow: hidden;
+}
+.apo__paper,
+.apo__glow,
+.apo__grain { position: absolute; inset: 0; pointer-events: none; }
+.apo__paper {
+  background: radial-gradient(120% 80% at 50% -8%,
+    #f2ead4 0%, #e9dfc6 38%, #ddd0ad 78%, #d3c49f 100%);
+}
+.apo__glow {
+  top: -200px; left: 50%; transform: translateX(-50%);
+  inset: auto; width: 900px; height: 520px;
+  background: radial-gradient(ellipse at center,
+    rgba(255,243,214,0.55) 0%, rgba(255,243,214,0) 70%);
+}
+.apo__grain {
+  opacity: 0.5; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/></svg>");
+}
+
+/* ---------- Hero ---------- */
+.apo-hero {
+  position: relative;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 64px 32px 56px;
+  text-align: center;
+}
+
+.apo-badge {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 8px 18px;
+  border: 1px solid; border-image: linear-gradient(135deg, #cda85f, #9a763a) 1;
+  border-radius: 2px;
+  background: rgba(255,250,238,0.5);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 1px 3px rgba(90,60,20,0.12);
+}
+.apo-badge span {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.22em;
+  text-transform: uppercase; color: #7a5e30; white-space: nowrap;
+}
+.apo-badge svg { stroke: var(--apo-brass-dk); }
+
+.apo-title {
+  font-family: var(--apo-font-serif);
+  font-weight: 400; font-size: clamp(36px, 5.2vw, 64px);
+  line-height: 1.08; letter-spacing: -0.01em;
+  margin: 26px 0 0; color: var(--apo-ink);
+}
+.apo-title em {
+  font-style: italic;
+  background: linear-gradient(120deg, #a8572b 0%, #c4824c 60%, #9a5b33 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+.apo-sub {
+  margin-top: 18px;
+  display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: 14px;
+  font-size: 17px; color: var(--apo-muted);
+}
+.apo-sub__dot { width: 4px; height: 4px; border-radius: 50%; background: #b39a6b; }
+
+/* ---------- Brass search ---------- */
+.apo-search {
+  margin: 40px auto 0; max-width: 660px; padding: 7px;
+  border-radius: 8px;
+  background: linear-gradient(160deg, #e4c47e 0%, #b78f47 32%, #8a6a31 58%, #cda85f 100%);
+  box-shadow: 0 2px 1px rgba(255,255,255,0.5) inset,
+              0 -2px 4px rgba(90,60,20,0.35) inset,
+              0 14px 34px rgba(70,45,15,0.28),
+              0 2px 6px rgba(70,45,15,0.2);
+}
+.apo-search__field {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  padding: 6px 6px 6px 22px; border-radius: 4px;
+  background: linear-gradient(180deg, #fcf7e9 0%, #f4ecd6 100%);
+  border: 1px solid rgba(138,107,49,0.45);
+  box-shadow: 0 1px 2px rgba(90,60,20,0.18) inset;
+}
+.apo-search__field > svg { stroke: #a8853f; flex-shrink: 0; }
+.apo-search__input {
+  flex: 1 1 200px; min-width: 0; border: none; background: transparent; outline: none;
+  font-family: var(--apo-font-body); font-size: 17px;
+  color: var(--apo-ink-soft); padding: 14px 0;
+}
+.apo-search__btn { flex-shrink: 0; }
+@media (max-width: 560px) {
+  .apo-search__btn { flex-basis: 100%; margin-top: 4px; }
+}
+.apo-search__btn {
+  font-family: var(--apo-font-body); font-size: 14px; font-weight: 600;
+  letter-spacing: 0.04em; color: #f5ecd6;
+  background: linear-gradient(180deg, #3a2c18 0%, #241a0e 100%);
+  border: 1px solid #4a3820; border-radius: 3px;
+  padding: 14px 26px; cursor: pointer;
+  box-shadow: 0 1px 0 rgba(255,235,190,0.18) inset, 0 2px 5px rgba(40,28,10,0.4);
+  transition: filter .15s;
+}
+.apo-search__btn:hover { filter: brightness(1.12); }
+
+/* ---------- Category buttons ---------- */
+.apo-cats { margin-top: 26px; display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+.apo-cat {
+  display: inline-flex; align-items: center; gap: 11px;
+  text-decoration: none; padding: 15px 26px; border-radius: 4px;
+  font-size: 15px; font-weight: 600; letter-spacing: 0.02em;
+  border: 1px solid rgba(212,180,120,0.32);
+  transition: filter .15s, transform .15s;
+}
+.apo-cat:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.apo-cat__arrow { opacity: 0.7; }
+.apo-cat--mad  { color: #eaf1f8; background: linear-gradient(165deg, #27496e 0%, #16304f 100%);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.14) inset, 0 8px 20px rgba(20,40,70,0.32); }
+.apo-cat--mad  svg { stroke: #d9c08a; }
+.apo-cat--derm { color: #f6e7ea; background: linear-gradient(165deg, #7a2030 0%, #511320 100%);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.14) inset, 0 8px 20px rgba(70,18,28,0.32); }
+.apo-cat--derm svg { stroke: #e6c2a0; }
+.apo-cat--form { color: #ece6f4; background: linear-gradient(165deg, #3c2070 0%, #281452 100%);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.14) inset, 0 8px 20px rgba(40,20,80,0.32); }
+.apo-cat--form svg { stroke: #cbb9e6; }
+.apo-cat--pat  { color: #e9f3ec; background: linear-gradient(165deg, #1d5239 0%, #0c2a1e 100%);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.14) inset, 0 8px 20px rgba(10,40,26,0.34); }
+.apo-cat--pat  svg { stroke: #c8a85a; }
+
+/* Onglet actif (page courante) : même teinte, marqué visuellement, non cliquable vers nulle part */
+.apo-cat--active { opacity: 0.55; cursor: default; pointer-events: none; }
+.apo-cat--active:hover { filter: none; transform: none; }
+.apo-cat--active .apo-cat__arrow { display: none; }
+
+/* ---------- Burnt amber alert ---------- */
+.apo-alert {
+  position: relative;
+  background: linear-gradient(180deg, #b8341f 0%, #962815 55%, #7a1e0f 100%);
+  border-top: 1px solid rgba(50,12,5,0.5);
+  border-bottom: 1px solid rgba(50,12,5,0.5);
+  box-shadow: 0 -2px 8px rgba(70,15,10,0.3), 0 1px 0 rgba(255,180,150,0.18) inset;
+}
+.apo-alert__grain {
+  position: absolute; inset: 0; opacity: 0.4; mix-blend-mode: overlay; pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.07'/></svg>");
+}
+.apo-alert__inner { position: relative; max-width: 1080px; margin: 0 auto; padding: 16px 32px 20px; text-align: center; }
+.apo-alert__title {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: #fbe6c8; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.13em; text-transform: uppercase; white-space: nowrap;
+}
+.apo-alert__count {
+  font-weight: 400; letter-spacing: normal; text-transform: none;
+  color: rgba(255,240,215,0.7); font-size: 12px;
+}
+.apo-alert__count:not(:empty)::before { content: '· '; }
+.apo-alert__disclaimer {
+  margin: 8px auto 0; max-width: 640px; text-align: center;
+  font-size: 12.5px; line-height: 1.55; color: rgba(255,240,215,0.78);
+  font-style: italic;
+}
+.apo-alert__pills { margin-top: 13px; display: flex; justify-content: center; flex-wrap: wrap; gap: 9px; }
+.apo-pill {
+  display: inline-flex; align-items: center; padding: 7px 15px;
+  border-radius: 2px; font-size: 13px; color: #fcefd6;
+  background: rgba(40,20,6,0.22); border: 1px solid rgba(251,230,200,0.32);
+}
+
+/* ---------- Velvet green section ---------- */
+.apo-green {
+  position: relative;
+  background: radial-gradient(140% 120% at 50% 0%, #15402c 0%, #0c2a1e 45%, #07150e 100%);
+  border-bottom: 1px solid rgba(0,0,0,0.4);
+}
+.apo-green__grain {
+  position: absolute; inset: 0; opacity: 0.5; mix-blend-mode: overlay; pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/></svg>");
+}
+.apo-green__flourish { position: absolute; top: 18px; opacity: 0.16; }
+.apo-green__flourish--l { left: 24px; }
+.apo-green__flourish--r { right: 24px; transform: scaleX(-1); }
+.apo-green__inner { position: relative; max-width: 1080px; margin: 0 auto; padding: 34px 32px 38px; text-align: center; }
+.apo-green__badge {
+  display: inline-flex; align-items: center; padding: 6px 16px;
+  border: 1px solid rgba(200,168,90,0.5); border-radius: 2px;
+  background: rgba(200,168,90,0.07);
+}
+.apo-green__badge span {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: #cdb16a; white-space: nowrap;
+}
+.apo-green__title {
+  font-family: var(--apo-font-serif); font-weight: 400;
+  font-size: clamp(30px, 4vw, 42px); line-height: 1.1;
+  margin: 18px 0 0; color: #f3ecd8;
+}
+.apo-green__title em { font-style: italic; color: #d8b86a; }
+
+.apo-stats { margin-top: 22px; display: flex; justify-content: center; align-items: stretch; flex-wrap: wrap; }
+.apo-stat {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 0 26px; color: #bfd3c4; font-size: 14px;
+}
+.apo-stat svg { stroke: #c8a85a; }
+.apo-stat strong { color: #e9dcb6; font-weight: 600; }
+.apo-stats__sep {
+  width: 1px; align-self: stretch;
+  background: linear-gradient(180deg, transparent, rgba(200,168,90,0.4), transparent);
+}
+@media (max-width: 720px) { .apo-stats__sep { display: none; } .apo-stat { padding: 6px 18px; } }
+
+/* ===========================================================
+   ACCENTS PAR SECTION  (Matériel · Dermato · Formation)
+   Le cadre de recherche reste laiton ; seuls l'accent du titre,
+   la teinte de l'œilleton et le bandeau velours changent.
+   =========================================================== */
+
+/* — Titre : dégradé d'accent — */
+.apo-title--mad  em { background: linear-gradient(120deg, #1e3a5f 0%, #4a7ab0 60%, #244a72 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent; }
+.apo-title--derm em { background: linear-gradient(120deg, #7a2030 0%, #b04a5e 60%, #5f1623 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent; }
+.apo-title--form em { background: linear-gradient(120deg, #3c2070 0%, #7050b0 60%, #2a1550 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* — Œilleton (badge) teinté — */
+.apo-badge--mad  { border-image: linear-gradient(135deg, #6f99c4, #2e547d) 1; }
+.apo-badge--mad  span { color: #2e547d; }
+.apo-badge--mad  svg  { stroke: #2e547d; }
+.apo-badge--derm { border-image: linear-gradient(135deg, #c07786, #7a2030) 1; }
+.apo-badge--derm span { color: #8a2636; }
+.apo-badge--derm svg  { stroke: #8a2636; }
+.apo-badge--form { border-image: linear-gradient(135deg, #9b82c8, #3c2070) 1; }
+.apo-badge--form span { color: #4a2d86; }
+.apo-badge--form svg  { stroke: #4a2d86; }
+
+/* — Bandeau velours : variantes de couleur (réutilise .apo-green__*) — */
+.apo-band { position: relative; border-bottom: 1px solid rgba(0,0,0,0.4); }
+.apo-band--sapphire  { background: radial-gradient(140% 120% at 50% 0%, #1f4468 0%, #11283f 45%, #08131f 100%); }
+.apo-band--bordeaux  { background: radial-gradient(140% 120% at 50% 0%, #5a1826 0%, #380f18 45%, #1c0a0e 100%); }
+.apo-band--aubergine { background: radial-gradient(140% 120% at 50% 0%, #341c5c 0%, #1f1140 45%, #100824 100%); }
