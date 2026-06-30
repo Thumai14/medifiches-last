@@ -257,7 +257,13 @@ const MAD = {
             ${rembHTML}
           </div>
         </div>
-        ${m.sources ? `<div class="vm-sources">📚 ${m.sources.join(' · ')}</div>` : ''}
+        ${m.sources?.length ? `
+        <div class="fiche-sources">
+          <span class="fiche-sources__label">📚 Sources</span>
+          <div class="fiche-sources__links">
+            ${m.sources.map((s, i) => `<span class="fiche-sources__link" style="cursor:default">${s}</span>${i < m.sources.length - 1 ? '<span class="fiche-sources__sep">·</span>' : ''}`).join('')}
+          </div>
+        </div>` : ''}
         ${MAD._renderCustomSections(m.slug)}
       </div>`;
   },
