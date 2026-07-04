@@ -55,3 +55,16 @@
   tag de 2 produits, vérification de l'ordre sur la fiche Constipation, désactivation → retour
   à l'ordre d'origine. Zéro erreur JS console.
 - Landing : rendu desktop + mobile vérifié, démo interactive testée, zéro erreur JS.
+
+## Correctif v2.1 — Affichage du panneau Pilotage
+- **Cause 1** : le panneau utilisait `.customizer-panel` seul, qui n'a AUCUN style dans app.css
+  (seul le variant `--center` porte fond/ombre/scroll). Le contenu débordait en transparence.
+  → `pilotage.js` utilise désormais `customizer-modal--center` + `customizer-panel--center`,
+  comme tous les éditeurs existants.
+- **Cause 2** : les styles mode nuit ciblaient `body.dark` alors que l'app utilise
+  `[data-theme="dark"]` sur <html>. → sélecteurs corrigés.
+- Le bloc CSS Pilotage utilise maintenant les variables du design system
+  (var(--surface), var(--border), var(--text-1/2)) → cohérence clair/nuit automatique.
+- Fichiers modifiés par ce correctif : `js/modules/pilotage.js` et `css/app.css` uniquement.
+- Vérifié : fond opaque clair et nuit, aucun débordement horizontal, contrôles et footer
+  dans les limites du panneau, scroll interne, fermeture, tri toujours fonctionnel sur fiche.

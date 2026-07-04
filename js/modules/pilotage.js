@@ -13,9 +13,9 @@ const Pilotage = {
   open() {
     document.querySelector('.customizer-modal')?.remove();
     const modal = document.createElement('div');
-    modal.className = 'customizer-modal';
+    modal.className = 'customizer-modal customizer-modal--center';
     modal.innerHTML = `
-      <div class="customizer-panel plt-panel" onclick="event.stopPropagation()">
+      <div class="customizer-panel customizer-panel--center plt-panel" onclick="event.stopPropagation()">
         ${this._headerHTML()}
         <div class="plt-body">
           ${this._settingsHTML()}
