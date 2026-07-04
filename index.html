@@ -79,6 +79,7 @@
         <span class="nav__version">v1.0</span>
       </div>
       <div style="display:flex;align-items:center;gap:8px;margin-left:auto;">
+        <button class="dark-toggle" id="btn-pilotage" onclick="Pilotage.open()" title="Pilotage des produits conseillés — marge, rotation, péremption">⚖️ Pilotage</button>
         <button class="dark-toggle" id="btn-export" onclick="Backup.exportData()" title="Exporter les personnalisations" style="display:none;">💾 Export</button>
         <button class="dark-toggle" id="btn-import" onclick="document.getElementById('backup-file-input').click()" title="Importer des personnalisations" style="display:none;">📂 Import</button>
         <input type="file" id="backup-file-input" accept=".json" style="display:none" onchange="Backup.importData(this)">
@@ -518,12 +519,22 @@
   <!-- ═══ SERVICES — logique métier (Phase 2 refactoring) ═══ -->
   <script src="js/services/search.service.js" defer></script>
   <script src="js/services/analytics.service.js" defer></script>
+  <script src="js/services/pilotage.service.js" defer></script>
   <!-- ═══ MODULES — UI par domaine ═══ -->
   <script src="js/data/derm-brands.js" defer></script>
+  <!-- Customizer : modules par responsabilité, chargés avant la façade js/modules/customizer.js -->
+  <script src="js/customizer/customizer-store.js" defer></script>
+  <script src="js/customizer/customizer-dom-helpers.js" defer></script>
+  <script src="js/customizer/path-editor.js" defer></script>
+  <script src="js/customizer/derma-editor.js" defer></script>
+  <script src="js/customizer/dermato-brand-picker.js" defer></script>
+  <script src="js/customizer/mad-editor.js" defer></script>
   <script src="js/modules/customizer.js" defer></script>
+  <script src="js/modules/pilotage.js" defer></script>
   <script src="js/modules/ui.js" defer></script>
   <script src="js/modules/mad.js" defer></script>
   <script src="js/modules/dermato.js" defer></script>
+  <script src="js/formation/formation-helpers.js" defer></script>
   <script src="js/modules/formation.js" defer></script>
   <script src="js/modules/darkmode.js" defer></script>
   <script src="js/modules/fiche-documents.js" defer></script>

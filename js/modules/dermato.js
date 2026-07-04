@@ -461,7 +461,9 @@ const DERMATO = {
     // Lire les symptômes custom
     const customSymptomes = Customizer.load('derm', d.slug, 'symptomes');
     const dispSymptomes = (customSymptomes?.length) ? customSymptomes : (d.symptomes || []);
-    const produitsClassiques = allProds.filter(p => p.gamme !== 'Naturel');
+    const produitsClassiques = window.PilotageService
+      ? window.PilotageService.sortList(allProds.filter(p => p.gamme !== 'Naturel'), p => p.nom)
+      : allProds.filter(p => p.gamme !== 'Naturel');
     const naturalDefaults = (d.produits||[]).filter(p => p.gamme === 'Naturel');
     const naturalCustom = Customizer.load('derm', d.slug, 'naturel');
     const naturelList = naturalCustom !== null ? (Array.isArray(naturalCustom) ? naturalCustom : [naturalCustom]) : naturalDefaults;

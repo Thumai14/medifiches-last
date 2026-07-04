@@ -280,10 +280,15 @@ const UI = {
   buildFicheHTML(p) {
     const mn          = Customizer.getMedNat(p.slug, p.medecine_naturelle);
     const isMnCustom  = Customizer.hasCustom('path', p.slug, 'mednat');
-    const mnSimple    = Customizer.getMedNatSimple(p.slug);
+    const mnSimple    = window.PilotageService
+      ? window.PilotageService.sortList(Customizer.getMedNatSimple(p.slug))
+      : Customizer.getMedNatSimple(p.slug);
     const isMnSimpleCustom = Customizer.hasCustom('path', p.slug, 'mnsimple');
-    const otcData     = Customizer.getOtc(p.slug, p.medicaments_otc);
-    const venteData   = Customizer.getVente(p.slug, p.vente_complementaire);
+    /* Pilotage OTC : tri au rendu uniquement (les éditeurs voient toujours
+       l'ordre d'origine — on ne persiste jamais un ordre trié). */
+    const _plt        = window.PilotageService;
+    const otcData     = _plt ? _plt.sortList(Customizer.getOtc(p.slug, p.medicaments_otc)) : Customizer.getOtc(p.slug, p.medicaments_otc);
+    const venteData   = _plt ? _plt.sortList(Customizer.getVente(p.slug, p.vente_complementaire)) : Customizer.getVente(p.slug, p.vente_complementaire);
     const isOtcCustom = Customizer.hasCustom('path', p.slug, 'otc');
 
     const customConseils = Customizer.load('path', p.slug, 'conseils_patient');
@@ -310,7 +315,7 @@ const UI = {
             <div class="pf-bande__section${s.isMn ? ' pf-bande__section--mn' : ''}">
               <div class="pf-bande__label">${s.label}</div>
               <div class="pf-bande__items">
-                ${s.items.map(item => `<span class="pf-bande__pill" title="${item}">${item}</span>`).join('')}
+                ${s.items.map(item => `<span class="pf-bande__pill" title="${item}">${item}${window.PilotageService?.badgeHTML(item) || ''}</span>`).join('')}
               </div>
             </div>`).join('')}
         </div>` : ''}
@@ -396,8 +401,9 @@ const UI = {
   },
 
   _refreshBande(p) {
-    const otcData  = Customizer.getOtc(p.slug, p.medicaments_otc);
-    const mnSimple = Customizer.getMedNatSimple(p.slug);
+    const _plt     = window.PilotageService;
+    const otcData  = _plt ? _plt.sortList(Customizer.getOtc(p.slug, p.medicaments_otc)) : Customizer.getOtc(p.slug, p.medicaments_otc);
+    const mnSimple = _plt ? _plt.sortList(Customizer.getMedNatSimple(p.slug)) : Customizer.getMedNatSimple(p.slug);
     const sections = document.querySelector('.pf-bande__sections');
     if (!sections) return;
     const bandeSections = [];
@@ -406,7 +412,7 @@ const UI = {
     sections.innerHTML = bandeSections.map(s => `
       <div class="pf-bande__section${s.isMn ? ' pf-bande__section--mn' : ''}">
         <div class="pf-bande__label">${s.label}</div>
-        <div class="pf-bande__items">${s.items.map(item => `<span class="pf-bande__pill">${item}</span>`).join('')}</div>
+        <div class="pf-bande__items">${s.items.map(item => `<span class="pf-bande__pill">${item}${_plt?.badgeHTML(item) || ''}</span>`).join('')}</div>
       </div>`).join('');
   },
 

@@ -1,12 +1,137 @@
-/* MediFiche — FORMATION module v2
-   Système 4 niveaux réels avec même structure visuelle par niveau.
-   data-niveau="1|2|3|4" sur .fm-detail → CSS affiche/masque le bon bloc.
-*/
+/* MediFiche — FORMATION module v3
+   Contrôleur de la vue Formation (filtres, liste, détail, niveaux).
+   Les helpers HTML purs sont dans js/formation/formation-helpers.js.
+   Les 4 niveaux sont générés par _renderNiveau() piloté par _NIVEAU_CONFIG. */
+
 'use strict';
 
 const FORMATION = {
   currentCategorie: 'all',
   activeSlug: null,
+
+  /* ── Table de configuration des 4 niveaux ──
+     Chaque entrée pilote _renderNiveau() : source de données, libellés, couleurs.
+     Pour ajouter un niveau 5, il suffit d'ajouter une entrée ici. */
+  _NIVEAU_CONFIG: {
+    1: {
+      dataKey: null,                      // données directement dans `f`
+      emptyMsg: null,                     // le niveau 1 a toujours des données
+      saviez:  { icone:'💡', bg:'#FFFBEB', border:'#F59E0B', titre:'#92400E', texte:'#6B3A00' },
+      colGauche: [
+        { type:'schema' },
+        { type:'section', classe:'physio', icone:'🧬', label:'Comment ça se passe dans le corps ?', field:'physiopatho_court' },
+        { type:'section', classe:'meca',   icone:'💊', label:'Comment le traitement agit-il ?',    field:'mecanisme_court' },
+        { type:'sectionList', classe:'consequences', icone:'⛔', label:'Si non traité…', field:'consequences', renderer:'consequences' },
+      ],
+      colDroite: [
+        { type:'sectionList', classe:'effets', icone:'⚠️', label:'Effets secondaires à connaître', field:'effets_secondaires', renderer:'effets' },
+        { type:'sectionList', classe:'classes', icone:'📚', label:'Classes pharmacologiques',       field:'classes_pharmacologiques', renderer:'classes' },
+      ],
+      pointsLabel: 'À retenir au comptoir',
+    },
+    2: {
+      dataKey: 'n2',
+      emptyMsg: '📚 Contenu 3e année en cours de rédaction pour cette fiche.',
+      saviez:  { icone:'🎓', bg:'#EFF6FF', border:'#3B82F6', titre:'#1E40AF', texte:'#1E3A5F' },
+      colGauche: [
+        { type:'schemaEx', label:'📐 Schéma mécanistique' },
+        { type:'section', classe:'physio',  icone:'🧬', label:'Physiopathologie',              field:'physiopatho' },
+        { type:'section', classe:'meca',    icone:'💊', label:"Mécanisme d'action détaillé",   field:'mecanisme' },
+        { type:'section', classe:'n2-diag', icone:'🔍', label:'Diagnostic & Clinique',         field:'diagnostic' },
+      ],
+      colDroite: [
+        { type:'sectionList', classe:'effets', icone:'⚠️', label:'Effets indésirables détaillés',    field:'effets_secondaires', renderer:'effets' },
+        { type:'sectionList', classe:'classes', icone:'📚', label:'Pharmacologie',                    field:'classes', renderer:'classes' },
+        { type:'sectionList', classe:'consequences', icone:'🔗', label:'Interactions à connaître',    field:'interactions', renderer:'consequences' },
+      ],
+      pointsLabel: 'Points clés 3e année',
+    },
+    3: {
+      dataKey: 'n3',
+      emptyMsg: '🔬 Contenu 5e année en cours de rédaction pour cette fiche.',
+      saviez:  { icone:'🔬', bg:'#F5F3FF', border:'#8B5CF6', titre:'#5B21B6', texte:'#4C1D95' },
+      colGauche: [
+        { type:'section', classe:'physio',  icone:'🧬', label:'Physiopathologie moléculaire', field:'physiopatho' },
+        { type:'section', classe:'meca',    icone:'⚗️', label:'Pharmacocinétique',            field:'pharmacocinetique' },
+        { type:'section', classe:'n2-diag', icone:'📋', label:'Cas clinique type',             field:'cas_clinique' },
+      ],
+      colDroite: [
+        { type:'sectionList', classe:'effets', icone:'⚠️', label:'EI graves & Contre-indications',             field:'effets_secondaires', renderer:'effets' },
+        { type:'sectionList', classe:'classes', icone:'📚', label:'Pharmacologie avancée',                       field:'classes', renderer:'classes' },
+        { type:'sectionList', classe:'consequences', icone:'⚡', label:'Interactions cliniquement significatives', field:'interactions', renderer:'consequences' },
+      ],
+      pointsLabel: 'Points clés 5e année',
+    },
+    4: {
+      dataKey: 'n4',
+      emptyMsg: '🏥 Contenu Pharmacien en cours de rédaction pour cette fiche.',
+      saviez:  { icone:'🏥', bg:'#FFF1F2', border:'#F43F5E', titre:'#9F1239', texte:'#7F1D1D' },
+      colGauche: [
+        { type:'section', classe:'physio',  icone:'🧬', label:'Mécanismes avancés',                  field:'physiopatho' },
+        { type:'section', classe:'meca',    icone:'📜', label:'Recommandations HAS / ANSM',          field:'recommandations' },
+        { type:'section', classe:'n2-diag', icone:'⚕️', label:'Situations complexes & Populations', field:'situations_complexes' },
+      ],
+      colDroite: [
+        { type:'sectionList', classe:'effets', icone:'⚠️', label:'Iatrogénie & Pharmacovigilance', field:'effets_secondaires', renderer:'effets' },
+        { type:'sectionList', classe:'classes', icone:'📚', label:'Thérapeutique experte',           field:'classes', renderer:'classes' },
+        { type:'sectionList', classe:'consequences', icone:'🔗', label:'Interactions majeures',      field:'interactions', renderer:'consequences' },
+      ],
+      pointsLabel: 'Expertise pharmacien',
+    },
+  },
+
+  /* ── Moteur de rendu unique pour les 4 niveaux ── */
+
+  _renderNiveau(f, n) {
+    const H  = FormationHelpers;
+    const cfg = this._NIVEAU_CONFIG[n];
+    if (!cfg) return '';
+
+    // Source de données : f directement (niveau 1) ou FN[slug].nX (niveaux 2-4)
+    let data;
+    if (cfg.dataKey) {
+      data = (typeof FN !== 'undefined' && FN[f.slug]?.[cfg.dataKey]) || null;
+      if (!data) return `<div class="fm-niveau-bloc fm-niveau-vide" data-n="${n}"><div class="fm-vide-msg">${cfg.emptyMsg}</div></div>`;
+    } else {
+      data = f;
+    }
+
+    // "Le saviez-vous"
+    const sv = cfg.saviez;
+    const saviez = data.saviez_vous ? H.saviez(data.saviez_vous, sv.icone, sv.bg, sv.border, sv.titre, sv.texte) : '';
+
+    // "C'est quoi" (niveau 1 uniquement)
+    const cestquoi = (n === 1 && f.cest_quoi) ? H.cestquoi(f.cest_quoi) : '';
+
+    // Colonnes
+    const renderCol = (specs) => specs.map(spec => {
+      switch (spec.type) {
+        case 'schema':
+          return (f.schema_id && typeof SCHEMAS !== 'undefined' && SCHEMAS[f.schema_id])
+            ? `<div class="fm-section fm-section--schema"><div class="fm-section__label">📐 Schéma explicatif</div><div class="fm-schema">${SCHEMAS[f.schema_id]}</div></div>` : '';
+        case 'schemaEx':
+          return data.schema
+            ? `<div class="fm-section fm-section--schema"><div class="fm-section__label">${spec.label}</div><div class="fm-schema">${data.schema}</div></div>` : '';
+        case 'section':
+          return data[spec.field] ? H.section(spec.classe, spec.icone, spec.label, data[spec.field]) : '';
+        case 'sectionList':
+          return H.sectionIf(data[spec.field], spec.classe, spec.icone, spec.label, H[spec.renderer].bind(H));
+        default: return '';
+      }
+    }).join('');
+
+    return `<div class="fm-niveau-bloc" data-n="${n}">
+      ${cestquoi}
+      ${saviez}
+      <div class="fm-body">
+        <div class="fm-col">${renderCol(cfg.colGauche)}</div>
+        <div class="fm-col">${renderCol(cfg.colDroite)}</div>
+      </div>
+      ${H.points(data.points_cles, cfg.pointsLabel)}
+    </div>`;
+  },
+
+  /* ── Contrôleur : init, filtres, liste ── */
 
   async init() { this.renderFilters(); await this.renderList('all'); },
 
@@ -28,7 +153,6 @@ const FORMATION = {
   async renderList(catId) {
     const list = document.getElementById('formation-list');
     if (!list) return;
-    // Fallback si FormationAPI n'est pas encore disponible
     const api = (typeof FormationAPI !== 'undefined') ? FormationAPI :
                 (typeof window.FormationAPI !== 'undefined') ? window.FormationAPI : null;
     if (!api) { console.error('[FORMATION] FormationAPI non disponible'); return; }
@@ -36,7 +160,7 @@ const FORMATION = {
     const count = document.getElementById('formation-count');
     if (count) count.textContent = `${items.length} fiche${items.length>1?'s':''}`;
     list.innerHTML = '';
-    const COLS = 3; // cartes par rangée
+    const COLS = 3;
     const _buildRows = (items) => {
       let html = '';
       for (let i = 0; i < items.length; i += COLS) {
@@ -74,9 +198,7 @@ const FORMATION = {
       </div>`;
   },
 
-  _detailPlaceholder(f) {
-    return `<div class="formation-inline" id="fdetail-${f.slug}"></div>`;
-  },
+  /* ── Détail : ouverture, fermeture, niveaux ── */
 
   async toggleDetail(slug, cardEl) {
     if (this.activeSlug===slug) { this.closeDetail(); return; }
@@ -86,171 +208,12 @@ const FORMATION = {
     const _fapi = (typeof FormationAPI !== 'undefined') ? FormationAPI : window.FormationAPI;
     const f = _fapi ? await _fapi.getBySlug(slug) : null;
     if (!f) return;
-    // Trouver le slot de détail de la rangée de cette carte
     const row = cardEl.closest('.formation-row');
     const slot = row ? row.querySelector('.formation-row__detail') : null;
     if (!slot) return;
     slot.innerHTML = this.buildDetailHTML(f);
     slot.style.display = 'block';
-
   },
-
-  /* ── HELPERS VISUELS (partagés par tous les niveaux) ── */
-
-  _saviez(texte, icone, couleurBg, couleurBorder, couleurTitre, couleurTexte) {
-    return `<div class="fm-saviez" style="background:${couleurBg};border-left-color:${couleurBorder}">
-      <div class="fm-saviez__icon">${icone}</div>
-      <div>
-        <div class="fm-saviez__title" style="color:${couleurTitre}">Le saviez-vous ?</div>
-        <div class="fm-saviez__text" style="color:${couleurTexte}">${texte}</div>
-      </div>
-    </div>`;
-  },
-
-  _section(classe, icone, label, contenu) {
-    return `<div class="fm-section fm-section--${classe}">
-      <div class="fm-section__label">${icone} ${label}</div>
-      <div class="fm-text">${contenu}</div>
-    </div>`;
-  },
-
-  _consequences(items) {
-    if (!items?.length) return '';
-    return `<div class="fm-consequences">${items.map(c=>`<div class="fm-consequence-item">⛔ ${c}</div>`).join('')}</div>`;
-  },
-
-  _effets(items) {
-    if (!items?.length) return '';
-    return `<div class="fm-effets">${items.map(e=>`<span class="fm-effet fm-effet--${e.niveau}">${e.label}</span>`).join('')}</div>`;
-  },
-
-  _classes(items) {
-    if (!items?.length) return '';
-    return `<div class="fm-classes">${items.map(c=>`
-      <div class="fm-classe" style="border-left-color:${c.couleur}">
-        <div class="fm-classe__header" style="background:${c.couleur}15">
-          <div class="fm-classe__nom" style="color:${c.couleur}">${c.classe}</div>
-        </div>
-        <div class="fm-classe__body">
-          <div class="fm-classe__row"><span class="fm-classe__label">DCI</span><span class="fm-classe__val">${c.dci.join(', ')}</span></div>
-          <div class="fm-classe__row"><span class="fm-classe__label">Spécialités</span><span class="fm-classe__val">${c.specialites.join(', ')}</span></div>
-          <div class="fm-classe__remarque" style="color:${c.couleur}">${c.remarque}</div>
-        </div>
-      </div>`).join('')}</div>`;
-  },
-
-  _points(items, label) {
-    if (!items?.length) return '';
-    return `<div class="fm-section fm-section--points">
-      <div class="fm-section__label">✅ ${label}</div>
-      <div class="fm-points">${items.map(p=>`<div class="fm-point"><span class="fm-point__check">✓</span>${p}</div>`).join('')}</div>
-    </div>`;
-  },
-
-  _cestquoi(texte) {
-    return `<div class="fm-cestquoi">
-      <div class="fm-cestquoi__icon">🗨️</div>
-      <div>
-        <div class="fm-cestquoi__title">C'est quoi ?</div>
-        <div class="fm-cestquoi__text">${texte}</div>
-      </div>
-    </div>`;
-  },
-
-  /* ── BLOCS PAR NIVEAU ── */
-
-  _niveau1(f) {
-    const cestquoi = f.cest_quoi ? this._cestquoi(f.cest_quoi) : '';
-    const schema = f.schema_id && typeof SCHEMAS!=='undefined' && SCHEMAS[f.schema_id]
-      ? `<div class="fm-section fm-section--schema"><div class="fm-section__label">📐 Schéma explicatif</div><div class="fm-schema">${SCHEMAS[f.schema_id]}</div></div>` : '';
-    const saviez = f.saviez_vous ? this._saviez(f.saviez_vous,'💡','#FFFBEB','#F59E0B','#92400E','#6B3A00') : '';
-    return `<div class="fm-niveau-bloc" data-n="1">
-      ${cestquoi}
-      ${saviez}
-      <div class="fm-body">
-        <div class="fm-col">
-          ${schema}
-          ${this._section('physio','🧬','Comment ça se passe dans le corps ?', f.physiopatho_court||'')}
-          ${this._section('meca','💊','Comment le traitement agit-il ?', f.mecanisme_court||'')}
-          ${f.consequences?.length ? `<div class="fm-section fm-section--consequences"><div class="fm-section__label">⛔ Si non traité…</div>${this._consequences(f.consequences)}</div>` : ''}
-        </div>
-        <div class="fm-col">
-          ${f.effets_secondaires?.length ? `<div class="fm-section fm-section--effets"><div class="fm-section__label">⚠️ Effets secondaires à connaître</div>${this._effets(f.effets_secondaires)}</div>` : ''}
-          ${f.classes_pharmacologiques?.length ? `<div class="fm-section fm-section--classes"><div class="fm-section__label">📚 Classes pharmacologiques</div>${this._classes(f.classes_pharmacologiques)}</div>` : ''}
-        </div>
-      </div>
-      ${this._points(f.points_cles, 'À retenir au comptoir')}
-    </div>`;
-  },
-
-  _niveau2(f) {
-    const ex = (typeof FN !== 'undefined' && FN[f.slug]?.n2) || null;
-    if (!ex) return `<div class="fm-niveau-bloc fm-niveau-vide" data-n="2"><div class="fm-vide-msg">📚 Contenu 3e année en cours de rédaction pour cette fiche.</div></div>`;
-    const saviez = ex.saviez_vous ? this._saviez(ex.saviez_vous,'🎓','#EFF6FF','#3B82F6','#1E40AF','#1E3A5F') : '';
-    return `<div class="fm-niveau-bloc" data-n="2">
-      ${saviez}
-      <div class="fm-body">
-        <div class="fm-col">
-          ${ex.schema ? `<div class="fm-section fm-section--schema"><div class="fm-section__label">📐 Schéma mécanistique</div><div class="fm-schema">${ex.schema}</div></div>` : ''}
-          ${ex.physiopatho ? this._section('physio','🧬','Physiopathologie',ex.physiopatho) : ''}
-          ${ex.mecanisme ? this._section('meca','💊','Mécanisme d\'action détaillé',ex.mecanisme) : ''}
-          ${ex.diagnostic ? this._section('n2-diag','🔍','Diagnostic & Clinique',ex.diagnostic) : ''}
-        </div>
-        <div class="fm-col">
-          ${ex.effets_secondaires?.length ? `<div class="fm-section fm-section--effets"><div class="fm-section__label">⚠️ Effets indésirables détaillés</div>${this._effets(ex.effets_secondaires)}</div>` : ''}
-          ${ex.classes?.length ? `<div class="fm-section fm-section--classes"><div class="fm-section__label">📚 Pharmacologie</div>${this._classes(ex.classes)}</div>` : ''}
-          ${ex.interactions?.length ? `<div class="fm-section fm-section--consequences"><div class="fm-section__label">🔗 Interactions à connaître</div>${this._consequences(ex.interactions)}</div>` : ''}
-        </div>
-      </div>
-      ${this._points(ex.points_cles, 'Points clés 3e année')}
-    </div>`;
-  },
-
-  _niveau3(f) {
-    const ex = (typeof FN !== 'undefined' && FN[f.slug]?.n3) || null;
-    if (!ex) return `<div class="fm-niveau-bloc fm-niveau-vide" data-n="3"><div class="fm-vide-msg">🔬 Contenu 5e année en cours de rédaction pour cette fiche.</div></div>`;
-    const saviez = ex.saviez_vous ? this._saviez(ex.saviez_vous,'🔬','#F5F3FF','#8B5CF6','#5B21B6','#4C1D95') : '';
-    return `<div class="fm-niveau-bloc" data-n="3">
-      ${saviez}
-      <div class="fm-body">
-        <div class="fm-col">
-          ${ex.physiopatho ? this._section('physio','🧬','Physiopathologie moléculaire',ex.physiopatho) : ''}
-          ${ex.pharmacocinetique ? this._section('meca','⚗️','Pharmacocinétique',ex.pharmacocinetique) : ''}
-          ${ex.cas_clinique ? this._section('n2-diag','📋','Cas clinique type',ex.cas_clinique) : ''}
-        </div>
-        <div class="fm-col">
-          ${ex.effets_secondaires?.length ? `<div class="fm-section fm-section--effets"><div class="fm-section__label">⚠️ EI graves & Contre-indications</div>${this._effets(ex.effets_secondaires)}</div>` : ''}
-          ${ex.classes?.length ? `<div class="fm-section fm-section--classes"><div class="fm-section__label">📚 Pharmacologie avancée</div>${this._classes(ex.classes)}</div>` : ''}
-          ${ex.interactions?.length ? `<div class="fm-section fm-section--consequences"><div class="fm-section__label">⚡ Interactions cliniquement significatives</div>${this._consequences(ex.interactions)}</div>` : ''}
-        </div>
-      </div>
-      ${this._points(ex.points_cles, 'Points clés 5e année')}
-    </div>`;
-  },
-
-  _niveau4(f) {
-    const ex = (typeof FN !== 'undefined' && FN[f.slug]?.n4) || null;
-    if (!ex) return `<div class="fm-niveau-bloc fm-niveau-vide" data-n="4"><div class="fm-vide-msg">🏥 Contenu Pharmacien en cours de rédaction pour cette fiche.</div></div>`;
-    const saviez = ex.saviez_vous ? this._saviez(ex.saviez_vous,'🏥','#FFF1F2','#F43F5E','#9F1239','#7F1D1D') : '';
-    return `<div class="fm-niveau-bloc" data-n="4">
-      ${saviez}
-      <div class="fm-body">
-        <div class="fm-col">
-          ${ex.physiopatho ? this._section('physio','🧬','Mécanismes avancés',ex.physiopatho) : ''}
-          ${ex.recommandations ? this._section('meca','📜','Recommandations HAS / ANSM',ex.recommandations) : ''}
-          ${ex.situations_complexes ? this._section('n2-diag','⚕️','Situations complexes & Populations',ex.situations_complexes) : ''}
-        </div>
-        <div class="fm-col">
-          ${ex.effets_secondaires?.length ? `<div class="fm-section fm-section--effets"><div class="fm-section__label">⚠️ Iatrogénie & Pharmacovigilance</div>${this._effets(ex.effets_secondaires)}</div>` : ''}
-          ${ex.classes?.length ? `<div class="fm-section fm-section--classes"><div class="fm-section__label">📚 Thérapeutique experte</div>${this._classes(ex.classes)}</div>` : ''}
-          ${ex.interactions?.length ? `<div class="fm-section fm-section--consequences"><div class="fm-section__label">🔗 Interactions majeures</div>${this._consequences(ex.interactions)}</div>` : ''}
-        </div>
-      </div>
-      ${this._points(ex.points_cles, 'Expertise pharmacien')}
-    </div>`;
-  },
-
-  /* ── BUILDER PRINCIPAL ── */
 
   buildDetailHTML(f) {
     const slug = f.slug;
@@ -271,10 +234,10 @@ const FORMATION = {
         <button class="fm-niveau-btn" data-n="3" onclick="FORMATION.setNiveau('${slug}',3,this)">3 — 5e année</button>
         <button class="fm-niveau-btn" data-n="4" onclick="FORMATION.setNiveau('${slug}',4,this)">4 — Pharmacien</button>
       </div>
-      ${this._niveau1(f)}
-      ${this._niveau2(f)}
-      ${this._niveau3(f)}
-      ${this._niveau4(f)}
+      ${this._renderNiveau(f, 1)}
+      ${this._renderNiveau(f, 2)}
+      ${this._renderNiveau(f, 3)}
+      ${this._renderNiveau(f, 4)}
     </div>`;
   },
 
@@ -287,9 +250,7 @@ const FORMATION = {
   },
 
   closeDetail() {
-    // Retirer le surlignage de la carte active
     document.querySelectorAll('#formation-list .path-card--active').forEach(c => c.classList.remove('path-card--active'));
-    // Vider tous les slots de rangée ouverts
     document.querySelectorAll('.formation-row__detail').forEach(s => { s.innerHTML = ''; s.style.display = 'none'; });
     if (!this.activeSlug) return;
     const slot = document.getElementById('fdetail-'+this.activeSlug);

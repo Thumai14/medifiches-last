@@ -326,9 +326,10 @@ js/core/router.js             Navigation SPA + restauration onglet/scroll
 js/services/search.service.js Scoring et fusion recherche cross-module
 js/services/analytics.service.js Statistiques d'usage (write-only, fire-and-forget)
 js/data/derm-brands.js        Catalogue parapharmacie — 22 laboratoires
+js/data/materiel.js           MAD — 32 fiches avec sources {label,url} cliquables (HAS, LPP, sociétés savantes)
 js/modules/ui.js              UI pathologies + composant Search + filtres thématiques
 js/modules/customizer.js      Personnalisation fiches + sélecteur catalogue dermato
-js/modules/mad.js             Module Matériel à domicile (dispositifs)
+js/modules/mad.js             Module Matériel à domicile — rendu sources cliquables (fiche-sources)
 js/modules/dermato.js         Module Dermatologie
 js/modules/formation.js       Module Formation
 js/modules/fiche-documents.js Documents annexes par fiche (Supabase Storage)

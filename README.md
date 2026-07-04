@@ -28,7 +28,7 @@ medifiche/
 │   ├── data/                       ← Données statiques immuables
 │   │   ├── pathologies.js          ← Base pathologies (55 fiches) + MediFicheAPI
 │   │   ├── pathologies-extra.js    ← Extension pathologies
-│   │   ├── materiel.js             ← Matériel médical (MAD) + MaterielAPI
+│   │   ├── materiel.js             ← Matériel médical (MAD) + MaterielAPI + sources {label,url} par fiche
 │   │   ├── dermato.js              ← Dermatologie DB + DermatoAPI
 │   │   ├── derm-brands.js          ← Catalogue parapharmacie · 22 laboratoires ✦ v2
 │   │   ├── mednat.js               ← Médecine naturelle express
@@ -149,6 +149,14 @@ Fonctionnalités :
 - Les clés `mf_bp::` et `mf_bp_sel::` sont **exclues** de la synchronisation
   Supabase (`syncFromCloud` / `_migrateLocalToCloud`) pour rester strictement locales
 
+## Sources fiches dispositif (MAD)
+
+Chaque fiche dispositif affiche en bas une bande **📚 Sources** cliquable
+(même style que les fiches pathologie — classe `fiche-sources`), avec 3 liens
+par fiche : HAS, Nomenclature LPP (ameli.fr), et société savante ou ANSM selon
+le dispositif. Les sources sont définies dans `js/data/materiel.js` sous la clé
+`sources: [{label, url}, ...]` sur chacune des 32 fiches.
+
 ## Documents annexes par fiche
 
 Bouton 📎 dans le hero de chaque fiche (pathologie, dispositif, dermatologie) :
@@ -186,6 +194,7 @@ Voir `SETUP.md` pour le guide pas-à-pas complet (Supabase, Storage, Cloudflare 
 - [x] Router — restauration onglet actif + scroll top après refresh
 - [x] Statistiques d'usage admin — fiches consultées, gammes/catégories par officine
 - [x] Rôles `pro` / `groupement` activés en base (CHECK constraint profiles.role)
+- [x] Sources cliquables sur les 32 fiches dispositif (HAS, LPP, sociétés savantes)
 - [ ] Lazy-load formation-niveaux.js (≈1 Mo) — voir REFACTORING.md §Phase 3
 - [ ] `admin.html` — ajouter `requireAdmin()` au DOMContentLoaded (actuellement dans Admin.init())
 - [ ] Module pédiatrie (NUK et marques bébé à réintégrer depuis le catalogue dermato)
