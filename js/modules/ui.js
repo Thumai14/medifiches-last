@@ -325,7 +325,7 @@ const UI = {
       <div class="fiche-sources">
         <span class="fiche-sources__label">📚 Sources</span>
         <div class="fiche-sources__links">
-          ${p.sources.map((s, i) => `<a href="${s.url}" target="_blank" rel="noopener" class="fiche-sources__link">${s.label}</a>${i < p.sources.length - 1 ? '<span class="fiche-sources__sep">·</span>' : ''}`).join('')}
+          ${p.sources.map((s, i) => `<a href="${s.url}" target="_blank" rel="noopener" class="fiche-sources__link">${s.label}</a>${s.date ? `<span class="fiche-sources__date">${s.date}</span>` : ''}${i < p.sources.length - 1 ? '<span class="fiche-sources__sep">·</span>' : ''}`).join('')}
         </div>
       </div>` : '';
 

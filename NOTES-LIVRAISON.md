@@ -147,3 +147,35 @@
 - js/customizer/path-editor.js (bouton 🌿 Catalogue + mode 'med' explicite)
 - js/services/pilotage.service.js (source Catalogue naturo)
 - css/app.css (bloc « Picker catalogue v2 »)
+
+## v2.4 — Sources vérifiées & datées (vague 1) + consolidation LPP
+
+### Chantier LPP (module MAD) — consolidé
+- Les 54 codes LPP existants : TOUS vérifiés mécaniquement présents dans le PDF officiel (03-06-2026).
+- 7 fiches enrichies avec codes/tarifs sourcés (n° de page PDF dans chaque note) :
+  béquilles (canne anglaise 1296787 · 12,20€, p.848), attelle-poignet (3 orthèses de série, p.1044),
+  potence-de-lit (CORRECTION d'une erreur : codes 1273415/1201858/1293412 existent, p.860,
+  avec la règle « exclu si lit médicalisé déjà pris en charge »), capteur-glycémie (FreeStyle
+  Libre 2/3 vérifiés p.596-605), matelas classe II (ex. ALOVA 1223423, p.840),
+  bas-contention (2116557 · 9,61€ p.1011, 2165805 p.1012), neurostimulateur inchangé (honnête).
+- Les ⚠️ restants sont des conclusions correctes (« non couvert LPP ») à NE PAS résoudre.
+
+### Chantier Sources (fiches pathologie) — vague 1 via navigation Chrome réelle
+- Méthode : recherche HAS pilotée dans le navigateur de l'utilisateur
+  (resultat-de-recherche?text=X&types=guidelines&searchOn=vTitle), liens copiés depuis les
+  pages de résultats RÉELLES — zéro URL fabriquée de mémoire.
+- 16 liens HAS vérifiés + datés posés sur 12 fiches : angine, angine-streptococcique,
+  mal-de-gorge, sinusite, otite, cystite, bronchiolite, lombalgie, depression, bpco,
+  endometriose, osteoporose. Série « Choix et durées d'antibiothérapies » : MàJ mai 2025.
+- Vérification finale : navigation réelle sur le lien otite-enfant → page authentique,
+  « Mis à jour le 14 mai 2025 ».
+- Anciennes entrées HAS retirées dans ces 12 fiches : 7 racines + 7 liens précis NON vérifiés
+  posés par une session antérieure (risque 404) — remplacés par les liens vérifiés.
+- Nouveau champ de données : sources[].date (affiché en italique discret après le lien,
+  ex. « MàJ 05/2025 · consulté 07/2026 »). UI : ui.js + .fiche-sources__date (app.css).
+
+### Reste à faire (vague 2, même méthode)
+- 24 sources HAS racine dans d'autres fiches + 6 liens HAS précis non vérifiés hérités.
+- Sources sociétés savantes racine (Vidal ×38, SNFGE, CNGOF, ameli…) : vérifier ou remplacer.
+- constipation / gastro-entérite : pas de reco HAS dédiée identifiée → source société savante
+  (SNFGE) à vérifier dans le navigateur.

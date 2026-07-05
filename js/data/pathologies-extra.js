@@ -48,7 +48,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'N-acétylcystéine (Mucomyst®)', raison:'Fluidifiant bronchique + antioxydant'},
       {produit:'Chambre d\'inhalation', raison:'Optimise l\'efficacité des bronchodilatateurs'},
     ],
-    sources:[{label:'HAS — BPCO', url:'https://www.has-sante.fr/jcms/c_1100921/fr/guide-parcours-de-soins-bronchopneumopathie-chronique-obstructive'},{label:'GOLD Guidelines 2024', url:'https://goldcopd.org'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Antibiothérapie : exacerbations aiguës de BPCO', url:'https://www.has-sante.fr/jcms/p_3528903/fr/choix-et-durees-d-antibiotherapie-dans-les-exacerbations-aigues-de-bronchopneumopathie-chronique-obstructive-eabpco', date:'consulté 07/2026'},{label:'GOLD Guidelines 2024', url:'https://goldcopd.org'},{label:'Vidal', url:'https://www.vidal.fr'}]
   },
 
   {
@@ -92,7 +92,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Inhalateur vapeur', raison:'Inhalations décongestionantes à domicile'},
       {produit:'Sinupret® (phytothérapie)', raison:'Décongestionnant sinusien naturel prouvé'},
     ],
-    sources:[{label:'HAS — Sinusite', url:'https://www.has-sante.fr'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Antibiothérapie : sinusite de l\'adulte', url:'https://www.has-sante.fr/jcms/c_2722806/fr/choix-et-durees-d-antibiotherapies-sinusite-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'HAS — Sinusites de l\'enfant', url:'https://www.has-sante.fr/jcms/c_2722824/fr/choix-et-durees-d-antibiotherapies-sinusites-de-l-enfant', date:'MàJ 05/2025 · consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
   },
 
   {
@@ -114,7 +114,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Pastilles antiseptiques (Lysopaïne®)', raison:'Antisepsie locale et antalgie de la gorge'},
       {produit:'Spray propolis', raison:'Antibactérien naturel local'},
     ],
-    sources:[{label:'HAS — Angine', url:'https://www.has-sante.fr/jcms/c_272220/fr/angine'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Antibiothérapie : angine aiguë de l\'adulte', url:'https://www.has-sante.fr/jcms/p_3529230/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'HAS — Angine aiguë de l\'enfant', url:'https://www.has-sante.fr/jcms/p_3529229/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-enfant', date:'MàJ 05/2025 · consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
   },
 
   // ══════════ CARDIOVASCULAIRE / MÉTABOLIQUE ══════════
@@ -292,7 +292,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Ceinture lombaire de soutien', raison:'Soutien mécanique temporaire'},
       {produit:'Harpagophytum (Arkogélules®)', raison:'Anti-inflammatoire naturel prouvé'},
     ],
-    sources:[{label:'HAS — Lombalgie', url:'https://www.has-sante.fr/jcms/c_1761292/fr/prise-en-charge-du-patient-presentant-une-lombalgie-commune'},{label:'SFR', url:'https://www.larhumato.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Lombalgie commune : prise en charge', url:'https://www.has-sante.fr/jcms/c_2961499/fr/prise-en-charge-du-patient-presentant-une-lombalgie-commune', date:'consulté 07/2026'},{label:'SFR', url:'https://www.larhumato.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
   },
 
   {
@@ -358,7 +358,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Vitamine K2 MK-7 100µg', raison:'Oriente le calcium vers les os — synergie vit D'},
       {produit:'Semelles amortissantes', raison:'Réduction de la charge sur les vertèbres'},
     ],
-    sources:[{label:'HAS — Ostéoporose', url:'https://www.has-sante.fr'},{label:'SFR — Recommandations', url:'https://www.larhumato.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Ostéoporose : méthodes diagnostiques et indications', url:'https://www.has-sante.fr/jcms/c_271924/fr/l-osteoporose-chez-les-femmes-menopausees-et-chez-les-sujets-traites-par-corticoides-methodes-diagnostiques-et-indications', date:'consulté 07/2026'},{label:'SFR — Recommandations', url:'https://www.larhumato.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
   },
 
   // ══════════ NEUROLOGIE / PSYCHIATRIE ══════════
@@ -381,7 +381,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Oméga-3 EPA concentré', raison:'Action antidépressive légère à modérée prouvée'},
       {produit:'Safran 30mg', raison:'Phytothérapie avec essais cliniques positifs'},
     ],
-    sources:[{label:'HAS — Épisode dépressif', url:'https://www.has-sante.fr/jcms/c_1602657/fr/depression-guide-medecin'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Épisode dépressif caractérisé de l’adulte (1er recours)', url:'https://www.has-sante.fr/jcms/c_1739917/fr/episode-depressif-caracterise-de-l-adulte-prise-en-charge-en-premier-recours', date:'consulté 07/2026'},{label:'Vidal', url:'https://www.vidal.fr'}]
   },
 
   {
@@ -491,7 +491,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'D-mannose 2g (Manucran®)', raison:'Alternative naturelle E. coli — efficacité prouvée'},
       {produit:'Canneberge PAC 36mg (Cys-Control®)', raison:'Prévention des récidives — cure de 3 mois'},
     ],
-    sources:[{label:'HAS — Cystite', url:'https://www.has-sante.fr'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Antibiothérapie : cystite aiguë simple de la femme', url:'https://www.has-sante.fr/jcms/c_2722827/fr/choix-et-durees-d-antibiotherapies-cystite-aigue-simple-a-risque-de-complication-ou-recidivante-de-la-femme', date:'MàJ 05/2025 · consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
   },
 
   {
@@ -535,7 +535,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Oméga-3 EPA/DHA concentré', raison:'Anti-inflammatoire prouvé — réduction des douleurs'},
       {produit:'Magnésium bisglycinate 300mg', raison:'Antispasmodique utérin naturel'},
     ],
-    sources:[{label:'HAS — Endométriose', url:'https://www.has-sante.fr'},{label:'CNGOF', url:'https://cngof.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Prise en charge de l’endométriose', url:'https://www.has-sante.fr/jcms/c_2819733/fr/prise-en-charge-de-l-endometriose', date:'consulté 07/2026'},{label:'CNGOF', url:'https://cngof.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
   },
 
   {
@@ -579,7 +579,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Sérum physiologique unidoses nourrisson', raison:'DRP — désobstruction nasale 6× par jour'},
       {produit:'Aspirateur nasal électrique (Nosiboo®)', raison:'DRP efficace — mieux que l\'aspirateur buccal'},
     ],
-    sources:[{label:'HAS — Bronchiolite', url:'https://www.has-sante.fr/jcms/c_1761763/fr/prise-en-charge-de-la-bronchiolite-du-nourrisson'},{label:'SFP', url:'https://www.sfpediatrie.com'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Bronchiolite aiguë du nourrisson (<12 mois)', url:'https://www.has-sante.fr/jcms/p_3118113/fr/prise-en-charge-du-1er-episode-de-bronchiolite-aigue-chez-le-nourrisson-de-moins-de-12-mois', date:'RBP 11/2019 · consulté 07/2026'},{label:'SFP', url:'https://www.sfpediatrie.com'},{label:'Vidal', url:'https://www.vidal.fr'}]
   },
 
   {
@@ -600,7 +600,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Paracétamol en suspension buvable adapté au poids', raison:'Antalgie de 1ère intention'},
       {produit:'Sérum physiologique nourrisson', raison:'DRP — désobstruction rhinopharyngée'},
     ],
-    sources:[{label:'HAS — Otite', url:'https://www.has-sante.fr/jcms/c_272226/fr/otite-moyenne-aigue-de-l-enfant'},{label:'SFP', url:'https://www.sfpediatrie.com'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Otite moyenne aiguë purulente de l\'enfant', url:'https://www.has-sante.fr/jcms/c_2722749/fr/choix-et-durees-d-antibiotherapies-otite-moyenne-aigue-purulente-de-l-enfant', date:'MàJ 05/2025 · consulté 07/2026'},{label:'HAS — Otite moyenne aiguë purulente de l\'adulte', url:'https://www.has-sante.fr/jcms/c_2722670/fr/choix-et-durees-d-antibiotherapies-otite-moyenne-aigue-purulente-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'SFP', url:'https://www.sfpediatrie.com'},{label:'Vidal', url:'https://www.vidal.fr'}]
   },
 
   {
@@ -731,7 +731,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Streptatest® (TDR)', raison:'Diagnostic rapide avant antibiotique — 5 min'},
       {produit:'Pastilles antiseptiques', raison:'Confort local adjuvant'},
     ],
-    sources:[{label:'HAS — Angine streptococcique', url:'https://www.has-sante.fr/jcms/c_272220/fr/angine'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Antibiothérapie : angine aiguë de l\'adulte', url:'https://www.has-sante.fr/jcms/p_3529230/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'HAS — Angine aiguë de l\'enfant', url:'https://www.has-sante.fr/jcms/p_3529229/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-enfant', date:'MàJ 05/2025 · consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
   },
 
   {
@@ -906,7 +906,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Spray buccal antiseptique', raison:'Action locale ciblée, complément aux pastilles'},
       {produit:'Tisane gorge (thym-miel-citron)', raison:'Hydratation et adoucissement associés'},
     ],
-    sources:[{label:'HAS — Angine de l\'enfant et de l\'adulte', url:'https://www.has-sante.fr'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Antibiothérapie : angine aiguë de l\'adulte', url:'https://www.has-sante.fr/jcms/p_3529230/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
   },
 
   {

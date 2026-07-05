@@ -22,7 +22,7 @@ const MATERIEL_DB = [
     ],
     remboursement: {
       mention: 'Remboursable sur prescription',
-      code_lppr: 'Variable selon forme/classe — ex. 2116557 (bas jarret série, élastique 1 sens, classe I) [⚠️ code exact non confirmé dans le PDF source pour la classe 2 générique, à vérifier sur la prescription précise]',
+      code_lppr: 'Nomenclature par forme et catégorie élastique — exemples vérifiés : 2116557 (bas jarret série élastique 1 sens, 9,61€, p.1011) · 2165805 (bas jarret série élastique 2 sens, p.1012). Le code exact dépend de la forme (jarret/cuisse/collant) et de la catégorie prescrite',
       taux: '60% de la base de remboursement Sécurité Sociale (100% si ALD/CMU) — base : chaussette 21,96€ / bas 29,18€ / collant 41,19€',
       note: 'Exemple concret : pour un bas acheté 36€, la base de remboursement est de 29,18€ → Sécurité Sociale rembourse 60% de cette base (17,51€), la complémentaire santé peut compléter jusqu\'à 100% de la base (11,67€) selon le contrat (ligne "Appareillage" ou "Prothèses médicales orthopédiques" du tableau de garanties), et le dépassement au-delà de la base (6,82€ ici) reste à la charge du patient sauf meilleure prise en charge mutuelle. Les dates de fin de prise en charge affichées dans la nomenclature officielle sont indicatives : un code reste actif tant qu\'aucune décision explicite de radiation n\'a été publiée.',
     },
@@ -90,7 +90,7 @@ const MATERIEL_DB = [
     ],
     remboursement: {
       mention: 'Remboursable sur prescription',
-      code_lppr: '[⚠️ code spécifique non extrait précisément du PDF pour cette fiche générique — varie selon le fabricant/modèle (FreeStyle Libre, Dexcom...), se référer à la prescription]',
+      code_lppr: 'Selon le système — exemples vérifiés (PDF LPP p.596-605) : FreeStyle Libre 2 : capteur 1190296, lecteur 1110720, forfait jour 1194874 · FreeStyle Libre 3 : lecteur 1170690, forfait jour 1132525 · Dexcom : codes propres, voir prescription',
       taux: '100% en général (ALD diabète) — à vérifier selon la situation du patient',
       note: 'Prescription initiale réservée à un diabétologue ou un pédiatre expérimenté en diabétologie. Période d\'essai obligatoire de 1 à 3 mois avant la prescription de longue durée, avec évaluation clinique (hypoglycémies sévères, temps dans la cible, HbA1c) avant la poursuite. Après cette période, le renouvellement peut être assuré par tout médecin. La prise en charge du CGM exclut celle d\'un lecteur de glycémie capillaire classique en parallèle (sauf bandelettes/lancettes de vérification, limitées à 100/an dans ce cadre).',
     },
@@ -362,7 +362,7 @@ const MATERIEL_DB = [
     ],
     remboursement: {
       mention: 'Remboursable sur prescription',
-      code_lppr: '2145984 (attelle extension poignet) et codes variables selon le type exact d\'attelle',
+      code_lppr: 'Orthèses main-poignet statiques de série : 2182755 (poignet rigide, 41,64€) · 2159526 (poignet-main, 56,64€) · 2189800 (poignet-pouce, 53,18€) — modèle exact selon prescription (PDF LPP p.1044)',
       taux: '60% du tarif LPPR (100% si ALD/CMU) — à vérifier selon la situation du patient',
       note: 'Tarif sourcé dans le PDF LPP officiel pour l\'attelle d\'extension du poignet : 45,63€ (code 2145984). D\'autres références existent selon le mouvement à corriger et le degré de rigidité, avec des tarifs variant approximativement de 45 à 94€ — se référer à la prescription précise pour le code exact. [⚠️ L\'attelle de repos simple type "canal carpien" vendue couramment en pharmacie peut correspondre à une référence différente selon le fabricant — vérifier la correspondance exacte avec le code LPPR avant facturation]',
     },
@@ -384,7 +384,7 @@ const MATERIEL_DB = [
     ],
     remboursement: {
       mention: 'Remboursable sur prescription',
-      code_lppr: '1261872 (paire, béquilles d\'aisselle réglables)',
+      code_lppr: '1296787 (canne anglaise à appui antébrachial, 12,20€ l\'unité) · 1261872 (béquilles d\'aisselles, 18,29€ la paire) · 1270463 (canne bois, 6,10€) · 1200764 (canne tripode/quadripode, 12,65€) — sourcés PDF LPP p.848',
       taux: '60% du tarif LPPR (100% si ALD/CMU) — à vérifier selon la situation du patient',
       note: 'Tarif sourcé dans le PDF LPP officiel : 18,29€ la paire pour les béquilles d\'aisselle réglables en hauteur, tout type, à l\'achat. [⚠️ Code spécifique pour les béquilles avant-bras (canadiennes) non confirmé précisément dans le PDF — vérifier la référence exacte selon le modèle prescrit]',
     },
@@ -569,7 +569,7 @@ const MATERIEL_DB = [
     ],
     remboursement: {
       mention: 'Non remboursable',
-      note: '[⚠️ Recherche effectuée dans le PDF LPP officiel (mise à jour juin 2026) : aucun code propre trouvé pour une potence de lit simple] Point important à ne pas confondre : le "soulève-malade" inscrit à la LPP (dispositif mobile sur roues pour transfert complet, code 1231782, location 17,53€/semaine) est un appareil différent de la potence fixe à poignée suspendue décrite ici. La potence simple reste non remboursée et à la charge du patient ; si un besoin de transfert complet existe, orienter vers une évaluation pour un véritable lève-personne, lui remboursable sur prescription.',
+      note: 'Codes sourcés dans le PDF LPP officiel (p.860) : potence de support ou de relèvement, adaptable ou sur pied. ⚠️ Point clé au comptoir : cette prise en charge est réservée aux patients SANS lit médical remboursé — si un lit médicalisé est déjà pris en charge, la potence est incluse dans le tarif du lit (1241763 location / 1270316 achat) et ne se facture pas séparément.',
     },
     otc: [],
     pathologies_liees: ['osteoporose'],
@@ -591,7 +591,7 @@ const MATERIEL_DB = [
     ],
     remboursement: {
       mention: 'Remboursable sur prescription',
-      code_lppr: '1285619 (achat) / 1225646 (location ≤26 sem) / 1260418 (location >26 sem)',
+      code_lppr: '1273415 (location hebdo ≤65 sem., 2,29€) · 1201858 (location >65 sem., 1,52€) · 1293412 (forfait livraison)',
       taux: '60% du tarif LPPR (100% si ALD/CMU) — à vérifier selon la situation du patient',
       note: 'Mêmes codes et tarifs que le déambulateur générique (voir fiche "Déambulateur 4 roues") : la nomenclature LPP ne distingue pas le nombre de roues, seulement la catégorie "déambulateur". Achat 53,81€, location courte durée 2,21€/semaine, location longue durée 1,34€/semaine, livraison 12,96€.',
     },
@@ -676,7 +676,7 @@ const MATERIEL_DB = [
     ],
     remboursement: {
       mention: 'Remboursable sur prescription',
-      code_lppr: 'Variable selon le modèle — ex. 1223423 (matelas ALOVA, mousse viscoélastique) ou 1206548 (surmatelas)',
+      code_lppr: 'Codes propres à chaque marque/référence — exemple vérifié : 1223423 (matelas mousse viscoélastique classe II WINNCARE ALOVA, PDF LPP p.840). Se référer à la référence exacte délivrée',
       taux: '60% du tarif LPPR (100% si ALD/CMU) — à vérifier selon la situation du patient',
       note: 'Tarifs sourcés dans le PDF LPP officiel : environ 247,18€ pour un surmatelas en mousse viscoélastique classe 2, environ 296,62€ pour un matelas complet classe 2 (tarifs variant légèrement selon la référence exacte du fabricant). Prise en charge limitée à un matelas ou surmatelas maximum tous les 3 ans. [⚠️ Code LPPR exact dépendant de la marque/référence précise — de nombreuses références existent à la nomenclature avec des codes différents, se référer à la prescription pour le modèle exact]',
     },
