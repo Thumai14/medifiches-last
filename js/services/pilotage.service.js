@@ -140,10 +140,11 @@ const PilotageService = {
       prods.forEach(pr => add(pr?.nom, 'Dermato'));
     }
 
-    /* Catalogue médicaments en accès direct (Meddispar) : concordance totale —
-       le catalogue effectif de l'officine (référence − supprimés + ajoutés). */
+    /* Catalogues (Meddispar + naturopathie) : concordance totale —
+       catalogue effectif de l'officine (référence − supprimés + ajoutés). */
     if (window.PathoCatalog) {
-      PathoCatalog.effective().forEach(e => add(e.n, 'Catalogue'));
+      PathoCatalog.effective('med').forEach(e => add(e.n, 'Catalogue'));
+      PathoCatalog.effective('nat').forEach(e => add(e.n, 'Catalogue naturo'));
     }
 
     return [...seen.entries()]
