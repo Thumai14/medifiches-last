@@ -94,7 +94,7 @@ const PathEditor = {
                 <div class="ce-list" id="ce-list-otc">${otcItems}</div>
                 <div style="display:flex;gap:8px;flex-wrap:wrap;">
                   <button class="ce-add ce-add--sm" onclick="Customizer._addToList('ce-list-otc','Médicament OTC')">+ Ajouter</button>
-                  <button class="ce-add ce-add--sm" onclick="PathoMedPicker.open()" title="Liste officielle des médicaments en accès direct (Meddispar)">📦 Catalogue</button>
+                  <button class="ce-add ce-add--sm" onclick="PathoMedPicker.open('med')" title="Liste officielle des médicaments en accès direct (Meddispar)">📦 Catalogue</button>
                 </div>
               </div>
             </div>
@@ -105,7 +105,10 @@ const PathEditor = {
               </button>
               <div class="ce-accord__body">
                 <div class="ce-list" id="ce-list-mnsimple">${mnSimpleItems}</div>
-                <button class="ce-add ce-add--sm" onclick="Customizer._addToList('ce-list-mnsimple','Ex: Curcuma + pipérine')">+ Ajouter</button>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                  <button class="ce-add ce-add--sm" onclick="Customizer._addToList('ce-list-mnsimple','Ex: Curcuma + pipérine')">+ Ajouter</button>
+                  <button class="ce-add ce-add--sm" onclick="PathoMedPicker.open('nat')" title="Produits naturopathie issus de vos fiches">🌿 Catalogue</button>
+                </div>
               </div>
             </div>
 

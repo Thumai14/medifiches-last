@@ -111,3 +111,39 @@
 - CIS_CPD : conditions de prescription/délivrance → badges réglementaires.
 - CIS_InfoImportantes : liens d'alertes ANSM par spécialité → module de veille.
 - CIS_COMPO : substances actives → recherche par DCI dans le picker.
+
+## v2.3 — Correctif footer picker + Ajouter un produit + Catalogue naturopathie
+
+### Bug corrigé : boutons Annuler/Insérer flottants
+- Cause : le panneau --center est un conteneur flex (flex-shrink:1 par défaut) et scrollait
+  en entier ; la liste de 375 lignes était ÉCRASÉE par le flex (hauteur calculée ~790px pour
+  ~20 000px de contenu), ses lignes débordaient visuellement et le footer, posé juste après
+  la liste écrasée, se retrouvait au milieu des produits et défilait avec eux.
+- Correctif : layout épinglé — panneau overflow:hidden, header/toolbar/formulaire/footer en
+  flex-shrink:0, SEULE la liste scrolle (flex:1 · min-height:0 · overflow-y:auto).
+- Vérifié au pixel : footer immobile à y=802 avant et après un scroll de 5000px.
+
+### « ＋ Ajouter un produit » (façon dermato)
+- Remplace « + Hors liste » et les prompt() : formulaire intégré (Dénomination + CIP optionnel
+  pour le catalogue médicaments ; pas de champ CIP côté naturo), validation Entrée,
+  anti-doublon, produit ajouté auto-coché pour insertion.
+- La récupération y est intégrée : lien « ↩ Récupérer des produits supprimés (N) » dans le
+  formulaire → vue dédiée avec réimport unitaire, « Tout réimporter » et « ← Retour au catalogue ».
+
+### Catalogue OTC Naturopathie
+- Bouton « 🌿 Catalogue » dans l'accordéon OTC Naturopathie de l'éditeur.
+- Base de référence agrégée À LA VOLÉE depuis MEDNAT_SIMPLE_DB (158 produits uniques,
+  dédupliqués, triés, cache mémoire) → toujours synchrone avec le contenu des fiches,
+  aucun fichier de données supplémentaire à maintenir.
+- Même gestion que le catalogue médicaments : suppression douce, réimport, ajouts officine.
+- Persistance : path/global/nat_removed · nat_added (les clés med_* de la v2.2 inchangées
+  → rétro-compatible avec ce qui est déjà stocké chez les utilisateurs).
+- Pilotage : concordance étendue — source « Catalogue naturo » inventoriée (ajouts inclus,
+  supprimés exclus).
+
+### Fichiers modifiés
+- js/services/patho-catalog.service.js (multi-catalogue par namespace)
+- js/customizer/patho-med-picker.js (layout épinglé, formulaire, vue supprimés, mode nat)
+- js/customizer/path-editor.js (bouton 🌿 Catalogue + mode 'med' explicite)
+- js/services/pilotage.service.js (source Catalogue naturo)
+- css/app.css (bloc « Picker catalogue v2 »)
