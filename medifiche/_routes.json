@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "include": [
+    "/admin-delete-user",
+    "/admin-impersonate",
+    "/admin-user-data",
+    "/create-checkout",
+    "/stripe-webhook"
+  ],
+  "exclude": []
+}

@@ -1,0 +1,17 @@
+/*
+  # Empêche le clickjacking (chargement dans une iframe)
+  X-Frame-Options: DENY
+  # Empêche le MIME sniffing
+  X-Content-Type-Options: nosniff
+  # Force HTTPS pour 1 an
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  # Empêche le referrer de fuiter vers des sites tiers
+  Referrer-Policy: strict-origin-when-cross-origin
+  # Contrôle les permissions du navigateur
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  # Content Security Policy
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://js.stripe.com https://cdn.jsdelivr.net https://unpkg.com https://esm.sh; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.stripe.com https://cdn.jsdelivr.net; frame-src https://js.stripe.com; object-src 'none'; base-uri 'self';
+
+/functions/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff

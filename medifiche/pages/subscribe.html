@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abonnement — MediFiches</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/app.css">
+  <style>
+    body {
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      min-height: 100vh; padding: var(--space-5);
+    }
+    .sub-shell {
+      width: 100%; max-width: 520px; margin: 0 auto;
+      text-align: center;
+    }
+    .sub-logo {
+      font-family: var(--font-display); font-size: 28px;
+      color: var(--text); margin-bottom: var(--space-2);
+    }
+    .sub-logo em { color: var(--brand-mid); font-style: italic; }
+    .sub-logo__sub { font-size: 13px; color: var(--text-3); margin-bottom: var(--space-8); }
+
+    .sub-alert {
+      background: var(--brand-xlight); border: 1px solid var(--brand-light);
+      border-radius: var(--r-lg); padding: var(--space-6);
+      margin-bottom: var(--space-8);
+    }
+    .sub-alert__icon { font-size: 32px; margin-bottom: var(--space-3); }
+    .sub-alert__title {
+      font-family: var(--font-display); font-size: 20px;
+      color: var(--text); margin-bottom: var(--space-2);
+    }
+    .sub-alert__text { font-size: 14px; color: var(--text-2); line-height: 1.6; }
+
+    .plans {
+      display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+    .plan-card {
+      background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: var(--r-xl); padding: var(--space-6);
+      cursor: pointer; transition: all var(--t-fast);
+    }
+    .plan-card:hover { border-color: var(--brand); box-shadow: var(--shadow-md); }
+    .plan-card--featured { border-color: var(--brand); }
+    .plan-badge {
+      display: inline-block; background: var(--brand); color: white;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.05em;
+      padding: 2px 8px; border-radius: 20px; text-transform: uppercase;
+      margin-bottom: var(--space-3);
+    }
+    .plan-name {
+      font-family: var(--font-display); font-size: 17px;
+      color: var(--text); margin-bottom: var(--space-1);
+    }
+    .plan-price {
+      font-size: 28px; font-weight: 500; color: var(--text);
+      margin-bottom: var(--space-1);
+    }
+    .plan-price span { font-size: 13px; color: var(--text-3); font-weight: 400; }
+    .plan-saving { font-size: 12px; color: var(--brand); font-weight: 500; }
+
+    .btn--subscribe {
+      display: block; width: 100%;
+      padding: var(--space-4) var(--space-6);
+      background: var(--brand); color: white; border: none;
+      border-radius: var(--r-md); font-family: var(--font-body);
+      font-size: 15px; font-weight: 500; cursor: pointer;
+      transition: background var(--t-fast);
+      margin-bottom: var(--space-4);
+      text-decoration: none; text-align: center;
+    }
+    .btn--subscribe:hover { background: var(--brand-mid); }
+
+    .sub-footer {
+      font-size: 12px; color: var(--text-3); line-height: 1.6;
+    }
+    .sub-footer a { color: var(--brand); }
+
+    .sub-back {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      font-size: 13px; color: var(--text-3); margin-top: var(--space-6);
+      background: none; border: none; cursor: pointer;
+      font-family: var(--font-body); padding: 0;
+    }
+    .sub-back:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+<div class="sub-shell">
+
+  <div class="sub-logo">
+    Medi<em>Fiches</em>
+    <div class="sub-logo__sub">Assistant comptoir pharmacie</div>
+  </div>
+
+  <div class="sub-alert">
+    <div class="sub-alert__icon">⏱️</div>
+    <div class="sub-alert__title">Votre période d'essai est terminée</div>
+    <div class="sub-alert__text">
+      Continuez à accéder à toutes vos fiches, personnalisations et modules
+      en choisissant un abonnement MediFiches.
+    </div>
+  </div>
+
+  <div class="plans">
+    <div class="plan-card" onclick="subscribe('monthly')">
+      <div class="plan-name">Mensuel</div>
+      <div class="plan-price">19€ <span>/ mois</span></div>
+      <div class="plan-saving" style="color: var(--text-3)">Sans engagement</div>
+    </div>
+    <div class="plan-card plan-card--featured" onclick="subscribe('annual')">
+      <div class="plan-badge">Recommandé</div>
+      <div class="plan-name">Annuel</div>
+      <div class="plan-price">149€ <span>/ an</span></div>
+      <div class="plan-saving">−35% · économisez 79€</div>
+    </div>
+  </div>
+
+  <a id="checkout-btn" href="#" class="btn--subscribe" onclick="subscribe('annual'); return false;">
+    Commencer mon abonnement →
+  </a>
+
+  <div class="sub-footer">
+    Paiement sécurisé par Stripe · Sans engagement (mensuel) · Facture disponible dans votre espace<br>
+    Des questions ? <a href="mailto:nb.medifiches@gmail.com">nb.medifiches@gmail.com</a>
+  </div>
+
+  <button class="sub-back" onclick="Auth.signOut()">
+    ← Se déconnecter
+  </button>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="../js/core/config.js"></script>
+<script src="../js/core/mf-store.js"></script>
+<script src="../js/core/auth.js"></script>
+<script>
+'use strict';
+
+const STRIPE_LINKS = {
+  monthly: 'https://buy.stripe.com/9B614m0MBfD812rf0C3ks00',
+  annual:  'https://buy.stripe.com/7sYfZg7aZ62ydPdf0C3ks01',
+};
+
+async function subscribe(plan) {
+  const link = STRIPE_LINKS[plan];
+  const user = Auth.getUser();
+  const url = user?.email
+    ? link + '?prefilled_email=' + encodeURIComponent(user.email)
+    : link;
+  window.location.href = url;
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  await Auth.init();
+  const role = Auth.getRole();
+  if (role === 'subscriber' || role === 'admin' || role === 'invited') {
+    window.location.href = '/';
+  }
+});
+</script>
+
+</body>
+</html>

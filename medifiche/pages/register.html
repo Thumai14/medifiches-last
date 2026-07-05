@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Créer votre compte — MediFiches</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/app.css">
+  <style>
+    body { background: var(--bg); display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+    .auth-shell { width: 100%; max-width: 440px; margin: 0 auto; padding: var(--space-5); }
+    .auth-logo { text-align: center; margin-bottom: var(--space-8); }
+    .auth-logo__title { font-family: var(--font-display); font-size: 28px; color: var(--text); }
+    .auth-logo__title em { color: var(--brand-mid); font-style: italic; }
+    .auth-logo__sub { font-size: 13px; color: var(--text-3); margin-top: var(--space-1); }
+    .auth-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-xl); padding: var(--space-8); box-shadow: var(--shadow-md); }
+    .auth-card__title { font-family: var(--font-display); font-size: 22px; color: var(--text); margin-bottom: var(--space-2); }
+    .auth-card__sub { font-size: 13px; color: var(--text-3); margin-bottom: var(--space-6); }
+    .auth-field { margin-bottom: var(--space-4); }
+    .auth-label { display: block; font-size: 13px; font-weight: 500; color: var(--text-2); margin-bottom: var(--space-2); }
+    .auth-input { width: 100%; padding: var(--space-3) var(--space-4); border: 1.5px solid var(--border-strong); border-radius: var(--r-md); background: var(--surface); font-family: var(--font-body); font-size: 15px; color: var(--text); outline: none; transition: border-color var(--t-fast); }
+    .auth-input:focus { border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-light); }
+    .auth-input:disabled { background: var(--surface-2); color: var(--text-3); }
+    .auth-btn { width: 100%; padding: var(--space-4); background: var(--brand); color: white; border: none; border-radius: var(--r-md); font-family: var(--font-body); font-size: 15px; font-weight: 500; cursor: pointer; transition: background var(--t-fast); margin-top: var(--space-2); }
+    .auth-btn:hover { background: var(--brand-mid); }
+    .auth-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .auth-error { background: var(--danger-bg); border: 1px solid var(--danger-border); color: var(--danger-text); border-radius: var(--r-md); padding: var(--space-3) var(--space-4); font-size: 13px; margin-bottom: var(--space-4); display: none; }
+    .auth-error.visible { display: block; }
+    .strength { height: 3px; border-radius: 2px; margin-top: var(--space-1); transition: all var(--t-fast); }
+    .strength--weak   { background: var(--danger-label); width: 30%; }
+    .strength--medium { background: var(--warning-label); width: 60%; }
+    .strength--strong { background: var(--brand); width: 100%; }
+    .invite-info { background: var(--brand-xlight); border: 1px solid var(--brand-border); border-radius: var(--r-md); padding: var(--space-3) var(--space-4); font-size: 13px; color: var(--brand-dark); margin-bottom: var(--space-5); }
+  </style>
+</head>
+<body>
+  <div class="auth-shell">
+    <div class="auth-logo">
+      <div class="auth-logo__title">Medi<em>Fiches</em></div>
+      <div class="auth-logo__sub">Créer votre compte</div>
+    </div>
+    <div class="auth-card">
+      <div class="auth-card__title">Bienvenue 👋</div>
+      <div class="auth-card__sub">Votre invitation vous donne accès à MediFiches.</div>
+      <div id="invite-info" class="invite-info" style="display:none;"></div>
+      <div id="reg-error" class="auth-error"></div>
+      <div class="auth-field">
+        <label class="auth-label">Adresse e-mail</label>
+        <input class="auth-input" type="email" id="reg-email" disabled placeholder="chargement…">
+      </div>
+      <div class="auth-field">
+        <label class="auth-label">Choisir un mot de passe</label>
+        <input class="auth-input" type="password" id="reg-password" placeholder="8 caractères minimum" oninput="Register.checkStrength(this.value)">
+        <div class="strength" id="strength-bar"></div>
+        <div style="font-size:11px;color:var(--text-3);margin-top:4px;" id="strength-label"></div>
+      </div>
+      <div class="auth-field">
+        <label class="auth-label">Confirmer le mot de passe</label>
+        <input class="auth-input" type="password" id="reg-password2" placeholder="Répéter le mot de passe">
+      </div>
+      <button class="auth-btn" id="reg-btn" onclick="Register.submit()">Créer mon compte →</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="../js/core/config.js"></script>
+  <script src="../js/core/mf-store.js"></script>
+  <script src="../js/core/auth.js"></script>
+  <script>
+  'use strict';
+  const Register = {
+    _token: null,
+    _email: null,
+
+    async init() {
+      const params = new URLSearchParams(window.location.search);
+      this._token = params.get('token');
+      if (!this._token) {
+        document.getElementById('reg-error').textContent = 'Lien d\'invitation invalide ou manquant.';
+        document.getElementById('reg-error').classList.add('visible');
+        document.getElementById('reg-btn').disabled = true;
+        return;
+      }
+
+      const infoEl = document.getElementById('invite-info');
+      const errEl = document.getElementById('reg-error');
+      const emailInput = document.getElementById('reg-email');
+      const btn = document.getElementById('reg-btn');
+      btn.disabled = true; // désactivé tant que la vérification n'est pas confirmée
+
+      // Filet de sécurité : si rien ne s'est résolu après 8s (réseau lent, erreur
+      // imprévue), on sort de l'état "chargement…" plutôt que de bloquer la page.
+      const safetyTimeout = setTimeout(() => {
+        if (emailInput.value === '' && emailInput.placeholder === 'chargement…') {
+          errEl.textContent = 'Le chargement a pris trop de temps. Rechargez la page.';
+          errEl.classList.add('visible');
+          emailInput.placeholder = 'Rechargez la page';
+        }
+      }, 8000);
+
+      try {
+        await Auth.init();
+        const result = await Auth.checkInviteToken(this._token);
+        clearTimeout(safetyTimeout);
+
+        if (!result.valid) {
+          errEl.textContent = result.error || 'Invitation invalide ou expirée.';
+          errEl.classList.add('visible');
+          infoEl.style.display = 'none';
+          emailInput.disabled = true;
+          return;
+        }
+
+        this._email = result.email;
+        emailInput.value = result.email;
+        emailInput.disabled = true; // l'email de l'invitation n'est pas modifiable
+
+        infoEl.textContent = '✅ Invitation valide — choisissez votre mot de passe pour activer votre compte.';
+        infoEl.style.display = 'block';
+        btn.disabled = false;
+      } catch (e) {
+        clearTimeout(safetyTimeout);
+        errEl.textContent = 'Erreur de connexion. Rechargez la page.';
+        errEl.classList.add('visible');
+        infoEl.style.display = 'none';
+        emailInput.disabled = true;
+      }
+    },
+
+    checkStrength(pw) {
+      const bar = document.getElementById('strength-bar');
+      const label = document.getElementById('strength-label');
+      if (!pw) { bar.className = 'strength'; label.textContent = ''; return; }
+      const strong = pw.length >= 12 && /[A-Z]/.test(pw) && /[0-9]/.test(pw) && /[^A-Za-z0-9]/.test(pw);
+      const medium = pw.length >= 8 && (/[A-Z]/.test(pw) || /[0-9]/.test(pw));
+      if (strong)      { bar.className = 'strength strength--strong'; label.textContent = 'Mot de passe fort ✓'; }
+      else if (medium) { bar.className = 'strength strength--medium'; label.textContent = 'Mot de passe correct'; }
+      else             { bar.className = 'strength strength--weak';   label.textContent = 'Trop faible (min. 8 caractères)'; }
+    },
+
+    async submit() {
+      const email = document.getElementById('reg-email').value.trim();
+      const pw    = document.getElementById('reg-password').value;
+      const pw2   = document.getElementById('reg-password2').value;
+      const btn   = document.getElementById('reg-btn');
+      const err   = document.getElementById('reg-error');
+
+      if (!email || !pw || !pw2) { err.textContent = 'Tous les champs sont requis.'; err.classList.add('visible'); return; }
+      if (pw.length < 8) { err.textContent = 'Mot de passe trop court (8 caractères minimum).'; err.classList.add('visible'); return; }
+      if (pw !== pw2) { err.textContent = 'Les mots de passe ne correspondent pas.'; err.classList.add('visible'); return; }
+
+      btn.disabled = true; btn.textContent = 'Création…'; err.classList.remove('visible');
+      const { data, error } = await Auth.signUpWithInvite(this._token, pw);
+      if (error) {
+        err.textContent = error.message || 'Erreur lors de la création du compte.';
+        err.classList.add('visible');
+        btn.disabled = false; btn.textContent = 'Créer mon compte →';
+        return;
+      }
+      window.location.href = '../index.html';
+    }
+  };
+  Register.init();
+  </script>
+</body>
+</html>

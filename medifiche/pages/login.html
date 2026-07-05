@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion — MediFiches</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/app.css">
+  <style>
+    body { background: var(--bg); display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+
+    .auth-shell {
+      width: 100%; max-width: 420px; margin: 0 auto; padding: var(--space-5);
+    }
+
+    .auth-logo {
+      text-align: center; margin-bottom: var(--space-8);
+    }
+    .auth-logo__title {
+      font-family: var(--font-display); font-size: 28px; color: var(--text);
+    }
+    .auth-logo__title em { color: var(--brand-mid); font-style: italic; }
+    .auth-logo__sub {
+      font-size: 13px; color: var(--text-3); margin-top: var(--space-1);
+    }
+
+    .auth-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r-xl); padding: var(--space-8);
+      box-shadow: var(--shadow-md);
+    }
+    .auth-card__title {
+      font-family: var(--font-display); font-size: 22px;
+      color: var(--text); margin-bottom: var(--space-6);
+    }
+
+    .auth-field { margin-bottom: var(--space-4); }
+    .auth-label {
+      display: block; font-size: 13px; font-weight: 500;
+      color: var(--text-2); margin-bottom: var(--space-2);
+    }
+    .auth-input {
+      width: 100%; padding: var(--space-3) var(--space-4);
+      border: 1.5px solid var(--border-strong); border-radius: var(--r-md);
+      background: var(--surface); font-family: var(--font-body);
+      font-size: 15px; color: var(--text);
+      transition: border-color var(--t-fast);
+      outline: none;
+    }
+    .auth-input:focus { border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-light); }
+    .auth-input::placeholder { color: var(--text-3); }
+
+    .auth-btn {
+      width: 100%; padding: var(--space-4);
+      background: var(--brand); color: white; border: none;
+      border-radius: var(--r-md); font-family: var(--font-body);
+      font-size: 15px; font-weight: 500; cursor: pointer;
+      transition: background var(--t-fast), transform var(--t-fast);
+      margin-top: var(--space-2);
+    }
+    .auth-btn:hover { background: var(--brand-mid); }
+    .auth-btn:active { transform: scale(0.99); }
+    .auth-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .auth-link {
+      display: block; text-align: center; margin-top: var(--space-4);
+      font-size: 13px; color: var(--brand); cursor: pointer;
+      background: none; border: none; font-family: var(--font-body);
+      text-decoration: underline;
+    }
+    .auth-link:hover { color: var(--brand-mid); }
+
+    .auth-error {
+      background: var(--danger-bg); border: 1px solid var(--danger-border);
+      color: var(--danger-text); border-radius: var(--r-md);
+      padding: var(--space-3) var(--space-4); font-size: 13px;
+      margin-bottom: var(--space-4); display: none;
+    }
+    .auth-error.visible { display: block; }
+
+    .auth-success {
+      background: var(--brand-xlight); border: 1px solid var(--brand-border);
+      color: var(--brand-dark); border-radius: var(--r-md);
+      padding: var(--space-3) var(--space-4); font-size: 13px;
+      margin-bottom: var(--space-4); display: none;
+    }
+    .auth-success.visible { display: block; }
+
+    /* Vue "Mot de passe oublié" */
+    #view-reset { display: none; }
+    #view-reset.active { display: block; }
+    #view-login.hidden { display: none; }
+
+    .auth-footer {
+      text-align: center; margin-top: var(--space-6);
+      font-size: 12px; color: var(--text-3);
+    }
+
+    [data-theme="dark"] .auth-card { background: #1A1A2E; border-color: #2A2A4A; }
+    [data-theme="dark"] .auth-input { background: #12122A; border-color: #3A3A5A; color: #E8E8F0; }
+  </style>
+</head>
+<body>
+  <div class="auth-shell">
+
+    <div class="auth-logo">
+      <div class="auth-logo__title">Medi<em>Fiches</em></div>
+      <div class="auth-logo__sub">Assistant comptoir · Officine</div>
+    </div>
+
+    <!-- Vue connexion -->
+    <div id="view-login" class="auth-card">
+      <div class="auth-card__title">Connexion</div>
+      <div id="login-error" class="auth-error"></div>
+      <div class="auth-field">
+        <label class="auth-label" for="login-email">Adresse e-mail</label>
+        <input class="auth-input" type="email" id="login-email" placeholder="contact@officine.fr" autocomplete="off">
+      </div>
+      <div class="auth-field">
+        <label class="auth-label" for="login-password">Mot de passe</label>
+        <div style="position:relative;">
+          <input class="auth-input" type="password" id="login-password" placeholder="••••••••" autocomplete="current-password" style="padding-right:44px;width:100%;box-sizing:border-box;">
+          <button type="button" onclick="togglePassword()" id="toggle-pwd" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-3);padding:4px;" title="Afficher/masquer le mot de passe">👁️</button>
+        </div>
+      </div>
+      <button class="auth-btn" id="login-btn" onclick="Login.submit()">Se connecter</button>
+      <button class="auth-link" onclick="Login.showReset()">Mot de passe oublié ?</button>
+
+      <div style="margin-top:var(--space-6);padding-top:var(--space-5);border-top:1px solid var(--border);">
+        <p style="font-size:13px;color:var(--text-3);text-align:center;margin-bottom:var(--space-3);">
+          Pas encore de compte ? <button class="auth-link" style="display:inline;font-size:13px;" onclick="document.getElementById('demo-request').style.display='block';this.closest('p').style.display='none'">Demander un accès démo</button>
+        </p>
+        <div id="demo-request" style="display:none;">
+          <div class="auth-field">
+            <label class="auth-label">Votre email</label>
+            <input class="auth-input" type="email" id="demo-email" placeholder="contact@officine.fr">
+          </div>
+          <div class="auth-field">
+            <label class="auth-label">Nom de la pharmacie</label>
+            <input class="auth-input" type="text" id="demo-pharmacie" placeholder="Pharmacie du Centre">
+          </div>
+          <div class="auth-field">
+            <label class="auth-label">Ville</label>
+            <input class="auth-input" type="text" id="demo-ville" placeholder="Paris">
+          </div>
+          <button class="auth-btn" onclick="sendDemoRequest()" style="background:var(--brand-mid);">📩 Envoyer la demande</button>
+          <div id="demo-msg" style="display:none;text-align:center;font-size:13px;color:var(--brand);margin-top:var(--space-3);">✅ Demande envoyée ! Nima vous contactera sous 24h.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vue réinitialisation -->
+    <div id="view-reset" class="auth-card">
+      <div class="auth-card__title">Réinitialiser</div>
+      <div id="reset-error" class="auth-error"></div>
+      <div id="reset-success" class="auth-success"></div>
+      <p style="font-size:14px;color:var(--text-2);margin-bottom:var(--space-5);line-height:1.6;">
+        Entrez votre e-mail. Vous recevrez un lien pour choisir un nouveau mot de passe.
+      </p>
+      <div class="auth-field">
+        <label class="auth-label" for="reset-email">Adresse e-mail</label>
+        <input class="auth-input" type="email" id="reset-email" placeholder="contact@officine.fr">
+      </div>
+      <button class="auth-btn" id="reset-btn" onclick="Login.submitReset()">Envoyer le lien</button>
+      <button class="auth-link" onclick="Login.showLogin()">← Retour à la connexion</button>
+    </div>
+
+    <div class="auth-footer">MediFiches · Normandie · <a href="pricing.html" style="color:inherit;">Tarifs</a> · <a href="../pages/login.html#mentions" style="color:inherit;">Mentions légales</a></div>
+  </div>
+
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <!-- Config (remplacé par les vraies clés avant déploiement) -->
+  <script src="../js/core/config.js"></script>
+  <script src="../js/core/mf-store.js"></script>
+  <script src="../js/core/auth.js"></script>
+  <script>
+  'use strict';
+  const Login = {
+    async init() {
+      // Si déjà connecté, rediriger vers l'app
+      const ok = await Auth.init();
+      if (ok && Auth.getUser()) {
+        window.location.href = '../index.html';
+      }
+      // Préremplir l'email si mémorisé — sinon vider explicitement le champ, pour ne pas
+      // laisser le gestionnaire d'identifiants du navigateur y remettre une autre adresse
+      // (ex. celle d'un autre utilisateur du même poste de comptoir).
+      let saved = localStorage.getItem('mf_login_email');
+      if (saved) {
+        // Nettoyage défensif : une ancienne version a pu stocker la valeur en JSON
+        // (avec guillemets autour), on la corrige silencieusement si besoin.
+        if (saved.startsWith('"') && saved.endsWith('"')) {
+          try { saved = JSON.parse(saved); } catch(e) { /* laisser tel quel */ }
+          localStorage.setItem('mf_login_email', saved);
+        }
+      }
+      document.getElementById('login-email').value = saved || '';
+      // Enter key sur le mot de passe
+      document.getElementById('login-password').addEventListener('keydown', e => {
+        if (e.key === 'Enter') Login.submit();
+      });
+    },
+
+    async submit() {
+      const email = document.getElementById('login-email').value.trim();
+      const password = document.getElementById('login-password').value;
+      const btn = document.getElementById('login-btn');
+      const errEl = document.getElementById('login-error');
+
+      if (!email || !password) {
+        errEl.textContent = 'Veuillez remplir tous les champs.';
+        errEl.classList.add('visible');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Connexion…';
+      errEl.classList.remove('visible');
+
+      const { data, error } = await Auth.signIn(email, password);
+
+      if (error) {
+        let msg = 'Email ou mot de passe incorrect.';
+        if (error.message?.includes('Email not confirmed')) msg = 'Veuillez confirmer votre email avant de vous connecter.';
+        errEl.textContent = msg;
+        errEl.classList.add('visible');
+        btn.disabled = false;
+        btn.textContent = 'Se connecter';
+        return;
+      }
+
+      localStorage.setItem('mf_login_email', email);
+      // Redirection selon rôle
+      const role = Auth.getRole();
+      if (role === 'admin') {
+        window.location.href = '../pages/admin.html';
+      } else {
+        window.location.href = '../index.html';
+      }
+    },
+
+    async submitReset() {
+      const email = document.getElementById('reset-email').value.trim();
+      const btn = document.getElementById('reset-btn');
+      const errEl = document.getElementById('reset-error');
+      const successEl = document.getElementById('reset-success');
+
+      if (!email) { errEl.textContent = 'Veuillez entrer votre e-mail.'; errEl.classList.add('visible'); return; }
+
+      btn.disabled = true;
+      btn.textContent = 'Envoi…';
+      errEl.classList.remove('visible');
+
+      const { error } = await Auth.resetPassword(email);
+      if (error) {
+        errEl.textContent = 'Une erreur est survenue. Vérifiez l\'e-mail saisi.';
+        errEl.classList.add('visible');
+      } else {
+        successEl.textContent = 'Lien envoyé ! Vérifiez votre boîte mail (et vos spams).';
+        successEl.classList.add('visible');
+      }
+      btn.disabled = false;
+      btn.textContent = 'Envoyer le lien';
+    },
+
+    showReset() {
+      document.getElementById('view-login').classList.add('hidden');
+      document.getElementById('view-reset').classList.add('active');
+    },
+    showLogin() {
+      document.getElementById('view-login').classList.remove('hidden');
+      document.getElementById('view-reset').classList.remove('active');
+    }
+  };
+
+  Login.init();
+
+  // Toggle affichage mot de passe
+  function togglePassword() {
+    var input = document.getElementById('login-password');
+    var btn = document.getElementById('toggle-pwd');
+    if (input.type === 'password') {
+      input.type = 'text';
+      btn.textContent = '🙈';
+    } else {
+      input.type = 'password';
+      btn.textContent = '👁️';
+    }
+  }
+
+  // Demande d'acces demo
+  async function sendDemoRequest() {
+    var email = document.getElementById('demo-email').value.trim();
+    var pharmacie = document.getElementById('demo-pharmacie').value.trim();
+    var ville = document.getElementById('demo-ville').value.trim();
+    var btn = document.querySelector('#demo-request .auth-btn');
+    if (!email || !pharmacie) { alert('Email et nom de pharmacie requis'); return; }
+    btn.disabled = true;
+    btn.textContent = 'Envoi...';
+    try {
+      // Sauvegarder la demande dans Supabase
+      var resp = await fetch(window.MF_CONFIG.SUPABASE_URL + '/rest/v1/demo_requests', {
+        method: 'POST',
+        headers: {
+          'apikey': window.MF_CONFIG.SUPABASE_ANON_KEY,
+          'Authorization': 'Bearer ' + window.MF_CONFIG.SUPABASE_ANON_KEY,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({ email: email, pharmacie: pharmacie, ville: ville, created_at: new Date().toISOString() })
+      });
+      if (!resp.ok) {
+        var err = await resp.json().catch(function(){return{};});
+        console.error('Demo request error:', resp.status, err);
+      }
+      document.getElementById('demo-msg').style.display = 'block';
+      document.getElementById('demo-request').querySelector('.auth-btn').style.display = 'none';
+    } catch(e) {
+      // Meme si Supabase echoue, afficher le message de succes
+      document.getElementById('demo-msg').style.display = 'block';
+    }
+    btn.disabled = false;
+  }
+  </script>
+</body>
+</html>

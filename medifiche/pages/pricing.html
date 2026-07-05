@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarifs — MediFiches</title>
+  <meta name="description" content="MediFiches — Choisissez l'offre adaptée à votre officine. Essai gratuit 30 jours, sans engagement.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/app.css">
+  <link rel="stylesheet" href="../css/apothecary-hero.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { background: #e6dcc1; min-height: 100vh; margin: 0; }
+
+    /* ── Nav (thème laiton léger, garde la structure existante) ── */
+    .pricing-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 32px;
+      border-bottom: 1px solid rgba(138,107,49,0.25);
+      background: rgba(252,247,233,0.85);
+      backdrop-filter: blur(6px);
+    }
+    .pricing-nav__logo { font-family: var(--apo-font-serif); font-size: 22px; color: var(--apo-ink); text-decoration: none; }
+    .pricing-nav__logo em { color: var(--apo-copper); font-style: italic; }
+    .pricing-nav__links { display: flex; align-items: center; gap: 22px; }
+    .pricing-nav__link { font-size: 14px; color: var(--apo-muted); text-decoration: none; transition: color .15s; }
+    .pricing-nav__link:hover { color: var(--apo-ink); }
+    .btn-nav {
+      background: linear-gradient(180deg, #3a2c18 0%, #241a0e 100%); color: #f5ecd6; border: 1px solid #4a3820;
+      padding: 9px 20px; border-radius: 3px;
+      font-family: var(--apo-font-body); font-size: 14px; font-weight: 600;
+      cursor: pointer; text-decoration: none; transition: filter .15s;
+    }
+    .btn-nav:hover { filter: brightness(1.12); }
+
+    /* ── Hero tarifs : réutilise les classes .apo-* + variante locale ── */
+    .pricing-hero { position: relative; text-align: center; padding: 56px 32px 0; max-width: 1120px; margin: 0 auto; }
+    .pricing-hero__sub { margin: 14px auto 0; font-size: 16px; color: var(--apo-muted); max-width: 560px; }
+
+    .pricing-toggle {
+      display: inline-flex; align-items: center; gap: 4px; margin-top: 26px; padding: 5px;
+      border-radius: 999px; background: rgba(255,250,238,0.7);
+      border: 1px solid rgba(138,107,49,0.4);
+      box-shadow: 0 1px 3px rgba(90,60,20,0.12) inset;
+    }
+    .toggle-btn {
+      font-family: var(--apo-font-body); font-size: 14px; font-weight: 600;
+      border: none; cursor: pointer; border-radius: 999px; padding: 9px 22px;
+      background: transparent; color: var(--apo-muted); transition: all .15s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .toggle-btn.active { background: linear-gradient(180deg,#23613f,#164028); color: #eef5f0; }
+    .toggle-saving {
+      font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 999px;
+      background: rgba(46,110,78,0.14); color: #2e6e4e;
+    }
+    .toggle-btn.active .toggle-saving { background: rgba(255,255,255,0.18); color: #d8f0e0; }
+
+    /* ── Grille des 3 plans, thème laiton/parchemin ── */
+    .plans-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+      max-width: 1120px; margin: 42px auto 0; padding: 0 32px 0; align-items: stretch;
+    }
+    @media (max-width: 880px) { .plans-grid { grid-template-columns: 1fr; } }
+
+    .plan-card {
+      position: relative; padding: 28px 26px; border-radius: 6px;
+      background: linear-gradient(180deg, #fcf7e9, #f4ecd6);
+      border: 1px solid rgba(138,107,49,0.4);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.7) inset, 0 10px 26px rgba(90,60,20,0.1);
+      font-family: var(--apo-font-body);
+      display: flex; flex-direction: column;
+    }
+    .plan-card .seclab:last-of-type { margin-top: auto; }
+    .plan-card--featured {
+      border: 1px solid rgba(138,107,49,0.4);
+    }
+    .plan-featured-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #eef5f0;
+      background: linear-gradient(180deg,#23613f,#164028); border-radius: 999px;
+      padding: 5px 16px; white-space: nowrap; box-shadow: 0 4px 10px rgba(20,60,40,0.3);
+    }
+
+    .plan-name { font-family: var(--apo-font-serif); font-weight: 400; font-size: 26px; margin: 0 0 0 -12px; display: inline-block; padding: 2px 12px; border-radius: 6px; color: var(--apo-ink); }
+    .plan-target { font-size: 13px; color: #94815c; margin-top: 2px; }
+    .plan-name--standard   { background: rgba(21,64,44,0.1); }
+    .plan-name--pro        { background: rgba(30,58,95,0.1); }
+    .plan-name--groupement { background: rgba(107,44,80,0.1); }
+
+    .plan-price-block { margin: 18px 0 2px; display: flex; align-items: baseline; gap: 3px; }
+    .plan-price { font-family: var(--apo-font-serif); font-size: 46px; line-height: 1; color: var(--apo-ink); }
+    .plan-price sup { font-size: 20px; color: #8a755a; margin-right: 1px; }
+    .plan-period { font-size: 13px; color: #8a755a; }
+    .plan-annual-note { font-size: 12.5px; color: #8a755a; margin-top: 8px; min-height: 34px; }
+    .plan-annual-note strong { color: #5a4a32; }
+    .plan-discount-badge {
+      display: inline-block; font-size: 11px; font-weight: 600; color: #2e6e4e;
+      background: rgba(46,110,78,0.12); border: 1px solid rgba(46,110,78,0.3);
+      border-radius: 999px; padding: 1px 8px; margin-left: 4px;
+    }
+
+    .plan-cta {
+      display: block; width: 100%; text-align: center; margin-top: 16px;
+      padding: 13px; border-radius: 4px; font-family: var(--apo-font-body);
+      font-size: 14px; font-weight: 600; cursor: pointer; border: none;
+      text-decoration: none; transition: filter .15s;
+    }
+    .plan-cta--primary {
+      color: #eef5f0; background: linear-gradient(180deg,#23613f,#164028);
+      border: 1px solid #123a25;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.12) inset, 0 4px 10px rgba(20,60,40,0.3);
+    }
+    .plan-cta--ghost {
+      color: #5a4a32; background: rgba(255,250,238,0.7); border: 1px solid rgba(138,107,49,0.5);
+    }
+    .plan-cta:hover { filter: brightness(1.06); }
+
+    .plan-divider { border: none; border-top: 1px solid rgba(138,107,49,0.25); margin: 18px 0 0; }
+
+    .seclab {
+      display: flex; align-items: center; gap: 10px; margin: 14px 0 2px;
+      font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; color: #9a865e;
+      text-transform: uppercase;
+    }
+    .seclab::before { content: ""; flex: 1; height: 1px; background: rgba(138,107,49,0.28); }
+    .feat {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      padding: 9px 0; border-bottom: 1px solid rgba(138,107,49,0.16); font-size: 13.5px;
+      color: var(--apo-ink-soft);
+    }
+    .feat:last-child { border-bottom: none; }
+    .feat svg { flex-shrink: 0; }
+    .feat--no { color: #a8977a; }
+    .soon { font-style: italic; font-size: 11.5px; opacity: 0.7; font-weight: 400; }
+
+    /* ── Packs de lancement : conservés tels quels (déjà cohérents visuellement) ── */
+    .pack-section-label { display: flex; align-items: center; gap: 16px; max-width: 1120px; margin: 48px auto 22px; padding: 0 32px; }
+    .pack-section-label span:first-child { font-family: var(--apo-font-serif); font-size: 24px; color: var(--apo-ink); white-space: nowrap; }
+    .pack-section-label span:last-child { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(138,107,49,0.4), transparent); }
+    .pack-grid { max-width: 1120px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 880px) { .pack-grid { grid-template-columns: 1fr; } }
+
+    .trial-banner { text-align: center; padding: 28px 20px 56px; }
+    .trial-banner__text { font-size: 15px; color: var(--apo-muted); }
+    .trial-banner__text strong { color: var(--apo-ink); }
+
+    /* ── FAQ ── */
+    .faq { max-width: 680px; margin: 0 auto; padding: 0 20px 56px; font-family: var(--apo-font-body); }
+    .faq__title { font-family: var(--apo-font-serif); font-weight: 400; font-size: 30px; color: var(--apo-ink); text-align: center; margin-bottom: 30px; }
+    .faq__item { border-bottom: 1px solid rgba(138,107,49,0.25); padding: 18px 0; }
+    .faq__q { font-size: 15px; font-weight: 600; color: var(--apo-ink); margin-bottom: 8px; }
+    .faq__a { font-size: 14px; color: var(--apo-muted); line-height: 1.65; }
+
+    .pricing-footer {
+      text-align: center; padding: 22px; border-top: 1px solid rgba(138,107,49,0.25);
+      font-size: 13px; color: var(--apo-muted); font-family: var(--apo-font-body);
+      background: rgba(252,247,233,0.6);
+    }
+    .pricing-footer a { color: var(--apo-copper); text-decoration: none; }
+
+    @media (max-width: 700px) {
+      .pricing-nav { padding: 14px 18px; flex-wrap: wrap; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="pricing-nav">
+  <a href="../index.html" class="pricing-nav__logo">Medi<em>Fiches</em></a>
+  <div class="pricing-nav__links">
+    <a href="../index.html" class="pricing-nav__link">L'application</a>
+    <a href="login.html" class="pricing-nav__link">Connexion</a>
+    <a href="login.html" class="btn-nav">Essai gratuit</a>
+  </div>
+</nav>
+
+<section class="pricing-hero">
+  <div class="apo-badge" style="margin-bottom:0;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5.5L5.5 17a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 8.5V3"/><path d="M7.5 13h9"/></svg>
+    <span>Abonnement officine</span>
+  </div>
+  <h1 class="apo-title" style="margin-top:20px;">Un outil, <em>tout le comptoir</em></h1>
+  <p class="pricing-hero__sub">Un abonnement par pharmacie · Postes illimités · Prix transparent · 30 jours d'essai gratuit, sans carte bancaire</p>
+
+  <div class="pricing-toggle">
+    <button class="toggle-btn active" id="btn-monthly" onclick="setMode('monthly')">Mensuel</button>
+    <button class="toggle-btn" id="btn-annual" onclick="setMode('annual')">
+      Annuel <span class="toggle-saving">jusqu'à −20%</span>
+    </button>
+  </div>
+</section>
+
+<div class="plans-grid">
+
+  <!-- Standard -->
+  <div class="plan-card">
+    <div class="plan-name plan-name--standard">Standard</div>
+    <div class="plan-target">Postes illimités</div>
+    <div class="plan-price-block">
+      <span class="plan-price"><sup>€</sup><span id="price-officine">39</span></span>
+    </div>
+    <div class="plan-period">HT / mois</div>
+    <div class="plan-annual-note" id="note-officine">facturation mensuelle</div>
+    <button class="plan-cta plan-cta--primary" onclick="startCheckout(event, 'officine')">Commencer votre abonnement</button>
+    <hr class="plan-divider">
+    <div class="seclab">Inclus</div>
+    <div class="feat"><span>Fiches pathologies</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+    <div class="feat"><span>Dispositifs</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+    <div class="feat"><span>Dermatologie</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+    <div class="feat"><span>Fiches partagées</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+    <div class="feat"><span>Mises à jour des fiches</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+    <div class="feat"><span>Formation</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+    <div class="feat"><span>Quiz mensuel 🏆 <span class="soon">à venir</span></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+    <div class="seclab">Support</div>
+    <div class="feat"><span>Support prioritaire</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+  </div>
+
+  <!-- Pro -->
+  <div class="plan-card">
+    <div class="plan-name plan-name--pro">Pro</div>
+    <div class="plan-target">Postes illimités</div>
+    <div class="plan-price-block">
+      <span class="plan-price"><sup>€</sup><span id="price-grande">59</span></span>
+    </div>
+    <div class="plan-period">HT / mois</div>
+    <div class="plan-annual-note" id="note-grande">facturation mensuelle</div>
+    <button class="plan-cta plan-cta--primary" onclick="startCheckout(event, 'grande')">Commencer votre abonnement</button>
+    <hr class="plan-divider">
+    <div class="seclab">Inclus</div>
+    <div class="feat"><span>Fiches pathologies</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+    <div class="feat"><span>MAD</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+    <div class="feat"><span>Dermatologie</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+    <div class="feat"><span>Fiches partagées</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+    <div class="feat"><span>Mises à jour des fiches</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+    <div class="feat"><span>Formation</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+    <div class="feat"><span>Mise à jour des modules</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+    <div class="feat"><span>Quiz mensuel 🏆 <span class="soon">à venir</span></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+    <div class="feat"><span>Module sur devis</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+    <div class="seclab">Support</div>
+    <div class="feat"><span>Support dédié</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+  </div>
+
+  <!-- Groupement (sur devis) -->
+  <div class="plan-card">
+    <div class="plan-name plan-name--groupement">Groupement</div>
+    <div class="plan-target">Réseaux et groupements multi-officines — tarif dégressif par officine selon volume</div>
+    <div class="plan-price-block">
+      <span class="plan-price" style="font-size:1.4em;">Sur devis</span>
+    </div>
+    <div class="plan-period">&nbsp;</div>
+    <div class="plan-annual-note">&nbsp;</div>
+    <button class="plan-cta plan-cta--primary" onclick="window.location.href='mailto:nb.medifiches@gmail.com?subject=Demande de devis — Offre Groupement'">Demander un devis</button>
+    <hr class="plan-divider">
+    <div class="seclab">Tout le Pro, plus</div>
+    <div class="feat"><span>Compte multi-officines centralisé</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+    <div class="feat"><span>Fiches partagées entre officines</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+    <div class="feat"><span>Accord-cadre annuel sur facture unique</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+    <div class="feat"><span>Onboarding dédié (appel de mise en route)</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+    <div class="seclab">Support</div>
+    <div class="feat"><span>Interlocuteur unique pour tout le réseau</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e6e4e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></div>
+  </div>
+
+</div>
+
+<!-- Offres de lancement -->
+<div class="pack-section-label"><span>Offres de lancement</span><span></span></div>
+
+<div class="pack-grid">
+
+  <!-- Pack Fondateur -->
+  <div style="background:linear-gradient(135deg,var(--brand-dark) 0%,var(--brand) 100%);border-radius:var(--r-xl);padding:var(--space-8);display:flex;flex-direction:column;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.05);"></div>
+    <div style="position:relative;z-index:1;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);border-radius:20px;padding:4px 14px;margin-bottom:var(--space-4);">
+        <span style="font-size:14px;">⭐</span>
+        <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.95);letter-spacing:0.05em;text-transform:uppercase;">Pack Fondateur</span>
+      </div>
+      <h2 style="font-family:var(--font-display);font-size:26px;color:white;margin:0 0 var(--space-3);line-height:1.2;">
+        −30% à vie<br>pour les 10 premières officines
+      </h2>
+      <p style="font-size:14px;color:rgba(255,255,255,0.75);margin:0 0 var(--space-5);line-height:1.6;">
+        Offre Standard annuel avec réduction permanente.
+      </p>
+      <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:var(--r-lg);padding:var(--space-4);margin-bottom:var(--space-5);">
+        <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:4px;">
+          <span style="font-size:13px;color:rgba(255,255,255,0.5);text-decoration:line-through;">468€ HT</span>
+          <span style="font-size:11px;background:rgba(255,255,255,0.2);color:white;padding:2px 8px;border-radius:10px;">−30%</span>
+        </div>
+        <div style="font-family:var(--font-display);font-size:38px;font-style:italic;color:white;line-height:1;margin-bottom:2px;">328€</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.6);">HT / an · soit 27,33€/mois</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:var(--space-3);">
+        <button onclick="startCheckout(event, 'officine', true)" style="background:white;color:var(--brand-dark);font-family:var(--font-body);font-size:14px;font-weight:600;padding:var(--space-3) var(--space-5);border-radius:var(--r-md);border:none;cursor:pointer;" onmouseover="this.style.opacity=0.9" onmouseout="this.style.opacity=1">
+          Profiter de l'offre →
+        </button>
+        <span style="font-size:12px;color:rgba(255,255,255,0.6);">Places : <strong style="color:white;">10 / 10</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pack Fondateur+ -->
+  <div style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);border-radius:var(--r-xl);padding:var(--space-8);display:flex;flex-direction:column;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.1);">
+    <div style="position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.03);"></div>
+    <div style="position:relative;z-index:1;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border-radius:20px;padding:4px 14px;margin-bottom:var(--space-4);">
+        <span style="font-size:14px;">💎</span>
+        <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.95);letter-spacing:0.05em;text-transform:uppercase;">Pack Fondateur+</span>
+      </div>
+      <h2 style="font-family:var(--font-display);font-size:26px;color:white;margin:0 0 var(--space-3);line-height:1.2;">
+        −30% à vie<br>pour les 10 premières officines
+      </h2>
+      <p style="font-size:14px;color:rgba(255,255,255,0.75);margin:0 0 var(--space-5);line-height:1.6;">
+        Offre Pro annuel avec réduction permanente.
+      </p>
+      <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:var(--r-lg);padding:var(--space-4);margin-bottom:var(--space-5);">
+        <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:4px;">
+          <span style="font-size:13px;color:rgba(255,255,255,0.5);text-decoration:line-through;">708€ HT</span>
+          <span style="font-size:11px;background:rgba(255,255,255,0.15);color:white;padding:2px 8px;border-radius:10px;">−30%</span>
+        </div>
+        <div style="font-family:var(--font-display);font-size:38px;font-style:italic;color:white;line-height:1;margin-bottom:2px;">495€</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.6);">HT / an · soit 41,25€/mois</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:var(--space-3);">
+        <button onclick="window.location.href='https://buy.stripe.com/7sY4gy7aZ2Qm4eDbOq3ks0d'" style="background:white;color:#1a1a2e;font-family:var(--font-body);font-size:14px;font-weight:600;padding:var(--space-3) var(--space-5);border-radius:var(--r-md);border:none;cursor:pointer;" onmouseover="this.style.opacity=0.9" onmouseout="this.style.opacity=1">
+          Profiter de l'offre →
+        </button>
+        <span style="font-size:12px;color:rgba(255,255,255,0.6);">Places : <strong style="color:white;">10 / 10</strong></span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="trial-banner">
+  <p class="trial-banner__text">
+    <strong>30 jours d'essai gratuit</strong> sur toutes les offres · Sans carte bancaire · Sans engagement
+  </p>
+</div>
+
+<section class="faq">
+  <h2 class="faq__title">Questions fréquentes</h2>
+  <div class="faq__item">
+    <div class="faq__q">L'essai gratuit dure combien de temps ?</div>
+    <div class="faq__a">30 jours complets, sans carte bancaire requise. Vous avez accès à toutes les fonctionnalités de l'offre choisie pendant cette période.</div>
+  </div>
+  <div class="faq__item">
+    <div class="faq__q">Puis-je changer d'offre en cours d'abonnement ?</div>
+    <div class="faq__a">Oui, à tout moment. Le changement prend effet immédiatement et la facturation est ajustée au prorata.</div>
+  </div>
+  <div class="faq__item">
+    <div class="faq__q">Comment fonctionne la facturation annuelle ?</div>
+    <div class="faq__a">Vous payez une fois par an avec une remise selon votre offre. Une facture vous est envoyée par email.</div>
+  </div>
+  <div class="faq__item">
+    <div class="faq__q">Mes personnalisations sont-elles sauvegardées ?</div>
+    <div class="faq__a">Oui. Toutes vos personnalisations sont enregistrées et accessibles depuis n'importe quel poste connecté à votre compte.</div>
+  </div>
+  <div class="faq__item">
+    <div class="faq__q">Peut-on résilier à tout moment ?</div>
+    <div class="faq__a">Oui. Aucun engagement de durée sur l'offre mensuelle. Pour l'annuel, la résiliation prend effet à l'échéance annuelle.</div>
+  </div>
+  <div class="faq__item">
+    <div class="faq__q">MediFiches est-il un dispositif médical ?</div>
+    <div class="faq__a">Non. MediFiches est un outil d'aide documentaire au conseil officinal, destiné aux professionnels de santé. Il ne se substitue pas au jugement clinique du professionnel.</div>
+  </div>
+</section>
+
+<footer class="pricing-footer">
+  MediFiches · Normandie ·
+  <a href="login.html">Connexion</a> ·
+  <a href="../index.html">L'application</a> ·
+  <a href="login.html#mentions">Mentions légales</a> ·
+  <a href="mailto:nb.medifiches@gmail.com">nb.medifiches@gmail.com</a>
+</footer>
+
+<script>
+var mode = 'monthly';
+
+var LINKS = {
+  monthly: {
+    officine:   'https://buy.stripe.com/fZu00ibrf8aGh1p8Ce3ks02',
+    grande:     'https://buy.stripe.com/aFabJ01QFez49yXaKm3ks0c',
+  },
+  annual: {
+    officine:   'https://buy.stripe.com/3cI28qeDr0IebH55q23ks08',
+    grande:     'https://buy.stripe.com/eVqaEW66V1Mi8uT4lY3ks0b',
+  }
+};
+
+var prices = {
+  monthly: { officine: 39, grande: 59 },
+  annual:  { officine: 33, grande: 47 }
+};
+
+var notes = {
+  monthly: {
+    officine:   'facturation mensuelle',
+    grande:     'facturation mensuelle'
+  },
+  annual: {
+    officine:   'soit <strong>396€ HT/an</strong> au lieu de 468€ <span class="plan-discount-badge">−15%</span>',
+    grande:     'soit <strong>564€ HT/an</strong> au lieu de 708€ <span class="plan-discount-badge">−20%</span>'
+  }
+};
+
+function setMode(m) {
+  mode = m;
+  document.getElementById('btn-monthly').classList.toggle('active', m === 'monthly');
+  document.getElementById('btn-annual').classList.toggle('active', m === 'annual');
+  var p = prices[m];
+  document.getElementById('price-officine').textContent   = p.officine;
+  document.getElementById('price-grande').textContent     = p.grande;
+  var n = notes[m];
+  document.getElementById('note-officine').innerHTML   = n.officine;
+  document.getElementById('note-grande').innerHTML     = n.grande;
+}
+
+function startCheckout(event, plan, fondateur) {
+  var link = fondateur
+    ? 'https://buy.stripe.com/cNi3cu2UJ3Uqh1p7ya3ks09'
+    : LINKS[mode][plan];
+  if (!link) return;
+  window.location.href = link;
+}
+</script>
+
+</body>
+</html>
