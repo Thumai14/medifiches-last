@@ -2770,3 +2770,31 @@ body.modal-open { overflow: hidden; }
   .plt-row { flex-direction: column; align-items: stretch; gap: 8px; }
   .plt-row__controls { justify-content: flex-end; flex-wrap: wrap; }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   CATALOGUE MÉDICAMENTS ACCÈS DIRECT (picker Meddispar)
+   Réutilise plt-search / plt-footer / plt-check / plt-empty.
+═══════════════════════════════════════════════════════════ */
+.pmp-overlay { z-index: 9100; }   /* au-dessus de l'éditeur de fiche (9000) */
+.customizer-panel--center.pmp-panel { max-width: 640px; }
+.pmp-toolbar { display: flex; gap: 10px; padding: 12px var(--space-5, 20px) 6px; align-items: center; }
+.pmp-meta { padding: 0 var(--space-5, 20px) 8px; font-size: 11.5px; color: var(--text-2, #6b5a42); }
+.pmp-list { padding: 0 var(--space-5, 20px); display: flex; flex-direction: column; gap: 3px; min-height: 120px; }
+.pmp-row { display: flex; align-items: center; gap: 8px; padding: 7px 8px; border-radius: 10px; border: 1px solid transparent; }
+.pmp-row:hover { background: var(--surface-2, rgba(0,0,0,0.03)); }
+.pmp-row--in { opacity: .62; }
+.pmp-row--removed { border-color: var(--border, rgba(0,0,0,0.1)); background: var(--surface-2, rgba(0,0,0,0.02)); }
+.pmp-row__main { display: flex; align-items: flex-start; gap: 10px; flex: 1; min-width: 0; cursor: pointer; }
+.pmp-row__main input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; accent-color: #15402c; }
+.pmp-row__txt { min-width: 0; flex: 1; }
+.pmp-row__nom { display: block; font-size: 13px; font-weight: 500; color: var(--text-1, inherit); line-height: 1.35; }
+.pmp-row__sub { display: block; font-size: 10.5px; color: var(--text-2, #6b5a42); opacity: .8; }
+.pmp-badge { display: inline-block; font-size: 9.5px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; padding: 1px 7px; border-radius: 999px; margin-left: 6px; vertical-align: 1px; }
+.pmp-badge--custom { background: rgba(21,64,44,0.12); color: #15402c; }
+.pmp-badge--x { background: rgba(168,87,43,0.14); color: #a8572b; }
+.pmp-badge--in { background: rgba(0,0,0,0.08); color: var(--text-2, #6b5a42); }
+.pmp-restore-all { padding: 4px 0 10px; }
+[data-theme="dark"] .pmp-row:hover { background: rgba(255,255,255,0.05); }
+[data-theme="dark"] .pmp-badge--custom { background: rgba(216,184,106,0.15); color: #d8b86a; }
+[data-theme="dark"] .pmp-badge--in { background: rgba(255,255,255,0.1); }
+[data-theme="dark"] .pmp-row__main input[type="checkbox"] { accent-color: #d8b86a; }

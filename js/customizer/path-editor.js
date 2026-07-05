@@ -92,7 +92,10 @@ const PathEditor = {
               </button>
               <div class="ce-accord__body">
                 <div class="ce-list" id="ce-list-otc">${otcItems}</div>
-                <button class="ce-add ce-add--sm" onclick="Customizer._addToList('ce-list-otc','Médicament OTC')">+ Ajouter</button>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                  <button class="ce-add ce-add--sm" onclick="Customizer._addToList('ce-list-otc','Médicament OTC')">+ Ajouter</button>
+                  <button class="ce-add ce-add--sm" onclick="PathoMedPicker.open()" title="Liste officielle des médicaments en accès direct (Meddispar)">📦 Catalogue</button>
+                </div>
               </div>
             </div>
 

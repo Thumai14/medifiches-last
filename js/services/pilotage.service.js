@@ -140,6 +140,12 @@ const PilotageService = {
       prods.forEach(pr => add(pr?.nom, 'Dermato'));
     }
 
+    /* Catalogue médicaments en accès direct (Meddispar) : concordance totale —
+       le catalogue effectif de l'officine (référence − supprimés + ajoutés). */
+    if (window.PathoCatalog) {
+      PathoCatalog.effective().forEach(e => add(e.n, 'Catalogue'));
+    }
+
     return [...seen.entries()]
       .map(([k, v]) => ({ key: k, label: v.label, sources: [...v.sources] }))
       .sort((a, b) => a.label.localeCompare(b.label, 'fr'));

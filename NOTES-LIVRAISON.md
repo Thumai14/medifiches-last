@@ -68,3 +68,46 @@
 - Fichiers modifiés par ce correctif : `js/modules/pilotage.js` et `css/app.css` uniquement.
 - Vérifié : fond opaque clair et nuit, aucun débordement horizontal, contrôles et footer
   dans les limites du panneau, scroll interne, fermeture, tri toujours fonctionnel sur fiche.
+
+## v2.2 — Catalogue médicaments en accès direct (Meddispar) pour l'onglet Pathologie
+
+### Source & extraction
+- `Meddispar — Médicaments en accès direct` (Ordre national des pharmaciens) : 375 spécialités
+  extraites (dénomination commerciale + CIP13), zéro doublon de CIP.
+- Enrichissement BDPM : laboratoire titulaire pour 336/375 ; 25 spécialités marquées `x:1`
+  (AMM non « Commercialisée » dans la BDPM → badge « à vérifier » dans le picker).
+
+### Nouveaux fichiers
+- `js/data/patho-meds.js` — PATHO_MEDS_DB, 375 entrées {n, c, l?, x?}, triées alpha (32 KB).
+- `js/services/patho-catalog.service.js` — catalogue effectif = référence − supprimés + ajoutés.
+  Persistance CustomizerStore : path/global/med_removed (clés) et med_added ({n, c?}).
+  La base de référence n'est jamais modifiée → réimport toujours possible.
+- `js/customizer/patho-med-picker.js` — modal « 📦 Catalogue » : liste alphabétique, recherche
+  par nom OU CIP partiel, cases à cocher (produits déjà dans la fiche pré-cochés et verrouillés),
+  suppression douce par produit, vue « supprimés » avec réimport unitaire et « Tout réimporter »,
+  ajout hors liste (nom + CIP optionnel, anti-doublon), insertion → lignes ce-item standard
+  dans #ce-list-otc, persistées par le flux d'enregistrement EXISTANT (zéro modif du save).
+
+### Fichiers modifiés
+- `js/customizer/path-editor.js` — bouton « 📦 Catalogue » à côté de « + Ajouter » (accordéon OTC).
+- `js/services/pilotage.service.js` — l'inventaire Pilotage inclut le catalogue effectif
+  (source « Catalogue »), y compris les produits ajoutés, moins les supprimés → concordance totale.
+- `index.html` — 3 balises script (data → service → picker).
+- `css/app.css` — bloc « CATALOGUE MÉDICAMENTS » (pmp-*), z-index 9100 au-dessus de l'éditeur,
+  mode nuit inclus.
+
+### Tests
+- 9 assertions unitaires service (tri, suppression douce, réimport, anti-doublons nom/CIP,
+  custom, restoreAll).
+- Bout-en-bout navigateur : ouverture depuis l'éditeur de fiche, recherche nom + CIP partiel,
+  ajout hors liste, corbeille/réimport, insertion 3 produits, enregistrement, pilules sur fiche,
+  concordance Pilotage (source « OTC · Catalogue », custom inclus, supprimé exclu),
+  persistance après reload. Zéro erreur JS.
+- Note de test : l'accordéon OTC est ouvert PAR DÉFAUT dans l'éditeur (deux faux échecs de test
+  venaient de clics qui le refermaient).
+
+### Pistes BDPM (fichiers fournis, exploitables plus tard)
+- CIS_GENER : groupes génériques → proposer « équivalents du même groupe » sur un produit.
+- CIS_CPD : conditions de prescription/délivrance → badges réglementaires.
+- CIS_InfoImportantes : liens d'alertes ANSM par spécialité → module de veille.
+- CIS_COMPO : substances actives → recherche par DCI dans le picker.
