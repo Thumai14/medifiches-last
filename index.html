@@ -79,7 +79,7 @@
         <span class="nav__version">v1.0</span>
       </div>
       <div style="display:flex;align-items:center;gap:8px;margin-left:auto;">
-        <button class="dark-toggle" id="btn-pilotage" onclick="Pilotage.open()" title="Pilotage des produits conseillés — marge, rotation, péremption">⚖️ Pilotage</button>
+        <button class="dark-toggle" id="btn-pilotage" onclick="Pilotage.open()" title="Pilotage des produits conseillés — marge, rotation, péremption" style="display:none;">⚖️ Pilotage</button>
         <button class="dark-toggle" id="btn-export" onclick="Backup.exportData()" title="Exporter les personnalisations" style="display:none;">💾 Export</button>
         <button class="dark-toggle" id="btn-import" onclick="document.getElementById('backup-file-input').click()" title="Importer des personnalisations" style="display:none;">📂 Import</button>
         <input type="file" id="backup-file-input" accept=".json" style="display:none" onchange="Backup.importData(this)">
@@ -515,7 +515,10 @@
   <script src="js/data/pathologies-extra.js" defer></script>
   <script src="js/data/formation.js" defer></script>
   <script src="js/data/formation-extra.js" defer></script>
-  <script src="js/data/formation-niveaux.js" defer></script>
+  <!-- formation-niveaux.js (~1 Mo) : chargé à la demande par FORMATION._ensureNiveaux()
+       à l'ouverture de l'onglet Formation — retiré du chemin critique du chargement initial. -->
+  <!-- <script src="js/data/formation-niveaux.js" defer></script> -->
+
   <!-- ═══ SERVICES — logique métier (Phase 2 refactoring) ═══ -->
   <script src="js/services/search.service.js" defer></script>
   <script src="js/services/analytics.service.js" defer></script>
@@ -568,6 +571,9 @@
       const refreshBar = async (attempt = 0) => {
         const p = Auth.getProfile();
         const role = p?.role || user.app_metadata?.role || user.user_metadata?.role;
+        // Pilotage OTC = outil de gestion du titulaire — masqué pour l'équipe (invited) et les expirés.
+        const btnPilotage = document.getElementById('btn-pilotage');
+        if (btnPilotage) btnPilotage.style.display = (Auth.canPilotage && Auth.canPilotage()) ? 'inline-flex' : 'none';
         if (role === 'admin') {
           // Admin → barre rouge en haut
           if (label) label.textContent = 'Nima — ADMIN MODE';

@@ -179,3 +179,59 @@
 - Sources sociétés savantes racine (Vidal ×38, SNFGE, CNGOF, ameli…) : vérifier ou remplacer.
 - constipation / gastro-entérite : pas de reco HAS dédiée identifiée → source société savante
   (SNFGE) à vérifier dans le navigateur.
+
+## v2.5 — Durcissement sécurité + lazy-load Formation (juillet 2026)
+
+### Chantier Sécurité
+- **`admin.html` — gate avant peinture.** `<body class="admin-guarding">` + CSS `visibility:hidden` :
+  le shell admin ne peint rien tant que `requireAdmin()` n'a pas confirmé le rôle (fini le flash
+  d'interface admin pour un non-admin). Le guard passe désormais EN PREMIER dans le bootstrap,
+  avant le rendu de la barre utilisateur ; `if (!ok) return;` laisse la redirection se faire,
+  page masquée. `Admin.init()` allégé : le `requireAdmin` async redondant est remplacé par une
+  assertion synchrone `if (!Auth.isAdmin()) return;` (défense-en-profondeur, sans doubler les
+  boucles de retry).
+- **Bouton ⚖️ Pilotage — cadrage de rôle** (pas une faille de données : les réglages Pilotage sont
+  les données propres de l'utilisateur). Règle centralisée dans `Auth.canPilotage()` (couche
+  core/auth, SOURCE UNIQUE DE VÉRITÉ). Rôles autorisés : admin, subscriber, trial, pro, groupement.
+  Exclus : invited (équipe/préparateur), expired, anonymous. `#btn-pilotage` masqué par défaut,
+  révélé dans `refreshBar` (index.html) selon `canPilotage()`. Garde en défense-en-profondeur en
+  tête de `Pilotage.open()` (forcer le clic via devtools ne suffit pas).
+- ⚠️ Le mapping de rôles Pilotage est une décision métier : une seule ligne à ajuster dans
+  `auth.js` (`canPilotage`) si le titulaire s'inscrit sous un autre rôle que ceux listés.
+
+### Chantier Perf
+- **Lazy-load de `formation-niveaux.js` (~1 Mo)** — retiré du chemin critique de chargement initial
+  (l'onglet Pathologies, vue par défaut, n'en a aucun besoin). Balise `<script>` statique commentée
+  dans index.html.
+- `FORMATION._ensureNiveaux()` : injection dynamique idempotente (promesse mémoïsée), déclenchée
+  EN PARALLÈLE à l'ouverture de l'onglet Formation (`FORMATION.init()`) → la liste s'affiche
+  instantanément sans attendre le fichier.
+- Correction de justesse : `toggleDetail()` attend `_ensureNiveaux()` AVANT de construire le détail,
+  sinon les niveaux 2-4 afficheraient à tort « contenu en cours de rédaction » (le contenu existe,
+  il n'est juste pas encore chargé). Attente quasi-nulle en pratique (chargement démarré à
+  l'ouverture de l'onglet). Garde anti-race (`activeSlug`) si l'utilisateur referme pendant l'attente.
+  Repli propre (résolution + fallback message) en cas d'échec réseau.
+- Le consommateur `_renderNiveau()` gardait déjà `typeof FN !== 'undefined' && FN[...]` — aucun
+  changement de contrat, l'accès à `FN` (const globale) reste par nom lexical.
+
+### Fichiers modifiés
+- `js/core/auth.js` (helper canPilotage + export)
+- `js/modules/pilotage.js` (garde open())
+- `index.html` (btn-pilotage masqué/révélé ; retrait script formation-niveaux)
+- `pages/admin.html` (gate avant peinture + réordonnancement bootstrap + Admin.init allégé)
+- `js/modules/formation.js` (_ensureNiveaux + hooks init/toggleDetail)
+
+### Tests
+- `node --check` sur l'ensemble des fichiers JS (js/ + functions/) : zéro erreur de syntaxe.
+- QA navigateur à faire côté Thum (réseau indisponible dans l'environnement de build) :
+  1. Compte NON-admin → /pages/admin.html : redirection sans flash du shell admin.
+  2. Compte invited → onglet principal : bouton ⚖️ Pilotage absent ; admin/titulaire : présent.
+  3. Onglet Formation : liste immédiate ; ouvrir une fiche → niveaux 2-4 remplis (pas « en cours »).
+  4. Réseau throttlé : cliquer une fiche Formation très vite après ouverture de l'onglet → le détail
+     attend brièvement puis affiche les niveaux 2-4 corrects.
+
+### Abandonné cette session
+- Validation RPPS : décision de NE PAS l'implémenter. Conséquence à traiter : les 2 plaquettes PDF
+  (`MediFichecommercial1page`, `2pages`) revendiquent encore le n° RPPS sur chaque fiche — texte à
+  adapter pour rester honnête (le référent + date MàJ + sources HAS/ANSM portent l'argument
+  traçabilité sans le RPPS).

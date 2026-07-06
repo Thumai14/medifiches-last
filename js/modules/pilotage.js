@@ -11,6 +11,10 @@ const Pilotage = {
   _onlyTagged: false,
 
   open() {
+    // Défense-en-profondeur : le bouton est déjà masqué pour les rôles non autorisés
+    // (cf. index.html refreshBar), mais on re-vérifie ici pour que forcer le clic
+    // via la console ne suffise pas à ouvrir l'outil de gestion.
+    if (window.Auth && Auth.canPilotage && !Auth.canPilotage()) return;
     document.querySelector('.customizer-modal')?.remove();
     const modal = document.createElement('div');
     modal.className = 'customizer-modal customizer-modal--center';

@@ -218,9 +218,12 @@
       font-weight: 500; border: 1px solid rgba(255,255,255,0.2);
     }
     body.has-user-bar .admin-layout { margin-top: 37px; }
+    /* Gate avant peinture : le shell admin reste invisible tant que requireAdmin()
+       n'a pas confirmé le rôle. Levé par JS uniquement pour un admin authentifié. */
+    body.admin-guarding { visibility: hidden; }
   </style>
 </head>
-<body>
+<body class="admin-guarding">
 
 <!-- Barre utilisateur (identique à index.html, "Accueil" au lieu de "Dashboard admin" puisqu'on y est déjà) -->
 <div id="user-bar">
@@ -530,8 +533,10 @@ var Admin = {
   roleDisplay: { admin:'Admin', trial:'Essai gratuit', invited:'Invité', subscriber:'Standard', pro:'Pro', groupement:'Groupement', expired:'Expiré' },
 
   init: async function() {
-    var ok = await Auth.requireAdmin();
-    if (!ok) return;
+    // Le gate fail-closed est fait au bootstrap (requireAdmin avant peinture).
+    // Ici, simple assertion synchrone en défense-en-profondeur — le profil est
+    // déjà chargé, isAdmin() est donc fiable.
+    if (!Auth.isAdmin()) return;
     var profile = Auth.getProfile();
     document.getElementById('admin-greeting').textContent =
       'Connecte en tant que ' + (profile && profile.email ? profile.email : (Auth.getUser() && Auth.getUser().email ? Auth.getUser().email : 'Admin'));
@@ -1147,6 +1152,14 @@ var Admin = {
 
 (async function() {
   await Auth.init();
+
+  // ── Gate fail-closed AVANT toute peinture ──
+  // requireAdmin() redirige vers /login si le rôle n'est pas admin. La page reste
+  // masquée (body.admin-guarding) jusqu'à confirmation → aucun flash du shell admin
+  // pour un non-admin.
+  const ok = await Auth.requireAdmin();
+  if (!ok) return;                              // redirection en cours, on ne révèle rien
+  document.body.classList.remove('admin-guarding');
 
   // Afficher la barre utilisateur (même logique que index.html)
   const user = Auth.getUser();

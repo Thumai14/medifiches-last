@@ -8,6 +8,25 @@
 const FORMATION = {
   currentCategorie: 'all',
   activeSlug: null,
+  _fnPromise: null,      // lazy-load formation-niveaux.js (mémoïsé — une seule injection)
+
+  /* ── Lazy-load des niveaux 2-4 (~1 Mo) ──
+     Injecté à la demande (ouverture de l'onglet Formation), pas au chargement initial.
+     Idempotent : la promesse est mémoïsée. En cas d'échec réseau, on résout quand même
+     → les niveaux 2-4 retombent proprement sur le message « en cours de rédaction ». */
+  _ensureNiveaux() {
+    if (this._fnPromise) return this._fnPromise;
+    if (typeof FN !== 'undefined') return (this._fnPromise = Promise.resolve());
+    this._fnPromise = new Promise((resolve) => {
+      const s = document.createElement('script');
+      s.src = 'js/data/formation-niveaux.js';
+      s.defer = true;
+      s.onload  = () => resolve();
+      s.onerror = () => { console.error('[FORMATION] Échec du chargement de formation-niveaux.js'); resolve(); };
+      document.head.appendChild(s);
+    });
+    return this._fnPromise;
+  },
 
   /* ── Table de configuration des 4 niveaux ──
      Chaque entrée pilote _renderNiveau() : source de données, libellés, couleurs.
@@ -133,7 +152,11 @@ const FORMATION = {
 
   /* ── Contrôleur : init, filtres, liste ── */
 
-  async init() { this.renderFilters(); await this.renderList('all'); },
+  async init() {
+    this._ensureNiveaux();          // démarre le téléchargement en parallèle (non bloquant)
+    this.renderFilters();
+    await this.renderList('all');   // la liste s'affiche sans attendre les niveaux 2-4
+  },
 
   renderFilters() {
     const wrap = document.getElementById('formation-filters');
@@ -211,6 +234,11 @@ const FORMATION = {
     const row = cardEl.closest('.formation-row');
     const slot = row ? row.querySelector('.formation-row__detail') : null;
     if (!slot) return;
+    // Garantit que les niveaux 2-4 (FN) sont chargés avant de construire le détail,
+    // sinon ils afficheraient à tort « contenu en cours de rédaction ».
+    await this._ensureNiveaux();
+    // L'utilisateur a pu refermer/changer de fiche pendant l'attente : on vérifie.
+    if (this.activeSlug !== slug) return;
     slot.innerHTML = this.buildDetailHTML(f);
     slot.style.display = 'block';
   },

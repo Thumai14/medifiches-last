@@ -245,6 +245,10 @@ const Auth = (() => {
   function getProfile() { return _currentProfile; }
   function getRole()    { return _currentProfile?.role || 'anonymous'; }
   function isAdmin()    { return getRole() === 'admin'; }
+  // Rôles autorisés à voir/ouvrir le Pilotage OTC (outil de gestion du titulaire).
+  // Volontairement exclus : 'invited' (équipe/préparateur), 'expired', 'anonymous'.
+  // Source unique de vérité — modifier ici pour changer la règle partout.
+  function canPilotage() { return ['admin', 'subscriber', 'trial', 'pro', 'groupement'].includes(getRole()); }
   function isImpersonating() { return !!sessionStorage.getItem('mf_impersonate_from_access'); }
   async function getToken() {
     if (!_client) return null;
@@ -310,7 +314,7 @@ const Auth = (() => {
     signUpWithInvite, checkInviteToken, onAuthEvent, hasActiveSession,
     impersonate, stopImpersonate,
     getUser, getProfile, getRole, getToken,
-    isAdmin, isImpersonating, requireAuth, requireAdmin
+    isAdmin, canPilotage, isImpersonating, requireAuth, requireAdmin
   };
 })();
 
