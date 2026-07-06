@@ -45,7 +45,7 @@ const PATHOLOGIES_DB = [
       {produit: "Housse anti-acariens matelas + oreiller", raison: "Réduction des allergènes déclencheurs"},
       {produit: "Compléments vitamine D + magnésium", raison: "Déficits fréquents dans l'asthme"},
     ],
-    sources: [{label: "Ameli — Prise en charge de l'asthme", url: "https://www.ameli.fr/assure/sante/themes/asthme-adulte/asthme-traitement/la-prise-en-charge-de-l-asthme", date: "consulté 07/2026"},{label: "VIDAL Reco — Asthme de l'adulte", url: "https://www.vidal.fr/maladies/recommandations/asthme-de-l-adulte-1457.html", date: "MàJ 05/2024 · consulté 07/2026"},{label: "GINA Guidelines 2024", url: "https://ginasthma.org"}]
+    sources: [{label: "Ameli — Prise en charge de l'asthme", url: "https://www.ameli.fr/assure/sante/themes/asthme-adulte/asthme-traitement/la-prise-en-charge-de-l-asthme", date: "consulté 07/2026"},{label: "VIDAL Reco — Asthme de l'adulte", url: "https://www.vidal.fr/maladies/recommandations/asthme-de-l-adulte-1457.html", date: "MàJ 05/2024 · consulté 07/2026"},{label: "GINA Guidelines 2024", url: "https://ginasthma.org"},{label: "HAS — Suivi médical des patients asthmatiques", url: "https://www.has-sante.fr/jcms/c_272363/fr/recommandations-pour-le-suivi-medical-des-patients-asthmatiques-adultes-et-adolescents", date: "consulté 07/2026"}]
   },
   {
     id: 9, slug: "constipation", nom: "Constipation",
@@ -89,7 +89,7 @@ const PATHOLOGIES_DB = [
       {produit: "Semelles orthopédiques diabétiques", raison: "Protection et confort plantaire"},
       {produit: "Pilulier semainier", raison: "Améliore l'observance du traitement"},
     ],
-    sources: [{label: "Ameli — Diabète type 2 : traitement médicamenteux", url: "https://www.ameli.fr/assure/sante/themes/diabete-adulte/diabete-traitement/traitements-medicamenteux", date: "consulté 07/2026"},{label: "SFD", url: "https://www.sfdiabete.org"},{label: "Vidal", url: "https://www.vidal.fr"}]
+    sources: [{label: "Ameli — Diabète type 2 : traitement médicamenteux", url: "https://www.ameli.fr/assure/sante/themes/diabete-adulte/diabete-traitement/traitements-medicamenteux", date: "consulté 07/2026"},{label: "SFD", url: "https://www.sfdiabete.org"},{label: "Vidal", url: "https://www.vidal.fr"},{label: "HAS — Stratégie thérapeutique du DT2 (2024)", url: "https://www.has-sante.fr/jcms/p_3191108/fr/strategie-therapeutique-du-patient-vivant-avec-un-diabete-de-type-2", date: "consulté 07/2026"}]
   },
   {
     id: 11, slug: "douleur-arthrose", nom: "Douleur arthrosique",
@@ -111,7 +111,7 @@ const PATHOLOGIES_DB = [
       {produit: "Compléments curcuma + pipérine", raison: "Anti-inflammatoire naturel bien toléré"},
       {produit: "Huile de CBD topique", raison: "Soulagement articulaire naturel — forte demande"},
     ],
-    sources: [{label: "Ameli — Traitement de l'arthrose", url: "https://www.ameli.fr/assure/sante/themes/arthrose-genou/traitement-medical-chirurgical", date: "consulté 07/2026"},{label: "SFR", url: "https://www.larhumato.fr"},{label: "Vidal", url: "https://www.vidal.fr"}]
+    sources: [{label: "Ameli — Traitement de l'arthrose", url: "https://www.ameli.fr/assure/sante/themes/arthrose-genou/traitement-medical-chirurgical", date: "consulté 07/2026"},{label: "SFR", url: "https://www.larhumato.fr"},{label: "Vidal", url: "https://www.vidal.fr"},{label: "HAS — Arthrose : paracétamol en 1re intention", url: "https://www.has-sante.fr/jcms/pprd_2974704/fr/arthrose-le-paracetamol-en-1re-intention-lors-des-crises-douloureuses", date: "consulté 07/2026"}]
   },
   {
     id: 5, slug: "gastro-enterite", nom: "Gastro-entérite aiguë",
@@ -177,7 +177,7 @@ const PATHOLOGIES_DB = [
       {produit: "Huile essentielle lavande vraie", raison: "Effet anxiolytique et sédatif léger"},
       {produit: "Magnésium bisglycinate (soir)", raison: "Détente musculaire et nerveuse"},
     ],
-    sources: [{label: "HAS/SFTG — Insomnie en médecine générale", url: "https://www.has-sante.fr/jcms/c_937775/fr/plaintes-du-sommeil-insomnie", date: "consulté 07/2026"},{label: "Vidal", url: "https://www.vidal.fr"}]
+    sources: [{label: "HAS/SFTG — Insomnie en médecine générale", url: "https://www.has-sante.fr/jcms/c_937775/fr/plaintes-du-sommeil-insomnie", date: "consulté 07/2026"},{label: "Vidal", url: "https://www.vidal.fr"},{label: "Ameli — Traitement de l'insomnie", url: "https://www.ameli.fr/assure/sante/themes/insomnie-adulte/traitement-medical", date: "consulté 07/2026"}]
   },
   {
     id: 12, slug: "migraine", nom: "Migraine",
@@ -199,7 +199,7 @@ const PATHOLOGIES_DB = [
       {produit: "Compléments magnésium 400mg/jour", raison: "Prophylaxie — efficacité clinique prouvée"},
       {produit: "HE menthe poivrée", raison: "Alternative non médicamenteuse — tempes"},
     ],
-    sources: [{label: "Ameli — Migraine : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/migraine/diagnostic-traitement", date: "MàJ 01/2026 · consulté 07/2026"},{label: "SFEMC", url: "https://www.sf-neuro.org"},{label: "Vidal", url: "https://www.vidal.fr"}]
+    sources: [{label: "Ameli — Migraine : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/migraine/diagnostic-traitement", date: "MàJ 01/2026 · consulté 07/2026"},{label: "SFEMC", url: "https://www.sf-neuro.org"},{label: "Vidal", url: "https://www.vidal.fr"},{label: "HAS — Prise en charge de la migraine", url: "https://www.has-sante.fr/jcms/c_272212/fr/prise-en-charge-diagnostique-et-therapeutique-de-la-migraine-chez-l-adulte-et-chez-l-enfant-aspects-cliniques-et-economiques", date: "consulté 07/2026"}]
   },
   {
     id: 2, slug: "rhinite-allergique", nom: "Rhinite allergique",

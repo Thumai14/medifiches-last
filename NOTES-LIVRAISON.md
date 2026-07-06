@@ -292,3 +292,50 @@ goutte, hbp-prostate, hemorrhoides, herpes-labial, hypercholesterolemie, insomni
 insuffisance-cardiaque, lombalgie, mal-de-gorge, mycose-vaginale, osteoporose, otite,
 piqure-moustique, rhinite-allergique, sii, sinusite, spm, tendinite, toux, toux-grasse,
 ulcere-gastrique.
+
+## v2.12 — FINAL : un lien Ameli vérifié sur les 52 fiches (100 %)
+Objectif atteint : chaque fiche pathologie porte désormais un lien Ameli spécifique, vérifié sur
+un résultat de recherche réel (jamais reconstruit de mémoire) et daté « consulté 07/2026 ».
+
+Méthode retenue : recherche par thème (les pages-index /themes/{lettre} d'Ameli ne renvoient que
+leur titre au fetch — rendu client — et les fetches directs sont bloqués par l'anti-bot ; seule la
+recherche par thème fait remonter l'URL exacte). Traitement par lots avec application + contrôle
+`node --check` + packaging à chaque palier.
+
+Lots : v2.7 (10) → v2.8 (3) → v2.9 (4) → v2.10 (8) → v2.11 (4) → v2.12 (10 dernières :
+bpco, bronchiolite, fievre-enfant, insuffisance-cardiaque, mycose-vaginale [vaginite],
+piqure-moustique, spm [règles douloureuses], hbp-prostate [adenome-prostate],
+hypercholesterolemie [dyslipidémie], tendinite [épicondylite]).
+
+Choix de libellés honnêtes quand Ameli n'a pas de page strictement homonyme :
+- tendinite → page épicondylite (tendinopathie représentative, conseils OTC paracétamol/AINS)
+- mycose-vaginale → thème « vaginite »
+- hbp-prostate → thème « adénome de la prostate »
+- hypercholesterolemie → thème « cholestérol/triglycérides (dyslipidémie) »
+- piqure-moustique → article « Morsures et piqûres : les bons réflexes » (soulagement OTC)
+- spm → thème « règles douloureuses » (page qui mentionne explicitement le SPM)
+
+Bilan : 52/52 fiches avec lien Ameli daté · liens HAS-deep morts : 0 · syntaxe OK.
+
+## v2.13 — Rééquilibrage HAS : lien HAS vivant ajouté partout où il en existe un
+Constat (v2.12) : 9 fiches n'avaient plus de lien HAS (leur ancien lien HAS profond mort avait
+été remplacé en vague 2 par Ameli/Santé.fr/Vidal, sans substitut HAS).
+
+Vérification (recherche réelle sur has-sante.fr) et ajout d'un lien HAS **vivant** (additif) :
+- asthme → HAS c_272363 (suivi médical patients asthmatiques)
+- brulures-estomac-rgo → HAS p_3372966 (fiche bon usage des IPP)
+- diabete-type-2 → HAS p_3191108 (stratégie thérapeutique DT2, 2024)
+- douleur-arthrose → HAS pprd_2974704 (arthrose : paracétamol en 1re intention)
+- migraine → HAS c_272212 (prise en charge diagnostique et thérapeutique de la migraine)
+- stress-anxiete → HAS c_556489 (ALD 23 troubles anxieux graves, actualisée 01/2025)
+
+Pas de reco HAS autonome trouvée (laissées sans HAS, à juste titre) :
+- allergie-pollen, rhinite-allergique → HAS n'a que des avis de médicaments (RYALTRIS, ORYLMYTE) ;
+  la reco clinique est SFORL 2020 (société savante). Fiches sourcées Santé.fr + Ameli + Vidal.
+- poux → ancienne page HAS morte, pas de RBP HAS actuelle ; recos VIDAL/CNS. Fiche sourcée
+  VIDAL Reco pédiculoses + Ameli + ANSM.
+
+### Bilan de couverture final
+- Ameli : 52/52 · HAS : 49/52 · HAS + Ameli : 49/52 · liens HAS morts : 0 · syntaxe OK.
+- Les 3 fiches sans HAS n'ont pas de recommandation HAS autonome existante (limite factuelle,
+  pas un oubli).
