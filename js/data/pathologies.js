@@ -67,7 +67,7 @@ const PATHOLOGIES_DB = [
       {produit: "Pruneaux d'Agen", raison: "Efficacité clinique prouvée"},
       {produit: "Probiotiques spécifiques transit", raison: "Régulation de la flore intestinale"},
     ],
-    sources: [{label: "HAS — Constipation", url: "https://www.has-sante.fr"},{label: "SNFGE", url: "https://www.snfge.org"},{label: "Vidal", url: "https://www.vidal.fr"},{label: "Ameli — Constipation : diagnostic et traitement", url: "https://www.ameli.fr/assure/sante/themes/constipation-adulte/diagnostic-traitement-evolution", date: "consulté 07/2026"}]
+    sources: [{label: "SNFGE", url: "https://www.snfge.org"},{label: "Vidal", url: "https://www.vidal.fr"},{label: "Ameli — Constipation : diagnostic et traitement", url: "https://www.ameli.fr/assure/sante/themes/constipation-adulte/diagnostic-traitement-evolution", date: "consulté 07/2026"}]
   },
   {
     id: 3, slug: "diabete-type-2", nom: "Diabète type 2",
@@ -133,7 +133,7 @@ const PATHOLOGIES_DB = [
       {produit: "Gel hydroalcoolique familial", raison: "Prévention de la contagion intrafamiliale"},
       {produit: "Thermomètre digital", raison: "Surveillance température si fièvre associée"},
     ],
-    sources: [{label: "HAS — Gastro-entérite", url: "https://www.has-sante.fr"},{label: "SNFGE", url: "https://www.snfge.org"},{label: "Vidal", url: "https://www.vidal.fr"},{label: "Ameli — Gastro-entérite : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/gastro-enterite-adulte/consultation-traitement", date: "consulté 07/2026"}]
+    sources: [{label: "SNFGE", url: "https://www.snfge.org"},{label: "Vidal", url: "https://www.vidal.fr"},{label: "Ameli — Gastro-entérite : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/gastro-enterite-adulte/consultation-traitement", date: "consulté 07/2026"}]
   },
   {
     id: 4, slug: "hypertension", nom: "Hypertension artérielle",

@@ -6,8 +6,9 @@
 medifiche/
 ├── index.html                      ← Point d'entrée principal
 ├── REFACTORING.md                  ← Journal des décisions d'architecture (v2)
-├── netlify.toml                    ← Config Netlify / Cloudflare Pages
-├── _routes.json                    ← Routes des fonctions edge
+├── wrangler.toml / functions/      ← Fonctions edge Cloudflare (Stripe, etc.)
+├── _routes.json                    ← Cloudflare Pages : routage des fonctions edge
+├── functions/                      ← Fonctions edge Cloudflare (webhook Stripe, API)
 ├── _headers                        ← Headers HTTP (CSP, cache)
 ├── css/
 │   ├── app.css                     ← Design system + tous les styles
@@ -26,7 +27,7 @@ medifiche/
 │   │   ├── search.service.js       ← Scoring et fusion recherche cross-module
 │   │   └── analytics.service.js    ← Statistiques d'usage (write-only, table analytics_events)
 │   ├── data/                       ← Données statiques immuables
-│   │   ├── pathologies.js          ← Base pathologies (55 fiches) + MediFicheAPI
+│   │   ├── pathologies.js          ← Base pathologies (52 fiches : 10 + 42 extra) + MediFicheAPI
 │   │   ├── pathologies-extra.js    ← Extension pathologies
 │   │   ├── materiel.js             ← Matériel médical (MAD) + MaterielAPI + sources {label,url} par fiche
 │   │   ├── dermato.js              ← Dermatologie DB + DermatoAPI
@@ -39,7 +40,8 @@ medifiche/
 │   │   └── schemas-extra.js        ← Schémas supplémentaires
 │   └── modules/                    ← UI par domaine — chargés après les services
 │       ├── ui.js                   ← Search (UI) + UI pathologies + filtres thématiques
-│       ├── customizer.js           ← Personnalisation fiches + catalogue parapharmacie ✦ v2
+│       ├── customizer.js           ← Façade : assemble window.Customizer depuis js/customizer/ ✦ v2
+│       ├── pilotage.js             ← Panneau Pilotage OTC (marge/rotation/péremption) ✦ v2
 │       ├── mad.js                  ← Module Matériel à domicile (MAD / dispositifs)
 │       ├── dermato.js              ← Module Dermatologie
 │       ├── formation.js            ← Module Formation
@@ -47,6 +49,14 @@ medifiche/
 │       ├── darkmode.js             ← Mode nuit
 │       ├── backup.js               ← Export / Import données utilisateur
 │       └── legal.js                ← Pages légales (CGU, CGV, mentions)
+│   └── customizer/                 ← Éditeurs de fiches splittés (façade = modules/customizer.js) ✦ v2
+│       ├── customizer-store.js     ← Persistance localStorage + sync Supabase
+│       ├── customizer-dom-helpers.js ← Modales, toasts, helpers DOM partagés
+│       ├── path-editor.js          ← Éditeur fiches pathologie (OTC, naturo, vente)
+│       ├── derma-editor.js         ← Éditeur fiches dermatologie
+│       ├── mad-editor.js           ← Éditeur fiches matériel (MAD)
+│       ├── dermato-brand-picker.js ← Picker catalogue parapharmacie (22 labos)
+│       └── patho-med-picker.js     ← Picker catalogues médicaments + naturo (Meddispar) ✦ v2
 ├── icons/
 │   └── icons-sprite.svg            ← Sprite SVG partagé (chargé une fois via <use>)
 ├── pages/
@@ -194,7 +204,8 @@ Voir `SETUP.md` pour le guide pas-à-pas complet (Supabase, Storage, Cloudflare 
 - [x] Router — restauration onglet actif + scroll top après refresh
 - [x] Statistiques d'usage admin — fiches consultées, gammes/catégories par officine
 - [x] Rôles `pro` / `groupement` activés en base (CHECK constraint profiles.role)
-- [x] Sources cliquables sur les 32 fiches dispositif (HAS, LPP, sociétés savantes)
-- [ ] Lazy-load formation-niveaux.js (≈1 Mo) — voir REFACTORING.md §Phase 3
-- [ ] `admin.html` — ajouter `requireAdmin()` au DOMContentLoaded (actuellement dans Admin.init())
+- [x] Sources cliquables sur les 32 fiches dispositif (codes LPP vérifiés dans le PDF officiel, sociétés savantes)
+- [x] Sources vérifiées et datées sur les fiches pathologie — liens HAS/jcms et Ameli/thèmes contrôlés un à un (aucun lien vers l'accueil), champ `date` affiché (« consulté MM/AAAA »)
+- [ ] Lazy-load formation-niveaux.js (≈1 Mo, encore chargé en dur dans index.html) — voir REFACTORING.md §Phase 3
+- [x] `admin.html` — `requireAdmin()` au chargement (fait)
 - [ ] Module pédiatrie (NUK et marques bébé à réintégrer depuis le catalogue dermato)

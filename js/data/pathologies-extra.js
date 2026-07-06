@@ -26,7 +26,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Propolis spray buccal', raison:'Antibactérien naturel voies respiratoires'},
       {produit:'Sirop miel-thym', raison:'Antitussif naturel bien toléré'},
     ],
-    sources:[{label:'HAS — Bronchite aiguë', url:'https://www.has-sante.fr'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Bronchite : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/bronchite/consultation-traitement-medical", date: "consulté 07/2026"}]
+    sources:[{label:'HAS — Antibiothérapie : exacerbations aiguës de BPCO', url:'https://www.has-sante.fr/jcms/p_3528903/fr/choix-et-durees-d-antibiotherapie-dans-les-exacerbations-aigues-de-bronchopneumopathie-chronique-obstructive-eabpco', date:'MàJ 12/2024 · consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Bronchite : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/bronchite/consultation-traitement-medical", date: "consulté 07/2026"}]
   },
 
   {
@@ -70,7 +70,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Pastilles adoucissantes (miel-propolis)', raison:'Soulagement local gorge et toux'},
       {produit:'Humidificateur d\'air', raison:'Muqueuses respiratoires moins irritées'},
     ],
-    sources:[{label:'HAS — Toux aiguë', url:'https://www.has-sante.fr'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Toux : diagnostic et traitement", url: "https://www.ameli.fr/assure/sante/themes/toux/diagnostic-traitement", date: "consulté 07/2026"}]
+    sources:[{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Toux : diagnostic et traitement", url: "https://www.ameli.fr/assure/sante/themes/toux/diagnostic-traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -137,7 +137,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Tensiomètre bras NF', raison:'Automesure tensionnelle quotidienne'},
       {produit:'Pilulier semainier', raison:'Observance multi-médicaments'},
     ],
-    sources:[{label:'HAS — Insuffisance cardiaque', url:'https://www.has-sante.fr'},{label:'ESC Guidelines 2021', url:'https://www.escardio.org'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Traitement de l'insuffisance cardiaque", url: "https://www.ameli.fr/assure/sante/themes/insuffisance-cardiaque/traitement", date: "consulté 07/2026"}]
+    sources:[{label:'HAS — Guide parcours de soins insuffisance cardiaque', url:'https://www.has-sante.fr/jcms/c_1242988/fr/guide-parcours-de-soins-insuffisance-cardiaque', date:'Guide 2014 · consulté 07/2026'},{label:'ESC Guidelines 2021', url:'https://www.escardio.org'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Traitement de l'insuffisance cardiaque", url: "https://www.ameli.fr/assure/sante/themes/insuffisance-cardiaque/traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -159,7 +159,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Oméga-3 EPA/DHA concentré', raison:'Réduction triglycérides + bénéfice cardiovasculaire'},
       {produit:'Avoine en flocons (bêta-glucane)', raison:'Fibres solubles hypocholestérolémiantes'},
     ],
-    sources:[{label:'HAS — Hypercholestérolémie', url:'https://www.has-sante.fr'},{label:'ESC/EAS Guidelines 2019', url:'https://www.escardio.org'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Cholestérol/triglycérides élevés : traitement", url: "https://www.ameli.fr/assure/sante/themes/trop-cholesterol-triglycerides-dans-sang-dyslipidemie/traitement", date: "consulté 07/2026"}]
+    sources:[{label:'ESC/EAS Guidelines 2019', url:'https://www.escardio.org'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Cholestérol/triglycérides élevés : traitement", url: "https://www.ameli.fr/assure/sante/themes/trop-cholesterol-triglycerides-dans-sang-dyslipidemie/traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -181,7 +181,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Eau de Vichy Saint-Yorre', raison:'Alcalinisation urinaire — favorise excrétion urate'},
       {produit:'Céleri extrait (Arkogélules)', raison:'Drainant urique naturel'},
     ],
-    sources:[{label:'HAS — Goutte', url:'https://www.has-sante.fr'},{label:'SFR — Recommandations goutte', url:'https://www.larhumato.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Traitement de la goutte", url: "https://www.ameli.fr/assure/sante/themes/goutte/traitement", date: "consulté 07/2026"}]
+    sources:[{label:'SFR — Recommandations goutte', url:'https://www.larhumato.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Traitement de la goutte", url: "https://www.ameli.fr/assure/sante/themes/goutte/traitement", date: "consulté 07/2026"}]
   },
 
   // ══════════ DIGESTIF ══════════
@@ -204,7 +204,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Surélévateur de tête de lit', raison:'Indispensable pour le RGO nocturne'},
       {produit:'Tisane camomille-réglisse', raison:'Adoucissant digestif naturel'},
     ],
-    sources:[{label:'HAS — RGO', url:'https://www.has-sante.fr'},{label:'SNFGE', url:'https://www.snfge.org'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — RGO : diagnostic et traitement", url: "https://www.ameli.fr/assure/sante/themes/rgo-adulte/diagnostic-traitements", date: "consulté 07/2026"}]
+    sources:[{label:'SNFGE', url:'https://www.snfge.org'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — RGO : diagnostic et traitement", url: "https://www.ameli.fr/assure/sante/themes/rgo-adulte/diagnostic-traitements", date: "consulté 07/2026"}]
   },
 
   {
@@ -225,7 +225,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Zinc-carnosine (Zinco-Carnogel®)', raison:'Cicatrisant muqueux gastrique prouvé'},
       {produit:'Probiotiques (Lactobacillus reuteri)', raison:'Adjuvant de l\'éradication H. pylori'},
     ],
-    sources:[{label:'HAS — Ulcère', url:'https://www.has-sante.fr'},{label:'SNFGE', url:'https://www.snfge.org'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Traitement de l'ulcère gastroduodénal", url: "https://www.ameli.fr/assure/sante/themes/ulcere-estomac-duodenum/traitement", date: "consulté 07/2026"}]
+    sources:[{label:'HAS — H. pylori : traitement guidé (adulte)', url:'https://www.has-sante.fr/jcms/p_3282789/fr/choix-et-durees-d-antibiotherapies-traitement-guide-de-l-infection-par-helicobacter-pylori-chez-l-adulte', date:'MàJ 2024 · consulté 07/2026'},{label:'HAS — H. pylori : traitement probabiliste (adulte)', url:'https://www.has-sante.fr/jcms/p_3282793/fr/choix-et-durees-d-antibiotherapies-traitement-probabiliste-de-l-infection-par-helicobacter-pylori-chez-l-adulte', date:'MàJ 2024 · consulté 07/2026'},{label:'SNFGE', url:'https://www.snfge.org'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Traitement de l'ulcère gastroduodénal", url: "https://www.ameli.fr/assure/sante/themes/ulcere-estomac-duodenum/traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -247,7 +247,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Psyllium blond', raison:'Régularise le transit — moins d\'efforts de poussée'},
       {produit:'Coussin hémorroïdaire', raison:'Soulagement de la pression assise'},
     ],
-    sources:[{label:'HAS — Hémorroïdes', url:'https://www.has-sante.fr'},{label:'SNFGE', url:'https://www.snfge.org'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Hémorroïdes : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/hemorroides/traitement", date: "consulté 07/2026"}]
+    sources:[{label:'SNFGE', url:'https://www.snfge.org'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Hémorroïdes : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/hemorroides/traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -269,7 +269,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Probiotiques SII spécifiques (Lactibiane®)', raison:'Réduction douleurs et ballonnements'},
       {produit:'Journal alimentaire', raison:'Identifier les aliments déclencheurs (FODMAPs)'},
     ],
-    sources:[{label:'HAS — SII', url:'https://www.has-sante.fr'},{label:'SNFGE', url:'https://www.snfge.org'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — SII : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/syndrome-intestin-irritable/consultation-medicale-traitement", date: "consulté 07/2026"}]
+    sources:[{label:'SNFGE', url:'https://www.snfge.org'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — SII : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/syndrome-intestin-irritable/consultation-medicale-traitement", date: "consulté 07/2026"}]
   },
 
   // ══════════ DOULEUR / RHUMATOLOGIE ══════════
@@ -314,7 +314,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Poche de glace réutilisable', raison:'Cryothérapie locale phase aiguë'},
       {produit:'Collagène marin + vitamine C', raison:'Reconstruction tendineuse — cure de 3 mois'},
     ],
-    sources:[{label:'HAS — Tendinopathies', url:'https://www.has-sante.fr'},{label:'SFR', url:'https://www.larhumato.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Tendinopathie (épicondylite) : traitement", url: "https://www.ameli.fr/assure/sante/themes/epicondylite/traitement", date: "consulté 07/2026"}]
+    sources:[{label:'SFR', url:'https://www.larhumato.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Tendinopathie (épicondylite) : traitement", url: "https://www.ameli.fr/assure/sante/themes/epicondylite/traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -336,7 +336,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Arnica gel (Arnigel®)', raison:'Anti-hématome et anti-inflammatoire local'},
       {produit:'Poche de glace réutilisable', raison:'Cryothérapie phase aiguë — protocole RICE'},
     ],
-    sources:[{label:'HAS — Entorse', url:'https://www.has-sante.fr'},{label:'SFR', url:'https://www.larhumato.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Entorse de cheville : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/entorse-cheville/consultation-traitement", date: "consulté 07/2026"}]
+    sources:[{label:'SFR', url:'https://www.larhumato.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Entorse de cheville : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/entorse-cheville/consultation-traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -403,7 +403,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Passiflore + valériane (Euphytose®)', raison:'Phytothérapie anxiolytique — sans dépendance'},
       {produit:'Application cohérence cardiaque', raison:'Outil de gestion du stress prêt à l\'emploi'},
     ],
-    sources:[{label:'HAS — Troubles anxieux', url:'https://www.has-sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Traitement des troubles anxieux", url: "https://www.ameli.fr/assure/sante/themes/troubles-anxieux-anxiete/traitement", date: "consulté 07/2026"}]
+    sources:[{label:'HAS — ALD 23 : troubles anxieux graves', url:'https://www.has-sante.fr/jcms/c_556489/fr/ald-n-23-troubles-anxieux-graves', date:'Act. 01/2025 · consulté 07/2026'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Traitement des troubles anxieux", url: "https://www.ameli.fr/assure/sante/themes/troubles-anxieux-anxiete/traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -513,7 +513,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Zinc 30mg', raison:'Soutien de la santé prostatique'},
       {produit:'Lycopène 10mg', raison:'Antioxydant protecteur prostatique'},
     ],
-    sources:[{label:'HAS — HBP', url:'https://www.has-sante.fr'},{label:'AFU — Association Française d\'Urologie', url:'https://www.urofrance.org'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Traitement de l'adénome de la prostate", url: "https://www.ameli.fr/assure/sante/themes/adenome-prostate/traitements", date: "consulté 07/2026"}]
+    sources:[{label:'AFU — Association Française d\'Urologie', url:'https://www.urofrance.org'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Traitement de l'adénome de la prostate", url: "https://www.ameli.fr/assure/sante/themes/adenome-prostate/traitements", date: "consulté 07/2026"}]
   },
 
   {
@@ -557,7 +557,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Magnésium bisglycinate 300mg', raison:'Rétention eau, céphalées, humeur — prendre J16 à J28'},
       {produit:'Huile d\'onagre (Evening primrose)', raison:'Réduit la mastodynie prémenstruelle'},
     ],
-    sources:[{label:'HAS — SPM', url:'https://www.has-sante.fr'},{label:'CNGOF', url:'https://cngof.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Règles douloureuses / SPM : que faire", url: "https://www.ameli.fr/assure/sante/themes/regles-douloureuses/que-faire-quand-consulter", date: "consulté 07/2026"}]
+    sources:[{label:'CNGOF', url:'https://cngof.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Règles douloureuses / SPM : que faire", url: "https://www.ameli.fr/assure/sante/themes/regles-douloureuses/que-faire-quand-consulter", date: "consulté 07/2026"}]
   },
 
   // ══════════ PÉDIATRIE ══════════
@@ -621,7 +621,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Thermomètre frontal ou auriculaire', raison:'Prise de température rapide et sans contact'},
       {produit:'Paracétamol suspension buvable (Doliprane®, Efferalgan®)', raison:'Adapté au poids — dose précise'},
     ],
-    sources:[{label:'HAS — Fièvre enfant', url:'https://www.has-sante.fr'},{label:'SFP', url:'https://www.sfpediatrie.com'},{label:'Vidal — Fièvre', url:'https://www.vidal.fr'},{label: "Ameli — Fièvre de l'enfant : les médicaments", url: "https://www.ameli.fr/assure/sante/themes/fievre-enfant/medicaments", date: "consulté 07/2026"}]
+    sources:[{label:'HAS — Prise en charge de la fièvre chez l\'enfant', url:'https://www.has-sante.fr/jcms/c_2674284/fr/prise-en-charge-de-la-fievre-chez-l-enfant', date:'Fiche mémo 2016 · consulté 07/2026'},{label:'SFP', url:'https://www.sfpediatrie.com'},{label:'Vidal — Fièvre', url:'https://www.vidal.fr'},{label: "Ameli — Fièvre de l'enfant : les médicaments", url: "https://www.ameli.fr/assure/sante/themes/fievre-enfant/medicaments", date: "consulté 07/2026"}]
   },
 
   // ══════════ INFECTIOLOGIE ══════════
@@ -644,7 +644,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Masques chirurgicaux', raison:'Protection de l\'entourage fragile'},
       {produit:'Humidificateur d\'air', raison:'Confort respiratoire et hydratation des muqueuses'},
     ],
-    sources:[{label:'HAS — Grippe', url:'https://www.has-sante.fr'},{label:'Santé Publique France', url:'https://www.santepubliquefrance.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Traitement de la grippe", url: "https://www.ameli.fr/assure/sante/themes/grippe/traitement-grippe", date: "consulté 07/2026"}]
+    sources:[{label:'Santé Publique France', url:'https://www.santepubliquefrance.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Traitement de la grippe", url: "https://www.ameli.fr/assure/sante/themes/grippe/traitement-grippe", date: "consulté 07/2026"}]
   },
 
   {
@@ -666,7 +666,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Tests antigéniques COVID (autotests)', raison:'Diagnostic rapide à domicile'},
       {produit:'Masques FFP2', raison:'Protection renforcée si isolement impossible'},
     ],
-    sources:[{label:'HAS — COVID-19', url:'https://www.has-sante.fr'},{label:'Santé Publique France', url:'https://www.santepubliquefrance.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Covid-19 : symptômes et recommandations", url: "https://www.ameli.fr/assure/sante/themes/covid-19/symptomes-gestes-barrieres-et-recommandations", date: "consulté 07/2026"}]
+    sources:[{label:'Santé Publique France', url:'https://www.santepubliquefrance.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Covid-19 : symptômes et recommandations", url: "https://www.ameli.fr/assure/sante/themes/covid-19/symptomes-gestes-barrieres-et-recommandations", date: "consulté 07/2026"}]
   },
 
   {
@@ -688,7 +688,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Stick lèvres SPF 50+', raison:'Prévention déclenchement par UV'},
       {produit:'L-lysine 500mg', raison:'Prévention des récidives — cure de 6 mois'},
     ],
-    sources:[{label:'HAS — Herpès', url:'https://www.has-sante.fr'},{label:'SFD', url:'https://www.sfdermato.org'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Herpès labial : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/herpes-labial/consultation-traitement-evolution", date: "consulté 07/2026"}]
+    sources:[{label:'SFD', url:'https://www.sfdermato.org'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Herpès labial : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/herpes-labial/consultation-traitement-evolution", date: "consulté 07/2026"}]
   },
 
   {
@@ -710,7 +710,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Probiotiques vaginaux (Gynophilus®)', raison:'Restauration de la flore vaginale protectrice'},
       {produit:'Saforelle® solution lavante pH acide', raison:'Hygiène intime adaptée — préserve la flore'},
     ],
-    sources:[{label:'HAS — Candidose vaginale', url:'https://www.has-sante.fr'},{label:'CNGOF', url:'https://cngof.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Mycose vaginale : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/vaginite/consultation-traitement", date: "consulté 07/2026"}]
+    sources:[{label:'CNGOF', url:'https://cngof.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Mycose vaginale : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/vaginite/consultation-traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -754,7 +754,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Répulsif IR3535 (Cinq sur Cinq)', raison:'Prévention — vente croisée avant sortie'},
       {produit:'Bracelets répulsifs citronnelle (enfants)', raison:'Alternative douce chez les enfants'},
     ],
-    sources:[{label:'ANSM — Répulsifs cutanés', url:'https://ansm.sante.fr'},{label:'Santé publique France', url:'https://www.santepubliquefrance.fr'},{label:'HAS', url:'https://www.has-sante.fr'},{label: "Ameli — Morsures et piqûres : les bons réflexes", url: "https://www.ameli.fr/assure/actualites/morsures-et-piqures-les-bons-reflexes-face-aux-petits-maux-de-l-ete", date: "consulté 07/2026"}]
+    sources:[{label:'ANSM — Répulsifs cutanés', url:'https://ansm.sante.fr'},{label:'Santé publique France', url:'https://www.santepubliquefrance.fr'},{label:'Ameli — Maladies transmises par les moustiques', url:'https://www.ameli.fr/assure/sante/themes/piqure-moustique-maladies', date:'consulté 07/2026'}]
   },
   {
     id:55, slug:'poux', nom:'Poux de tête (pédiculose)', icone:'__SVG__poux.svg__', categorie:'Dermatologie / Parasitologie',
@@ -797,7 +797,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Lingettes nettoyantes paupières (Blephagel)', raison:'Hygiène des bords ciliaires'},
       {produit:'Larmes artificielles (Artelac)', raison:'Conjonctivite allergique ou sécheresse associée'},
     ],
-    sources:[{label:'HAS', url:'https://www.has-sante.fr'},{label:'SFO', url:'https://www.sfo.asso.fr'},{label:'Ameli', url:'https://www.ameli.fr'}]
+    sources:[{label:'SFO', url:'https://www.sfo.asso.fr'},{label:'Ameli — Conjonctivite', url:'https://www.ameli.fr/assure/sante/themes/conjonctivite', date:'consulté 07/2026'}]
   },
   {
     id:58, slug:'brulures-estomac-rgo', nom:'Brûlures d\'estomac / RGO', icone:'__SVG__brulure destomax.svg__', categorie:'Gastro-entérologie',
@@ -840,7 +840,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Crème sportive réchauffante (Baume du Tigre)', raison:'Soulagement local immédiat'},
       {produit:'Électrolytes sport (sachets)', raison:'Crampes d\'effort à la chaleur'},
     ],
-    sources:[{label:'HAS', url:'https://www.has-sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label:'Ameli', url:'https://www.ameli.fr'}]
+    sources:[{label:'Vidal — Traitement des courbatures et crampes', url:'https://www.vidal.fr/maladies/appareil-locomoteur/douleurs-musculaires-crampes-courbatures/traitements.html', date:'consulté 07/2026'}]
   },
   {
     id:61, slug:'stress-anxiete', nom:'Stress et anxiété situationnelle', icone:'__SVG__stress.svg__', categorie:'Psychiatrie / Médecine générale',
@@ -862,7 +862,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'HE Petit grain bigarade (rollerball)', raison:'Gestion immédiate de la crise d\'angoisse'},
       {produit:'Ashwagandha KSM-66 600 mg', raison:'Adaptogène — forte demande actuelle'},
     ],
-    sources:[{label:'Ameli — Traitement des troubles anxieux', url:'https://www.ameli.fr/assure/sante/themes/troubles-anxieux-anxiete/traitement', date:'consulté 07/2026'},{label:'Ameli', url:'https://www.ameli.fr'},{label:'CESPHARM', url:'https://www.cespharm.fr'},{label: "HAS — ALD 23 : troubles anxieux graves", url: "https://www.has-sante.fr/jcms/c_556489/fr/ald-n-23-troubles-anxieux-graves", date: "consulté 07/2026"}]
+    sources:[{label:'Ameli — Traitement des troubles anxieux', url:'https://www.ameli.fr/assure/sante/themes/troubles-anxieux-anxiete/traitement', date:'consulté 07/2026'},{label:'CESPHARM', url:'https://www.cespharm.fr'},{label: "HAS — ALD 23 : troubles anxieux graves", url: "https://www.has-sante.fr/jcms/c_556489/fr/ald-n-23-troubles-anxieux-graves", date: "consulté 07/2026"}]
   },
   {
     id:62, slug:'fatigue-asthenie', nom:'Fatigue / Asthénie', icone:'__SVG__fatigue asthenie.svg__', categorie:'Médecine générale',
@@ -884,7 +884,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Rhodiola + ginseng (cure 4 semaines)', raison:'Adaptogène naturel anti-fatigue documenté'},
       {produit:'Fer bisglycinate (bonne tolérance digestive)', raison:'Si carence ferritinémique confirmée'},
     ],
-    sources:[{label:'HAS', url:'https://www.has-sante.fr'},{label:'Ameli — Fatigue', url:'https://www.ameli.fr/assure/sante/themes/fatigue/comprendre-fatigue'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'Ameli — Fatigue', url:'https://www.ameli.fr/assure/sante/themes/asthenie-fatigue', date:'consulté 07/2026'},{label:'Vidal', url:'https://www.vidal.fr'}]
   },
 
   {
@@ -928,7 +928,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Humidificateur d\'air', raison:'Réduit l\'irritation des voies respiratoires en air sec'},
       {produit:'Sérum physiologique nasal', raison:'Complément si encombrement nasal associé, fréquent chez l\'enfant'},
     ],
-    sources:[{label:'HAS — Toux aiguë', url:'https://www.has-sante.fr'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Toux : diagnostic et traitement", url: "https://www.ameli.fr/assure/sante/themes/toux/diagnostic-traitement", date: "consulté 07/2026"}]
+    sources:[{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Toux : diagnostic et traitement", url: "https://www.ameli.fr/assure/sante/themes/toux/diagnostic-traitement", date: "consulté 07/2026"}]
   },
 ];
 

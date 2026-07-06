@@ -339,3 +339,55 @@ Pas de reco HAS autonome trouvée (laissées sans HAS, à juste titre) :
 - Ameli : 52/52 · HAS : 49/52 · HAS + Ameli : 49/52 · liens HAS morts : 0 · syntaxe OK.
 - Les 3 fiches sans HAS n'ont pas de recommandation HAS autonome existante (limite factuelle,
   pas un oubli).
+
+## Chantier B — Audit des liens HAS morts (28 fiches) — via web_search + web_fetch
+
+Méthode : chaque lien HAS "nu" (menant à l'accueil du site) a été audité par recherche web
+puis vérification de la vraie page. Règle stricte : lien conservé/remplacé UNIQUEMENT si la
+page HAS existe réellement ; sinon suppression (consigne utilisateur).
+
+### 6 fiches → lien HAS précis VÉRIFIÉ posé (remplace le lien accueil)
+- insuffisance-cardiaque : Guide parcours de soins IC (c_1242988, 2014)
+- ulcere-gastrique       : H. pylori guidé (p_3282789) + probabiliste (p_3282793), MàJ 2024
+- anxiete / stress-anxiete : ALD 23 troubles anxieux graves (c_556489, act. 01/2025)
+- bronchite              : Antibiothérapie EABPCO (p_3528903, MàJ 12/2024)
+- fievre-enfant          : Prise en charge fièvre de l'enfant (c_2674284, fiche mémo 2016)
+
+### 21 fiches → lien HAS accueil SUPPRIMÉ (aucune reco HAS en vigueur/pertinente)
+Vérifié sans reco HAS grand public : hypercholesterolemie (reco 2017 ABROGÉE 2018),
+hbp-prostate (reco 2003 en refonte), goutte (réf. SFR/EULAR), hemorrhoides (SNFCP),
+tendinite (seule "épaule douloureuse" 2005, hors sujet), toux, toux-grasse, rgo, sii,
+entorse, spm (CNGOF), grippe, covid (SPF), herpes-labial (SFDermato), mycose-vaginale (CNGOF),
+piqure-moustique, conjonctivite, crampes-musculaires, fatigue-asthenie, constipation,
+gastro-enterite. Ces fiches conservent leurs sources sociétés savantes / Ameli / ANSM / Vidal.
+
+### 2 correctifs Ameli (signalés par l'utilisateur)
+- fatigue-asthenie : lien 404 "fatigue/comprendre-fatigue" → thème correct "asthenie-fatigue" (daté)
+- crampes-musculaires : lien Ameli accueil supprimé
+- conjonctivite : lien Ameli accueil → thème vérifié "/conjonctivite" (daté)
+- stress-anxiete : lien Ameli accueil redondant supprimé (2 liens Ameli datés déjà présents)
+
+### Pièges évités (grâce à la vérification systématique, non à la mémoire)
+1. Dyslipidémie : la reco HAS 2017 que tout le monde cite est ABROGÉE depuis nov. 2018.
+2. HBP : reco HAS 2003 retirée, seulement une note de cadrage 2024 (pas une reco).
+3. Tendinite : la seule reco HAS ("épaule douloureuse", 2005-2006) est trop étroite/ancienne.
+4. Bronchite aiguë : virale, la HAS n'a PAS de fiche dédiée (EABPCO = BPCO, pas bronchite aiguë).
+
+### Contrôle final (automatisé)
+- 0 lien HAS accueil résiduel · 0 lien Ameli accueil résiduel · 0 fiche sans source
+- 33 liens HAS /jcms vérifiés · 50 liens Ameli /themes vérifiés dans les fiches pathologie
+
+## Chantier A — Finalisation des 3 dernières fiches (sources vérifiées)
+
+Les 3 fiches identifiées comme incomplètes après le chantier B sont désormais toutes
+avec une source vérifiée + datée :
+- conjonctivite    : Ameli thème /conjonctivite (déjà réglé au chantier B) + SFO
+- piqure-moustique : article /actualites/ saisonnier REMPLACÉ par le thème pérenne
+                     /themes/piqure-moustique-maladies (vérifié) + ANSM + SPF
+- crampes-musculaires : seule fiche réellement sans source solide (Vidal racine).
+                     Aucun thème Ameli dédié aux crampes (vérifié) → Vidal ciblé et daté.
+                     Lien construit d'abord à tort (crampe.html) puis CORRIGÉ après
+                     vérification vers l'URL réelle (douleurs-musculaires-crampes-courbatures/traitements.html).
+
+Contrôle global final : 0 lien HAS accueil · 0 lien Ameli accueil · 0 fiche sans source.
+Le chantier sources (vagues 1-3 + audit B + finalisation A) est clos.
