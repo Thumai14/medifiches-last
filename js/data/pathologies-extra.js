@@ -424,7 +424,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Bracelet d\'identification médicale', raison:'Identification lors d\'une crise — sécurité'},
       {produit:'Pilulier alarme programmable', raison:'Rappel prise médicament — observance critique'},
     ],
-    sources:[{label:'HAS — Épilepsie', url:'https://www.has-sante.fr/jcms/c_985346/fr/l-epilepsie-chez-l-adulte'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Parcours de soins épilepsie', url:'https://www.has-sante.fr/jcms/p_3444925/fr/guides-du-parcours-de-sante-de-l-adulte-et-de-l-enfant-avec-epilepsie', date:'consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
   },
 
   {
@@ -446,7 +446,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Pilulier alarme programmable', raison:'Prises dopaminergiques à heure fixe — crucial'},
       {produit:'Ustensiles ergonomiques (cuillère lestée)', raison:'Autonomie repas malgré le tremblement'},
     ],
-    sources:[{label:'HAS — Parkinson', url:'https://www.has-sante.fr/jcms/c_1217326/fr/guide-parcours-de-soins-syndrome-parkinsonien'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Parkinson (parcours de soins)', url:'https://www.has-sante.fr/jcms/c_2906074/fr/maladie-de-parkinson-parcours-de-soins', date:'consulté 07/2026'},{label:'Vidal', url:'https://www.vidal.fr'}]
   },
 
   {
@@ -468,7 +468,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Bracelet GPS de géolocalisation', raison:'Sécurité en cas de fugue'},
       {produit:'Journal de mémoire / agenda visuel', raison:'Outil de stimulation cognitive quotidienne'},
     ],
-    sources:[{label:'HAS — Alzheimer', url:'https://www.has-sante.fr/jcms/c_1156812/fr/maladie-d-alzheimer-et-maladies-apparentees'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Alzheimer (parcours de soins)', url:'https://www.has-sante.fr/jcms/p_3058411/fr/maladie-d-alzheimer', date:'consulté 07/2026'},{label:'Vidal', url:'https://www.vidal.fr'}]
   },
 
   // ══════════ UROLOGIE / GYNÉCOLOGIE ══════════
@@ -776,7 +776,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Spray répulsif capillaire (Paranix Protect)', raison:'Prévention en collectivité'},
       {produit:'Shampoing entretien post-traitement', raison:'Nettoyage complet après cure'},
     ],
-    sources:[{label:'HAS — Pédiculose', url:'https://www.has-sante.fr/jcms/c_272169/fr/pediculose-du-cuir-chevelu'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Ameli', url:'https://www.ameli.fr/assure/sante/themes/poux'}]
+    sources:[{label:'VIDAL Reco — Pédiculoses', url:'https://www.vidal.fr/maladies/recommandations/pediculoses-3397.html', date:'consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Ameli', url:'https://www.ameli.fr/assure/sante/themes/poux'}]
   },
   {
     id:56, slug:'conjonctivite', nom:'Conjonctivite', icone:'__SVG__Categorie Opthalmologie et conjonctivite.svg__', categorie:'Ophtalmologie',
@@ -819,7 +819,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Oreiller anti-reflux', raison:'Surélévation nocturne efficace'},
       {produit:'Réglisse DGL (gélules)', raison:'Protection muqueuse naturelle sans glycyrrhizine'},
     ],
-    sources:[{label:'HAS — RGO', url:'https://www.has-sante.fr/jcms/c_1076007/fr/guide-de-pratique-clinique-sur-le-reflux-gastro-oesophagien'},{label:'SNFGE', url:'https://www.snfge.org'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'Ameli — RGO : diagnostic et traitement', url:'https://www.ameli.fr/assure/sante/themes/rgo-adulte/diagnostic-traitements', date:'consulté 07/2026'},{label:'SNFGE', url:'https://www.snfge.org'},{label:'Vidal', url:'https://www.vidal.fr'}]
   },
   {
     id:59, slug:'crampes-musculaires', nom:'Crampes musculaires', icone:'__SVG__bas de contention.svg__', categorie:'Rhumatologie / Neurologie',
@@ -862,7 +862,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'HE Petit grain bigarade (rollerball)', raison:'Gestion immédiate de la crise d\'angoisse'},
       {produit:'Ashwagandha KSM-66 600 mg', raison:'Adaptogène — forte demande actuelle'},
     ],
-    sources:[{label:'HAS — Troubles anxieux', url:'https://www.has-sante.fr/jcms/c_1170221/fr/les-troubles-anxieux'},{label:'Ameli', url:'https://www.ameli.fr'},{label:'CESPHARM', url:'https://www.cespharm.fr'}]
+    sources:[{label:'Ameli — Traitement des troubles anxieux', url:'https://www.ameli.fr/assure/sante/themes/troubles-anxieux-anxiete/traitement', date:'consulté 07/2026'},{label:'Ameli', url:'https://www.ameli.fr'},{label:'CESPHARM', url:'https://www.cespharm.fr'}]
   },
   {
     id:62, slug:'fatigue-asthenie', nom:'Fatigue / Asthénie', icone:'__SVG__fatigue asthenie.svg__', categorie:'Médecine générale',

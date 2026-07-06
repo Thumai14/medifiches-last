@@ -235,3 +235,43 @@
   (`MediFichecommercial1page`, `2pages`) revendiquent encore le n° RPPS sur chaque fiche — texte à
   adapter pour rester honnête (le référent + date MàJ + sources HAS/ANSM portent l'argument
   traçabilité sans le RPPS).
+
+## v2.6 — Sources vérifiées (vague 2) : élimination totale des liens HAS-deep morts
+
+### Constat
+Vérification réelle (web_search sur has-sante.fr) des 14 fiches portant un lien HAS profond
+hérité (`/jcms/c_NNNNNN/`). Résultat : ces vieux identifiants c_ ne remontent plus dans les
+résultats HAS (site réorganisé) → **liens morts / risque 404 confirmé**. Seule exception : HTA,
+dont le bon lien vivant était un autre c_ (c_2059286, pas c_1013626).
+
+### Corrections appliquées (14 fiches, remplacement chirurgical du seul lien HAS mort)
+Lot A (déjà livré début vague 2) : allergie-pollen, rhinite-allergique (→ Santé.fr, plus de reco
+HAS autonome sur la rhinite), asthme (→ Ameli + VIDAL Reco asthme adulte + GINA).
+Lot B (cette session) :
+- brulures-estomac-rgo → Ameli RGO diagnostic/traitement
+- diabete-type-2 → Ameli traitement médicamenteux
+- douleur-arthrose → Ameli traitement de l'arthrose
+- epilepsie → HAS **vivant** p_3444925 (parcours de soins épilepsie)
+- hypertension → HAS **vivant** c_2059286 (HAS/SFHTA, MàJ 10/2016)
+- insomnie → HAS **vivant** c_937775 (HAS/SFTG insomnie MG)
+- alzheimer → HAS **vivant** p_3058411 (parcours de soins)
+- parkinson → HAS **vivant** c_2906074 (parcours de soins)
+- migraine → Ameli migraine consultation/traitement (MàJ 01/2026)
+- poux → VIDAL Reco pédiculoses
+- stress-anxiete → Ameli traitement des troubles anxieux
+
+Toutes les URL proviennent de résultats de recherche réels (jamais de mémoire), datées
+(`consulté 07/2026`, + MàJ quand connue). Les autres sources honnêtes de chaque fiche (ANSM,
+Vidal, société savante) sont conservées telles quelles.
+
+### Bilan chiffré
+- Liens HAS-deep hérités : 14 → **0**.
+- Objets sources datés : 16 → **31**.
+- `node --check` OK sur pathologies.js et pathologies-extra.js.
+
+### Reste à faire (vague 2, suite — non bloquant, non cassé)
+- 26 fiches avec lien HAS « racine » (générique has-sante.fr, fonctionnel mais non spécifique) :
+  à spécifier/dater si on veut le niveau de finition maximal.
+- ~47 renvois VIDAL génériques (homepage) : à remplacer par des VIDAL Recos spécifiques datées
+  là où elles existent (comme fait pour asthme/épilepsie/insomnie/poux).
+- Sociétés savantes racine (SNFGE, CNGOF, SFR…) : vérifier/dater.

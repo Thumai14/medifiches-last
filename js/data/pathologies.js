@@ -23,7 +23,7 @@ const PATHOLOGIES_DB = [
       {produit: "Purificateur d'air HEPA", raison: "Filtration des allergènes à domicile"},
       {produit: "Compléments vitamine C + quercétine", raison: "Effet antihistaminique naturel"},
     ],
-    sources: [{label: "HAS — Rhinite allergique", url: "https://www.has-sante.fr/jcms/c_272212/fr/rhinite-allergique"},{label: "ANSM", url: "https://ansm.sante.fr"},{label: "Vidal", url: "https://www.vidal.fr"}]
+    sources: [{label: "Santé.fr — Rhinite allergique", url: "https://www.sante.fr/rhinite-allergique-rhume-des-foins", date: "MàJ 08/2025 · consulté 07/2026"},{label: "ANSM", url: "https://ansm.sante.fr"},{label: "Vidal", url: "https://www.vidal.fr"}]
   },
   {
     id: 7, slug: "asthme", nom: "Asthme",
@@ -45,7 +45,7 @@ const PATHOLOGIES_DB = [
       {produit: "Housse anti-acariens matelas + oreiller", raison: "Réduction des allergènes déclencheurs"},
       {produit: "Compléments vitamine D + magnésium", raison: "Déficits fréquents dans l'asthme"},
     ],
-    sources: [{label: "HAS — Asthme", url: "https://www.has-sante.fr/jcms/c_1005214/fr/asthme"},{label: "GINA Guidelines 2024", url: "https://ginasthma.org"},{label: "Vidal", url: "https://www.vidal.fr"}]
+    sources: [{label: "Ameli — Prise en charge de l'asthme", url: "https://www.ameli.fr/assure/sante/themes/asthme-adulte/asthme-traitement/la-prise-en-charge-de-l-asthme", date: "consulté 07/2026"},{label: "VIDAL Reco — Asthme de l'adulte", url: "https://www.vidal.fr/maladies/recommandations/asthme-de-l-adulte-1457.html", date: "MàJ 05/2024 · consulté 07/2026"},{label: "GINA Guidelines 2024", url: "https://ginasthma.org"}]
   },
   {
     id: 9, slug: "constipation", nom: "Constipation",
@@ -89,7 +89,7 @@ const PATHOLOGIES_DB = [
       {produit: "Semelles orthopédiques diabétiques", raison: "Protection et confort plantaire"},
       {produit: "Pilulier semainier", raison: "Améliore l'observance du traitement"},
     ],
-    sources: [{label: "HAS — Diabète type 2", url: "https://www.has-sante.fr/jcms/c_1742423/fr/strategie-medicamenteuse-du-controle-glycemique-du-diabete-de-type-2"},{label: "SFD", url: "https://www.sfdiabete.org"},{label: "Vidal", url: "https://www.vidal.fr"}]
+    sources: [{label: "Ameli — Diabète type 2 : traitement médicamenteux", url: "https://www.ameli.fr/assure/sante/themes/diabete-adulte/diabete-traitement/traitements-medicamenteux", date: "consulté 07/2026"},{label: "SFD", url: "https://www.sfdiabete.org"},{label: "Vidal", url: "https://www.vidal.fr"}]
   },
   {
     id: 11, slug: "douleur-arthrose", nom: "Douleur arthrosique",
@@ -111,7 +111,7 @@ const PATHOLOGIES_DB = [
       {produit: "Compléments curcuma + pipérine", raison: "Anti-inflammatoire naturel bien toléré"},
       {produit: "Huile de CBD topique", raison: "Soulagement articulaire naturel — forte demande"},
     ],
-    sources: [{label: "HAS — Arthrose", url: "https://www.has-sante.fr/jcms/c_765816/fr/arthrose"},{label: "SFR", url: "https://www.larhumato.fr"},{label: "Vidal", url: "https://www.vidal.fr"}]
+    sources: [{label: "Ameli — Traitement de l'arthrose", url: "https://www.ameli.fr/assure/sante/themes/arthrose-genou/traitement-medical-chirurgical", date: "consulté 07/2026"},{label: "SFR", url: "https://www.larhumato.fr"},{label: "Vidal", url: "https://www.vidal.fr"}]
   },
   {
     id: 5, slug: "gastro-enterite", nom: "Gastro-entérite aiguë",
@@ -155,7 +155,7 @@ const PATHOLOGIES_DB = [
       {produit: "Compléments magnésium + potassium", raison: "Soutien naturel de la tension"},
       {produit: "Pilulier semainier", raison: "Améliore l'observance du traitement chronique"},
     ],
-    sources: [{label: "HAS — HTA adulte", url: "https://www.has-sante.fr/jcms/c_1013626/fr/prise-en-charge-de-l-hypertension-arterielle-de-l-adulte"},{label: "ESC/ESH Guidelines 2023", url: "https://www.escardio.org"},{label: "Vidal", url: "https://www.vidal.fr"}]
+    sources: [{label: "HAS/SFHTA — Prise en charge de l'HTA de l'adulte", url: "https://www.has-sante.fr/jcms/c_2059286/fr/prise-en-charge-de-l-hypertension-arterielle-de-l-adulte", date: "MàJ 10/2016 · consulté 07/2026"},{label: "ESC/ESH Guidelines 2023", url: "https://www.escardio.org"},{label: "Vidal", url: "https://www.vidal.fr"}]
   },
   {
     id: 8, slug: "insomnie", nom: "Insomnie",
@@ -177,7 +177,7 @@ const PATHOLOGIES_DB = [
       {produit: "Huile essentielle lavande vraie", raison: "Effet anxiolytique et sédatif léger"},
       {produit: "Magnésium bisglycinate (soir)", raison: "Détente musculaire et nerveuse"},
     ],
-    sources: [{label: "HAS — Insomnie adulte", url: "https://www.has-sante.fr/jcms/c_1629888/fr/trouble-du-sommeil-de-l-adulte"},{label: "Vidal", url: "https://www.vidal.fr"}]
+    sources: [{label: "HAS/SFTG — Insomnie en médecine générale", url: "https://www.has-sante.fr/jcms/c_937775/fr/plaintes-du-sommeil-insomnie", date: "consulté 07/2026"},{label: "Vidal", url: "https://www.vidal.fr"}]
   },
   {
     id: 12, slug: "migraine", nom: "Migraine",
@@ -199,7 +199,7 @@ const PATHOLOGIES_DB = [
       {produit: "Compléments magnésium 400mg/jour", raison: "Prophylaxie — efficacité clinique prouvée"},
       {produit: "HE menthe poivrée", raison: "Alternative non médicamenteuse — tempes"},
     ],
-    sources: [{label: "HAS — Migraine", url: "https://www.has-sante.fr/jcms/c_1205816/fr/prise-en-charge-diagnostique-et-therapeutique-de-la-migraine"},{label: "SFEMC", url: "https://www.sf-neuro.org"},{label: "Vidal", url: "https://www.vidal.fr"}]
+    sources: [{label: "Ameli — Migraine : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/migraine/diagnostic-traitement", date: "MàJ 01/2026 · consulté 07/2026"},{label: "SFEMC", url: "https://www.sf-neuro.org"},{label: "Vidal", url: "https://www.vidal.fr"}]
   },
   {
     id: 2, slug: "rhinite-allergique", nom: "Rhinite allergique",
@@ -220,7 +220,7 @@ const PATHOLOGIES_DB = [
       {produit: "Humidificateur d'air", raison: "Muqueuses nasales moins irritées"},
       {produit: "Probiotiques (Lactobacillus rhamnosus)", raison: "Modulation de la réponse allergique"},
     ],
-    sources: [{label: "HAS — Rhinite allergique", url: "https://www.has-sante.fr/jcms/c_272212/fr/rhinite-allergique"},{label: "ANSM", url: "https://ansm.sante.fr"},{label: "Vidal", url: "https://www.vidal.fr"}]
+    sources: [{label: "Santé.fr — Rhinite allergique", url: "https://www.sante.fr/rhinite-allergique-rhume-des-foins", date: "MàJ 08/2025 · consulté 07/2026"},{label: "ANSM", url: "https://ansm.sante.fr"},{label: "Vidal", url: "https://www.vidal.fr"}]
   },
 ];
 
