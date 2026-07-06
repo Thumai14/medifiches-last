@@ -275,3 +275,20 @@ Vidal, société savante) sont conservées telles quelles.
 - ~47 renvois VIDAL génériques (homepage) : à remplacer par des VIDAL Recos spécifiques datées
   là où elles existent (comme fait pour asthme/épilepsie/insomnie/poux).
 - Sociétés savantes racine (SNFGE, CNGOF, SFR…) : vérifier/dater.
+
+## v2.7 — Ajout de liens Ameli vérifiés (lot 1/n)
+Objectif : un lien Ameli spécifique + daté sur chaque fiche (source complémentaire stable pour
+le comptoir). Méthode : recherche réelle par thème → URL Ameli exacte (jamais de mémoire).
+Note technique : les pages-index /themes/{lettre} d'Ameli ne renvoient que leur titre au fetch
+(rendu client) et les fetches directs sont bloqués (anti-bot) → seule la recherche par thème
+fonctionne, d'où un traitement par lots (~1 recherche/fiche).
+
+Lot 1 (10 fiches) : epilepsie, hypertension, parkinson, alzheimer, rgo, anxiete, grippe, covid,
+cystite, gastro-enterite. → 20/52 fiches ont maintenant un lien Ameli daté.
+
+Restent 32 fiches à enrichir (lots suivants) : allergie-pollen, angine, angine-streptococcique,
+bpco, bronchiolite, bronchite, constipation, depression, endometriose, entorse, fievre-enfant,
+goutte, hbp-prostate, hemorrhoides, herpes-labial, hypercholesterolemie, insomnie,
+insuffisance-cardiaque, lombalgie, mal-de-gorge, mycose-vaginale, osteoporose, otite,
+piqure-moustique, rhinite-allergique, sii, sinusite, spm, tendinite, toux, toux-grasse,
+ulcere-gastrique.

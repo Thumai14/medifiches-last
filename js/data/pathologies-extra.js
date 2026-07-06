@@ -26,7 +26,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Propolis spray buccal', raison:'Antibactérien naturel voies respiratoires'},
       {produit:'Sirop miel-thym', raison:'Antitussif naturel bien toléré'},
     ],
-    sources:[{label:'HAS — Bronchite aiguë', url:'https://www.has-sante.fr'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Bronchite aiguë', url:'https://www.has-sante.fr'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Bronchite : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/bronchite/consultation-traitement-medical", date: "consulté 07/2026"}]
   },
 
   {
@@ -70,7 +70,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Pastilles adoucissantes (miel-propolis)', raison:'Soulagement local gorge et toux'},
       {produit:'Humidificateur d\'air', raison:'Muqueuses respiratoires moins irritées'},
     ],
-    sources:[{label:'HAS — Toux aiguë', url:'https://www.has-sante.fr'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Toux aiguë', url:'https://www.has-sante.fr'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Toux : diagnostic et traitement", url: "https://www.ameli.fr/assure/sante/themes/toux/diagnostic-traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -92,7 +92,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Inhalateur vapeur', raison:'Inhalations décongestionantes à domicile'},
       {produit:'Sinupret® (phytothérapie)', raison:'Décongestionnant sinusien naturel prouvé'},
     ],
-    sources:[{label:'HAS — Antibiothérapie : sinusite de l\'adulte', url:'https://www.has-sante.fr/jcms/c_2722806/fr/choix-et-durees-d-antibiotherapies-sinusite-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'HAS — Sinusites de l\'enfant', url:'https://www.has-sante.fr/jcms/c_2722824/fr/choix-et-durees-d-antibiotherapies-sinusites-de-l-enfant', date:'MàJ 05/2025 · consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Antibiothérapie : sinusite de l\'adulte', url:'https://www.has-sante.fr/jcms/c_2722806/fr/choix-et-durees-d-antibiotherapies-sinusite-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'HAS — Sinusites de l\'enfant', url:'https://www.has-sante.fr/jcms/c_2722824/fr/choix-et-durees-d-antibiotherapies-sinusites-de-l-enfant', date:'MàJ 05/2025 · consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Sinusite : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/sinusite/consultation-traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -114,7 +114,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Pastilles antiseptiques (Lysopaïne®)', raison:'Antisepsie locale et antalgie de la gorge'},
       {produit:'Spray propolis', raison:'Antibactérien naturel local'},
     ],
-    sources:[{label:'HAS — Antibiothérapie : angine aiguë de l\'adulte', url:'https://www.has-sante.fr/jcms/p_3529230/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'HAS — Angine aiguë de l\'enfant', url:'https://www.has-sante.fr/jcms/p_3529229/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-enfant', date:'MàJ 05/2025 · consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Antibiothérapie : angine aiguë de l\'adulte', url:'https://www.has-sante.fr/jcms/p_3529230/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'HAS — Angine aiguë de l\'enfant', url:'https://www.has-sante.fr/jcms/p_3529229/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-enfant', date:'MàJ 05/2025 · consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Traitement de l'angine", url: "https://www.ameli.fr/assure/sante/themes/angine/traitement", date: "consulté 07/2026"}]
   },
 
   // ══════════ CARDIOVASCULAIRE / MÉTABOLIQUE ══════════
@@ -204,7 +204,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Surélévateur de tête de lit', raison:'Indispensable pour le RGO nocturne'},
       {produit:'Tisane camomille-réglisse', raison:'Adoucissant digestif naturel'},
     ],
-    sources:[{label:'HAS — RGO', url:'https://www.has-sante.fr'},{label:'SNFGE', url:'https://www.snfge.org'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — RGO', url:'https://www.has-sante.fr'},{label:'SNFGE', url:'https://www.snfge.org'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — RGO : diagnostic et traitement", url: "https://www.ameli.fr/assure/sante/themes/rgo-adulte/diagnostic-traitements", date: "consulté 07/2026"}]
   },
 
   {
@@ -247,7 +247,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Psyllium blond', raison:'Régularise le transit — moins d\'efforts de poussée'},
       {produit:'Coussin hémorroïdaire', raison:'Soulagement de la pression assise'},
     ],
-    sources:[{label:'HAS — Hémorroïdes', url:'https://www.has-sante.fr'},{label:'SNFGE', url:'https://www.snfge.org'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Hémorroïdes', url:'https://www.has-sante.fr'},{label:'SNFGE', url:'https://www.snfge.org'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Hémorroïdes : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/hemorroides/traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -269,7 +269,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Probiotiques SII spécifiques (Lactibiane®)', raison:'Réduction douleurs et ballonnements'},
       {produit:'Journal alimentaire', raison:'Identifier les aliments déclencheurs (FODMAPs)'},
     ],
-    sources:[{label:'HAS — SII', url:'https://www.has-sante.fr'},{label:'SNFGE', url:'https://www.snfge.org'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — SII', url:'https://www.has-sante.fr'},{label:'SNFGE', url:'https://www.snfge.org'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — SII : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/syndrome-intestin-irritable/consultation-medicale-traitement", date: "consulté 07/2026"}]
   },
 
   // ══════════ DOULEUR / RHUMATOLOGIE ══════════
@@ -403,7 +403,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Passiflore + valériane (Euphytose®)', raison:'Phytothérapie anxiolytique — sans dépendance'},
       {produit:'Application cohérence cardiaque', raison:'Outil de gestion du stress prêt à l\'emploi'},
     ],
-    sources:[{label:'HAS — Troubles anxieux', url:'https://www.has-sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Troubles anxieux', url:'https://www.has-sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Traitement des troubles anxieux", url: "https://www.ameli.fr/assure/sante/themes/troubles-anxieux-anxiete/traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -424,7 +424,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Bracelet d\'identification médicale', raison:'Identification lors d\'une crise — sécurité'},
       {produit:'Pilulier alarme programmable', raison:'Rappel prise médicament — observance critique'},
     ],
-    sources:[{label:'HAS — Parcours de soins épilepsie', url:'https://www.has-sante.fr/jcms/p_3444925/fr/guides-du-parcours-de-sante-de-l-adulte-et-de-l-enfant-avec-epilepsie', date:'consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Parcours de soins épilepsie', url:'https://www.has-sante.fr/jcms/p_3444925/fr/guides-du-parcours-de-sante-de-l-adulte-et-de-l-enfant-avec-epilepsie', date:'consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Traitement de l'épilepsie", url: "https://www.ameli.fr/assure/sante/themes/epilepsie/traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -446,7 +446,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Pilulier alarme programmable', raison:'Prises dopaminergiques à heure fixe — crucial'},
       {produit:'Ustensiles ergonomiques (cuillère lestée)', raison:'Autonomie repas malgré le tremblement'},
     ],
-    sources:[{label:'HAS — Parkinson (parcours de soins)', url:'https://www.has-sante.fr/jcms/c_2906074/fr/maladie-de-parkinson-parcours-de-soins', date:'consulté 07/2026'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Parkinson (parcours de soins)', url:'https://www.has-sante.fr/jcms/c_2906074/fr/maladie-de-parkinson-parcours-de-soins', date:'consulté 07/2026'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Traitement de la maladie de Parkinson", url: "https://www.ameli.fr/assure/sante/themes/maladie-parkinson/traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -468,7 +468,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Bracelet GPS de géolocalisation', raison:'Sécurité en cas de fugue'},
       {produit:'Journal de mémoire / agenda visuel', raison:'Outil de stimulation cognitive quotidienne'},
     ],
-    sources:[{label:'HAS — Alzheimer (parcours de soins)', url:'https://www.has-sante.fr/jcms/p_3058411/fr/maladie-d-alzheimer', date:'consulté 07/2026'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Alzheimer (parcours de soins)', url:'https://www.has-sante.fr/jcms/p_3058411/fr/maladie-d-alzheimer', date:'consulté 07/2026'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Alzheimer : symptômes et diagnostic", url: "https://www.ameli.fr/assure/sante/themes/maladie-alzheimer/symptomes-diagnostic", date: "consulté 07/2026"}]
   },
 
   // ══════════ UROLOGIE / GYNÉCOLOGIE ══════════
@@ -491,7 +491,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'D-mannose 2g (Manucran®)', raison:'Alternative naturelle E. coli — efficacité prouvée'},
       {produit:'Canneberge PAC 36mg (Cys-Control®)', raison:'Prévention des récidives — cure de 3 mois'},
     ],
-    sources:[{label:'HAS — Antibiothérapie : cystite aiguë simple de la femme', url:'https://www.has-sante.fr/jcms/c_2722827/fr/choix-et-durees-d-antibiotherapies-cystite-aigue-simple-a-risque-de-complication-ou-recidivante-de-la-femme', date:'MàJ 05/2025 · consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Antibiothérapie : cystite aiguë simple de la femme', url:'https://www.has-sante.fr/jcms/c_2722827/fr/choix-et-durees-d-antibiotherapies-cystite-aigue-simple-a-risque-de-complication-ou-recidivante-de-la-femme', date:'MàJ 05/2025 · consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Cystite : diagnostic et traitement", url: "https://www.ameli.fr/assure/sante/themes/cystite/diagnostic-traitement-evolution", date: "consulté 07/2026"}]
   },
 
   {
@@ -600,7 +600,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Paracétamol en suspension buvable adapté au poids', raison:'Antalgie de 1ère intention'},
       {produit:'Sérum physiologique nourrisson', raison:'DRP — désobstruction rhinopharyngée'},
     ],
-    sources:[{label:'HAS — Otite moyenne aiguë purulente de l\'enfant', url:'https://www.has-sante.fr/jcms/c_2722749/fr/choix-et-durees-d-antibiotherapies-otite-moyenne-aigue-purulente-de-l-enfant', date:'MàJ 05/2025 · consulté 07/2026'},{label:'HAS — Otite moyenne aiguë purulente de l\'adulte', url:'https://www.has-sante.fr/jcms/c_2722670/fr/choix-et-durees-d-antibiotherapies-otite-moyenne-aigue-purulente-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'SFP', url:'https://www.sfpediatrie.com'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Otite moyenne aiguë purulente de l\'enfant', url:'https://www.has-sante.fr/jcms/c_2722749/fr/choix-et-durees-d-antibiotherapies-otite-moyenne-aigue-purulente-de-l-enfant', date:'MàJ 05/2025 · consulté 07/2026'},{label:'HAS — Otite moyenne aiguë purulente de l\'adulte', url:'https://www.has-sante.fr/jcms/c_2722670/fr/choix-et-durees-d-antibiotherapies-otite-moyenne-aigue-purulente-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'SFP', url:'https://www.sfpediatrie.com'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Otite : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/otite-moyenne-aigue/consultation-traitement-evolution", date: "consulté 07/2026"}]
   },
 
   {
@@ -644,7 +644,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Masques chirurgicaux', raison:'Protection de l\'entourage fragile'},
       {produit:'Humidificateur d\'air', raison:'Confort respiratoire et hydratation des muqueuses'},
     ],
-    sources:[{label:'HAS — Grippe', url:'https://www.has-sante.fr'},{label:'Santé Publique France', url:'https://www.santepubliquefrance.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Grippe', url:'https://www.has-sante.fr'},{label:'Santé Publique France', url:'https://www.santepubliquefrance.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Traitement de la grippe", url: "https://www.ameli.fr/assure/sante/themes/grippe/traitement-grippe", date: "consulté 07/2026"}]
   },
 
   {
@@ -666,7 +666,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Tests antigéniques COVID (autotests)', raison:'Diagnostic rapide à domicile'},
       {produit:'Masques FFP2', raison:'Protection renforcée si isolement impossible'},
     ],
-    sources:[{label:'HAS — COVID-19', url:'https://www.has-sante.fr'},{label:'Santé Publique France', url:'https://www.santepubliquefrance.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — COVID-19', url:'https://www.has-sante.fr'},{label:'Santé Publique France', url:'https://www.santepubliquefrance.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Covid-19 : symptômes et recommandations", url: "https://www.ameli.fr/assure/sante/themes/covid-19/symptomes-gestes-barrieres-et-recommandations", date: "consulté 07/2026"}]
   },
 
   {
@@ -688,7 +688,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Stick lèvres SPF 50+', raison:'Prévention déclenchement par UV'},
       {produit:'L-lysine 500mg', raison:'Prévention des récidives — cure de 6 mois'},
     ],
-    sources:[{label:'HAS — Herpès', url:'https://www.has-sante.fr'},{label:'SFD', url:'https://www.sfdermato.org'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Herpès', url:'https://www.has-sante.fr'},{label:'SFD', url:'https://www.sfdermato.org'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Herpès labial : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/herpes-labial/consultation-traitement-evolution", date: "consulté 07/2026"}]
   },
 
   {
@@ -731,7 +731,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Streptatest® (TDR)', raison:'Diagnostic rapide avant antibiotique — 5 min'},
       {produit:'Pastilles antiseptiques', raison:'Confort local adjuvant'},
     ],
-    sources:[{label:'HAS — Antibiothérapie : angine aiguë de l\'adulte', url:'https://www.has-sante.fr/jcms/p_3529230/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'HAS — Angine aiguë de l\'enfant', url:'https://www.has-sante.fr/jcms/p_3529229/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-enfant', date:'MàJ 05/2025 · consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Antibiothérapie : angine aiguë de l\'adulte', url:'https://www.has-sante.fr/jcms/p_3529230/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'HAS — Angine aiguë de l\'enfant', url:'https://www.has-sante.fr/jcms/p_3529229/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-enfant', date:'MàJ 05/2025 · consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Angine : traitement", url: "https://www.ameli.fr/assure/sante/themes/angine/traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -906,7 +906,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Spray buccal antiseptique', raison:'Action locale ciblée, complément aux pastilles'},
       {produit:'Tisane gorge (thym-miel-citron)', raison:'Hydratation et adoucissement associés'},
     ],
-    sources:[{label:'HAS — Antibiothérapie : angine aiguë de l\'adulte', url:'https://www.has-sante.fr/jcms/p_3529230/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Antibiothérapie : angine aiguë de l\'adulte', url:'https://www.has-sante.fr/jcms/p_3529230/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Mal de gorge : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/mal-gorge/consultation-traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -928,7 +928,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Humidificateur d\'air', raison:'Réduit l\'irritation des voies respiratoires en air sec'},
       {produit:'Sérum physiologique nasal', raison:'Complément si encombrement nasal associé, fréquent chez l\'enfant'},
     ],
-    sources:[{label:'HAS — Toux aiguë', url:'https://www.has-sante.fr'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'}]
+    sources:[{label:'HAS — Toux aiguë', url:'https://www.has-sante.fr'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Vidal', url:'https://www.vidal.fr'},{label: "Ameli — Toux : diagnostic et traitement", url: "https://www.ameli.fr/assure/sante/themes/toux/diagnostic-traitement", date: "consulté 07/2026"}]
   },
 ];
 
