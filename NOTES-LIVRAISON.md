@@ -340,15 +340,108 @@ Pas de reco HAS autonome trouvée (laissées sans HAS, à juste titre) :
 - Les 3 fiches sans HAS n'ont pas de recommandation HAS autonome existante (limite factuelle,
   pas un oubli).
 
-## v2.14 — Docs à jour + enrichissement fiche CNO
-- README.md et SETUP.md alignés sur l'état réel (split js/customizer/, 52 fiches, section
-  « Sources fiches pathologie », état d'avancement corrigé).
-- Fiche dispositif CNO (m17) enrichie depuis le mémo LPP officiel Ameli + arrêté 25/04/2025 :
-  · conseils : CNO après échec de l'enrichissement alimentaire ; objectif +400 kcal et/ou +30 g
-    protéines/j (≈ 2 unités/j).
-  · remboursement.note : prescripteurs = médecin ET infirmier en pratique avancée (IPA, depuis
-    l'arrêté du 25 avril 2025) ; renouvellement 3 mois après réévaluation ; mentions d'ordonnance.
-  · sources : + mémo LPP Ameli CNO, + arrêté Légifrance du 25/04/2025.
-- ⚠️ Enrichissement fondé sur sources publiques officielles (le PDF CNO de l'utilisateur n'était
-  pas fourni dans la session). Les autres fiches dispositif restent à enrichir à partir de leurs
-  PDF respectifs.
+## Chantier B — Audit des liens HAS morts (28 fiches) — via web_search + web_fetch
+
+Méthode : chaque lien HAS "nu" (menant à l'accueil du site) a été audité par recherche web
+puis vérification de la vraie page. Règle stricte : lien conservé/remplacé UNIQUEMENT si la
+page HAS existe réellement ; sinon suppression (consigne utilisateur).
+
+### 6 fiches → lien HAS précis VÉRIFIÉ posé (remplace le lien accueil)
+- insuffisance-cardiaque : Guide parcours de soins IC (c_1242988, 2014)
+- ulcere-gastrique       : H. pylori guidé (p_3282789) + probabiliste (p_3282793), MàJ 2024
+- anxiete / stress-anxiete : ALD 23 troubles anxieux graves (c_556489, act. 01/2025)
+- bronchite              : Antibiothérapie EABPCO (p_3528903, MàJ 12/2024)
+- fievre-enfant          : Prise en charge fièvre de l'enfant (c_2674284, fiche mémo 2016)
+
+### 21 fiches → lien HAS accueil SUPPRIMÉ (aucune reco HAS en vigueur/pertinente)
+Vérifié sans reco HAS grand public : hypercholesterolemie (reco 2017 ABROGÉE 2018),
+hbp-prostate (reco 2003 en refonte), goutte (réf. SFR/EULAR), hemorrhoides (SNFCP),
+tendinite (seule "épaule douloureuse" 2005, hors sujet), toux, toux-grasse, rgo, sii,
+entorse, spm (CNGOF), grippe, covid (SPF), herpes-labial (SFDermato), mycose-vaginale (CNGOF),
+piqure-moustique, conjonctivite, crampes-musculaires, fatigue-asthenie, constipation,
+gastro-enterite. Ces fiches conservent leurs sources sociétés savantes / Ameli / ANSM / Vidal.
+
+### 2 correctifs Ameli (signalés par l'utilisateur)
+- fatigue-asthenie : lien 404 "fatigue/comprendre-fatigue" → thème correct "asthenie-fatigue" (daté)
+- crampes-musculaires : lien Ameli accueil supprimé
+- conjonctivite : lien Ameli accueil → thème vérifié "/conjonctivite" (daté)
+- stress-anxiete : lien Ameli accueil redondant supprimé (2 liens Ameli datés déjà présents)
+
+### Pièges évités (grâce à la vérification systématique, non à la mémoire)
+1. Dyslipidémie : la reco HAS 2017 que tout le monde cite est ABROGÉE depuis nov. 2018.
+2. HBP : reco HAS 2003 retirée, seulement une note de cadrage 2024 (pas une reco).
+3. Tendinite : la seule reco HAS ("épaule douloureuse", 2005-2006) est trop étroite/ancienne.
+4. Bronchite aiguë : virale, la HAS n'a PAS de fiche dédiée (EABPCO = BPCO, pas bronchite aiguë).
+
+### Contrôle final (automatisé)
+- 0 lien HAS accueil résiduel · 0 lien Ameli accueil résiduel · 0 fiche sans source
+- 33 liens HAS /jcms vérifiés · 50 liens Ameli /themes vérifiés dans les fiches pathologie
+
+## Chantier A — Finalisation des 3 dernières fiches (sources vérifiées)
+
+Les 3 fiches identifiées comme incomplètes après le chantier B sont désormais toutes
+avec une source vérifiée + datée :
+- conjonctivite    : Ameli thème /conjonctivite (déjà réglé au chantier B) + SFO
+- piqure-moustique : article /actualites/ saisonnier REMPLACÉ par le thème pérenne
+                     /themes/piqure-moustique-maladies (vérifié) + ANSM + SPF
+- crampes-musculaires : seule fiche réellement sans source solide (Vidal racine).
+                     Aucun thème Ameli dédié aux crampes (vérifié) → Vidal ciblé et daté.
+                     Lien construit d'abord à tort (crampe.html) puis CORRIGÉ après
+                     vérification vers l'URL réelle (douleurs-musculaires-crampes-courbatures/traitements.html).
+
+Contrôle global final : 0 lien HAS accueil · 0 lien Ameli accueil · 0 fiche sans source.
+Le chantier sources (vagues 1-3 + audit B + finalisation A) est clos.
+
+## v2.16 — Sources Module Dispositif (MAD) + Migration complète Dermatologie
+
+### Module Dispositif (MAD) — 32 fiches
+Audit avec le bon format (guillemets doubles, `{label, url}`) :
+- 10 fiches déjà ✅ (tensiomètre, fauteuil roulant, aérosol, peak-flow, etc.) → non touchées
+- 14 × HAS racines supprimées (aucune reco HAS grand public pour les aides à la marche /
+  matériel de positionnement / lit médical) : oxymètre, lit médicalisé, siège de bain,
+  cannes, déambulateurs ×4, béquilles, attelle-poignet, table de lit, potence de lit,
+  fauteuils ×3
+- 1 × HAS racine remplacée par lien précis Ameli vérifié : semelles-orthopediques
+  → ameli.fr/assure/remboursements/...semelles-orthopediques-orthese-plantaire...
+- Rendu UI (mad.js) : champ `date` désormais affiché à côté des liens sources.
+- Note Réviseur : les sources MAD existantes (antérieures à l'intro du champ `date`)
+  n'ont pas toutes été rétro-datées — travail optionnel en vague suivante.
+- Résultat : 0 HAS racine · 0 Ameli racine · 32/32 fiches avec sources
+
+### Module Dermatologie — 22 fiches
+Migration complète de format : `['texte string', ...]` → `[{label, url, date}, ...]`
++ rendu UI (dermato.js) adapté (liens cliquables, dates, rétro-compat string pour l'ancien format).
+Sources posées :
+- SFDermato (sfdermato.org/page/...) : référence française officielle pour les 22 pathologies
+- Ameli (/assure/sante/themes/...) : pour les pathologies disposant d'un thème dédié
+Corrections de format appliquées lors de la migration (double-virgule vergetures, virgule manquante après alertes).
+- Résultat : 0 HAS racine · 0 Ameli racine · 22/22 fiches avec sources {label, url, date}
+- Note : les URLs SFDermato (/page/N/slug) n'ont PAS été fetch-vérifiées (site ne répond
+  pas systématiquement aux fetch programmatiques). À tester manuellement sur quelques fiches
+  clés avant démo.
+
+## v2.17 — Landing racine + Lazy Formation (confirmé) + Vidal purge
+
+### Chantier 2 — Landing page à la racine du domaine
+- `accueil.html` (landing) → devient `index.html` (servi à `/` par Cloudflare Pages)
+- `index.html` (app) → devient `app.html` (servi à `/app.html` et `/app`)
+- `_redirects` : ajout de la règle `/app → /app.html 200`
+- 14 références `index.html` patchées → `app.html` dans : auth.js, login.html,
+  register.html, reset-password.html, admin.html, pricing.html
+- `index.html` (landing) : liens absolus + script de détection de session Supabase
+  (si déjà connecté → bouton "Accéder à l'app →" apparaît dans la nav)
+- Aucune modification de l'app ou de l'auth au-delà des redirections.
+
+### Chantier 3 — Lazy-load Formation (DÉJÀ IMPLÉMENTÉ, confirmé)
+- `formation-niveaux.js` (≈1 Mo) est chargé à la demande par `FORMATION._ensureNiveaux()`
+  à l'ouverture de l'onglet Formation — non bloquant, mémoïsé.
+- La ligne `<script src="...formation-niveaux.js">` est commentée dans app.html.
+- La liste Formation s'affiche immédiatement (sans attendre le 1 Mo).
+- README corrigé : item coché comme fait.
+
+### Chantier 5 — Vidal racines (46 → 0)
+- 46 entrées `url: "https://www.vidal.fr"` (accueil Vidal, aucune valeur documentaire)
+  supprimées dans pathologies.js (9) et pathologies-extra.js (37).
+- Toutes les fiches concernées avaient ≥1 source vérifiée (HAS/jcms ou Ameli/thème) —
+  zéro fiche laissée sans source après purge.
+- Contrôle : 0 racine résiduelle · 0 tableau vide · 0 virgule orpheline.

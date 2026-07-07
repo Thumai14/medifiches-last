@@ -592,7 +592,16 @@ const DERMATO = {
           </div>
         </div>
         ${alerteHTML}
-        ${d.sources?.length ? `<div class="dv-sources">📚 Sources : ${d.sources.join(' · ')}</div>` : ''}
+        ${d.sources?.length ? `
+        <div class="fiche-sources">
+          <span class="fiche-sources__label">📚 Sources</span>
+          <div class="fiche-sources__links">
+            ${d.sources.map((s, i) => typeof s === 'string'
+              ? `<span class="fiche-sources__link fiche-sources__link--text">${s}</span>${i < d.sources.length - 1 ? '<span class="fiche-sources__sep">·</span>' : ''}`
+              : `<a href="${s.url}" target="_blank" rel="noopener" class="fiche-sources__link">${s.label}</a>${s.date ? `<span class="fiche-sources__date">${s.date}</span>` : ''}${i < d.sources.length - 1 ? '<span class="fiche-sources__sep">·</span>' : ''}`
+            ).join('')}
+          </div>
+        </div>` : ''}
       </div>`;
   },
 

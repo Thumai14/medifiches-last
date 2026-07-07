@@ -214,7 +214,7 @@ const Auth = (() => {
     // Rediriger vers l'app principale (pas un simple reload sur place) : c'est dans index.html
     // que MF.Store.syncFromCloud() est appelé au chargement, pour recharger les données de
     // l'utilisateur cible depuis Supabase. Rester sur admin.html ne déclenchait jamais ce rechargement.
-    window.location.href = '/index.html';
+    window.location.href = '/app';
     return { success: true };
   }
 

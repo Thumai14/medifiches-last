@@ -6,10 +6,9 @@
 medifiche/
 ├── index.html                      ← Point d'entrée principal
 ├── REFACTORING.md                  ← Journal des décisions d'architecture (v2)
-├── SETUP.md                        ← Guide de déploiement pas-à-pas
-├── NOTES-LIVRAISON.md              ← Journal des livraisons (chantiers v2.4 → v2.13)
-├── medifiche-architecture.md       ← Vue d'ensemble de l'architecture
-├── _routes.json                    ← Routes des fonctions edge
+├── wrangler.toml / functions/      ← Fonctions edge Cloudflare (Stripe, etc.)
+├── _routes.json                    ← Cloudflare Pages : routage des fonctions edge
+├── functions/                      ← Fonctions edge Cloudflare (webhook Stripe, API)
 ├── _headers                        ← Headers HTTP (CSP, cache)
 ├── css/
 │   ├── app.css                     ← Design system + tous les styles
@@ -28,8 +27,8 @@ medifiche/
 │   │   ├── search.service.js       ← Scoring et fusion recherche cross-module
 │   │   └── analytics.service.js    ← Statistiques d'usage (write-only, table analytics_events)
 │   ├── data/                       ← Données statiques immuables
-│   │   ├── pathologies.js          ← Base pathologies (52 fiches avec l'extension) + MediFicheAPI + sources {label,url,date} par fiche
-│   │   ├── pathologies-extra.js    ← Extension pathologies (même format sources datées)
+│   │   ├── pathologies.js          ← Base pathologies (52 fiches : 10 + 42 extra) + MediFicheAPI
+│   │   ├── pathologies-extra.js    ← Extension pathologies
 │   │   ├── materiel.js             ← Matériel médical (MAD) + MaterielAPI + sources {label,url} par fiche
 │   │   ├── dermato.js              ← Dermatologie DB + DermatoAPI
 │   │   ├── derm-brands.js          ← Catalogue parapharmacie · 22 laboratoires ✦ v2
@@ -39,17 +38,10 @@ medifiche/
 │   │   ├── formation-niveaux.js    ← Niveaux de formation (≈1 Mo — candidat lazy-load)
 │   │   ├── schemas.js              ← Schémas SVG pédagogiques
 │   │   └── schemas-extra.js        ← Schémas supplémentaires
-│   ├── customizer/                 ← Personnalisation fiches — splitté par responsabilité ✦ v2.5
-│   │   ├── customizer-store.js     ← Persistance (localStorage + cache + sync cloud)
-│   │   ├── customizer-dom-helpers.js ← Mécanique générique des modales (open/close/scroll/toast)
-│   │   ├── path-editor.js          ← Modale « fiche pathologie »
-│   │   ├── patho-med-picker.js     ← Picker catalogue médicaments (Meddispar) pour fiches patho
-│   │   ├── derma-editor.js         ← Modales dermato (conseils / naturel / produits)
-│   │   ├── dermato-brand-picker.js ← Picker de marques dermato (window.__dp)
-│   │   └── mad-editor.js           ← Modales matériel à domicile (MAD)
 │   └── modules/                    ← UI par domaine — chargés après les services
 │       ├── ui.js                   ← Search (UI) + UI pathologies + filtres thématiques
-│       ├── customizer.js           ← Façade : assemble window.Customizer depuis js/customizer/*.js (aucune logique métier) ✦ v2.5
+│       ├── customizer.js           ← Façade : assemble window.Customizer depuis js/customizer/ ✦ v2
+│       ├── pilotage.js             ← Panneau Pilotage OTC (marge/rotation/péremption) ✦ v2
 │       ├── mad.js                  ← Module Matériel à domicile (MAD / dispositifs)
 │       ├── dermato.js              ← Module Dermatologie
 │       ├── formation.js            ← Module Formation
@@ -57,6 +49,14 @@ medifiche/
 │       ├── darkmode.js             ← Mode nuit
 │       ├── backup.js               ← Export / Import données utilisateur
 │       └── legal.js                ← Pages légales (CGU, CGV, mentions)
+│   └── customizer/                 ← Éditeurs de fiches splittés (façade = modules/customizer.js) ✦ v2
+│       ├── customizer-store.js     ← Persistance localStorage + sync Supabase
+│       ├── customizer-dom-helpers.js ← Modales, toasts, helpers DOM partagés
+│       ├── path-editor.js          ← Éditeur fiches pathologie (OTC, naturo, vente)
+│       ├── derma-editor.js         ← Éditeur fiches dermatologie
+│       ├── mad-editor.js           ← Éditeur fiches matériel (MAD)
+│       ├── dermato-brand-picker.js ← Picker catalogue parapharmacie (22 labos)
+│       └── patho-med-picker.js     ← Picker catalogues médicaments + naturo (Meddispar) ✦ v2
 ├── icons/
 │   └── icons-sprite.svg            ← Sprite SVG partagé (chargé une fois via <use>)
 ├── pages/
@@ -167,28 +167,6 @@ par fiche : HAS, Nomenclature LPP (ameli.fr), et société savante ou ANSM selon
 le dispositif. Les sources sont définies dans `js/data/materiel.js` sous la clé
 `sources: [{label, url}, ...]` sur chacune des 32 fiches.
 
-## Sources fiches pathologie (HAS + Ameli, vérifiées et datées)
-
-Chaque fiche pathologie affiche la même bande **📚 Sources** (classe `fiche-sources`),
-alimentée par la clé `sources: [{label, url, date}, ...]` dans `js/data/pathologies.js`
-et `js/data/pathologies-extra.js`. Principes appliqués (chantier sources v2.6 → v2.13) :
-
-- **Aucun lien mort** : les anciens liens HAS profonds `/jcms/c_NNNNNN/` hérités
-  (invalidés par la réorganisation du site HAS) ont tous été supprimés ou remplacés
-  par une page réellement en ligne. Ne jamais réintroduire ce format sans vérifier.
-- **Ameli partout** : un lien Ameli spécifique et daté (`date: "consulté 07/2026"`)
-  est présent sur **52/52** fiches. Les URL proviennent toujours d'un résultat de
-  recherche réel, jamais reconstruites à partir d'un motif d'URL.
-- **HAS quand elle existe** : un lien HAS vivant est présent sur **49/52** fiches.
-  Les 3 exceptions (allergie-pollen, rhinite-allergique, poux) n'ont pas de
-  recommandation HAS autonome ; elles sont sourcées via Santé.fr / VIDAL Reco /
-  société savante + Ameli — c'est volontaire, pas un oubli.
-- Le champ `date` est facultatif côté rendu : les sources anciennes sans date
-  restent valides, les nouvelles portent la date de consultation ou de MàJ.
-
-Détail fiche par fiche et méthode de vérification : `NOTES-LIVRAISON.md` (sections
-v2.6, v2.12, v2.13).
-
 ## Documents annexes par fiche
 
 Bouton 📎 dans le hero de chaque fiche (pathologie, dispositif, dermatologie) :
@@ -226,10 +204,9 @@ Voir `SETUP.md` pour le guide pas-à-pas complet (Supabase, Storage, Cloudflare 
 - [x] Router — restauration onglet actif + scroll top après refresh
 - [x] Statistiques d'usage admin — fiches consultées, gammes/catégories par officine
 - [x] Rôles `pro` / `groupement` activés en base (CHECK constraint profiles.role)
-- [x] Sources cliquables sur les 32 fiches dispositif (HAS, LPP, sociétés savantes)
-- [x] Sécurité — gate fail-closed `admin.html` (`requireAdmin()` avant rendu) + helper `Auth.canPilotage()` (source unique pour l'affichage du bouton ⚖️ Pilotage)
-- [x] Lazy-load `formation-niveaux.js` (≈1 Mo) — `FORMATION._ensureNiveaux()` idempotent, hors chemin critique
-- [x] Refactoring `customizer.js` → 6 modules dans `js/customizer/` + façade de composition
-- [x] Refactoring `formation.js` — moteur `_renderNiveau(f, n)` config-driven (remplace 4 méthodes quasi identiques)
-- [x] Sources fiches pathologie — liens HAS morts purgés ; Ameli vérifié + daté sur 52/52 ; HAS vivant sur 49/52
+- [x] Sources cliquables sur les 32 fiches dispositif (codes LPP vérifiés dans le PDF officiel, sociétés savantes)
+- [x] Landing page publique (`index.html`) servie à la racine du domaine — app sur `/app.html` · `/app`
+- [x] Sources vérifiées et datées sur les fiches pathologie — liens HAS/jcms et Ameli/thèmes contrôlés un à un (aucun lien vers l'accueil), champ `date` affiché (« consulté MM/AAAA »)
+- [x] Lazy-load formation-niveaux.js (≈1 Mo) — chargé à la demande par `FORMATION._ensureNiveaux()` à l'ouverture de l'onglet Formation. Retiré du chemin critique initial. ✅
+- [x] `admin.html` — `requireAdmin()` au chargement (fait)
 - [ ] Module pédiatrie (NUK et marques bébé à réintégrer depuis le catalogue dermato)
