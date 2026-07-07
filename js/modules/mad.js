@@ -261,7 +261,7 @@ const MAD = {
         <div class="fiche-sources">
           <span class="fiche-sources__label">📚 Sources</span>
           <div class="fiche-sources__links">
-            ${m.sources.map((s, i) => `<a href="${s.url}" target="_blank" rel="noopener" class="fiche-sources__link">${s.label}</a>${i < m.sources.length - 1 ? '<span class="fiche-sources__sep">·</span>' : ''}`).join('')}
+            ${m.sources.map((s, i) => `<a href="${s.url}" target="_blank" rel="noopener" class="fiche-sources__link">${s.label}</a>${s.date ? `<span class="fiche-sources__date">${s.date}</span>` : ''}${i < m.sources.length - 1 ? '<span class="fiche-sources__sep">·</span>' : ''}`).join('')}
           </div>
         </div>` : ''}
         ${MAD._renderCustomSections(m.slug)}

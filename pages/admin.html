@@ -195,7 +195,7 @@
     .admin-back:hover { color: white; }
   </style>
   <style>
-    /* Barre utilisateur (identique à index.html) */
+    /* Barre utilisateur (identique à app.html) */
     #user-bar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 8000;
       background: #8B1A14; color: white;
@@ -229,7 +229,7 @@
 <div id="user-bar">
   <span id="user-bar-label" style="font-weight:600;letter-spacing:0.04em;">—</span>
   <div style="display:flex;gap:4px;align-items:center;">
-    <a href="../index.html" class="bar-admin">🏠 Accueil</a>
+    <a href="/app.html" class="bar-admin">🏠 Accueil</a>
     <button onclick="Auth.signOut()">Déconnexion</button>
   </div>
 </div>
@@ -238,7 +238,7 @@
 
   <!-- Sidebar -->
   <aside class="admin-sidebar">
-    <a href="../index.html" class="admin-sidebar__logo" style="text-decoration:none;display:block;cursor:pointer;color:inherit;" title="Retour à l'accueil">
+    <a href="/app.html" class="admin-sidebar__logo" style="text-decoration:none;display:block;cursor:pointer;color:inherit;" title="Retour à l'accueil">
       Medi<em>Fiches</em>
       <span class="admin-sidebar__badge">Admin</span>
     </a>
@@ -262,7 +262,7 @@
       <span class="admin-nav__icon">📋</span> Journal
     </button>
     <div class="admin-sidebar__footer">
-      <a href="../index.html" class="admin-back">← Retour à MediFiches</a>
+      <a href="/app.html" class="admin-back">← Retour à MediFiches</a>
       <br>
       <button class="admin-signout" onclick="Auth.signOut()">Se déconnecter</button>
     </div>

@@ -183,7 +183,7 @@
       // Si déjà connecté, rediriger vers l'app
       const ok = await Auth.init();
       if (ok && Auth.getUser()) {
-        window.location.href = '../index.html';
+        window.location.href = '/app.html';
       }
       // Préremplir l'email si mémorisé — sinon vider explicitement le champ, pour ne pas
       // laisser le gestionnaire d'identifiants du navigateur y remettre une autre adresse
@@ -238,7 +238,7 @@
       if (role === 'admin') {
         window.location.href = '../pages/admin.html';
       } else {
-        window.location.href = '../index.html';
+        window.location.href = '/app.html';
       }
     },
 

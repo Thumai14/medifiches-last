@@ -49,7 +49,7 @@ const DERMATO_DB = [
       {nom: 'Cold Cream Corps (Avène)', usage: 'Protection contre le froid et sécheresse', texture: 'Crème protectrice', gamme: 'Avène'},
       {nom: '🌿 Huile de coco vierge + aloe vera', usage: 'Alternative naturelle — beurre karité mélangé à HE lavande diluée', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: ['HAS — Dermatite atopique', 'SFD — Xérose', 'Société Française de Dermatologie']
+    sources: [{label: 'Ameli — Sécheresse cutanée', url: 'https://www.ameli.fr/assure/sante/themes/secheresse-cutanee', date: 'consulté 07/2026'}, {label: 'SFDermato — Xérose cutanée', url: 'https://www.sfdermato.org/page/30/xerose-cutanee', date: 'consulté 07/2026'}]
   },
 
   {
@@ -92,7 +92,7 @@ const DERMATO_DB = [
       {nom: 'Cicalfate+ Mains (Avène)', usage: 'Crevasses et fissures profondes mains', texture: 'Crème réparatrice', gamme: 'Avène'},
       {nom: '🌿 Beurre de karité pur + HE camomille', usage: 'Alternative naturelle — massage mains soir', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: ['SFD — Eczéma de contact', 'INRS — Dermatoses professionnelles']
+    sources: [{label: 'SFDermato — Eczéma des mains', url: 'https://www.sfdermato.org/page/68/eczema-des-mains', date: 'consulté 07/2026'}, {label: 'Ameli — Eczéma de contact', url: 'https://www.ameli.fr/assure/sante/themes/eczema-de-contact', date: 'consulté 07/2026'}]
   },
 
   {
@@ -136,7 +136,7 @@ const DERMATO_DB = [
       {nom: 'Trixéra+ Selectiose (Avène)', usage: 'Émollient peau atopique — tolérance maximale', texture: 'Émollient', gamme: 'Avène'},
       {nom: '🌿 Huile de bourrache + HE camomille romaine', usage: 'Alternative naturelle — restaure la barrière cutanée', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: ['HAS — Dermatite atopique', 'SFD', 'EADV Guidelines 2022']
+    sources: [{label: 'SFDermato — Dermatite atopique', url: 'https://www.sfdermato.org/page/39/dermatite-atopique', date: 'consulté 07/2026'}, {label: 'Ameli — Dermatite atopique', url: 'https://www.ameli.fr/assure/sante/themes/dermatite-atopique-eczema-atopique', date: 'consulté 07/2026'}]
   },
 
   // ══════════════════════════════
@@ -183,7 +183,7 @@ const DERMATO_DB = [
       {nom: 'Cleanance Comedomed (Avène)', usage: 'Concentré anti-imperfections comédons', texture: 'Concentré', gamme: 'Avène'},
       {nom: '🌿 Argile verte + HE tea tree diluée', usage: 'Alternative naturelle — masque 1x/semaine', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: ['HAS — Acné', 'SFD — Acné vulgaire', 'European Dermatology Forum']
+    sources: [{label: 'SFDermato — Acné vulgaire', url: 'https://www.sfdermato.org/page/26/acne', date: 'consulté 07/2026'}, {label: 'Ameli — Acné', url: 'https://www.ameli.fr/assure/sante/themes/acne', date: 'consulté 07/2026'}]
   },
 
   {
@@ -225,7 +225,7 @@ const DERMATO_DB = [
       {nom: 'Cicalfate+ DS crème (Avène)', usage: 'Zones rouges et squameuses du visage', texture: 'Crème apaisante', gamme: 'Avène'},
       {nom: '🌿 HE tea tree + HE lavande dans huile jojoba', usage: 'Alternative naturelle — application locale zones touchées', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: ['SFD — Dermite séborrhéique', 'Vidal', 'Journal of the American Academy of Dermatology']
+    sources: [{label: 'SFDermato — Dermite séborrhéique', url: 'https://www.sfdermato.org/page/44/dermite-seborrheique', date: 'consulté 07/2026'}, {label: 'Ameli — Pellicules et dermite séborrhéique', url: 'https://www.ameli.fr/assure/sante/themes/pellicules-dermite-seborrheique', date: 'consulté 07/2026'}]
   },
 
   // ══════════════════════════════
@@ -271,7 +271,7 @@ const DERMATO_DB = [
       {nom: 'Antirougeurs jour SPF 30 (Avène)', usage: 'Hydratation + réduction rougeurs + protection', texture: 'Émulsion légère', gamme: 'Avène'},
       {nom: '🌿 Eau florale de camomille + aloe vera gel', usage: 'Alternative naturelle — brumisation apaisante', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: ['SFD — Rosacée', 'European S1 guideline 2019', 'Vidal']
+    sources: [{label: 'SFDermato — Rosacée', url: 'https://www.sfdermato.org/page/72/rosacee', date: 'consulté 07/2026'}, {label: 'Ameli — Couperose et rosacée', url: 'https://www.ameli.fr/assure/sante/themes/couperose-rosacee', date: 'consulté 07/2026'}]
   },
 
   {
@@ -314,7 +314,7 @@ const DERMATO_DB = [
       {nom: 'Eau Thermale spray + Toleriane (Avène)', usage: 'Duo nettoyage + soin peau ultra-sensible', texture: 'Spray + Crème', gamme: 'Avène'},
       {nom: '🌿 Eau florale de rose + huile de jojoba', usage: 'Alternative naturelle — hydratation douce sans allergène', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: ['SFD', 'Contact Dermatitis — Sensitive skin review 2021']
+    sources: [{label: 'SFDermato — Peau sensible et réactive', url: 'https://www.sfdermato.org/page/64/peau-sensible', date: 'consulté 07/2026'}]
   },
 
   // ══════════════════════════════
@@ -361,7 +361,7 @@ const DERMATO_DB = [
       {nom: 'Trixéra+ Pommade (Avène)', usage: 'Plaques sèches et squameuses — corps', texture: 'Pommade émolliente', gamme: 'Avène'},
       {nom: '🌿 Huile de chanvre + HE tea tree + aloe vera', usage: 'Alternative naturelle — anti-inflammatoire cutané', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: ['HAS — Psoriasis', 'SFD — Guidelines psoriasis 2020', 'EDF European guidelines']
+    sources: [{label: 'SFDermato — Psoriasis', url: 'https://www.sfdermato.org/page/67/psoriasis', date: 'consulté 07/2026'}, {label: 'Ameli — Psoriasis', url: 'https://www.ameli.fr/assure/sante/themes/psoriasis', date: 'consulté 07/2026'}]
   },
 
   {
@@ -403,7 +403,7 @@ const DERMATO_DB = [
       {nom: 'Amorolfine 5% vernis (Locéryl)', usage: 'Onychomycose — traitement ongles', texture: 'Vernis', gamme: 'Galderma'},
       {nom: '🌿 HE tea tree pure + bicarbonate de soude', usage: 'Alternative naturelle — bain de pied antifongique', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: ['HAS — Dermatomycoses', 'SFD', 'Vidal — Antifongiques topiques']
+    sources: [{label: 'SFDermato — Mycoses superficielles', url: 'https://www.sfdermato.org/page/56/mycoses-superficielles', date: 'consulté 07/2026'}, {label: 'Ameli — Mycose cutanée', url: 'https://www.ameli.fr/assure/sante/themes/mycose-cutanee', date: 'consulté 07/2026'}]
   },
 
   {
@@ -445,7 +445,7 @@ const DERMATO_DB = [
       {nom: 'Bio-Oil Specialist', usage: 'Vergetures et cicatrices — massage régulier', texture: 'Huile sèche', gamme: 'Bio-Oil'},
       {nom: '🌿 Huile de rose musquée bio + vitamine E', usage: 'Alternative naturelle — massage matin/soir', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: ['SFD — Cicatrices', 'International Scar Management Guidelines', 'Cochrane review']
+    sources: [{label: 'SFDermato — Cicatrices', url: 'https://www.sfdermato.org/page/36/cicatrices', date: 'consulté 07/2026'}, {label: 'Ameli — Vergetures', url: 'https://www.ameli.fr/assure/sante/themes/vergetures', date: 'consulté 07/2026'}]
   },
   {
     id: 'd21', slug: 'vergetures', nom: 'Vergetures',
@@ -467,6 +467,7 @@ const DERMATO_DB = [
       'Trétinoïne topique (vergetures rouges) : CI absolue grossesse et allaitement — prescription uniquement.',
       'Vergetures associées à une prise de poids rapide et une hypertension → évoquer un Cushing.',
     ],
+    sources: [{label: 'Ameli — Vergetures', url: 'https://www.ameli.fr/assure/sante/themes/vergetures', date: 'consulté 07/2026'}, {label: 'SFDermato — Cicatrices et vergetures', url: 'https://www.sfdermato.org/page/36/cicatrices', date: 'consulté 07/2026'}],
   },
 
   {
@@ -507,7 +508,7 @@ const DERMATO_DB = [
       {nom: 'Eau Thermale spray (Avène)', usage: 'Apaisement des plaques et brûlures', texture: 'Spray', gamme: 'Avène'},
       {nom: '🌿 Gel aloe vera pur + compresse froide', usage: 'Alternative naturelle — soulagement local immédiat', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: ['HAS — Urticaire', 'EAACI/GA2LEN guideline 2022', 'Vidal']
+    sources: [{label: 'SFDermato — Urticaire', url: 'https://www.sfdermato.org/page/81/urticaire', date: 'consulté 07/2026'}, {label: 'Ameli — Urticaire', url: 'https://www.ameli.fr/assure/sante/themes/urticaire', date: 'consulté 07/2026'}]
   },
 
   {
@@ -547,7 +548,7 @@ const DERMATO_DB = [
       {nom: 'Paracétamol 1g + compresses stériles', usage: 'Antalgique + nettoyage doux des lésions', texture: 'Comprimé + Matériel', gamme: 'Générique'},
       {nom: '🌿 Compresses aloé vera gel + HE lavande diluée', usage: 'Alternative naturelle — apaisement local vésicules', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: ['HAS — Zona', 'SFD — Prise en charge zona 2020', 'Vidal']
+    sources: [{label: 'Ameli — Zona', url: 'https://www.ameli.fr/assure/sante/themes/zona', date: 'consulté 07/2026'}, {label: 'SFDermato — Zona', url: 'https://www.sfdermato.org/page/86/zona', date: 'consulté 07/2026'}]
   },
 
   // ══ EXTENSION — d13 à d20 ══
@@ -597,7 +598,7 @@ const DERMATO_DB = [
       {nom: 'Stick lèvres SPF 50+ (Avène)', usage: 'Prévention récidive solaire — protection labiale totale', texture: 'Stick', gamme: 'Avène'},
       {nom: '🌿 HE Tea tree 1 goutte pure localement + Lysine 1g/j', usage: 'Alternative naturelle — antivirale topique + acide aminé inhibiteur de la réplication virale', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: ['HAS — Herpès labial', 'SFD — Recommandations HSV 2022', 'Vidal', 'ANSM']
+    sources: [{label: 'Ameli — Herpès labial', url: 'https://www.ameli.fr/assure/sante/themes/herpes-labial', date: 'consulté 07/2026'}, {label: 'SFDermato — Herpès cutané', url: 'https://www.sfdermato.org/page/50/herpes-cutane', date: 'consulté 07/2026'}]
   },
 
   {
@@ -647,7 +648,7 @@ const DERMATO_DB = [
       {nom: 'Cicalfate+ (Avène)', usage: 'Si début de phlyctène — protection antiseptique + réparation', texture: 'Crème réparatrice', gamme: 'Avène'},
       {nom: '🌿 Gel aloe vera pur réfrigéré + eau florale de lavande', usage: 'Alternative naturelle — application généreuse immédiate, très efficace au stade 1er degré', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: ['HAS — Brûlures superficielles', 'SFD — Photoprotection', 'Vidal', 'INRS']
+    sources: [{label: 'Ameli — Coup de soleil', url: 'https://www.ameli.fr/assure/sante/themes/coup-de-soleil', date: 'consulté 07/2026'}, {label: 'SFDermato — Photoprotection', url: 'https://www.sfdermato.org/page/65/photoprotection', date: 'consulté 07/2026'}]
   },
 
   {
@@ -695,7 +696,7 @@ const DERMATO_DB = [
       {nom: 'Compresses stériles non tissées', usage: 'Nettoyage et protection des lésions', texture: 'Compresses', gamme: 'Générique'},
       {nom: '🌿 Miel de Manuka certifié (IAF ≥ 15+)', usage: 'Alternative naturelle — propriétés antibactériennes documentées, application locale après avis médical', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: ['HAS — Impétigo 2024', 'Pilly', 'SFP (Société Française de Pédiatrie)', 'ANSM']
+    sources: [{label: 'Ameli — Impétigo', url: 'https://www.ameli.fr/assure/sante/themes/impetigo', date: 'consulté 07/2026'}, {label: 'SFDermato — Impétigo', url: 'https://www.sfdermato.org/page/52/impetigo', date: 'consulté 07/2026'}]
   },
 
   // ══════════════════════════════
@@ -746,7 +747,7 @@ const DERMATO_DB = [
       {nom: 'Sébium Pore Refiner (Bioderma)', usage: 'Resserrement des pores + matification durable', texture: 'Soin matifiant', gamme: 'Bioderma'},
       {nom: '🌿 Eau florale de romarin + argile blanche kaolin', usage: 'Alternative naturelle — tonique + masque hebdomadaire assainissant doux', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: ['SFD — Séborrhée', 'JAAD — Niacinamide sebum control 2021', 'Vidal Dermatologie']
+    sources: [{label: 'SFDermato — Dermite séborrhéique', url: 'https://www.sfdermato.org/page/44/dermite-seborrheique', date: 'consulté 07/2026'}, {label: 'Ameli — Pellicules et dermite séborrhéique', url: 'https://www.ameli.fr/assure/sante/themes/pellicules-dermite-seborrheique', date: 'consulté 07/2026'}]
   },
 
   // ══════════════════════════════
@@ -797,7 +798,7 @@ const DERMATO_DB = [
       {nom: 'Compeed verrues plantaires', usage: 'Patch protecteur + acide salicylique — confort de marche', texture: 'Patch', gamme: 'Compeed'},
       {nom: '🌿 HE Thuja occidentalis diluée 5% dans huile végétale', usage: 'Alternative naturelle — 1 goutte sur la verrue 2x/jour sous pansement occlusif (hors visage)', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: ['HAS — Verrues 2020', 'SFD', 'Revue Prescrire — HPV traitement local', 'Vidal']
+    sources: [{label: 'Ameli — Verrues', url: 'https://www.ameli.fr/assure/sante/themes/verrue', date: 'consulté 07/2026'}, {label: 'SFDermato — Verrues', url: 'https://www.sfdermato.org/page/83/verrues-et-papillomavirus', date: 'consulté 07/2026'}]
   },
 
   {
@@ -841,7 +842,7 @@ const DERMATO_DB = [
       {nom: 'Bépanthène Plus crème', usage: 'Si composante bactérienne — antibactérien + cicatrisant', texture: 'Crème', gamme: 'Bayer'},
       {nom: '🌿 Huile de coco vierge + HE tea tree 1% + vitamine B2 orale', usage: 'Alternative naturelle — antifongique doux + traitement de la carence', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: ['SFD — Perlèche', 'Vidal', 'Revue Prescrire — Candidose buccale', 'Mises au point officinales']
+    sources: [{label: 'Ameli — Perlèche', url: 'https://www.ameli.fr/assure/sante/themes/perleche', date: 'consulté 07/2026'}, {label: 'SFDermato — Perlèche', url: 'https://www.sfdermato.org/page/63/perleche', date: 'consulté 07/2026'}]
   },
 
   {
@@ -888,7 +889,7 @@ const DERMATO_DB = [
       {nom: 'Ongle StopOngle (Urgo)', usage: 'Correcteur ongle incarné — traction progressive', texture: 'Dispositif correcteur', gamme: 'Urgo'},
       {nom: '🌿 Bain pied eau tiède + gros sel marin + HE tea tree 2 gouttes', usage: 'Alternative naturelle — antisepsie et ramollissement naturels', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: ['HAS — Ongle incarné (prévention et prise en charge)', 'Journal de Pédiatrie', 'Revue du Praticien', 'Vidal']
+    sources: [{label: 'Ameli — Ongle incarné', url: 'https://www.ameli.fr/assure/sante/themes/ongle-incarne', date: 'consulté 07/2026'}]
   },
 
   {
@@ -937,7 +938,7 @@ const DERMATO_DB = [
       {nom: 'Bepanthol lotion lavante', usage: 'Hygiène douce quotidienne péri-anale', texture: 'Lotion lavante', gamme: 'Bayer'},
       {nom: '🌿 Liniment oléocalcaire + eau de rose', usage: 'Alternative naturelle — nettoyage doux et apaisant, idéal si peau très irritée', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: ['HAS — Prurit anal', 'SFD', 'CNPHGE', 'Revue Prescrire — Oxyurose 2023', 'Vidal']
+    sources: [{label: 'SFDermato — Prurit anal', url: 'https://www.sfdermato.org/page/69/prurit-anal', date: 'consulté 07/2026'}, {label: 'Ameli — Démangeaisons anales', url: 'https://www.ameli.fr/assure/sante/themes/demangeaisons-anales', date: 'consulté 07/2026'}]
   },
 
   {
@@ -981,7 +982,7 @@ const DERMATO_DB = [
       {nom: 'Antihistaminique adapté à l\'âge (Atarax®)', usage: 'Prurit nocturne invalidant', texture: 'Sirop/Comprimé', gamme: 'UCB Pharma'},
       {nom: 'Paracétamol pédiatrique', usage: 'Antipyrétique et antalgique', texture: 'Sirop/Suppositoire', gamme: 'Générique'},
     ],
-    sources: ['HAS — Varicelle', 'SFP', 'Vidal']
+    sources: [{label: 'Ameli — Varicelle', url: 'https://www.ameli.fr/assure/sante/themes/varicelle', date: 'consulté 07/2026'}, {label: 'SFDermato — Varicelle', url: 'https://www.sfdermato.org/page/82/varicelle', date: 'consulté 07/2026'}]
   },
 
 ];

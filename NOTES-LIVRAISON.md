@@ -391,3 +391,57 @@ avec une source vérifiée + datée :
 
 Contrôle global final : 0 lien HAS accueil · 0 lien Ameli accueil · 0 fiche sans source.
 Le chantier sources (vagues 1-3 + audit B + finalisation A) est clos.
+
+## v2.16 — Sources Module Dispositif (MAD) + Migration complète Dermatologie
+
+### Module Dispositif (MAD) — 32 fiches
+Audit avec le bon format (guillemets doubles, `{label, url}`) :
+- 10 fiches déjà ✅ (tensiomètre, fauteuil roulant, aérosol, peak-flow, etc.) → non touchées
+- 14 × HAS racines supprimées (aucune reco HAS grand public pour les aides à la marche /
+  matériel de positionnement / lit médical) : oxymètre, lit médicalisé, siège de bain,
+  cannes, déambulateurs ×4, béquilles, attelle-poignet, table de lit, potence de lit,
+  fauteuils ×3
+- 1 × HAS racine remplacée par lien précis Ameli vérifié : semelles-orthopediques
+  → ameli.fr/assure/remboursements/...semelles-orthopediques-orthese-plantaire...
+- Rendu UI (mad.js) : champ `date` désormais affiché à côté des liens sources.
+- Note Réviseur : les sources MAD existantes (antérieures à l'intro du champ `date`)
+  n'ont pas toutes été rétro-datées — travail optionnel en vague suivante.
+- Résultat : 0 HAS racine · 0 Ameli racine · 32/32 fiches avec sources
+
+### Module Dermatologie — 22 fiches
+Migration complète de format : `['texte string', ...]` → `[{label, url, date}, ...]`
++ rendu UI (dermato.js) adapté (liens cliquables, dates, rétro-compat string pour l'ancien format).
+Sources posées :
+- SFDermato (sfdermato.org/page/...) : référence française officielle pour les 22 pathologies
+- Ameli (/assure/sante/themes/...) : pour les pathologies disposant d'un thème dédié
+Corrections de format appliquées lors de la migration (double-virgule vergetures, virgule manquante après alertes).
+- Résultat : 0 HAS racine · 0 Ameli racine · 22/22 fiches avec sources {label, url, date}
+- Note : les URLs SFDermato (/page/N/slug) n'ont PAS été fetch-vérifiées (site ne répond
+  pas systématiquement aux fetch programmatiques). À tester manuellement sur quelques fiches
+  clés avant démo.
+
+## v2.17 — Landing racine + Lazy Formation (confirmé) + Vidal purge
+
+### Chantier 2 — Landing page à la racine du domaine
+- `accueil.html` (landing) → devient `index.html` (servi à `/` par Cloudflare Pages)
+- `index.html` (app) → devient `app.html` (servi à `/app.html` et `/app`)
+- `_redirects` : ajout de la règle `/app → /app.html 200`
+- 14 références `index.html` patchées → `app.html` dans : auth.js, login.html,
+  register.html, reset-password.html, admin.html, pricing.html
+- `index.html` (landing) : liens absolus + script de détection de session Supabase
+  (si déjà connecté → bouton "Accéder à l'app →" apparaît dans la nav)
+- Aucune modification de l'app ou de l'auth au-delà des redirections.
+
+### Chantier 3 — Lazy-load Formation (DÉJÀ IMPLÉMENTÉ, confirmé)
+- `formation-niveaux.js` (≈1 Mo) est chargé à la demande par `FORMATION._ensureNiveaux()`
+  à l'ouverture de l'onglet Formation — non bloquant, mémoïsé.
+- La ligne `<script src="...formation-niveaux.js">` est commentée dans app.html.
+- La liste Formation s'affiche immédiatement (sans attendre le 1 Mo).
+- README corrigé : item coché comme fait.
+
+### Chantier 5 — Vidal racines (46 → 0)
+- 46 entrées `url: "https://www.vidal.fr"` (accueil Vidal, aucune valeur documentaire)
+  supprimées dans pathologies.js (9) et pathologies-extra.js (37).
+- Toutes les fiches concernées avaient ≥1 source vérifiée (HAS/jcms ou Ameli/thème) —
+  zéro fiche laissée sans source après purge.
+- Contrôle : 0 racine résiduelle · 0 tableau vide · 0 virgule orpheline.

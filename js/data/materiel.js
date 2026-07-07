@@ -49,7 +49,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: ['asthme', 'hypertension'],
-    sources: [{label: "HAS — Oxymétrie de pouls", url: "https://www.has-sante.fr"}, {label: "ANSM — Dispositifs de mesure SpO2", url: "https://ansm.sante.fr"}, {label: "Nomenclature LPP", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}] },
+    sources: [{label: "ANSM — Dispositifs de mesure SpO2", url: "https://ansm.sante.fr"}, {label: "Nomenclature LPP", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}] },
   { id: 'm10', slug: 'tensiometre-bras', nom: 'Tensiomètre bras homologué', categorie: 'cardiaque', icone: '__SVG__Tensiometre de bras homologue.svg__',
     description: 'Appareil automatique de mesure de la pression artérielle par brassard huméral (bras), homologué selon la norme NF C 74-313. Certains modèles intègrent une détection de fibrillation auriculaire et une mémoire de plusieurs dizaines de mesures avec moyennage automatique.',
     indication: 'Hypertension artérielle connue ou suspectée, automesure tensionnelle dans le cadre du suivi cardiologique (règle des 3), dépistage à domicile, suivi de l\'efficacité d\'un traitement antihypertenseur.',
@@ -165,7 +165,7 @@ const MATERIEL_DB = [
     },
     otc: ['Crème ou mousse de prévention des escarres'],
     pathologies_liees: [],
-    sources: [{label: "HAS — Lits médicaux à domicile", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.2", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANSM — Dispositifs MAD", url: "https://ansm.sante.fr"}] },
+    sources: [{label: "Nomenclature LPP — Titre II Ch.2", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANSM — Dispositifs MAD", url: "https://ansm.sante.fr"}] },
   { id: 'm15', slug: 'protections-incontinence', nom: 'Protections anatomiques incontinence', categorie: 'hygiene', icone: '__SVG__couche.svg__',
     description: 'Protections absorbantes anatomiques à usage unique (forme culotte, change complet ou protection anatomique avec filet de maintien), discrètes sous les vêtements, avec indice d\'absorption croissant selon le niveau de fuite (léger, modéré, fort, très fort).',
     indication: 'Incontinence urinaire ou mixte (urinaire et fécale) légère à sévère, période post-opératoire urologique ou gynécologique, perte d\'autonomie, troubles neurologiques avec incontinence.',
@@ -205,7 +205,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: [],
-    sources: [{label: "HAS — Aides techniques MAD", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.4", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel aides techniques", url: "https://www.anap.fr"}] },
+    sources: [{label: "Nomenclature LPP — Titre II Ch.4", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel aides techniques", url: "https://www.anap.fr"}] },
 
   // ─── MOBILITÉ ───
   { id: 'm1', slug: 'canne-ergonomique', nom: 'Canne ergonomique réglable', categorie: 'mobilite', icone: '__SVG__cane.svg__',
@@ -229,7 +229,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: ['douleur-arthrose'],
-    sources: [{label: "HAS — Aides à la marche", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANSM — Dispositifs aide à la marche", url: "https://ansm.sante.fr"}] },
+    sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANSM — Dispositifs aide à la marche", url: "https://ansm.sante.fr"}] },
   { id: 'm2', slug: 'deambulateur', nom: 'Déambulateur 4 roues', categorie: 'mobilite', icone: '__SVG__deambulateur 4 roues.svg__',
     description: 'Cadre de marche sur 4 roues pivotantes, avec siège intégré, panier de rangement et freins de type vélo (frein de parking à l\'arrêt). Plus fluide à manier que le 2 roues, adapté aux sols réguliers.',
     indication: 'Troubles de l\'équilibre, faiblesse musculaire des membres inférieurs, suites d\'AVC, besoin de sécurisation de la marche sur de longues distances ou pour les sorties à l\'extérieur.',
@@ -252,7 +252,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: ['douleur-arthrose'],
-    sources: [{label: "HAS — Déambulateurs et cadres de marche", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel mobilité", url: "https://www.anap.fr"}] },
+    sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel mobilité", url: "https://www.anap.fr"}] },
   { id: 'm3', slug: 'fauteuil-roulant', nom: 'Fauteuil roulant manuel', categorie: 'mobilite', icone: '__SVG__fauteuil roulant.svg__',
     description: 'Fauteuil roulant pliant léger à propulsion manuelle, repose-pieds amovibles, accoudoirs rabattables facilitant les transferts. Catégorie FMP (fauteuil manuel pliant) dans la classification officielle, la plus simple et la plus courante.',
     indication: 'Incapacité à la marche prolongée ou totale, période post-opératoire, pathologies neurologiques limitant la mobilité, besoin de déplacement autonome ou avec tierce assistance.',
@@ -296,7 +296,7 @@ const MATERIEL_DB = [
     },
     otc: ['Crème podologique réparatrice (talons, callosités)'],
     pathologies_liees: ['douleur-arthrose', 'diabete-type-2'],
-    sources: [{label: "HAS — Orthèses plantaires", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.1", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "SOFCOT — Recommandations", url: "https://www.sofcot.fr"}] },
+    sources: [{label: "Ameli — Semelles orthopédiques : prise en charge", url: "https://www.ameli.fr/assure/remboursements/rembourse/medicaments-vaccins-dispositifs-medicaux/semelles-orthopediques-orthese-plantaire-prise-en-charge", date: "consulté 07/2026"}, {label: "Nomenclature LPP — Titre II Ch.1", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "SOFCOT — Recommandations", url: "https://www.sofcot.fr"}] },
 
   // ─── NUTRITION ───
   { id: 'm17', slug: 'complement-nutritionnel', nom: 'Compléments nutritionnels oraux (CNO)', categorie: 'nutrition', icone: '__SVG__nutrition.svg__',
@@ -368,7 +368,7 @@ const MATERIEL_DB = [
     },
     otc: ['Gel ou patch anti-inflammatoire local', 'Bande de contention/strapping'],
     pathologies_liees: ['douleur-arthrose'],
-    sources: [{label: "HAS — Orthèses du membre supérieur", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.1", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "SFCM — Recommandations main", url: "https://www.sfcm.fr"}] },
+    sources: [{label: "Nomenclature LPP — Titre II Ch.1", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "SFCM — Recommandations main", url: "https://www.sfcm.fr"}] },
   { id: 'm20', slug: 'bequilles', nom: 'Béquilles axillaires / avant-bras', categorie: 'mobilite', icone: '__SVG__Bequilles axillaires.svg__',
     description: 'Béquilles réglables en aluminium, modèle axillaire (appui sous le bras, avec barre de préhension) ou modèle avant-bras dit "canadienne" (appui sur l\'avant-bras avec poignée), selon la prescription et le type d\'appui recherché.',
     indication: 'Fracture du membre inférieur, suites de chirurgie orthopédique (prothèse de hanche ou de genou), entorse grave de la cheville ou du genou, décharge totale ou partielle d\'un membre.',
@@ -390,7 +390,7 @@ const MATERIEL_DB = [
     },
     otc: ['Crème apaisante mains/paumes (en cas d\'usage prolongé)'],
     pathologies_liees: ['douleur-arthrose'],
-    sources: [{label: "HAS — Aides à la marche", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANSM — Dispositifs aide à la marche", url: "https://ansm.sante.fr"}] },
+    sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANSM — Dispositifs aide à la marche", url: "https://ansm.sante.fr"}] },
 
   // ─── RESPIRATOIRE ───
   { id: 'm5', slug: 'aerosol-compresseur', nom: 'Aérosolthérapie par compresseur', categorie: 'respiratoire', icone: '__SVG__aerosol therapy.svg__',
@@ -552,7 +552,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: [],
-    sources: [{label: "HAS — Aides techniques MAD", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.2", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel MAD", url: "https://www.anap.fr"}] },
+    sources: [{label: "Nomenclature LPP — Titre II Ch.2", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel MAD", url: "https://www.anap.fr"}] },
   { id: 'm25', slug: 'potence-de-lit', nom: 'Potence de lit (lève-personne d\'appoint)', categorie: 'hygiene', icone: '__SVG__potence.svg__',
     description: 'Structure verticale fixée au cadre ou au sommier du lit, équipée d\'une poignée suspendue (trapèze ou anneau), permettant au patient de se redresser ou de se hisser seul en position assise grâce à la force des bras.',
     indication: 'Perte d\'autonomie modérée, suites de chirurgie orthopédique, maintien à domicile, difficulté à se redresser seul dans le lit sans aide complète.',
@@ -573,7 +573,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: ['osteoporose'],
-    sources: [{label: "HAS — Aides techniques MAD", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.2", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel MAD", url: "https://www.anap.fr"}] },
+    sources: [{label: "Nomenclature LPP — Titre II Ch.2", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel MAD", url: "https://www.anap.fr"}] },
 
   // ─── MOBILITÉ (ajouts) ───
   { id: 'm26', slug: 'deambulateur-2-roues', nom: 'Déambulateur 2 roues', categorie: 'mobilite', icone: '__SVG__deambulateur 2 roues.svg__',
@@ -597,7 +597,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: ['osteoporose'],
-    sources: [{label: "HAS — Déambulateurs et cadres de marche", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel mobilité", url: "https://www.anap.fr"}] },
+    sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel mobilité", url: "https://www.anap.fr"}] },
   { id: 'm27', slug: 'fauteuil-transfert', nom: 'Fauteuil de transfert', categorie: 'mobilite', icone: '__SVG__fauteuil de transfert.svg__',
     description: 'Fauteuil roulant léger et pliable, conçu pour des déplacements courts et des transferts ponctuels (lit-fauteuil, domicile-véhicule), généralement plus compact et moins confortable qu\'un fauteuil roulant principal destiné à un usage prolongé.',
     indication: 'Transferts ponctuels, sorties courtes (rendez-vous médical, transport), perte d\'autonomie temporaire, complément à un fauteuil roulant principal pour les déplacements occasionnels hors domicile.',
@@ -617,7 +617,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: [],
-    sources: [{label: "HAS — Fauteuils roulants de transfert", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "APF France handicap", url: "https://www.apf-francehandicap.org"}] },
+    sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "APF France handicap", url: "https://www.apf-francehandicap.org"}] },
   { id: 'm28', slug: 'fauteuil-releveur', nom: 'Fauteuil releveur électrique', categorie: 'mobilite', icone: '__SVG__fauteuil-inclinable.svg__',
     description: 'Fauteuil de repos avec assise motorisée s\'inclinant et se relevant progressivement pour faciliter le passage assis-debout et debout-assis, télécommande de réglage de l\'inclinaison du dossier et de l\'assise.',
     indication: 'Perte d\'autonomie, arthrose sévère des membres inférieurs ou du rachis, difficulté majeure à se relever d\'un fauteuil standard, besoin de confort prolongé en position assise/semi-allongée.',
@@ -637,7 +637,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: ['douleur-arthrose'],
-    sources: [{label: "HAS — Aides à la verticalisation", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel fauteuils releveurs", url: "https://www.anap.fr"}] },
+    sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel fauteuils releveurs", url: "https://www.anap.fr"}] },
   { id: 'm29', slug: 'fauteuil-coquille', nom: 'Fauteuil coquille (maintien postural)', categorie: 'mobilite', icone: '__SVG__fauteuil.svg__',
     description: 'Fauteuil à coque enveloppante avec inclinaison réglable, conçu pour assurer un maintien postural global chez les patients à mobilité très réduite ne pouvant se maintenir assis sans soutien latéral et dorsal important.',
     indication: 'Troubles neurologiques sévères (séquelles d\'AVC majeur, maladies neurodégénératives avancées), perte d\'autonomie majeure, patients ne pouvant se maintenir assis sans soutien complet du tronc et de la tête.',
@@ -657,7 +657,7 @@ const MATERIEL_DB = [
     },
     otc: ['Crème ou mousse de prévention des escarres'],
     pathologies_liees: ['parkinson', 'alzheimer'],
-    sources: [{label: "HAS — Fauteuils coquilles et positionnement", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "APF France handicap", url: "https://www.apf-francehandicap.org"}] },
+    sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "APF France handicap", url: "https://www.apf-francehandicap.org"}] },
 
   // ─── HYGIÈNE & CONFORT (ajouts prévention escarres) ───
   { id: 'm30', slug: 'matelas-classe2-anti-escarres', nom: 'Matelas anti-escarres classe 2', categorie: 'hygiene', icone: '__SVG__matelas classe 2.svg__',
@@ -730,7 +730,7 @@ const MATERIEL_DB = [
     },
     otc: [],
     pathologies_liees: ['osteoporose'],
-    sources: [{label: "HAS — Aides à la marche", url: "https://www.has-sante.fr"}, {label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel mobilité", url: "https://www.anap.fr"}] },
+    sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel mobilité", url: "https://www.anap.fr"}] },
 ];
 
 // Tri alphabétique dans chaque catégorie

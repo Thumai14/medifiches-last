@@ -205,7 +205,8 @@ Voir `SETUP.md` pour le guide pas-à-pas complet (Supabase, Storage, Cloudflare 
 - [x] Statistiques d'usage admin — fiches consultées, gammes/catégories par officine
 - [x] Rôles `pro` / `groupement` activés en base (CHECK constraint profiles.role)
 - [x] Sources cliquables sur les 32 fiches dispositif (codes LPP vérifiés dans le PDF officiel, sociétés savantes)
+- [x] Landing page publique (`index.html`) servie à la racine du domaine — app sur `/app.html` · `/app`
 - [x] Sources vérifiées et datées sur les fiches pathologie — liens HAS/jcms et Ameli/thèmes contrôlés un à un (aucun lien vers l'accueil), champ `date` affiché (« consulté MM/AAAA »)
-- [ ] Lazy-load formation-niveaux.js (≈1 Mo, encore chargé en dur dans index.html) — voir REFACTORING.md §Phase 3
+- [x] Lazy-load formation-niveaux.js (≈1 Mo) — chargé à la demande par `FORMATION._ensureNiveaux()` à l'ouverture de l'onglet Formation. Retiré du chemin critique initial. ✅
 - [x] `admin.html` — `requireAdmin()` au chargement (fait)
 - [ ] Module pédiatrie (NUK et marques bébé à réintégrer depuis le catalogue dermato)
