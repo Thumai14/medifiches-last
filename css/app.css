@@ -2818,3 +2818,8 @@ body.modal-open { overflow: hidden; }
 
 /* ── Sources datées (traçabilité) ── */
 .fiche-sources__date { font-size: 10px; color: var(--text-2, #6b5a42); opacity: .75; margin-left: 4px; white-space: nowrap; font-style: italic; }
+
+/* ── MAD : accord préalable (DAP) + valeur "ok" ── */
+.vm-remb__li--dap .vm-remb__key { color: #a8572b; font-weight: 700; }
+.vm-remb__li--dap .vm-remb__val { color: #a8572b; }
+.vm-remb__val--ok { color: #15402c; font-weight: 600; }
