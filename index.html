@@ -534,7 +534,7 @@ footer{border-top:1px solid rgba(44,33,20,.14);padding:36px 0 44px;font-size:13p
       const KEY = Object.keys(localStorage).find(k => k.startsWith('sb-') && k.endsWith('-auth-token'));
       if (KEY && JSON.parse(localStorage[KEY])?.access_token) {
         const btn = document.createElement('a');
-        btn.href = '/app.html'; btn.className = 'btn btn-ghost btn-sm';
+        btn.href = '/app'; btn.className = 'btn btn-ghost btn-sm';
         btn.textContent = 'Accéder à l\'app →';
         document.querySelector('.nav-links')?.appendChild(btn);
       }
