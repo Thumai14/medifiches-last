@@ -13,7 +13,9 @@ const MATERIEL_DB = [
       'Utiliser un enfile-bas ou des gants en caoutchouc facilite la pose, particulièrement chez les personnes à mobilité réduite ou en surpoids.',
       'Renouvellement tous les 6 mois en moyenne (élasticité qui se dégrade avec les lavages répétés), même en l\'absence d\'usure visible.',
       'Lavage à la main ou cycle délicat à basse température recommandé pour préserver l\'élasticité ; éviter l\'essorage agressif et le sèche-linge.',
-    ],
+    
+      'Bandages multitypes : réservés aux ulcères veineux actifs (stade C6, IPS > 0,8) — pas de prise en charge si ulcère cicatrisé ou fermé.',
+      'La pose du bandage multicouche est une technique complexe nécessitant une formation — ne pas confondre avec la délivrance simple de bas de contention.',],
     contre_indications: [
       'Artériopathie oblitérante des membres inférieurs (AOMI) sévère ou non évaluée — un bilan vasculaire (index de pression systolique) est nécessaire avant prescription si un doute existe sur la composante artérielle.',
       'Phlegmatia coerulea ou ischémie aiguë du membre — urgence vasculaire, contention formellement contre-indiquée.',
@@ -24,7 +26,7 @@ const MATERIEL_DB = [
       mention: 'Remboursable sur prescription',
       code_lppr: 'Nomenclature par forme et catégorie élastique — exemples vérifiés : 2116557 (bas jarret série élastique 1 sens, 9,61€, p.1011) · 2165805 (bas jarret série élastique 2 sens, p.1012). Le code exact dépend de la forme (jarret/cuisse/collant) et de la catégorie prescrite',
       taux: '60% de la base de remboursement Sécurité Sociale (100% si ALD/CMU) — base : chaussette 21,96€ / bas 29,18€ / collant 41,19€',
-      note: 'Exemple concret : pour un bas acheté 36€, la base de remboursement est de 29,18€ → Sécurité Sociale rembourse 60% de cette base (17,51€), la complémentaire santé peut compléter jusqu\'à 100% de la base (11,67€) selon le contrat (ligne "Appareillage" ou "Prothèses médicales orthopédiques" du tableau de garanties), et le dépassement au-delà de la base (6,82€ ici) reste à la charge du patient sauf meilleure prise en charge mutuelle. Les dates de fin de prise en charge affichées dans la nomenclature officielle sont indicatives : un code reste actif tant qu\'aucune décision explicite de radiation n\'a été publiée.',
+      note: 'Exemple concret : pour un bas acheté 36€, la base de remboursement est de 29,18€ → Sécurité Sociale rembourse 60% de cette base (17,51€), la complémentaire santé peut compléter jusqu\'à 100% de la base (11,67€) selon le contrat (ligne "Appareillage" ou "Prothèses médicales orthopédiques" du tableau de garanties), et le dépassement au-delà de la base (6,82€ ici) reste à la charge du patient sauf meilleure prise en charge mutuelle. Les dates de fin de prise en charge affichées dans la nomenclature officielle sont indicatives : un code reste actif tant qu\'aucune décision explicite de radiation n\'a été publiée. Bandages multitypes de contention veineuse (mémo Ameli MàJ 24/07/2025) : indiqués en 1ère intention dans l\'ulcère actif d\'origine veineuse (stade C6, IPS>0,8). Pas d\'accord préalable. Prescripteurs : tous médecins. Le dispositif peut être laissé en place jusqu\'à 7 jours maximum — renouvellement selon le niveau d\'exsudat et l\'évolution de l\'œdème. La pose du bandage multicouche est une technique complexe nécessitant une formation préalable. Tarifs : KIT BIFLEX® 46,56–51,52€, PROFORE® 15,39–19,76€, ROSIDAL SYS® 54,32–102,50€, URGO K2® 15,46–19,90€, 3M COBAN 2® 18,06€. BIFLEX et ROSIDAL SOFT sont réutilisables (lavage machine) ; PROFORE, URGO K2 et COBAN 2 : usage unique.',
     },
     otc: ['Crème veinotonique', 'Gel apaisant jambes lourdes', 'Complément veinotonique (vigne rouge, marron d\'Inde)'],
     pathologies_liees: ['diabete-type-2', 'hypertension'],
@@ -32,7 +34,7 @@ const MATERIEL_DB = [
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · Classe prescrite obligatoirement mentionnée · Renouvellement selon durée (classe 2 : tous les 6 mois habituellement)',
-sources: [{label: "HAS — Compression médicale en insuffisance veineuse", url: "https://www.has-sante.fr/jcms/c_272500/fr/la-compression-medicale"}, {label: "Nomenclature LPP — Titre II Ch.1", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANSM — Dispositifs de compression", url: "https://ansm.sante.fr"}] },
+sources: [{label: "HAS — Compression médicale en insuffisance veineuse", url: "https://www.has-sante.fr/jcms/c_272500/fr/la-compression-medicale"}, , {label: "Ameli — Mémo LPP Bandages multitypes (MàJ 24/07/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/08-bandages-multitypes-contention-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
   { id: 'm9', slug: 'oxymetre-pouls', nom: 'Oxymètre de pouls', categorie: 'cardiaque', icone: '__SVG__oxymetre de pouls.svg__',
     description: 'Pléthysmographe portable mesurant par voie transcutanée (au doigt généralement) la saturation pulsée en oxygène (SpO2) et la fréquence cardiaque, par absorption différentielle de lumière à deux longueurs d\'onde. Mesure instantanée, non invasive, en quelques secondes.',
     indication: 'Surveillance à domicile de patients asthmatiques, BPCO, insuffisants cardiaques ou respiratoires chroniques ; suivi des infections respiratoires (grippe, bronchiolite, COVID) pour repérer une désaturation ; usage sportif ou altitude (non médical).',
@@ -42,14 +44,15 @@ sources: [{label: "HAS — Compression médicale en insuffisance veineuse", url:
       'Une valeur isolée ponctuelle a moins de valeur qu\'une tendance dans le temps : conseiller de noter les mesures si suivi d\'une pathologie chronique.',
       'SpO2 < 94-95% au repos chez une personne auparavant normale, ou désaturation rapide à l\'effort : orienter vers une consultation médicale rapide, ne pas se contenter de l\'auto-interprétation.',
       'Ne remplace jamais une consultation médicale ni un avis clinique — c\'est un outil de surveillance, pas de diagnostic.',
-    ],
+    
+      'SpO₂ normale : ≥ 95% au repos. En dessous de 92% persistant ou ≥ 94% avec symptômes respiratoires marqués → orienter vers une consultation médicale urgente.',],
     contre_indications: [
       'Aucune contre-indication formelle à l\'usage (dispositif non invasif), mais fiabilité réduite en cas de mauvaise perfusion périphérique, de mouvement excessif du doigt, ou de lumière ambiante très intense.',
       'Intoxication au monoxyde de carbone : l\'oxymètre de pouls classique peut afficher une SpO2 faussement normale ou élevée (ne distingue pas l\'oxyhémoglobine de la carboxyhémoglobine) — ne pas s\'y fier dans ce contexte spécifique.',
     ],
     remboursement: {
       mention: 'Non remboursable',
-      note: '[⚠️ Recherche effectuée dans le PDF LPP officiel (mise à jour juin 2026) : aucune section dédiée trouvée pour l\'oxymètre de pouls grand public] L\'oxymétrie de pouls n\'est prise en charge par l\'Assurance Maladie que lorsqu\'elle est intégrée à un autre dispositif médical déjà remboursé (par exemple certains appareils de PPC pour apnée du sommeil avec monitoring intégré), pas comme appareil autonome vendu en pharmacie. Le modèle grand public reste donc à la charge intégrale du patient.',
+      note: '[⚠️ Recherche effectuée dans le PDF LPP officiel (mise à jour juin 2026) : aucune section dédiée trouvée pour l\'oxymètre de pouls grand public] L\'oxymétrie de pouls n\'est prise en charge par l\'Assurance Maladie que lorsqu\'elle est intégrée à un autre dispositif médical déjà remboursé (par exemple certains appareils de PPC pour apnée du sommeil avec monitoring intégré), pas comme appareil autonome vendu en pharmacie. Le modèle grand public reste donc à la charge intégrale du patient. Dispositif de surveillance non remboursable sur la LPP en usage courant à domicile. La prise en charge n\'existe que dans des protocoles très spécifiques (ex. protocole Covid-19 de 2021, désormais caduque). Appareil validé CE indispensable : les saturomètres non médicaux (vendus en bijouterie, sport) ne donnent pas de valeurs fiables. Valeurs normales : SpO₂ ≥ 95% au repos chez un adulte sain — toute valeur < 92% persistante doit alerter.',
     },
     otc: [],
     pathologies_liees: ['asthme', 'hypertension'],
@@ -57,7 +60,7 @@ sources: [{label: "HAS — Compression médicale en insuffisance veineuse", url:
     accord_prealable: false,
     achat_location: 'Achat uniquement · Non remboursable sur la LPPR en usage courant',
     formalites: 'Dispositif de surveillance — pas d\'ordonnance requise pour la vente · Non remboursable hors protocoles spécifiques (ex. Covid)',
-sources: [{label: "ANSM — Dispositifs de mesure SpO2", url: "https://ansm.sante.fr"}, {label: "Nomenclature LPP", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}] },
+sources: [{label: "Ameli — Autosurveillance et dispositifs de mesure à domicile", url: "https://www.ameli.fr/assure/remboursements/rembourse/medicaments-vaccins-dispositifs-medicaux/dispositifs-medicaux", date: "consulté 07/2026"}] },
   { id: 'm10', slug: 'tensiometre-bras', nom: 'Tensiomètre bras homologué', categorie: 'cardiaque', icone: '__SVG__Tensiometre de bras homologue.svg__',
     description: 'Appareil automatique de mesure de la pression artérielle par brassard huméral (bras), homologué selon la norme NF C 74-313. Certains modèles intègrent une détection de fibrillation auriculaire et une mémoire de plusieurs dizaines de mesures avec moyennage automatique.',
     indication: 'Hypertension artérielle connue ou suspectée, automesure tensionnelle dans le cadre du suivi cardiologique (règle des 3), dépistage à domicile, suivi de l\'efficacité d\'un traitement antihypertenseur.',
@@ -67,14 +70,15 @@ sources: [{label: "ANSM — Dispositifs de mesure SpO2", url: "https://ansm.sant
       'Règle des 3 pour l\'automesure : 3 mesures consécutives à 1-2 minutes d\'intervalle, matin et soir, pendant 3 jours, en notant chaque valeur ou en utilisant la mémoire de l\'appareil.',
       'Brassard poignet déconseillé en 1ère intention pour le dépistage et le suivi médical (moins fiable que le brassard bras) — à réserver à un usage de confort occasionnel.',
       'Une lecture ponctuelle élevée isolée ne doit pas alarmer : c\'est la tendance sur plusieurs jours qui compte pour la décision médicale, à transmettre au médecin.',
-    ],
+    
+      'Méthode des 3 : 3 mesures matin ET soir pendant 3 jours consécutifs, jamais juste après un effort. Seuil d\'alerte en automesure : > 135/85 mmHg (différent du cabinet médical > 140/90 mmHg).',],
     contre_indications: [
       'Aucune contre-indication formelle à l\'usage du tensiomètre lui-même (dispositif non invasif), mais certaines arythmies importantes (fibrillation auriculaire notamment) peuvent rendre la mesure automatique moins fiable selon les modèles.',
       'Ne pas utiliser sur un bras porteur d\'une perfusion, d\'une fistule artério-veineuse de dialyse, ou du côté d\'un curage ganglionnaire (notamment après chirurgie du sein) sans avis médical.',
     ],
     remboursement: {
       mention: 'Non remboursable',
-      note: '[⚠️ Recherche effectuée dans le PDF LPP officiel (mise à jour juin 2026) : aucune section dédiée trouvée pour l\'automesure tensionnelle grand public] La LPP ne couvre que l\'automesure de l\'INR chez les patients sous antivitamine K (dispositif différent, sans rapport avec la tension artérielle). Le tensiomètre d\'automesure tensionnelle reste donc à la charge intégrale du patient, qu\'il soit prescrit ou non par le médecin.',
+      note: '[⚠️ Recherche effectuée dans le PDF LPP officiel (mise à jour juin 2026) : aucune section dédiée trouvée pour l\'automesure tensionnelle grand public] La LPP ne couvre que l\'automesure de l\'INR chez les patients sous antivitamine K (dispositif différent, sans rapport avec la tension artérielle). Le tensiomètre d\'automesure tensionnelle reste donc à la charge intégrale du patient, qu\'il soit prescrit ou non par le médecin. Appareil d\'automesure tensionnelle non remboursable par l\'AM. Seuls les appareils validés cliniquement (liste sur societe-francaise-hypertension-arterielle.org) doivent être recommandés. Méthode des 3 mesures matin et soir pendant 3 jours (règle des 3) : seuil d\'alerte > 135/85 mmHg en automesure. Préférer systématiquement le bras au poignet (moins fiable en cas d\'arythmie ou de mauvaise position).',
     },
     otc: [],
     pathologies_liees: ['hypertension'],
@@ -82,7 +86,7 @@ sources: [{label: "ANSM — Dispositifs de mesure SpO2", url: "https://ansm.sant
     accord_prealable: false,
     achat_location: 'Achat uniquement · Non remboursable',
     formalites: 'Pas d\'ordonnance requise · Appareil validé ANSM recommandé · Préférer le bras au poignet',
-sources: [{label: "HAS — Automesure tensionnelle", url: "https://www.has-sante.fr/jcms/c_1600164/fr/fiche-de-bon-usage-automesure-tensionnelle"}, {label: "SFHTA — Recommandations", url: "https://www.sfhta.eu"}, {label: "Nomenclature LPP", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}] },
+sources: [{label: "HAS — Automesure tensionnelle", url: "https://www.has-sante.fr/jcms/c_1600164/fr/fiche-de-bon-usage-automesure-tensionnelle"}, ] },
 
   // ─── DIABÈTE & SURVEILLANCE ───
   { id: 'm11', slug: 'capteur-glycemie-continue', nom: 'Capteur de glycémie en continu (CGM)', categorie: 'diabete', icone: '__SVG__capteur de glycemie.svg__',
@@ -114,7 +118,7 @@ sources: [{label: "HAS — Automesure tensionnelle", url: "https://www.has-sante
     accord_prealable: false,
     achat_location: 'Achat uniquement · Vente exclusivement en pharmacie (pas de remboursement si achat sur Internet)',
     formalites: 'Ordonnance simple · Période d\'essai 1 à 3 mois avant prescription long terme · Éducation thérapeutique préalable obligatoire · FSL1 radié de la LPPR le 05/10/2023',
-sources: [{label: "HAS — Capteurs de glycémie en continu", url: "https://www.has-sante.fr/jcms/p_3361754/fr/systemes-de-mesure-en-continu-du-glucose-interstitiel"}, {label: "Nomenclature LPP — Titre I Ch.1", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "SFD — Recommandations autosurveillance", url: "https://www.sfdiabete.org"}, {label: "Ameli — Mémo LPP FreeStyle Libre (MàJ 24/07/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/11b-glycemie-FSL-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
+sources: [{label: "HAS — Capteurs de glycémie en continu", url: "https://www.has-sante.fr/jcms/p_3361754/fr/systemes-de-mesure-en-continu-du-glucose-interstitiel"}, , {label: "Ameli — Mémo LPP FreeStyle Libre (MàJ 24/07/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/11b-glycemie-FSL-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
   { id: 'm12', slug: 'lecteur-glycemie', nom: 'Lecteur de glycémie', categorie: 'diabete', icone: '__SVG__lecteur de glycemie.svg__',
     description: 'Appareil de mesure de la glycémie capillaire par prélèvement au doigt (bandelette réactive + autopiqueur), résultat en quelques secondes. Mémoire de plusieurs centaines de mesures avec courbes de tendance, certains modèles transmettent les données par Bluetooth.',
     indication: 'Diabète de type 1 et de type 2 traités par insuline ou par sulfamides hypoglycémiants, surveillance des hypoglycémies, vérification ponctuelle en complément d\'un capteur de glycémie en continu (CGM).',
@@ -140,7 +144,7 @@ sources: [{label: "HAS — Capteurs de glycémie en continu", url: "https://www.
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Prescription précisant le nombre d\'ASG par jour · 1 lecteur tous les 4 ans (adulte), 2 tous les 4 ans (enfant < 18 ans) · Pris en charge une seule fois si inclus dans un set',
-sources: [{label: "HAS — Autosurveillance glycémique", url: "https://www.has-sante.fr/jcms/c_1242816/fr/autosurveillance-glycemique"}, {label: "Nomenclature LPP — Titre I Ch.1", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "SFD — Recommandations 2023", url: "https://www.sfdiabete.org"}, {label: "Ameli — Mémo LPP Glycémie capillaire (MàJ 04/08/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/11a-glycemie_DM-mesure-capillaire-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
+sources: [{label: "HAS — Autosurveillance glycémique", url: "https://www.has-sante.fr/jcms/c_1242816/fr/autosurveillance-glycemique"}, , {label: "Ameli — Mémo LPP Glycémie capillaire (MàJ 04/08/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/11a-glycemie_DM-mesure-capillaire-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
   { id: 'm13', slug: 'stylo-insuline', nom: 'Stylo injecteur d\'insuline', categorie: 'diabete', icone: '__SVG__stylo-a-insuline.svg__',
     description: 'Dispositif d\'injection sous-cutanée d\'insuline, réutilisable (avec cartouche remplaçable) ou jetable pré-rempli, à dose réglable par crans. Aiguille fine et courte adaptable, à usage unique.',
     indication: 'Diabète insulino-requérant (type 1 ou type 2 en échec des traitements oraux), nécessitant une ou plusieurs injections quotidiennes d\'insuline.',
@@ -150,7 +154,8 @@ sources: [{label: "HAS — Autosurveillance glycémique", url: "https://www.has-
       'Conserver l\'insuline non utilisée au réfrigérateur (2-8°C, jamais au congélateur) ; une fois le stylo entamé, conservation à température ambiante pendant 4 semaines maximum (durée variable selon l\'insuline, vérifier la notice).',
       'Vérifier l\'aspect de l\'insuline avant chaque injection (limpide pour les insulines rapides, homogène après remise en suspension pour les insulines intermédiaires/lentes en suspension).',
       'Purger l\'air du stylo avant chaque injection (test de sécurité) pour garantir l\'exactitude de la dose délivrée.',
-    ],
+    
+      'Conservation : stylo en cours à température ambiante (≤ 25°C, à l\'abri de la lumière) — durée variable selon la référence (28 à 42 jours selon le fabricant). Ne jamais congeler.',],
     contre_indications: [
       'Aucune contre-indication au dispositif lui-même ; vigilance sur l\'adéquation entre le stylo et le type de cartouche/insuline (certains stylos sont spécifiques à une marque ou un dosage, ne pas mélanger).',
       'Lipodystrophie ou induration au site d\'injection habituel : changer de zone, ne pas insister sur une zone déjà altérée (absorption imprévisible de l\'insuline).',
@@ -159,7 +164,7 @@ sources: [{label: "HAS — Autosurveillance glycémique", url: "https://www.has-
       mention: 'Remboursable sur prescription',
       code_lppr: '1132086 ou 1131690 (stylo réutilisable avec aiguille/réservoir) ; aiguilles 1138077 (B/100) ou 1112391 (B/200)',
       taux: '100% en général (ALD diabète) — à vérifier selon la situation du patient',
-      note: 'Codes et tarifs sourcés dans le PDF LPP officiel : stylo réutilisable à cartouches préremplies ou avec réservoir non réutilisable, tarif 42,00€ TTC. Aiguilles stériles non réutilisables adaptables au stylo : 14,42€ (boîte de 100) ou 28,85€ (boîte de 200). Les stylos jetables pré-remplis spécifiques à une insuline donnée peuvent avoir des codes différents selon le laboratoire — se référer à la prescription précise.',
+      note: 'Codes et tarifs sourcés dans le PDF LPP officiel : stylo réutilisable à cartouches préremplies ou avec réservoir non réutilisable, tarif 42,00€ TTC. Aiguilles stériles non réutilisables adaptables au stylo : 14,42€ (boîte de 100) ou 28,85€ (boîte de 200). Les stylos jetables pré-remplis spécifiques à une insuline donnée peuvent avoir des codes différents selon le laboratoire — se référer à la prescription précise. Prescripteurs : tous médecins, sages-femmes. Pas d\'accord préalable. La prescription doit préciser le type d\'insuline et le dispositif adapté à l\'insuline prescrite (cartouche compatible). Les stylos jetables pré-remplis ne nécessitent pas de cartouche ; les stylos réutilisables sont rechargés avec des cartouches 3 mL (prise en charge séparée). Conservation : insuline non entamée au réfrigérateur (2–8°C) ; stylo en cours à température ambiante ≤25°C, durée variable selon la référence (28 à 42 jours).',
     },
     otc: ['Resucrage (gel ou comprimés de glucose)', 'Conteneur DASTRI pour aiguilles usagées'],
     pathologies_liees: ['diabete-type-2'],
@@ -167,7 +172,7 @@ sources: [{label: "HAS — Autosurveillance glycémique", url: "https://www.has-
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · Prescription précisant le type d\'insuline et le dispositif adapté',
-sources: [{label: "HAS — Insulinothérapie", url: "https://www.has-sante.fr/jcms/c_1242557/fr/strategie-medicamenteuse-du-controle-glycemique-du-diabete-de-type-2"}, {label: "Nomenclature LPP — Titre I Ch.1", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "SFD — Recommandations insulinothérapie", url: "https://www.sfdiabete.org"}] },
+sources: [{label: "HAS — Insulinothérapie", url: "https://www.has-sante.fr/jcms/c_1242557/fr/strategie-medicamenteuse-du-controle-glycemique-du-diabete-de-type-2"}, ] },
 
   // ─── HYGIÈNE & CONFORT ───
   { id: 'm14', slug: 'lit-medicalise', nom: 'Lit médicalisé électrique', categorie: 'hygiene', icone: '__SVG__lit medicalise.svg__',
@@ -196,7 +201,7 @@ sources: [{label: "HAS — Insulinothérapie", url: "https://www.has-sante.fr/jc
     accord_prealable: false,
     achat_location: 'Location (standard) · Achat (lit spécifique sur devis — besoins particuliers)',
     formalites: 'Ordonnance particulière indépendante des prescriptions pharmaceutiques · Poids du patient requis sur l\'ordonnance si > 135 kg · Achat sur devis uniquement',
-sources: [{label: "Nomenclature LPP — Titre II Ch.2", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANSM — Dispositifs MAD", url: "https://ansm.sante.fr"}, {label: "Ameli — Mémo LPP Lits médicaux (MàJ 24/07/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/05-lits-medicaux-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
+sources: [, {label: "Ameli — Mémo LPP Lits médicaux (MàJ 24/07/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/05-lits-medicaux-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
   { id: 'm15', slug: 'protections-incontinence', nom: 'Protections anatomiques incontinence', categorie: 'hygiene', icone: '__SVG__couche.svg__',
     description: 'Protections absorbantes anatomiques à usage unique (forme culotte, change complet ou protection anatomique avec filet de maintien), discrètes sous les vêtements, avec indice d\'absorption croissant selon le niveau de fuite (léger, modéré, fort, très fort).',
     indication: 'Incontinence urinaire ou mixte (urinaire et fécale) légère à sévère, période post-opératoire urologique ou gynécologique, perte d\'autonomie, troubles neurologiques avec incontinence.',
@@ -206,13 +211,14 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.2", url: "https://www.ameli.
       'Associer systématiquement une crème protectrice périnéale à base d\'oxyde de zinc en cas de port prolongé ou de peau fragile.',
       'Bien ajuster la taille à la morphologie (tour de taille/hanches) : une protection mal ajustée fuit davantage qu\'une protection bien dimensionnée mais moins absorbante.',
       'Orienter vers une évaluation médicale si l\'incontinence est récente, s\'aggrave, ou s\'accompagne de signes inhabituels (douleur, sang, fièvre) — ne pas se limiter à l\'appareillage sans bilan de la cause.',
-    ],
+    
+      'Les protections absorbantes jetables standard (changes, slips, anatomiques) ne sont PAS remboursées par l\'AM — orienter vers les aides alternatives : APA pour les seniors, PCH pour les personnes handicapées, forfait mutuelle.',],
     contre_indications: [
       'Aucune contre-indication formelle au dispositif ; vigilance chez les patients à peau très fragile (escarres, dermatoses) où le port prolongé peut aggraver les lésions sans surveillance rapprochée.',
     ],
     remboursement: {
       mention: 'Non remboursable',
-      note: '[⚠️ Recherche effectuée dans le PDF LPP officiel (mise à jour juin 2026) : confirmé que la nomenclature ne couvre que les étuis péniens, manchons périgénitaux et urinaux — PAS les protections absorbantes anatomiques classiques type change complet ou culotte absorbante] Ces protections restent à la charge du patient ou de sa complémentaire santé (certains contrats incluent un forfait "incontinence" ou "matériel médical divers"). Une prise en charge partielle existe via l\'APA (Allocation Personnalisée d\'Autonomie) ou la PCH (Prestation de Compensation du Handicap) selon la situation du patient — orienter vers une assistante sociale si besoin.',
+      note: '[⚠️ Recherche effectuée dans le PDF LPP officiel (mise à jour juin 2026) : confirmé que la nomenclature ne couvre que les étuis péniens, manchons périgénitaux et urinaux — PAS les protections absorbantes anatomiques classiques type change complet ou culotte absorbante] Ces protections restent à la charge du patient ou de sa complémentaire santé (certains contrats incluent un forfait "incontinence" ou "matériel médical divers"). Une prise en charge partielle existe via l\'APA (Allocation Personnalisée d\'Autonomie) ou la PCH (Prestation de Compensation du Handicap) selon la situation du patient — orienter vers une assistante sociale si besoin. IMPORTANT : les protections anatomiques absorbantes jetables (changes complets, slips absorbants, protections anatomiques) ne sont pas remboursées par l\'Assurance Maladie en usage courant — elles ne figurent pas sur la LPP. Seuls les dispositifs pour incontinence sévère sont pris en charge : étuis péniens, poches de recueil, sondes urinaires (LPP Titre II). Des aides financières alternatives existent : APA (personnes âgées en perte d\'autonomie), PCH (handicap reconnu < 60 ans), forfait mutuelle incontinence. Prescripteurs : médecins (sur ordonnance détaillant le type, la quantité et la durée).',
     },
     otc: ['Crème protectrice périnéale (oxyde de zinc)', 'Lingettes nettoyantes sans rinçage'],
     pathologies_liees: [],
@@ -220,7 +226,7 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.2", url: "https://www.ameli.
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · Quantité mensuelle limitée selon le conditionnement · 60 unités maximum par mois pour la majorité des références',
-sources: [{label: "HAS — Incontinence urinaire de la femme", url: "https://www.has-sante.fr/jcms/c_1511578/fr/incontinence-urinaire-de-la-femme"}, {label: "Nomenclature LPP — Titre II Ch.7", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "AFU — Recommandations", url: "https://www.urofrance.org"}] },
+sources: [{label: "HAS — Incontinence urinaire de la femme", url: "https://www.has-sante.fr/jcms/c_1511578/fr/incontinence-urinaire-de-la-femme"}, , {label: "Ameli — Incontinence urinaire", url: "https://www.ameli.fr/assure/sante/themes/incontinence-urinaire", date: "consulté 07/2026"}] },
   { id: 'm16', slug: 'siege-de-bain', nom: 'Siège de bain / douche', categorie: 'hygiene', icone: '__SVG__siege de bain.svg__',
     description: 'Siège ou tabouret antidérapant, hauteur réglable, à poser dans la baignoire ou la douche pour sécuriser la toilette en position assise. Fixation par ventouses ou pieds antidérapants, poids maximal supporté généralement autour de 130 kg selon les modèles.',
     indication: 'Perte d\'autonomie, période post-opératoire (notamment orthopédique), personnes âgées, troubles de l\'équilibre, prévention des chutes dans la salle de bain.',
@@ -236,7 +242,7 @@ sources: [{label: "HAS — Incontinence urinaire de la femme", url: "https://www
     ],
     remboursement: {
       mention: 'Non remboursable',
-      note: '[⚠️ Recherche effectuée dans le PDF LPP officiel (mise à jour juin 2026) : aucune section trouvée pour le siège de bain/douche] Ce type d\'aide technique au confort et à la sécurité de la toilette n\'est pas inscrit à la nomenclature LPPR. Reste à la charge du patient ; une participation peut exister via l\'APA, la PCH, ou certaines caisses de retraite complémentaire selon la situation — orienter vers une assistante sociale si besoin.',
+      note: '[⚠️ Recherche effectuée dans le PDF LPP officiel (mise à jour juin 2026) : aucune section trouvée pour le siège de bain/douche] Ce type d\'aide technique au confort et à la sécurité de la toilette n\'est pas inscrit à la nomenclature LPPR. Reste à la charge du patient ; une participation peut exister via l\'APA, la PCH, ou certaines caisses de retraite complémentaire selon la situation — orienter vers une assistante sociale si besoin. Non remboursable par l\'AM sur la LPP standard. Des aides financières alternatives existent selon la situation : AGEFIPH (travailleurs en situation de handicap), MDPH/PCH (personnes handicapées < 60 ans), ANAH-Ma Prime Adapt\' (adaptation du logement), aide de la caisse de retraite (CARSAT, MSA). L\'ergothérapeute peut évaluer le besoin et délivrer une prescription, facilitant l\'accès aux aides.',
     },
     otc: [],
     pathologies_liees: [],
@@ -244,7 +250,7 @@ sources: [{label: "HAS — Incontinence urinaire de la femme", url: "https://www
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · Non remboursable par l\'Assurance Maladie (aide possible via MDPH/CPAM selon situation)',
-sources: [{label: "Nomenclature LPP — Titre II Ch.4", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel aides techniques", url: "https://www.anap.fr"}] },
+sources: [{label: "Ameli — Aides à la mobilité et au maintien à domicile", url: "https://www.ameli.fr/assure/sante/medicaments/droits-remboursements/remboursements-aide-mobilite", date: "consulté 07/2026"}] },
 
   // ─── MOBILITÉ ───
   { id: 'm1', slug: 'canne-ergonomique', nom: 'Canne ergonomique réglable', categorie: 'mobilite', icone: '__SVG__cane.svg__',
@@ -256,7 +262,8 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.4", url: "https://www.ameli.
       'Hauteur correcte : poignée au niveau du grand trochanter (hanche), coude fléchi à environ 15-20° lorsque la main tient la poignée, bras le long du corps.',
       'Embout caoutchouc à vérifier régulièrement — l\'usure réduit l\'adhérence et augmente le risque de glissade, notamment sur sol mouillé.',
       'Canne tripode ou quadripode à privilégier en cas de besoin d\'appui plus stable (meilleur équilibre que la canne simple, au prix d\'un encombrement plus important).',
-    ],
+    
+      'Réglage de la hauteur : poignée au niveau du grand trochanter (pli de la hanche), coude légèrement fléchi à 15–20°. Un réglage incorrect augmente le risque de chutes et de lombalgies.',],
     contre_indications: [
       'Aucune contre-indication formelle ; une canne mal adaptée (mauvaise hauteur, mauvais côté) peut aggraver les douleurs ou créer des compensations posturales délétères (épaule, dos).',
     ],
@@ -264,7 +271,7 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.4", url: "https://www.ameli.
       mention: 'Remboursable sur prescription',
       code_lppr: '1270463 (canne bois) / 1296787 (canne métal réglable) / 1200764 (canne tripode/quadripode)',
       taux: '60% du tarif LPPR (100% si ALD/CMU) — à vérifier selon la situation du patient',
-      note: 'Tarifs sourcés dans le PDF LPP officiel : canne en bois 6,10€, canne métallique réglable en hauteur 12,20€, canne tripode ou quadripode 12,65€. Canne blanche pour patient malvoyant/aveugle : code distinct 1206880, 6,86€. Les dates de fin de prise en charge affichées dans la nomenclature sont indicatives, sans effet sur la validité réelle du remboursement.',
+      note: 'Tarifs sourcés dans le PDF LPP officiel : canne en bois 6,10€, canne métallique réglable en hauteur 12,20€, canne tripode ou quadripode 12,65€. Canne blanche pour patient malvoyant/aveugle : code distinct 1206880, 6,86€. Les dates de fin de prise en charge affichées dans la nomenclature sont indicatives, sans effet sur la validité réelle du remboursement. Prescripteurs : tous médecins, ergothérapeutes. Pas d\'accord préalable. Achat uniquement. Ordonnance simple obligatoire pour la prise en charge (sans ordonnance = aucun remboursement). Tarifs LPP indicatifs : canne en bois 6,10€ (code 1270463), canne anglaise 12,20€/unité (1296787), tripode/quadripode 12,65€ (1200764). Taux de remboursement : 60% (100% si ALD). La canne doit être réglée à la bonne hauteur : poignée au niveau du grand trochanter, coude légèrement fléchi (15–20°).',
     },
     otc: [],
     pathologies_liees: ['douleur-arthrose'],
@@ -272,7 +279,7 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.4", url: "https://www.ameli.
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple',
-sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANSM — Dispositifs aide à la marche", url: "https://ansm.sante.fr"}] },
+sources: [{label: "Ameli — Cannes et béquilles : remboursement", url: "https://www.ameli.fr/assure/remboursements/rembourse/medicaments-vaccins-dispositifs-medicaux/canne-bequille-prise-en-charge", date: "consulté 07/2026"}] },
   { id: 'm2', slug: 'deambulateur', nom: 'Déambulateur 4 roues', categorie: 'mobilite', icone: '__SVG__deambulateur 4 roues.svg__',
     description: 'Cadre de marche sur 4 roues pivotantes, avec siège intégré, panier de rangement et freins de type vélo (frein de parking à l\'arrêt). Plus fluide à manier que le 2 roues, adapté aux sols réguliers.',
     indication: 'Troubles de l\'équilibre, faiblesse musculaire des membres inférieurs, suites d\'AVC, besoin de sécurisation de la marche sur de longues distances ou pour les sorties à l\'extérieur.',
@@ -282,7 +289,8 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.
       'Ne pas utiliser dans les escaliers ni sur terrain très accidenté : le déambulateur est conçu pour une marche sur sol plat et stable.',
       'Le siège intégré permet une pause assise en cas de fatigue, mais ne doit pas être confondu avec un usage prolongé comme fauteuil (pas de dossier ergonomique).',
       'Vérifier régulièrement l\'état des roulettes (usure, blocage) qui conditionne la fluidité et la sécurité du déplacement.',
-    ],
+    
+      'Un seul déambulateur de même type (même code LPP) est pris en charge par l\'AM — la délivrance d\'un appareil supplémentaire n\'est pas remboursée.',],
     contre_indications: [
       'Troubles cognitifs sévères empêchant la compréhension de l\'utilisation des freins — risque de chute par mauvaise manipulation, évaluation au cas par cas.',
       'Terrain très accidenté ou escaliers : usage non adapté, prévoir une aide différente (canne adaptée, accompagnement humain) pour ces situations.',
@@ -291,7 +299,7 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.
       mention: 'Remboursable sur prescription',
       code_lppr: '1285619 (achat) / 1225646 (location ≤26 sem) / 1260418 (location >26 sem)',
       taux: '60% du tarif LPPR (100% si ALD/CMU) — à vérifier selon la situation du patient',
-      note: 'Tarifs sourcés dans le PDF LPP officiel : achat 53,81€, location courte durée (≤26 semaines) 2,21€/semaine, location longue durée (>26 semaines) 1,34€/semaine. Forfait de livraison/installation pour la location : 12,96€ (code 1290968). La nomenclature LPP ne distingue pas explicitement déambulateur 2 roues et 4 roues : ces codes couvrent le déambulateur générique, quel que soit le nombre de roues.',
+      note: 'Tarifs sourcés dans le PDF LPP officiel : achat 53,81€, location courte durée (≤26 semaines) 2,21€/semaine, location longue durée (>26 semaines) 1,34€/semaine. Forfait de livraison/installation pour la location : 12,96€ (code 1290968). La nomenclature LPP ne distingue pas explicitement déambulateur 2 roues et 4 roues : ces codes couvrent le déambulateur générique, quel que soit le nombre de roues. Prescripteurs : tous médecins, ergothérapeutes, masseurs-kinésithérapeutes. Pas d\'accord préalable. Achat uniquement. Ordonnance simple obligatoire (préciser le type : sans roues, 2 roues, 4 roues avec ou sans assise). Un seul équipement de même code LPP est pris en charge — l\'AM ne rembourse pas un 2e appareil en parallèle. Le rollator (4 roues avec assise) est indiqué pour les trajets extérieurs plus longs et les patients nécessitant des pauses fréquentes.',
     },
     otc: [],
     pathologies_liees: ['douleur-arthrose'],
@@ -299,7 +307,7 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple',
-sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel mobilité", url: "https://www.anap.fr"}] },
+sources: [{label: "Ameli — Déambulateurs et rollators", url: "https://www.ameli.fr/assure/remboursements/rembourse/medicaments-vaccins-dispositifs-medicaux/deambulateur-rollator-prise-en-charge", date: "consulté 07/2026"}] },
   { id: 'm3', slug: 'fauteuil-roulant', nom: 'Fauteuil roulant manuel', categorie: 'mobilite', icone: '__SVG__fauteuil roulant.svg__',
     description: 'Fauteuil roulant pliant léger à propulsion manuelle, repose-pieds amovibles, accoudoirs rabattables facilitant les transferts. Catégorie FMP (fauteuil manuel pliant) dans la classification officielle, la plus simple et la plus courante.',
     indication: 'Incapacité à la marche prolongée ou totale, période post-opératoire, pathologies neurologiques limitant la mobilité, besoin de déplacement autonome ou avec tierce assistance.',
@@ -309,7 +317,8 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.
       'Formation de l\'accompagnant aux techniques de transfert recommandée (lit-fauteuil, fauteuil-toilettes) pour limiter les risques de chute et les troubles musculo-squelettiques de l\'aidant.',
       'Coussin anti-escarres à associer systématiquement en cas d\'usage prolongé (plusieurs heures par jour) pour prévenir les points d\'appui ischiatiques.',
       'Vérifier le verrouillage des freins avant chaque transfert assis-debout ou debout-assis.',
-    ],
+    
+      'Réforme VPH déc. 2025 : tous les fauteuils roulants inscrits à la LPP sont pris en charge à 100% — plus de reste à charge sur la base LPP (achat ou location).',],
     contre_indications: [
       'Aucune contre-indication formelle au fauteuil roulant lui-même ; le choix du modèle (largeur, type d\'assise, dossier) doit être adapté à la pathologie et à la morphologie — un mauvais choix peut favoriser escarres ou troubles posturaux.',
     ],
@@ -317,7 +326,7 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.
       mention: 'Remboursable sur prescription',
       code_lppr: '4544151 (achat neuf, catégorie FMP) / 1268182 (location ≤13 sem) / 1291028 (location 14-26 sem)',
       taux: '60% du tarif LPPR (100% si ALD/CMU) — à vérifier selon la situation du patient',
-      note: 'Tarifs sourcés dans le PDF LPP officiel : achat fauteuil manuel pliant standard (FMP) 360,53€ TTC, location courte durée (≤13 semaines) 3,82€/semaine, location 14-26 semaines 2,97€/semaine. Option d\'achat après une période de location : code 1267633, 108,16€. Pour les besoins plus complexes (fauteuils modulaires, électriques, châssis spécifiques), la classification LPP prévoit d\'autres catégories (FMPR, FRM...) avec des codes et tarifs différents — orienter vers un prestataire spécialisé pour ces cas.',
+      note: 'Tarifs sourcés dans le PDF LPP officiel : achat fauteuil manuel pliant standard (FMP) 360,53€ TTC, location courte durée (≤13 semaines) 3,82€/semaine, location 14-26 semaines 2,97€/semaine. Option d\'achat après une période de location : code 1267633, 108,16€. Pour les besoins plus complexes (fauteuils modulaires, électriques, châssis spécifiques), la classification LPP prévoit d\'autres catégories (FMPR, FRM...) avec des codes et tarifs différents — orienter vers un prestataire spécialisé pour ces cas. Réforme VPH du 1er décembre 2025 : tous les fauteuils roulants inscrits à la LPP sont désormais remboursés à 100% (sans reste à charge sur la base LPP), en achat comme en location. Fauteuils manuels non modulaires (FMP/FMPR) : prescription tout médecin ou ergothérapeute, pas de DAP. Fauteuils modulaires (FRM, FRMC, FRMA…) : prescription médecin MPR ou DU Appareillage + ergothérapeute, DAP obligatoire (Cerfa 11164*04), fiche d\'évaluation et essai requis. FRE (électrique modulaire) : idem + essai pratique avec certificat d\'aptitude à la conduite.',
     },
     otc: ['Coussin anti-escarres (si non déjà fourni)'],
     pathologies_liees: [],
@@ -325,7 +334,7 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.
     accord_prealable: true,
     achat_location: 'Achat · Location longue durée (LLD) ou courte durée (LCD) selon le type de VPH',
     formalites: 'Imprimé Cerfa 11164*04 pour DAP (fauteuils modulaires) · Fiche d\'évaluation et de préconisation · Essai du véhicule obligatoire pour les modèles modulaires et électriques · Envoi dématérialisé via téléservices ameli pro',
-sources: [{label: "HAS — Fauteuils roulants", url: "https://www.has-sante.fr/jcms/c_1739369/fr/fauteuils-roulants-et-autres-vehicules-pour-personnes-handicapees"}, {label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "APF France handicap", url: "https://www.apf-francehandicap.org"}] },
+sources: [{label: "HAS — Fauteuils roulants", url: "https://www.has-sante.fr/jcms/c_1739369/fr/fauteuils-roulants-et-autres-vehicules-pour-personnes-handicapees"}, ] },
   { id: 'm4', slug: 'semelles-orthopediques', nom: 'Semelles orthopédiques sur mesure', categorie: 'mobilite', icone: '__SVG__semelle orthopedique.svg__',
     description: 'Orthèses plantaires thermoformées, réalisées sur mesure après examen podologique (podoscope, podogramme), corrigeant la posture du pied et répartissant les zones d\'appui plantaire. À distinguer des semelles de confort en vente libre, non personnalisées.',
     indication: 'Arthrose du genou ou de la hanche avec trouble de l\'appui, pied diabétique à risque (décharge des zones de pression), fasciite plantaire, troubles de la statique du pied (pied plat, pied creux), métatarsalgies.',
@@ -343,7 +352,7 @@ sources: [{label: "HAS — Fauteuils roulants", url: "https://www.has-sante.fr/j
       mention: 'Remboursable sur prescription',
       code_lppr: '2180450 / 2122121 / 2140455 (par pointure) ou 2158449 (semelle monobloc résine)',
       taux: '60% du tarif LPPR (100% si ALD/CMU) — à vérifier selon la situation du patient',
-      note: 'Tarifs sourcés dans le PDF LPP officiel : environ 13 à 14€ par paire selon la pointure (codes variables), semelle monobloc en résine thermoformée 27,34€. Prise en charge réservée aux semelles réalisées sur mesure après examen clinique du pied (podoscope/podogramme) — les semelles de série ou de confort vendues sans prescription ne sont jamais remboursées.',
+      note: 'Tarifs sourcés dans le PDF LPP officiel : environ 13 à 14€ par paire selon la pointure (codes variables), semelle monobloc en résine thermoformée 27,34€. Prise en charge réservée aux semelles réalisées sur mesure après examen clinique du pied (podoscope/podogramme) — les semelles de série ou de confort vendues sans prescription ne sont jamais remboursées. Prescripteurs : tous médecins, pédicures-podologues. Pas d\'accord préalable. Achat uniquement. La prise en charge est subordonnée à des critères précis : affection podologique justifiée (hallux valgus, trouble statique sévère, pied diabétique, post-chirurgical…). L\'ordonnance doit préciser l\'indication et le type de semelle (thermoformée, milieu de gamme, etc.). Les semelles de série non prescrites ne sont pas remboursées.',
     },
     otc: ['Crème podologique réparatrice (talons, callosités)'],
     pathologies_liees: ['douleur-arthrose', 'diabete-type-2'],
@@ -351,7 +360,7 @@ sources: [{label: "HAS — Fauteuils roulants", url: "https://www.has-sante.fr/j
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · Remboursement via ameli.fr/assure/remboursements (orthèses plantaires)',
-sources: [{label: "Ameli — Semelles orthopédiques : prise en charge", url: "https://www.ameli.fr/assure/remboursements/rembourse/medicaments-vaccins-dispositifs-medicaux/semelles-orthopediques-orthese-plantaire-prise-en-charge", date: "consulté 07/2026"}, {label: "Nomenclature LPP — Titre II Ch.1", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "SOFCOT — Recommandations", url: "https://www.sofcot.fr"}] },
+sources: [{label: "Ameli — Semelles orthopédiques : prise en charge", url: "https://www.ameli.fr/assure/remboursements/rembourse/medicaments-vaccins-dispositifs-medicaux/semelles-orthopediques-orthese-plantaire-prise-en-charge", date: "consulté 07/2026"}, ] },
 
   // ─── NUTRITION ───
   { id: 'm17', slug: 'complement-nutritionnel', nom: 'Compléments nutritionnels oraux (CNO)', categorie: 'nutrition', icone: '__SVG__nutrition.svg__',
@@ -382,7 +391,7 @@ sources: [{label: "Ameli — Semelles orthopédiques : prise en charge", url: "h
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · Première prescription ≤ 1 mois · Renouvellements ≤ 3 mois · Uniquement adultes dénutris avec fonction intestinale normale',
-sources: [{label: "HAS — Compléments nutritionnels oraux", url: "https://www.has-sante.fr/jcms/c_1264980/fr/complementation-nutritionnelle-orale"}, {label: "Nomenclature LPP — Titre III Ch.1", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "SFNCM — Recommandations nutrition", url: "https://www.sfncm.org"}, {label: "Ameli — Mémo LPP prescription des CNO", url: "https://www.ameli.fr/sites/default/files/Documents/12-complements-nutritionnels-oraux-LPP-memoPS.pdf", date: "consulté 07/2026"}, {label: "Légifrance — Arrêté du 25 avril 2025 (prescription IPA)", url: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051533034", date: "consulté 07/2026"}] },
+sources: [{label: "HAS — Compléments nutritionnels oraux", url: "https://www.has-sante.fr/jcms/c_1264980/fr/complementation-nutritionnelle-orale"}, , {label: "Ameli — Mémo LPP prescription des CNO", url: "https://www.ameli.fr/sites/default/files/Documents/12-complements-nutritionnels-oraux-LPP-memoPS.pdf", date: "consulté 07/2026"}, {label: "Légifrance — Arrêté du 25 avril 2025 (prescription IPA)", url: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051533034", date: "consulté 07/2026"}] },
   { id: 'm18', slug: 'epaississants', nom: 'Épaississants alimentaires', categorie: 'nutrition', icone: '__SVG__nutrition.svg__',
     description: 'Poudre instantanée sans saveur ajoutée, à diluer dans les liquides ou aliments pour en modifier la texture selon plusieurs niveaux de consistance (nectar, miel, pudding/crème) afin de sécuriser la déglutition.',
     indication: 'Troubles de la déglutition oropharyngée (dysphagie) chez les personnes de plus de 3 ans, le plus souvent dans un contexte post-AVC, maladie neurologique (Parkinson, sclérose en plaques) ou démence évoluée.',
@@ -392,7 +401,8 @@ sources: [{label: "HAS — Compléments nutritionnels oraux", url: "https://www.
       'Vérifier la tolérance initiale avec l\'équipe soignante, notamment chez les patients très fragiles ou en début de prise en charge.',
       'Respecter un temps de repos après dilution (variable selon les produits, souvent quelques minutes) pour que l\'épaississement atteigne sa texture finale avant de servir.',
       'Certains produits épaississent davantage avec le temps (notamment au contact de la salive) : prévenir l\'aidant de ce phénomène pour éviter une texture trop épaisse en fin de repas.',
-    ],
+    
+      'Classification IDDSI : préciser le niveau de texture (1 = liquide légèrement épaissi, 2 = néctar, 3 = miel, 4 = pudding). Les épaississants à base d\'amidon et ceux à base de gomme xanthane ont des comportements différents à la chaleur et avec les acides.',],
     contre_indications: [
       'Dysphagie non évaluée par un professionnel : l\'introduction d\'un épaississant ne doit pas se substituer à un bilan de la déglutition (orthophonique ou médical) déterminant la texture réellement adaptée.',
     ],
@@ -400,7 +410,7 @@ sources: [{label: "HAS — Compléments nutritionnels oraux", url: "https://www.
       mention: 'Remboursable sur prescription',
       code_lppr: '1174937 (Clinutren ThickenUp Clear) ou 1192042 (Gel\'Clear)',
       taux: '60% du tarif LPPR (100% si ALD/CMU) — à vérifier selon la situation du patient',
-      note: 'Tarifs sourcés dans le PDF LPP officiel : Clinutren ThickenUp Clear 12,00€, Gel\'Clear 9,10€ (tarifs au conditionnement de référence). Indication réservée à la dysphagie oropharyngée chez les patients de plus de 3 ans — prescription initiale par le médecin, souvent sur recommandation orthophonique.',
+      note: 'Tarifs sourcés dans le PDF LPP officiel : Clinutren ThickenUp Clear 12,00€, Gel\'Clear 9,10€ (tarifs au conditionnement de référence). Indication réservée à la dysphagie oropharyngée chez les patients de plus de 3 ans — prescription initiale par le médecin, souvent sur recommandation orthophonique. Prescripteurs : tous médecins, orthophonistes. Pas d\'accord préalable. Indication exclusive : dysphagie avec troubles de déglutition documentés (bilan orthophonique ou gériatrique recommandé). L\'ordonnance doit préciser la consistance cible selon la classification IDDSI (niveau 0 à 4 : liquide, néctar, miel, pudding). Les épaississants non prescrits ou pour simple confort ne sont pas remboursés. Vérifier la compatibilité avec les médicaments inclus dans la prise.',
     },
     otc: [],
     pathologies_liees: [],
@@ -408,7 +418,7 @@ sources: [{label: "HAS — Compléments nutritionnels oraux", url: "https://www.
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · Troubles de déglutition documentés',
-sources: [{label: "HAS — Troubles de la déglutition", url: "https://www.has-sante.fr/jcms/c_1260376/fr/prise-en-charge-de-la-dysphagie"}, {label: "Nomenclature LPP — Titre III", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "SFNEP — Recommandations dysphagies", url: "https://www.sfnep.org"}] },
+sources: [{label: "HAS — Troubles de la déglutition", url: "https://www.has-sante.fr/jcms/c_1260376/fr/prise-en-charge-de-la-dysphagie"}, ] },
 
   // ─── POST-OPÉRATOIRE ───
   { id: 'm19', slug: 'attelle-poignet', nom: 'Attelle de repos poignet', categorie: 'mobilite', icone: '__SVG__atelle de repos poignet.svg__',
@@ -429,7 +439,7 @@ sources: [{label: "HAS — Troubles de la déglutition", url: "https://www.has-s
       mention: 'Remboursable sur prescription',
       code_lppr: 'Orthèses main-poignet statiques de série : 2182755 (poignet rigide, 41,64€) · 2159526 (poignet-main, 56,64€) · 2189800 (poignet-pouce, 53,18€) — modèle exact selon prescription (PDF LPP p.1044)',
       taux: '60% du tarif LPPR (100% si ALD/CMU) — à vérifier selon la situation du patient',
-      note: 'Tarif sourcé dans le PDF LPP officiel pour l\'attelle d\'extension du poignet : 45,63€ (code 2145984). D\'autres références existent selon le mouvement à corriger et le degré de rigidité, avec des tarifs variant approximativement de 45 à 94€ — se référer à la prescription précise pour le code exact. [⚠️ L\'attelle de repos simple type "canal carpien" vendue couramment en pharmacie peut correspondre à une référence différente selon le fabricant — vérifier la correspondance exacte avec le code LPPR avant facturation]',
+      note: 'Tarif sourcé dans le PDF LPP officiel pour l\'attelle d\'extension du poignet : 45,63€ (code 2145984). D\'autres références existent selon le mouvement à corriger et le degré de rigidité, avec des tarifs variant approximativement de 45 à 94€ — se référer à la prescription précise pour le code exact. [⚠️ L\'attelle de repos simple type "canal carpien" vendue couramment en pharmacie peut correspondre à une référence différente selon le fabricant — vérifier la correspondance exacte avec le code LPPR avant facturation] Prescripteurs : tous médecins, masseurs-kinésithérapeutes, ergothérapeutes. Pas d\'accord préalable. Achat uniquement. L\'ordonnance doit préciser le type d\'orthèse (repos nocturne, active de jour, de stabilisation), le côté (droit/gauche) et l\'indication. Codes LPPR spécifiques selon le modèle (poignet rigide 2182755 ~41,64€, poignet-main 2159526 ~56,64€, poignet-pouce 2189800 ~53,18€ — source PDF LPP p.1044).',
     },
     otc: ['Gel ou patch anti-inflammatoire local', 'Bande de contention/strapping'],
     pathologies_liees: ['douleur-arthrose'],
@@ -437,7 +447,7 @@ sources: [{label: "HAS — Troubles de la déglutition", url: "https://www.has-s
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple mentionnant le type d\'orthèse, le côté et l\'indication · Codes LPPR spécifiques selon le modèle',
-sources: [{label: "Nomenclature LPP — Titre II Ch.1", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "SFCM — Recommandations main", url: "https://www.sfcm.fr"}] },
+sources: [, , {label: "Ameli — Orthèses et appareillage : remboursement", url: "https://www.ameli.fr/assure/remboursements/rembourse/medicaments-vaccins-dispositifs-medicaux/appareillage", date: "consulté 07/2026"}] },
   { id: 'm20', slug: 'bequilles', nom: 'Béquilles axillaires / avant-bras', categorie: 'mobilite', icone: '__SVG__Bequilles axillaires.svg__',
     description: 'Béquilles réglables en aluminium, modèle axillaire (appui sous le bras, avec barre de préhension) ou modèle avant-bras dit "canadienne" (appui sur l\'avant-bras avec poignée), selon la prescription et le type d\'appui recherché.',
     indication: 'Fracture du membre inférieur, suites de chirurgie orthopédique (prothèse de hanche ou de genou), entorse grave de la cheville ou du genou, décharge totale ou partielle d\'un membre.',
@@ -447,7 +457,8 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.1", url: "https://www.ameli.
       'Vérifier régulièrement les embouts antidérapants (usure, durcissement) — un embout lisse ou fendu augmente fortement le risque de glissade.',
       'Expliquer le schéma de marche adapté à la prescription (décharge complète : béquilles puis jambe saine ; décharge partielle : appui progressif autorisé) — une mauvaise utilisation retarde la consolidation ou aggrave la blessure.',
       'Hauteur des poignées des canadiennes à régler également, en complément de la hauteur globale, pour un appui confortable de l\'avant-bras.',
-    ],
+    
+      'Réglage béquilles axillaires : appui axillaire à 3–4 cm du creux axillaire (pas de contact direct pour éviter la compression du plexus brachial), coude fléchi à 30°.',],
     contre_indications: [
       'Troubles sévères de l\'équilibre ou des membres supérieurs (force, coordination) rendant l\'usage des béquilles dangereux — orienter vers un déambulateur ou un fauteuil roulant selon l\'évaluation.',
     ],
@@ -455,7 +466,7 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.1", url: "https://www.ameli.
       mention: 'Remboursable sur prescription',
       code_lppr: '1296787 (canne anglaise à appui antébrachial, 12,20€ l\'unité) · 1261872 (béquilles d\'aisselles, 18,29€ la paire) · 1270463 (canne bois, 6,10€) · 1200764 (canne tripode/quadripode, 12,65€) — sourcés PDF LPP p.848',
       taux: '60% du tarif LPPR (100% si ALD/CMU) — à vérifier selon la situation du patient',
-      note: 'Tarif sourcé dans le PDF LPP officiel : 18,29€ la paire pour les béquilles d\'aisselle réglables en hauteur, tout type, à l\'achat. [⚠️ Code spécifique pour les béquilles avant-bras (canadiennes) non confirmé précisément dans le PDF — vérifier la référence exacte selon le modèle prescrit]',
+      note: 'Tarif sourcé dans le PDF LPP officiel : 18,29€ la paire pour les béquilles d\'aisselle réglables en hauteur, tout type, à l\'achat. [⚠️ Code spécifique pour les béquilles avant-bras (canadiennes) non confirmé précisément dans le PDF — vérifier la référence exacte selon le modèle prescrit] Prescripteurs : tous médecins, ergothérapeutes, masseurs-kinésithérapeutes. Pas d\'accord préalable. Achat uniquement. Ordonnance simple obligatoire. Tarifs LPP (source PDF officiel p.848) : béquilles axillaires 18,29€/paire (1261872), canne anglaise à appui antébrachial 12,20€/unité (1296787). Taux : 60% base LPP (100% si ALD). La hauteur doit être réglée avec la pointe à 15 cm du pied, coude fléchi à 30° (béquilles axillaires) ou poignée au grand trochanter (cannes anglaises).',
     },
     otc: ['Crème apaisante mains/paumes (en cas d\'usage prolongé)'],
     pathologies_liees: ['douleur-arthrose'],
@@ -463,7 +474,7 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.1", url: "https://www.ameli.
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · Prescription sur ordonnance indépendante des médicaments',
-sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANSM — Dispositifs aide à la marche", url: "https://ansm.sante.fr"}] },
+sources: [, , {label: "Ameli — Cannes et béquilles : remboursement", url: "https://www.ameli.fr/assure/remboursements/rembourse/medicaments-vaccins-dispositifs-medicaux/canne-bequille-prise-en-charge", date: "consulté 07/2026"}] },
 
   // ─── RESPIRATOIRE ───
   { id: 'm5', slug: 'aerosol-compresseur', nom: 'Aérosolthérapie par compresseur', categorie: 'respiratoire', icone: '__SVG__aerosol therapy.svg__',
@@ -475,7 +486,8 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.
       'Ne jamais partager le matériel entre patients sans désinfection complète, en particulier en cas de pathologie infectieuse ou de mucoviscidose (risque de transmission croisée).',
       'Position semi-assise pendant la séance pour optimiser le dépôt pulmonaire du médicament, respiration calme et régulière par la bouche si embout buccal utilisé.',
       'Durée de séance généralement 10 à 15 minutes selon le volume de médicament et le débit de l\'appareil — ne pas interrompre avant la fin recommandée par la prescription.',
-    ],
+    
+      'Les générateurs d\'aérosols ne sont pas codés dans la base LPP numérique — consulter la version PDF de la nomenclature sur ameli.fr ou le formulaire ARO. La délivrance en officine se fait en location pour la majorité des cas.',],
     contre_indications: [
       'Aucune contre-indication formelle au dispositif lui-même ; le choix de la molécule nébulisée relève de la prescription médicale et de ses propres contre-indications.',
     ],
@@ -483,7 +495,7 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.
       mention: 'Remboursable sur prescription',
       code_lppr: '1163342 (achat nébuliseur + masque) / 1134458 (location courte durée)',
       taux: '60% du tarif LPPR (100% si ALD/CMU) — à vérifier selon la situation du patient',
-      note: 'Tarifs sourcés dans le PDF LPP officiel : achat du nébuliseur avec masque ou embout buccal 12,93€, location courte durée (≤4 semaines) 9,30€/semaine. Pour un besoin ponctuel et court (ex. bronchiolite aiguë), la location est souvent plus pertinente économiquement que l\'achat.',
+      note: 'Tarifs sourcés dans le PDF LPP officiel : achat du nébuliseur avec masque ou embout buccal 12,93€, location courte durée (≤4 semaines) 9,30€/semaine. Pour un besoin ponctuel et court (ex. bronchiolite aiguë), la location est souvent plus pertinente économiquement que l\'achat. Prescripteurs : tous médecins, sages-femmes, infirmiers (dans le cadre d\'actes infirmiers). Note importante : les appareils générateurs d\'aérosols ne sont PAS codés dans la base LPP classique — ils figurent en annexe PDF de la nomenclature (code nature de prestation ARO). La prise en charge se fait via des forfaits de location selon le type d\'appareil et la pathologie (asthme sévère, mucoviscidose, BPCO…). Consommables (nébuliseur, tubulures, interface) : à usage unique par patient, pris en charge séparément. Achat : possible pour certains appareils à tamis (ex. eFlow Rapid, Velox).',
     },
     otc: ['Sérum physiologique pour dilution si besoin'],
     pathologies_liees: ['asthme'],
@@ -491,7 +503,7 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.
     accord_prealable: false,
     achat_location: 'Achat ou location (selon la durée du traitement)',
     formalites: 'Ordonnance simple · Médicaments associés prescrits séparément · Appareil + accessoires (chambre d\'inhalation) pris en charge séparément',
-sources: [{label: "HAS — Aérosolthérapie", url: "https://www.has-sante.fr/jcms/c_272507/fr/asthme-et-rhinite-allergique"}, {label: "Nomenclature LPP — Titre II Ch.6", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "SPLF — Recommandations aérosolthérapie", url: "https://splf.fr"}] },
+sources: [{label: "HAS — Aérosolthérapie", url: "https://www.has-sante.fr/jcms/c_272507/fr/asthme-et-rhinite-allergique"}, , {label: "CRAMIF — Aérosolthérapie : prescription et prise en charge", url: "https://www.cramif.fr/actualites/aerosoltherapie-prescription-et-prise-en-charge-des-medicaments-et-des-dispositifs", date: "consulté 07/2026"}] },
   { id: 'm6', slug: 'aspirateur-nasal', nom: 'Aspirateur nasal électrique', categorie: 'respiratoire', icone: '__SVG__sinusite aigue.svg__',
     description: 'Dispositif d\'aspiration douce des sécrétions nasales par embout adapté, puissance réglable selon l\'âge et la tolérance, à pile ou sur secteur selon les modèles (à distinguer du mouche-bébé manuel buccal).',
     indication: 'Nourrissons et jeunes enfants ne sachant pas se moucher seuls, rhinite allergique sévère encombrante, sinusite chronique avec sécrétions difficiles à évacuer.',
@@ -501,14 +513,15 @@ sources: [{label: "HAS — Aérosolthérapie", url: "https://www.has-sante.fr/jc
       'Nettoyer l\'embout après chaque usage (risque infectieux et de transmission, notamment en collectivité ou entre frères et sœurs).',
       'Choisir une puissance adaptée à l\'âge de l\'enfant — débuter à puissance minimale chez le nourrisson et ajuster selon la tolérance.',
       'Privilégier les moments où l\'enfant est calme (avant les repas ou le coucher) plutôt qu\'en pleine crise de pleurs pour un geste plus efficace et moins traumatisant.',
-    ],
+    
+      'Nettoyer le bec et les tubulures après chaque usage (eau savonneuse) et désinfecter régulièrement. Ne jamais partager l\'embout entre enfants.',],
     contre_indications: [
       'Saignement de nez actif ou récent : différer l\'aspiration ou adapter la douceur du geste selon la situation.',
       'Lésion ou irritation visible de la muqueuse nasale : éviter l\'aspiration sur la zone lésée.',
     ],
     remboursement: {
       mention: 'Non remboursable',
-      note: '[⚠️ Recherche effectuée dans le PDF LPP officiel (mise à jour juin 2026) : aucune section trouvée pour l\'aspirateur nasal électrique] Ce dispositif de confort et d\'hygiène nasale n\'est pas inscrit à la nomenclature LPPR et reste à la charge intégrale du patient/des parents.',
+      note: '[⚠️ Recherche effectuée dans le PDF LPP officiel (mise à jour juin 2026) : aucune section trouvée pour l\'aspirateur nasal électrique] Ce dispositif de confort et d\'hygiène nasale n\'est pas inscrit à la nomenclature LPPR et reste à la charge intégrale du patient/des parents. Pas de code LPP pour les aspirateurs nasaux électriques en usage courant — non remboursables en standard. Certains modèles médicaux peuvent faire l\'objet d\'une prise en charge ponctuelle sur avis de pédiatre (mucoviscidose, pathologie ORL récurrente sévère). L\'ordonnance est recommandée même sans remboursement pour documenter l\'indication médicale (nourrisson, enfant atteint de pathologie respiratoire chronique).',
     },
     otc: ['Sérum physiologique unidose', 'Spray nasal eau de mer isotonique'],
     pathologies_liees: ['rhinite-allergique', 'allergie-pollen'],
@@ -516,7 +529,7 @@ sources: [{label: "HAS — Aérosolthérapie", url: "https://www.has-sante.fr/jc
     accord_prealable: false,
     achat_location: 'Achat uniquement · Remboursement partiel possible pour certains modèles médicaux',
     formalites: 'Ordonnance simple si remboursement souhaité',
-sources: [{label: "HAS — Rhinopharyngites du nourrisson", url: "https://www.has-sante.fr/jcms/c_272486/fr/rhinopharyngite-aigue-du-nourrisson"}, {label: "ANSM — Dispositifs de désobstruction nasale", url: "https://ansm.sante.fr"}, {label: "Nomenclature LPP", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}] },
+sources: [{label: "HAS — Rhinopharyngites du nourrisson", url: "https://www.has-sante.fr/jcms/c_272486/fr/rhinopharyngite-aigue-du-nourrisson"}, ] },
   { id: 'm7', slug: 'peak-flow-meter', nom: 'Peak-flow meter', categorie: 'respiratoire', icone: '__SVG__peakflow meter.svg__',
     description: 'Débitmètre de pointe portable mesurant le débit expiratoire maximal (DEP) lors d\'une expiration forcée, outil simple d\'autosurveillance permettant de détecter une dégradation de la fonction respiratoire avant l\'apparition de symptômes francs.',
     indication: 'Asthme modéré à sévère, suivi à domicile de la fonction respiratoire, adaptation du traitement de fond en lien avec le médecin, identification précoce d\'une exacerbation.',
@@ -526,13 +539,14 @@ sources: [{label: "HAS — Rhinopharyngites du nourrisson", url: "https://www.ha
       'Établir avec le médecin le "meilleur score personnel" du patient en période stable, qui servira de référence pour interpréter les mesures suivantes.',
       'Orienter vers une consultation rapide ou l\'application du plan d\'action personnalisé si la valeur descend sous 80% du meilleur score personnel, et vers une urgence si elle descend sous 50%.',
       'Technique de mesure à vérifier régulièrement (debout, inspiration profonde puis expiration la plus forte et rapide possible) — une mauvaise technique fausse complètement l\'interprétation.',
-    ],
+    
+      'Interprétation : zone verte ≥80% de la meilleure valeur personnelle = asthme contrôlé. Zone orange 60–80% = traitement à adapter selon le plan d\'action. Zone rouge <60% = urgence médicale.',],
     contre_indications: [
       'Aucune contre-indication formelle à l\'usage du dispositif ; un effort expiratoire forcé répété peut être mal toléré en cas de pneumothorax récent ou de chirurgie thoracique/abdominale récente — avis médical dans ce contexte.',
     ],
     remboursement: {
       mention: 'Non remboursable',
-      note: '[⚠️ Recherche effectuée dans le PDF LPP officiel (mise à jour juin 2026) : aucune section trouvée pour le débitmètre de pointe (peak-flow meter)] Ce dispositif de surveillance reste à la charge intégrale du patient, qu\'il soit conseillé ou non par le médecin dans le cadre du plan d\'action de l\'asthme.',
+      note: '[⚠️ Recherche effectuée dans le PDF LPP officiel (mise à jour juin 2026) : aucune section trouvée pour le débitmètre de pointe (peak-flow meter)] Ce dispositif de surveillance reste à la charge intégrale du patient, qu\'il soit conseillé ou non par le médecin dans le cadre du plan d\'action de l\'asthme. Prescripteurs : tous médecins. Pas d\'accord préalable. Pris en charge pour le suivi de l\'asthme à domicile (plan d\'action personnalisé). L\'ordonnance doit préciser la fréquence de mesure (matin/soir) et la durée. Renouvellement annuel possible. La surveillance du DEP (débit expiratoire de pointe) est un élément clé du suivi de l\'asthme : zone verte (≥80% de la valeur théorique ou personnelle), zone orange (60–80% : adapter le traitement), zone rouge (<60% : urgence).',
     },
     otc: [],
     pathologies_liees: ['asthme'],
@@ -540,7 +554,7 @@ sources: [{label: "HAS — Rhinopharyngites du nourrisson", url: "https://www.ha
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · 1 appareil par patient, renouvelable annuellement si usage quotidien documenté',
-sources: [{label: "HAS — Suivi de l'asthme à domicile", url: "https://www.has-sante.fr/jcms/c_1005214/fr/asthme"}, {label: "GINA Guidelines 2024", url: "https://ginasthma.org"}, {label: "SPLF — Recommandations suivi asthme", url: "https://splf.fr"}] },
+sources: [{label: "HAS — Suivi de l'asthme à domicile", url: "https://www.has-sante.fr/jcms/c_1005214/fr/asthme"}, {label: "Ameli — Asthme de l'adulte", url: "https://www.ameli.fr/assure/sante/themes/asthme-adulte", date: "consulté 07/2026"}] },
 
   // ─── MATERNITÉ & PÉRINÉE ───
   { id: 'm21', slug: 'tire-lait', nom: 'Tire-lait électrique', categorie: 'maternite', icone: '__SVG__tire lait.svg__',
@@ -552,7 +566,8 @@ sources: [{label: "HAS — Suivi de l'asthme à domicile", url: "https://www.has
       'Démarrer à intensité faible puis augmenter progressivement jusqu\'au niveau confortable le plus efficace, sans jamais aller jusqu\'à la douleur.',
       'Le pharmacien a un rôle actif de formation à l\'utilisation et à l\'entretien du dispositif, en complément de l\'accompagnement par la sage-femme ou la consultante en lactation.',
       'Conservation du lait exprimé selon les règles strictes (durée et température) à rappeler systématiquement à la délivrance.',
-    ],
+    
+      'Le kit personnel (embout, téterelle, tubulures) est à usage strictement personnel — ne jamais partager entre patientes même si l\'appareil est loué. Prise en charge séparée sur prescription.',],
     contre_indications: [
       'Lésion mammaire ouverte ou infectée (mastite avec abcès) : avis médical avant poursuite de l\'expression, technique éventuellement à adapter.',
       'Douleur importante à l\'utilisation : signe d\'une taille de téterelle inadaptée ou d\'une intensité excessive — ne pas poursuivre sans réajustement.',
@@ -561,7 +576,7 @@ sources: [{label: "HAS — Suivi de l'asthme à domicile", url: "https://www.has
       mention: 'Remboursable sur prescription dans certaines situations',
       code_lppr: '1161248 (forfait mise à disposition) / 1129440 (location hebdomadaire)',
       taux: '60% du tarif LPPR (100% si ALD/CMU) — à vérifier selon la situation du patiente',
-      note: 'Tarifs sourcés dans le PDF LPP officiel : forfait de mise à disposition 30,00€ (code 1161248), location hebdomadaire 7,50€ (code 1129440). Prescription initiale limitée à 10 semaines maximum, renouvelable ensuite par tranches de 3 mois selon l\'évolution de la situation (prématurité, hospitalisation du nourrisson, pathologie maternelle ou infantile justifiant la séparation).',
+      note: 'Tarifs sourcés dans le PDF LPP officiel : forfait de mise à disposition 30,00€ (code 1161248), location hebdomadaire 7,50€ (code 1129440). Prescription initiale limitée à 10 semaines maximum, renouvelable ensuite par tranches de 3 mois selon l\'évolution de la situation (prématurité, hospitalisation du nourrisson, pathologie maternelle ou infantile justifiant la séparation). Prescripteurs : tous médecins, sages-femmes, puéricultrices. Pas d\'accord préalable. La location d\'un tire-lait électrique double pompe est prise en charge les 28 premiers jours en cas d\'hospitalisation du nouveau-né (prématurité, pathologie). Au-delà ou hors hospitalisation : non remboursée sauf protocole spécifique. Les accessoires (kit personnel : embout, téterelle, tubulures, biberons) sont à usage personnel et pris en charge séparément sur prescription.',
     },
     otc: ['Coussinets d\'allaitement', 'Crème protectrice mamelons (lanoline purifiée)'],
     pathologies_liees: [],
@@ -569,7 +584,7 @@ sources: [{label: "HAS — Suivi de l'asthme à domicile", url: "https://www.has
     accord_prealable: false,
     achat_location: 'Location (tire-lait double pompe électrique) · Achat (accessoires)',
     formalites: 'Ordonnance simple · Location prise en charge les 28 premiers jours en cas d\'hospitalisation du nourrisson ou prématurité · Accessoires (kit personnel) pris en charge séparément',
-sources: [{label: "HAS — Allaitement maternel", url: "https://www.has-sante.fr/jcms/c_1729367/fr/allaitement-maternel"}, {label: "Nomenclature LPP — Titre III", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANSM — Dispositifs allaitement", url: "https://ansm.sante.fr"}] },
+sources: [{label: "HAS — Allaitement maternel", url: "https://www.has-sante.fr/jcms/c_1729367/fr/allaitement-maternel"}, ] },
   { id: 'm22', slug: 'urostimulateur', nom: 'Urostimulateur (rééducation périnéale)', categorie: 'maternite', icone: '__SVG__neurostim.svg__',
     description: 'Dispositif d\'électrostimulation des muscles du plancher pelvien par sonde vaginale (femme) ou anale (homme/femme), permettant un renforcement musculaire périnéal actif en complément ou en relais d\'une rééducation manuelle.',
     indication: 'Incontinence urinaire d\'effort, rééducation périnéale post-partum, prolapsus débutant (stade peu avancé), incontinence post-prostatectomie chez l\'homme.',
@@ -589,7 +604,7 @@ sources: [{label: "HAS — Allaitement maternel", url: "https://www.has-sante.fr
       mention: 'Remboursable sur prescription',
       code_lppr: '1189270 (achat) / 1111701 (location ≤26 sem) / 1183014 (forfait sonde/électrode annuel)',
       taux: '60% du tarif LPPR (100% si ALD/CMU) — à vérifier selon la situation du patient',
-      note: 'Tarifs sourcés dans le PDF LPP officiel : achat de l\'électrostimulateur 304,90€ (code 1189270), location courte durée (≤26 semaines) 11,74€/semaine (code 1111701), forfait annuel sonde/électrode 25,92€ (code 1183014). [⚠️ La prise en charge nécessite généralement un bilan urodynamique préalable et une période probatoire de rééducation en centre (6-8 semaines) avant le passage à un usage à domicile — conditions précises à confirmer selon le parcours du patient]',
+      note: 'Tarifs sourcés dans le PDF LPP officiel : achat de l\'électrostimulateur 304,90€ (code 1189270), location courte durée (≤26 semaines) 11,74€/semaine (code 1111701), forfait annuel sonde/électrode 25,92€ (code 1183014). [⚠️ La prise en charge nécessite généralement un bilan urodynamique préalable et une période probatoire de rééducation en centre (6-8 semaines) avant le passage à un usage à domicile — conditions précises à confirmer selon le parcours du patient] Prescripteurs : tous médecins, sages-femmes, masseurs-kinésithérapeutes (dans le cadre de soins). Pas d\'accord préalable. La rééducation périnéale par biofeedback électrostimulatoire nécessite un bilan préalable et une prescription du nombre de séances. Les appareils de rééducation sont remboursés dans le cadre d\'une prescription médicale avec objectif documenté. Un bilan kinésithérapique préalable est fortement recommandé pour valider l\'indication et les paramètres de stimulation.',
     },
     otc: ['Gel lubrifiant hydrosoluble (pour la sonde)'],
     pathologies_liees: ['hbp-prostate'],
@@ -597,7 +612,7 @@ sources: [{label: "HAS — Allaitement maternel", url: "https://www.has-sante.fr
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · Bilan kinésithérapique préalable souvent requis · Programme de rééducation associé',
-sources: [{label: "HAS — Stimulation nerf tibial", url: "https://www.has-sante.fr/jcms/p_3208766/fr/stimulation-du-nerf-tibial-posterieur"}, {label: "Nomenclature LPP — Titre II Ch.5", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "AFU — Recommandations incontinence", url: "https://www.urofrance.org"}] },
+sources: [{label: "HAS — Stimulation nerf tibial", url: "https://www.has-sante.fr/jcms/p_3208766/fr/stimulation-du-nerf-tibial-posterieur"}, ] },
 
   // ─── DOULEUR & NEUROSTIMULATION ───
   { id: 'm23', slug: 'neurostimulateur', nom: 'Neurostimulateur électrique transcutané (TENS)', categorie: 'douleur', icone: '__SVG__neurostim.svg__',
@@ -609,7 +624,8 @@ sources: [{label: "HAS — Stimulation nerf tibial", url: "https://www.has-sante
       'Démarrer à intensité faible et augmenter progressivement jusqu\'au seuil de "fourmillement confortable" recherché, sans jamais provoquer de contraction musculaire douloureuse.',
       'Respecter scrupuleusement le programme de suivi prescrit (évaluations à 1, 2, 3 puis 6 mois) : c\'est cette réévaluation régulière qui conditionne la poursuite de la prise en charge.',
       'Changer les électrodes régulièrement (perte d\'adhérence et d\'efficacité avec le temps), ne pas réutiliser des électrodes décollées ou asséchées.',
-    ],
+    
+      'TENS : contre-indiqué en cas de stimulateur cardiaque ou pace-maker, défibrillateur, thrombose veineuse profonde ou thrombophlébite, épilepsie non contrôlée, grossesse (hors protocole spécifique).',],
     contre_indications: [
       'Porteur de pacemaker ou défibrillateur implantable — contre-indication formelle au TENS, en particulier à proximité du thorax.',
       'Grossesse en cours (zone abdominale ou lombaire) sauf avis médical spécifique encadrant l\'utilisation.',
@@ -619,7 +635,7 @@ sources: [{label: "HAS — Stimulation nerf tibial", url: "https://www.has-sante
       mention: 'Remboursable sur prescription, très encadrée',
       code_lppr: '1189940 (location) / 1183468 (achat) / 1134240 (électrodes, lot de 4)',
       taux: '60% du tarif LPPR (100% si ALD/CMU) — à vérifier selon la situation du patient',
-      note: 'Conditions sourcées dans le PDF LPP officiel : prescription initiale réservée à un médecin spécialisé dans la prise en charge de la douleur (titulaire d\'un DU douleur ou exerçant en structure spécialisée), précédée d\'un essai préalable obligatoire. Suivi structuré prévu à 1, 2, 3 puis 6 mois pour valider la poursuite. Location limitée à 6 mois maximum avant le passage à l\'achat si l\'efficacité est confirmée. Électrodes (lot de 4, code 1134240) limitées à un lot par 15 jours. [⚠️ Tarifs précis en euros non extraits avec certitude pour ces codes — se référer à la prescription et au prestataire pour le montant exact]',
+      note: 'Conditions sourcées dans le PDF LPP officiel : prescription initiale réservée à un médecin spécialisé dans la prise en charge de la douleur (titulaire d\'un DU douleur ou exerçant en structure spécialisée), précédée d\'un essai préalable obligatoire. Suivi structuré prévu à 1, 2, 3 puis 6 mois pour valider la poursuite. Location limitée à 6 mois maximum avant le passage à l\'achat si l\'efficacité est confirmée. Électrodes (lot de 4, code 1134240) limitées à un lot par 15 jours. [⚠️ Tarifs précis en euros non extraits avec certitude pour ces codes — se référer à la prescription et au prestataire pour le montant exact] Achat ou location (non cumulables). La location est limitée à 6 mois maximum. Un test d\'efficacité/essai préalable est requis (évaluation de la douleur) avant la prescription à long terme. Câbles de stimulation (code 1100672), accumulateur rechargeable (1128647) facturés séparément. Le TENS est contre-indiqué en cas de stimulateur cardiaque, implant métallique à proximité des électrodes, grossesse (hors protocole spécialisé), épilepsie non contrôlée. Tarif LPP : location 1189940 (jusqu\'à 6 mois), achat 1183468.',
     },
     otc: [],
     pathologies_liees: ['lombalgie', 'douleur-arthrose'],
@@ -627,7 +643,7 @@ sources: [{label: "HAS — Stimulation nerf tibial", url: "https://www.has-sante
     accord_prealable: false,
     achat_location: 'Achat ou location (≤ 6 mois) — non cumulables',
     formalites: 'Ordonnance simple · Test d\'efficacité/essai préalable requis · Location limitée à 6 mois maximum · Câbles et accessoires facturés séparément',
-sources: [{label: "HAS — Neurostimulation transcutanée (TENS)", url: "https://www.has-sante.fr/jcms/c_1066790/fr/douleur-chronique"}, {label: "Nomenclature LPP — Titre II Ch.5", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "SFETD — Recommandations douleur chronique", url: "https://www.sfetd-douleur.org"}] },
+sources: [{label: "HAS — Neurostimulation transcutanée (TENS)", url: "https://www.has-sante.fr/jcms/c_1066790/fr/douleur-chronique"}, ] },
 
   // ─── HYGIÈNE & CONFORT (ajouts) ───
   { id: 'm24', slug: 'table-de-lit', nom: 'Table de lit réglable', categorie: 'hygiene', icone: '__SVG__table-de-lit.svg__',
@@ -645,7 +661,7 @@ sources: [{label: "HAS — Neurostimulation transcutanée (TENS)", url: "https:/
     ],
     remboursement: {
       mention: 'Non remboursable',
-      note: '[⚠️ Recherche effectuée dans le PDF LPP officiel (mise à jour juin 2026) : aucune section trouvée pour la table de lit réglable] Ce dispositif de confort n\'est pas inscrit à la nomenclature LPPR et reste à la charge intégrale du patient.',
+      note: '[⚠️ Recherche effectuée dans le PDF LPP officiel (mise à jour juin 2026) : aucune section trouvée pour la table de lit réglable] Ce dispositif de confort n\'est pas inscrit à la nomenclature LPPR et reste à la charge intégrale du patient. Non pris en charge séparément par la LPP — considéré comme accessoire de confort. En pratique, prescrit en accompagnement d\'un lit médicalisé mais non remboursé individuellement. Vérifier si certains prestataires l\'incluent dans leurs forfaits de location de lit médicalisé (certains le proposent gratuitement avec la location). Utile pour maintenir l\'autonomie du patient (repas, lecture, tablette) sans mobilisation du soignant.',
     },
     otc: [],
     pathologies_liees: [],
@@ -653,7 +669,7 @@ sources: [{label: "HAS — Neurostimulation transcutanée (TENS)", url: "https:/
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · Prescrit en accessoire d\'un lit médicalisé (non pris en charge séparément dans la LPP)',
-sources: [{label: "Nomenclature LPP — Titre II Ch.2", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel MAD", url: "https://www.anap.fr"}] },
+sources: [, , {label: "Ameli — LPP : liste des produits et prestations remboursables", url: "https://www.ameli.fr/medecin/exercice-liberal/facturation-remuneration/consultations-actes/nomenclatures-codage/liste-produits-prestations-lpp", date: "consulté 07/2026"}] },
   { id: 'm25', slug: 'potence-de-lit', nom: 'Potence de lit (lève-personne d\'appoint)', categorie: 'hygiene', icone: '__SVG__potence.svg__',
     description: 'Structure verticale fixée au cadre ou au sommier du lit, équipée d\'une poignée suspendue (trapèze ou anneau), permettant au patient de se redresser ou de se hisser seul en position assise grâce à la force des bras.',
     indication: 'Perte d\'autonomie modérée, suites de chirurgie orthopédique, maintien à domicile, difficulté à se redresser seul dans le lit sans aide complète.',
@@ -670,7 +686,7 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.2", url: "https://www.ameli.
     ],
     remboursement: {
       mention: 'Non remboursable',
-      note: 'Codes sourcés dans le PDF LPP officiel (p.860) : potence de support ou de relèvement, adaptable ou sur pied. ⚠️ Point clé au comptoir : cette prise en charge est réservée aux patients SANS lit médical remboursé — si un lit médicalisé est déjà pris en charge, la potence est incluse dans le tarif du lit (1241763 location / 1270316 achat) et ne se facture pas séparément.',
+      note: 'Codes sourcés dans le PDF LPP officiel (p.860) : potence de support ou de relèvement, adaptable ou sur pied. ⚠️ Point clé au comptoir : cette prise en charge est réservée aux patients SANS lit médical remboursé — si un lit médicalisé est déjà pris en charge, la potence est incluse dans le tarif du lit (1241763 location / 1270316 achat) et ne se facture pas séparément. Rappel clé : non prise en charge si un lit médicalisé est déjà remboursé — elle est alors incluse dans le forfait du lit (codes 1241763 location / 1270316 achat). La prise en charge isolée s\'applique aux patients utilisant leur propre lit (non médicalisé). Location hebdomadaire : ≤65 semaines 2,29€ (code 1273415), au-delà 1,52€ (1201858) + forfait livraison 1293412.',
     },
     otc: [],
     pathologies_liees: ['osteoporose'],
@@ -678,7 +694,7 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.2", url: "https://www.ameli.
     accord_prealable: false,
     achat_location: 'Location uniquement',
     formalites: 'Ordonnance particulière · Non prise en charge si lit médicalisé déjà remboursé (incluse dans le forfait lit) · Location hebdomadaire : ≤ 65 sem. 2,29€ (1273415) puis 1,52€ (1201858)',
-sources: [{label: "Nomenclature LPP — Titre II Ch.2", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel MAD", url: "https://www.anap.fr"}] },
+sources: [, , {label: "Ameli — LPP : liste des produits et prestations remboursables", url: "https://www.ameli.fr/medecin/exercice-liberal/facturation-remuneration/consultations-actes/nomenclatures-codage/liste-produits-prestations-lpp", date: "consulté 07/2026"}] },
 
   // ─── MOBILITÉ (ajouts) ───
   { id: 'm26', slug: 'deambulateur-2-roues', nom: 'Déambulateur 2 roues', categorie: 'mobilite', icone: '__SVG__deambulateur 2 roues.svg__',
@@ -698,7 +714,7 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.2", url: "https://www.ameli.
       mention: 'Remboursable sur prescription',
       code_lppr: '1273415 (location hebdo ≤65 sem., 2,29€) · 1201858 (location >65 sem., 1,52€) · 1293412 (forfait livraison)',
       taux: '60% du tarif LPPR (100% si ALD/CMU) — à vérifier selon la situation du patient',
-      note: 'Mêmes codes et tarifs que le déambulateur générique (voir fiche "Déambulateur 4 roues") : la nomenclature LPP ne distingue pas le nombre de roues, seulement la catégorie "déambulateur". Achat 53,81€, location courte durée 2,21€/semaine, location longue durée 1,34€/semaine, livraison 12,96€.',
+      note: 'Mêmes codes et tarifs que le déambulateur générique (voir fiche "Déambulateur 4 roues") : la nomenclature LPP ne distingue pas le nombre de roues, seulement la catégorie "déambulateur". Achat 53,81€, location courte durée 2,21€/semaine, location longue durée 1,34€/semaine, livraison 12,96€. Prescripteurs : tous médecins, ergothérapeutes, masseurs-kinésithérapeutes. Pas d\'accord préalable. Achat uniquement. Indiqué pour les patients nécessitant un soutien léger tout en maintenant une certaine propulsion vers l\'avant (différence avec déambulateur sans roues : moins de stabilité, plus de fluidité de marche). Tarif LPP indicatif : ~53,81€.',
     },
     otc: [],
     pathologies_liees: ['osteoporose'],
@@ -706,7 +722,7 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.2", url: "https://www.ameli.
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple',
-sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel mobilité", url: "https://www.anap.fr"}] },
+sources: [, , {label: "Ameli — Déambulateurs et rollators", url: "https://www.ameli.fr/assure/remboursements/rembourse/medicaments-vaccins-dispositifs-medicaux/deambulateur-rollator-prise-en-charge", date: "consulté 07/2026"}] },
   { id: 'm27', slug: 'fauteuil-transfert', nom: 'Fauteuil de transfert', categorie: 'mobilite', icone: '__SVG__fauteuil de transfert.svg__',
     description: 'Fauteuil roulant léger et pliable, conçu pour des déplacements courts et des transferts ponctuels (lit-fauteuil, domicile-véhicule), généralement plus compact et moins confortable qu\'un fauteuil roulant principal destiné à un usage prolongé.',
     indication: 'Transferts ponctuels, sorties courtes (rendez-vous médical, transport), perte d\'autonomie temporaire, complément à un fauteuil roulant principal pour les déplacements occasionnels hors domicile.',
@@ -722,7 +738,7 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.
     ],
     remboursement: {
       mention: 'Non remboursable',
-      note: '[⚠️ Recherche effectuée dans le PDF LPP officiel (mise à jour juin 2026) : aucune section spécifique trouvée pour le "fauteuil de transfert" léger sous ce nom] Ce modèle léger destiné aux transferts ponctuels ne correspond pas aux catégories de la nomenclature des fauteuils roulants (FMP, FMPR, etc.), conçues pour un usage médical plus soutenu. Si le besoin réel du patient correspond à un usage prolongé, orienter vers une évaluation pour un fauteuil roulant standard remboursable (voir fiche dédiée) plutôt que ce modèle de confort.',
+      note: '[⚠️ Recherche effectuée dans le PDF LPP officiel (mise à jour juin 2026) : aucune section spécifique trouvée pour le "fauteuil de transfert" léger sous ce nom] Ce modèle léger destiné aux transferts ponctuels ne correspond pas aux catégories de la nomenclature des fauteuils roulants (FMP, FMPR, etc.), conçues pour un usage médical plus soutenu. Si le besoin réel du patient correspond à un usage prolongé, orienter vers une évaluation pour un fauteuil roulant standard remboursable (voir fiche dédiée) plutôt que ce modèle de confort. Prescripteurs : tous médecins, ergothérapeutes. Pas d\'accord préalable. Achat uniquement. Le fauteuil de transfert est un fauteuil roulant à propulsion par tierce personne, léger, destiné aux déplacements sur courte distance et aux transferts (ambulance, hôpital, courses). Il n\'est pas adapté à un usage autonome quotidien — dans ce cas, orienter vers un fauteuil roulant standard. Prise en charge dans la nomenclature VPH (100% depuis décembre 2025).',
     },
     otc: [],
     pathologies_liees: [],
@@ -730,7 +746,7 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple',
-sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "APF France handicap", url: "https://www.apf-francehandicap.org"}] },
+sources: [, , {label: "HAS — Fauteuils roulants et VPH", url: "https://www.has-sante.fr/jcms/c_1739369/fr/fauteuils-roulants-et-autres-vehicules-pour-personnes-handicapees-vph", date: "consulté 07/2026"}] },
   { id: 'm28', slug: 'fauteuil-releveur', nom: 'Fauteuil releveur électrique', categorie: 'mobilite', icone: '__SVG__fauteuil-inclinable.svg__',
     description: 'Fauteuil de repos avec assise motorisée s\'inclinant et se relevant progressivement pour faciliter le passage assis-debout et debout-assis, télécommande de réglage de l\'inclinaison du dossier et de l\'assise.',
     indication: 'Perte d\'autonomie, arthrose sévère des membres inférieurs ou du rachis, difficulté majeure à se relever d\'un fauteuil standard, besoin de confort prolongé en position assise/semi-allongée.',
@@ -740,13 +756,14 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.
       'Essai en situation réelle fortement recommandé avant l\'achat : le gabarit, la profondeur d\'assise et le confort varient beaucoup d\'un modèle à l\'autre et doivent convenir à la morphologie du patient.',
       'Vérifier l\'accessibilité de la télécommande pour un patient ayant des troubles de la préhension (boutons suffisamment gros et espacés).',
       'Un coussin anti-escarres reste pertinent en cas de station assise prolongée, même sur un fauteuil releveur confortable.',
-    ],
+    
+      'Non remboursé par l\'AM : orienter vers les aides au financement — MaPrimeAdapt\' (ANAH), CARSAT, PCH/MDPH selon le profil du patient. L\'ergothérapeute peut aider à constituer le dossier.',],
     contre_indications: [
       'Aucune contre-indication formelle ; vigilance chez les patients très agités ou présentant des troubles cognitifs sévères pouvant déclencher le mécanisme de façon inappropriée ou dangereuse.',
     ],
     remboursement: {
       mention: 'Non remboursable',
-      note: '[⚠️ Recherche effectuée dans le PDF LPP officiel (mise à jour juin 2026) : aucune section trouvée pour le fauteuil releveur électrique] Ce dispositif est considéré comme un équipement de confort et n\'est pas inscrit à la nomenclature LPPR. Reste à la charge du patient ; certaines aides peuvent exister via l\'APA, la PCH, ou des caisses de retraite complémentaire selon la situation — orienter vers une assistante sociale si besoin.',
+      note: '[⚠️ Recherche effectuée dans le PDF LPP officiel (mise à jour juin 2026) : aucune section trouvée pour le fauteuil releveur électrique] Ce dispositif est considéré comme un équipement de confort et n\'est pas inscrit à la nomenclature LPPR. Reste à la charge du patient ; certaines aides peuvent exister via l\'APA, la PCH, ou des caisses de retraite complémentaire selon la situation — orienter vers une assistante sociale si besoin. Non remboursable sur la LPP en standard — considéré comme équipement de confort/sécurité. Des aides financières alternatives existent : MaPrimeAdapt\' (ANAH) pour l\'adaptation du logement, aide CARSAT/MSA (personnes âgées), PCH/MDPH (personnes handicapées), aide du Conseil Départemental, déduction fiscale pour les personnes âgées ou handicapées (crédit d\'impôt services à la personne). L\'ergothérapeute peut faire une évaluation et aider à constituer les dossiers d\'aide.',
     },
     otc: [],
     pathologies_liees: ['douleur-arthrose'],
@@ -754,7 +771,7 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.
     accord_prealable: false,
     achat_location: 'Achat uniquement · Non remboursable sur la LPPR (aide possible via CPAM/MDPH selon situation)',
     formalites: 'Ordonnance médicale recommandée · Aide financière possible via caisse de retraite ou MDPH',
-sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel fauteuils releveurs", url: "https://www.anap.fr"}] },
+sources: [, , {label: "Ameli — Aides à l'autonomie et maintien à domicile", url: "https://www.ameli.fr/assure/sante/themes/perte-autonomie", date: "consulté 07/2026"}] },
   { id: 'm29', slug: 'fauteuil-coquille', nom: 'Fauteuil coquille (maintien postural)', categorie: 'mobilite', icone: '__SVG__fauteuil.svg__',
     description: 'Fauteuil à coque enveloppante avec inclinaison réglable, conçu pour assurer un maintien postural global chez les patients à mobilité très réduite ne pouvant se maintenir assis sans soutien latéral et dorsal important.',
     indication: 'Troubles neurologiques sévères (séquelles d\'AVC majeur, maladies neurodégénératives avancées), perte d\'autonomie majeure, patients ne pouvant se maintenir assis sans soutien complet du tronc et de la tête.',
@@ -778,7 +795,7 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.
     accord_prealable: true,
     achat_location: 'Achat uniquement',
     formalites: 'DAP obligatoire (Cerfa 11164*04) · Indications : patients âgés ne pouvant se maintenir en position assise sans soutien et sans autonomie de déplacement · Délai de renouvellement : 5 ans',
-sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "APF France handicap", url: "https://www.apf-francehandicap.org"}, {label: "Ameli — Mémo LPP Siège coquille de série (MàJ 24/07/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/09a-siege-coquille-serie-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
+sources: [, {label: "Ameli — Mémo LPP Siège coquille de série (MàJ 24/07/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/09a-siege-coquille-serie-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
 
   // ─── HYGIÈNE & CONFORT (ajouts prévention escarres) ───
   { id: 'm30', slug: 'matelas-classe2-anti-escarres', nom: 'Matelas anti-escarres classe 2', categorie: 'hygiene', icone: '__SVG__matelas classe 2.svg__',
@@ -807,7 +824,7 @@ sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · Score Norton ≤ 14 ou antécédent d\'escarre requis · 1 matelas de même classe pris en charge tous les 3 ans',
-sources: [{label: "HAS — Prévention et traitement des escarres", url: "https://www.has-sante.fr/jcms/c_272971/fr/prevention-et-traitement-des-escarres-de-l-adulte-et-du-sujet-age"}, {label: "Nomenclature LPP — Titre II Ch.2", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "EPUAP — Recommandations escarres", url: "https://www.epuap.org"}, {label: "Ameli — Mémo LPP Matelas anti-escarres (MàJ 24/07/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/06-matelas-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
+sources: [{label: "HAS — Prévention et traitement des escarres", url: "https://www.has-sante.fr/jcms/c_272971/fr/prevention-et-traitement-des-escarres-de-l-adulte-et-du-sujet-age"}, , {label: "Ameli — Mémo LPP Matelas anti-escarres (MàJ 24/07/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/06-matelas-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
   { id: 'm31', slug: 'matelas-a-air', nom: 'Matelas à air motorisé', categorie: 'hygiene', icone: '__SVG__matelas-a air.svg__',
     description: 'Matelas ou surmatelas à air motorisé à pression alternée, associé à un compresseur réglable qui gonfle et dégonfle alternativement des cellules d\'air pour répartir et faire varier les zones d\'appui dans le temps, offrant un niveau de prévention/traitement supérieur à la mousse simple.',
     indication: 'Aide à la prévention de l\'escarre chez les patients à risque moyen à élevé (selon jugement clinique et échelles), alités plus de 15 heures par jour, aide au traitement ou en post-chirurgie d\'escarre chez des patients à risque moyen à élevé avec escarres de stade 1 à 4 selon localisation.',
@@ -817,7 +834,8 @@ sources: [{label: "HAS — Prévention et traitement des escarres", url: "https:
       'Le matelas et son ensemble de réparation/pompe (fournis si non autogonflable) doivent être conservés à disposition en cas de fuite ou de perforation.',
       'Surveillance cutanée renforcée malgré le dispositif : le matelas à air motorisé réduit le risque mais ne dispense pas des changements de position et de la surveillance régulière des points d\'appui.',
       'Niveau de bruit du compresseur à anticiper avec le patient et son entourage (fonctionnement continu, jour et nuit).',
-    ],
+    
+      'Prévoir une solution de secours en cas de coupure de courant : le compresseur s\'arrête et la protection anti-escarre est nulle — conserver un coussin de mousse de substitution et signaler l\'alarme sonore du compresseur à l\'entourage.',],
     contre_indications: [
       'Instabilité rachidienne ou fracture vertébrale non consolidée : la surface mobile du matelas à air peut être contre-indiquée selon l\'avis du chirurgien — vérifier avant installation.',
       'Patient hors de la plage de poids validée par le fabricant pour la référence retenue.',
@@ -826,7 +844,7 @@ sources: [{label: "HAS — Prévention et traitement des escarres", url: "https:
       mention: 'Remboursable sur prescription',
       code_lppr: '1240054 (achat compresseur) / 1217374 (location hebdomadaire compresseur + surmatelas) / 1227332 (forfait livraison)',
       taux: '60% du tarif LPPR (100% si ALD/CMU) — à vérifier selon la situation du patient',
-      note: 'Tarifs sourcés dans le PDF LPP officiel : achat du compresseur 158,19€ (code 1240054), location hebdomadaire du compresseur associée au surmatelas 10,88€/semaine (code 1217374), forfait de livraison 17,48€ (code 1227332, non cumulable avec un autre forfait de livraison). La prise en charge du compresseur est subordonnée au caractère remboursable du matelas ou surmatelas associé — les deux éléments doivent être pris en charge ensemble, pas séparément.',
+      note: 'Tarifs sourcés dans le PDF LPP officiel : achat du compresseur 158,19€ (code 1240054), location hebdomadaire du compresseur associée au surmatelas 10,88€/semaine (code 1217374), forfait de livraison 17,48€ (code 1227332, non cumulable avec un autre forfait de livraison). La prise en charge du compresseur est subordonnée au caractère remboursable du matelas ou surmatelas associé — les deux éléments doivent être pris en charge ensemble, pas séparément. Prescripteurs : tous médecins, ergothérapeutes. Pas d\'accord préalable. Achat (avec option location pour certains surmatelas à air motorisés : 10,88€/semaine en LPP). Indication : patients à risque d\'escarre élevé (Norton ≤ 14) ou lésions médullaires. Les matelas à air motorisés (avec compresseur) sont classés 1B — renouvellement tous les 2 ans. Vérifier la pression du compresseur régulièrement (alarme si coupure de courant). Tarif indicatif : surmatelas à air avec compresseur 294,64€ (classe 1B).',
     },
     otc: ['Crème ou mousse de prévention des escarres'],
     pathologies_liees: [],
@@ -834,7 +852,7 @@ sources: [{label: "HAS — Prévention et traitement des escarres", url: "https:
     accord_prealable: false,
     achat_location: 'Achat uniquement (surmatelas à air : location hebdomadaire possible — 10,88€)',
     formalites: 'Score Norton ≤ 14 ou lésions médullaires · 1 matelas par classe pris en charge (classe 1A : chaque année)',
-sources: [{label: "HAS — Supports anti-escarres", url: "https://www.has-sante.fr/jcms/c_272971/fr/prevention-et-traitement-des-escarres-de-l-adulte-et-du-sujet-age"}, {label: "Nomenclature LPP — Titre II Ch.2", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "EPUAP — Recommandations escarres", url: "https://www.epuap.org"}] },
+sources: [{label: "HAS — Supports anti-escarres", url: "https://www.has-sante.fr/jcms/c_272971/fr/prevention-et-traitement-des-escarres-de-l-adulte-et-du-sujet-age"}, ] },
 
   // ─── MOBILITÉ (ajout déambulateur fixe) ───
   { id: 'm32', slug: 'deambulateur-sans-roues', nom: 'Déambulateur sans roues (fixe)', categorie: 'mobilite', icone: '__SVG__deambulateur.svg__',
@@ -855,7 +873,7 @@ sources: [{label: "HAS — Supports anti-escarres", url: "https://www.has-sante.
       mention: 'Remboursable sur prescription',
       code_lppr: '1285619 (achat) / 1225646 (location ≤26 sem) / 1260418 (location >26 sem)',
       taux: '60% du tarif LPPR (100% si ALD/CMU) — à vérifier selon la situation du patient',
-      note: 'Mêmes codes et tarifs que les autres déambulateurs (voir fiches "4 roues" et "2 roues") : la nomenclature LPP précise explicitement "fixes ou articulés ou à roulettes" sous un même code générique "déambulateur", réglable en hauteur. Achat 53,81€, location courte durée 2,21€/semaine, location longue durée 1,34€/semaine, livraison 12,96€ (code 1290968).',
+      note: 'Mêmes codes et tarifs que les autres déambulateurs (voir fiches "4 roues" et "2 roues") : la nomenclature LPP précise explicitement "fixes ou articulés ou à roulettes" sous un même code générique "déambulateur", réglable en hauteur. Achat 53,81€, location courte durée 2,21€/semaine, location longue durée 1,34€/semaine, livraison 12,96€ (code 1290968). Prescripteurs : tous médecins, ergothérapeutes, masseurs-kinésithérapeutes. Pas d\'accord préalable. Achat uniquement. Offre la stabilité maximale mais impose de soulever l\'appareil à chaque pas — adapté aux patients avec peu de force dans les membres inférieurs mais une bonne force des bras. Contre-indiqué si l\'utilisateur ne peut pas soulever l\'appareil de façon répétée.',
     },
     otc: [],
     pathologies_liees: ['osteoporose'],
@@ -863,8 +881,7 @@ sources: [{label: "HAS — Supports anti-escarres", url: "https://www.has-sante.
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple',
-sources: [{label: "Nomenclature LPP — Titre II Ch.3", url: "https://www.ameli.fr/pharmacien/exercice-professionnel/nomenclatures-codifications/lppr"}, {label: "ANAP — Référentiel mobilité", url: "https://www.anap.fr"}] },
-];
+sources: [, , {label: "Ameli — Déambulateurs et rollators", url: "https://www.ameli.fr/assure/remboursements/rembourse/medicaments-vaccins-dispositifs-medicaux/deambulateur-rollator-prise-en-charge", date: "consulté 07/2026"}] }];
 
 // Tri alphabétique dans chaque catégorie
 MATERIEL_DB.sort((a, b) => a.nom.localeCompare(b.nom, 'fr'));
