@@ -445,3 +445,40 @@ Corrections de format appliquées lors de la migration (double-virgule vergeture
 - Toutes les fiches concernées avaient ≥1 source vérifiée (HAS/jcms ou Ameli/thème) —
   zéro fiche laissée sans source après purge.
 - Contrôle : 0 racine résiduelle · 0 tableau vide · 0 virgule orpheline.
+
+## v2.19 — Fusion des deux branches (enrichissement PDF mémos LPP)
+
+### Origine
+Divergence entre deux sessions parallèles Claude :
+- Autre session (v2.15 parallèle) : avait enrichi materiel.js depuis les 6 mémos LPP Ameli
+  (conseils, notes cliniques, sources datées) mais N'AVAIT PAS les champs structurés v2.18
+  (prescripteur, accord_prealable, achat_location, formalites)
+- Notre v2.18 : avait les 4 champs structurés sur 32 fiches mais PAS les enrichissements PDF
+
+### Stratégie de fusion
+Base = notre v2.18 (landing/app.html split, champs structurés, Vidal purgé)
+Greffe = contenu de l'autre session sur 6 fiches MAD uniquement (materiel.js)
+Tous les autres fichiers (landing, auth, CSS, dermato, pathologies) → nôtre conservé intégralement.
+
+### 6 fiches enrichies par la fusion
+- capteur-glycemie-continue : indication étendue (DT2 non intensifié HbA1c≥8%), +2 conseils
+  (retrait avant IRM, délivrance officine exclusivement), note enrichie (période d'essai,
+  plafonds, radiation FSL1), source mémo Ameli FSL (MàJ 24/07/2025)
+- lecteur-glycemie : note enrichie (prescripteurs IDE, plafonds 200/an et 100/an,
+  mentions d'ordonnance), source mémo Ameli glycémie capillaire (MàJ 04/08/2025)
+- lit-medicalise : +1 conseil (accessoires inclus vs facturables), note enrichie
+  (tarifs corrects 12,35€/23,28€/25€, EHPAD à charge établissement), source mémo (MàJ 24/07/2025)
+- fauteuil-coquille : ⚠️ CORRECTION CRITIQUE — mention "Non remboursable" → "Remboursable
+  sur prescription (soumis à accord préalable)" · accord_prealable: true · tarif 532,54€ ·
+  note complète (5 ans, garantie 2 ans, accessoire tablette seul, exclusions coussin/VHP)
+- matelas-classe2-anti-escarres : note enrichie (IDE/IPA/kiné, grille classes),
+  source mémo Ameli matelas (MàJ 24/07/2025)
+- complement-nutritionnel : +2 conseils (enrichissement alimentaire préalable obligatoire,
+  objectif +400kcal/+30g protéines/j), note enrichie (IPA depuis arrêté 25/04/2025,
+  critères dénutrition, ordonnance), sources mémo LPP CNO + Légifrance arrêté IPA
+
+### Contrôle final
+- 32/32 fiches avec champ prescripteur
+- 6 mémos Ameli cités en sources (URLs Documents officiels)
+- fauteuil-coquille accord_prealable = true ✅
+- Syntaxe JS OK
