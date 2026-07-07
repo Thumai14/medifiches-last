@@ -325,14 +325,12 @@ js/icons/icon-registry.js     Registre SVG : contentIconSVG(), buildFicheHero()
 js/core/router.js             Navigation SPA + restauration onglet/scroll
 js/services/search.service.js Scoring et fusion recherche cross-module
 js/services/analytics.service.js Statistiques d'usage (write-only, fire-and-forget)
-js/data/pathologies.js        52 fiches pathologie — sources HAS/Ameli vérifiées et datées
-js/data/patho-meds.js         Catalogue médicaments accès direct (Meddispar, 375 réf. + CIP)
 js/data/derm-brands.js        Catalogue parapharmacie — 22 laboratoires
 js/data/materiel.js           MAD — 32 fiches avec sources {label,url} cliquables (HAS, LPP, sociétés savantes)
+js/data/pathologies.js        52 fiches pathologie + sources {label,url,date} vérifiées (Ameli 52/52, HAS 49/52)
 js/modules/ui.js              UI pathologies + composant Search + filtres thématiques
-js/modules/customizer.js      Façade : assemble window.Customizer depuis js/customizer/
-js/modules/pilotage.js        Panneau Pilotage OTC (marge/rotation/péremption)
-js/customizer/*.js            Éditeurs splittés : path/derma/mad-editor, pickers, store, dom-helpers
+js/customizer/*.js            Personnalisation fiches — 6 modules par responsabilité (store, DOM, éditeurs path/derma/mad, brand picker, med picker)
+js/modules/customizer.js      Façade : assemble window.Customizer depuis js/customizer/*.js (aucune logique métier)
 js/modules/mad.js             Module Matériel à domicile — rendu sources cliquables (fiche-sources)
 js/modules/dermato.js         Module Dermatologie
 js/modules/formation.js       Module Formation

@@ -23,7 +23,7 @@ const PATHOLOGIES_DB = [
       {produit: "Purificateur d'air HEPA", raison: "Filtration des allergènes à domicile"},
       {produit: "Compléments vitamine C + quercétine", raison: "Effet antihistaminique naturel"},
     ],
-    sources: [{label: "Santé.fr — Rhinite allergique", url: "https://www.sante.fr/rhinite-allergique-rhume-des-foins", date: "MàJ 08/2025 · consulté 07/2026"},{label: "ANSM", url: "https://ansm.sante.fr"},{label: "Ameli — Traitement de l'allergie", url: "https://www.ameli.fr/assure/sante/themes/allergie/traitement-allergie", date: "consulté 07/2026"}]
+    sources: [{label: "Santé.fr — Rhinite allergique", url: "https://www.sante.fr/rhinite-allergique-rhume-des-foins", date: "MàJ 08/2025 · consulté 07/2026"},{label: "ANSM", url: "https://ansm.sante.fr"},{label: "Vidal", url: "https://www.vidal.fr"},{label: "Ameli — Traitement de l'allergie", url: "https://www.ameli.fr/assure/sante/themes/allergie/traitement-allergie", date: "consulté 07/2026"}]
   },
   {
     id: 7, slug: "asthme", nom: "Asthme",
@@ -67,7 +67,7 @@ const PATHOLOGIES_DB = [
       {produit: "Pruneaux d'Agen", raison: "Efficacité clinique prouvée"},
       {produit: "Probiotiques spécifiques transit", raison: "Régulation de la flore intestinale"},
     ],
-    sources: [{label: "SNFGE", url: "https://www.snfge.org"},{label: "Ameli — Constipation : diagnostic et traitement", url: "https://www.ameli.fr/assure/sante/themes/constipation-adulte/diagnostic-traitement-evolution", date: "consulté 07/2026"}]
+    sources: [{label: "HAS — Constipation", url: "https://www.has-sante.fr"},{label: "SNFGE", url: "https://www.snfge.org"},{label: "Vidal", url: "https://www.vidal.fr"},{label: "Ameli — Constipation : diagnostic et traitement", url: "https://www.ameli.fr/assure/sante/themes/constipation-adulte/diagnostic-traitement-evolution", date: "consulté 07/2026"}]
   },
   {
     id: 3, slug: "diabete-type-2", nom: "Diabète type 2",
@@ -89,7 +89,7 @@ const PATHOLOGIES_DB = [
       {produit: "Semelles orthopédiques diabétiques", raison: "Protection et confort plantaire"},
       {produit: "Pilulier semainier", raison: "Améliore l'observance du traitement"},
     ],
-    sources: [{label: "Ameli — Diabète type 2 : traitement médicamenteux", url: "https://www.ameli.fr/assure/sante/themes/diabete-adulte/diabete-traitement/traitements-medicamenteux", date: "consulté 07/2026"},{label: "SFD", url: "https://www.sfdiabete.org"},{label: "HAS — Stratégie thérapeutique du DT2 (2024)", url: "https://www.has-sante.fr/jcms/p_3191108/fr/strategie-therapeutique-du-patient-vivant-avec-un-diabete-de-type-2", date: "consulté 07/2026"}]
+    sources: [{label: "Ameli — Diabète type 2 : traitement médicamenteux", url: "https://www.ameli.fr/assure/sante/themes/diabete-adulte/diabete-traitement/traitements-medicamenteux", date: "consulté 07/2026"},{label: "SFD", url: "https://www.sfdiabete.org"},{label: "Vidal", url: "https://www.vidal.fr"},{label: "HAS — Stratégie thérapeutique du DT2 (2024)", url: "https://www.has-sante.fr/jcms/p_3191108/fr/strategie-therapeutique-du-patient-vivant-avec-un-diabete-de-type-2", date: "consulté 07/2026"}]
   },
   {
     id: 11, slug: "douleur-arthrose", nom: "Douleur arthrosique",
@@ -111,7 +111,7 @@ const PATHOLOGIES_DB = [
       {produit: "Compléments curcuma + pipérine", raison: "Anti-inflammatoire naturel bien toléré"},
       {produit: "Huile de CBD topique", raison: "Soulagement articulaire naturel — forte demande"},
     ],
-    sources: [{label: "Ameli — Traitement de l'arthrose", url: "https://www.ameli.fr/assure/sante/themes/arthrose-genou/traitement-medical-chirurgical", date: "consulté 07/2026"},{label: "SFR", url: "https://www.larhumato.fr"},{label: "HAS — Arthrose : paracétamol en 1re intention", url: "https://www.has-sante.fr/jcms/pprd_2974704/fr/arthrose-le-paracetamol-en-1re-intention-lors-des-crises-douloureuses", date: "consulté 07/2026"}]
+    sources: [{label: "Ameli — Traitement de l'arthrose", url: "https://www.ameli.fr/assure/sante/themes/arthrose-genou/traitement-medical-chirurgical", date: "consulté 07/2026"},{label: "SFR", url: "https://www.larhumato.fr"},{label: "Vidal", url: "https://www.vidal.fr"},{label: "HAS — Arthrose : paracétamol en 1re intention", url: "https://www.has-sante.fr/jcms/pprd_2974704/fr/arthrose-le-paracetamol-en-1re-intention-lors-des-crises-douloureuses", date: "consulté 07/2026"}]
   },
   {
     id: 5, slug: "gastro-enterite", nom: "Gastro-entérite aiguë",
@@ -133,7 +133,7 @@ const PATHOLOGIES_DB = [
       {produit: "Gel hydroalcoolique familial", raison: "Prévention de la contagion intrafamiliale"},
       {produit: "Thermomètre digital", raison: "Surveillance température si fièvre associée"},
     ],
-    sources: [{label: "SNFGE", url: "https://www.snfge.org"},{label: "Ameli — Gastro-entérite : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/gastro-enterite-adulte/consultation-traitement", date: "consulté 07/2026"}]
+    sources: [{label: "HAS — Gastro-entérite", url: "https://www.has-sante.fr"},{label: "SNFGE", url: "https://www.snfge.org"},{label: "Vidal", url: "https://www.vidal.fr"},{label: "Ameli — Gastro-entérite : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/gastro-enterite-adulte/consultation-traitement", date: "consulté 07/2026"}]
   },
   {
     id: 4, slug: "hypertension", nom: "Hypertension artérielle",
@@ -155,7 +155,7 @@ const PATHOLOGIES_DB = [
       {produit: "Compléments magnésium + potassium", raison: "Soutien naturel de la tension"},
       {produit: "Pilulier semainier", raison: "Améliore l'observance du traitement chronique"},
     ],
-    sources: [{label: "HAS/SFHTA — Prise en charge de l'HTA de l'adulte", url: "https://www.has-sante.fr/jcms/c_2059286/fr/prise-en-charge-de-l-hypertension-arterielle-de-l-adulte", date: "MàJ 10/2016 · consulté 07/2026"},{label: "ESC/ESH Guidelines 2023", url: "https://www.escardio.org"},{label: "Ameli — Traitement de l'HTA", url: "https://www.ameli.fr/assure/sante/themes/hypertension-arterielle-hta/traitement", date: "consulté 07/2026"}]
+    sources: [{label: "HAS/SFHTA — Prise en charge de l'HTA de l'adulte", url: "https://www.has-sante.fr/jcms/c_2059286/fr/prise-en-charge-de-l-hypertension-arterielle-de-l-adulte", date: "MàJ 10/2016 · consulté 07/2026"},{label: "ESC/ESH Guidelines 2023", url: "https://www.escardio.org"},{label: "Vidal", url: "https://www.vidal.fr"},{label: "Ameli — Traitement de l'HTA", url: "https://www.ameli.fr/assure/sante/themes/hypertension-arterielle-hta/traitement", date: "consulté 07/2026"}]
   },
   {
     id: 8, slug: "insomnie", nom: "Insomnie",
@@ -177,7 +177,7 @@ const PATHOLOGIES_DB = [
       {produit: "Huile essentielle lavande vraie", raison: "Effet anxiolytique et sédatif léger"},
       {produit: "Magnésium bisglycinate (soir)", raison: "Détente musculaire et nerveuse"},
     ],
-    sources: [{label: "HAS/SFTG — Insomnie en médecine générale", url: "https://www.has-sante.fr/jcms/c_937775/fr/plaintes-du-sommeil-insomnie", date: "consulté 07/2026"},{label: "Ameli — Traitement de l'insomnie", url: "https://www.ameli.fr/assure/sante/themes/insomnie-adulte/traitement-medical", date: "consulté 07/2026"}]
+    sources: [{label: "HAS/SFTG — Insomnie en médecine générale", url: "https://www.has-sante.fr/jcms/c_937775/fr/plaintes-du-sommeil-insomnie", date: "consulté 07/2026"},{label: "Vidal", url: "https://www.vidal.fr"},{label: "Ameli — Traitement de l'insomnie", url: "https://www.ameli.fr/assure/sante/themes/insomnie-adulte/traitement-medical", date: "consulté 07/2026"}]
   },
   {
     id: 12, slug: "migraine", nom: "Migraine",
@@ -199,7 +199,7 @@ const PATHOLOGIES_DB = [
       {produit: "Compléments magnésium 400mg/jour", raison: "Prophylaxie — efficacité clinique prouvée"},
       {produit: "HE menthe poivrée", raison: "Alternative non médicamenteuse — tempes"},
     ],
-    sources: [{label: "Ameli — Migraine : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/migraine/diagnostic-traitement", date: "MàJ 01/2026 · consulté 07/2026"},{label: "SFEMC", url: "https://www.sf-neuro.org"},{label: "HAS — Prise en charge de la migraine", url: "https://www.has-sante.fr/jcms/c_272212/fr/prise-en-charge-diagnostique-et-therapeutique-de-la-migraine-chez-l-adulte-et-chez-l-enfant-aspects-cliniques-et-economiques", date: "consulté 07/2026"}]
+    sources: [{label: "Ameli — Migraine : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/migraine/diagnostic-traitement", date: "MàJ 01/2026 · consulté 07/2026"},{label: "SFEMC", url: "https://www.sf-neuro.org"},{label: "Vidal", url: "https://www.vidal.fr"},{label: "HAS — Prise en charge de la migraine", url: "https://www.has-sante.fr/jcms/c_272212/fr/prise-en-charge-diagnostique-et-therapeutique-de-la-migraine-chez-l-adulte-et-chez-l-enfant-aspects-cliniques-et-economiques", date: "consulté 07/2026"}]
   },
   {
     id: 2, slug: "rhinite-allergique", nom: "Rhinite allergique",
@@ -220,7 +220,7 @@ const PATHOLOGIES_DB = [
       {produit: "Humidificateur d'air", raison: "Muqueuses nasales moins irritées"},
       {produit: "Probiotiques (Lactobacillus rhamnosus)", raison: "Modulation de la réponse allergique"},
     ],
-    sources: [{label: "Santé.fr — Rhinite allergique", url: "https://www.sante.fr/rhinite-allergique-rhume-des-foins", date: "MàJ 08/2025 · consulté 07/2026"},{label: "ANSM", url: "https://ansm.sante.fr"},{label: "Ameli — Traitement de l'allergie", url: "https://www.ameli.fr/assure/sante/themes/allergie/traitement-allergie", date: "consulté 07/2026"}]
+    sources: [{label: "Santé.fr — Rhinite allergique", url: "https://www.sante.fr/rhinite-allergique-rhume-des-foins", date: "MàJ 08/2025 · consulté 07/2026"},{label: "ANSM", url: "https://ansm.sante.fr"},{label: "Vidal", url: "https://www.vidal.fr"},{label: "Ameli — Traitement de l'allergie", url: "https://www.ameli.fr/assure/sante/themes/allergie/traitement-allergie", date: "consulté 07/2026"}]
   },
 ];
 

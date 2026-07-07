@@ -1,545 +1,605 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MediFiches — L'assistant comptoir des équipes officinales</title>
-<meta name="description" content="Le bon conseil, patient en face, en moins de 30 secondes. Fiches pathologie, matériel à domicile et dermatologie, sourcées HAS/ANSM. Essai gratuit 30 jours, sans carte bancaire.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-<style>
-/* ═══ MediFiches — Landing "Digital Apothecary" ═══ */
-:root{
-  --serif:'Instrument Serif',Georgia,serif;
-  --sans:'DM Sans',system-ui,sans-serif;
-  --ink:#2c2114; --ink-soft:#3a2e1e; --muted:#6b5a42;
-  --copper:#a8572b; --copper-dk:#8a4520;
-  --brass:#b78f47; --brass-lt:#e4c47e;
-  --green:#15402c; --green-dk:#0c2a1e;
-  --paper:#f2ead4; --paper-dk:#e6dcc1; --paper-deep:#d3c49f;
-  --card:#faf6ea;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{
-  font-family:var(--sans);color:var(--ink-soft);line-height:1.6;
-  background:radial-gradient(120% 80% at 50% -8%, var(--paper) 0%, #e9dfc6 38%, var(--paper-dk) 78%, var(--paper-deep) 100%) fixed;
-}
-body::before{content:'';position:fixed;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:multiply;z-index:0;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/></svg>");}
-main,nav,footer{position:relative;z-index:1}
-a{color:var(--copper)}
-.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-.serif{font-family:var(--serif);font-weight:400}
-em{font-style:italic;color:var(--copper)}
-:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:4px}
-
-/* ─ Nav ─ */
-nav{position:sticky;top:0;backdrop-filter:blur(10px);background:rgba(242,234,212,.85);border-bottom:1px solid rgba(44,33,20,.1);z-index:50}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
-.logo{font-family:var(--serif);font-size:24px;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:9px}
-.logo-dot{width:9px;height:9px;border-radius:50%;background:var(--copper);box-shadow:0 0 0 3px rgba(168,87,43,.2)}
-.logo b{font-weight:400;color:var(--copper)}
-.nav-links{display:flex;align-items:center;gap:22px;font-size:14px}
-.nav-links a{color:var(--ink-soft);text-decoration:none}
-.nav-links a:hover{color:var(--copper)}
-.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;padding:12px 26px;transition:transform .15s,box-shadow .15s;border:none;cursor:pointer;font-family:var(--sans)}
-.btn:hover{transform:translateY(-1px)}
-.btn-copper{background:linear-gradient(160deg,var(--copper),var(--copper-dk));color:#fdf7ea;box-shadow:0 4px 14px rgba(168,87,43,.35)}
-.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid rgba(44,33,20,.35)}
-.btn-sm{padding:8px 18px;font-size:13.5px}
-@media(max-width:720px){.nav-links a:not(.btn){display:none}}
-
-/* ─ Hero ─ */
-.hero{text-align:center;padding:72px 0 56px}
-.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 17px;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--brass);border-radius:999px;background:rgba(228,196,126,.15)}
-h1{font-family:var(--serif);font-size:clamp(38px,6vw,62px);line-height:1.08;color:var(--ink);margin:26px auto 18px;max-width:820px}
-.hero-sub{font-size:18px;color:var(--muted);max-width:620px;margin:0 auto 14px}
-.hero-tags{display:flex;flex-wrap:wrap;gap:8px 14px;justify-content:center;font-size:13.5px;color:var(--muted);margin-bottom:36px}
-.hero-tags span::before{content:'◆';color:var(--brass);font-size:8px;vertical-align:middle;margin-right:7px}
-.hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
-.hero-note{font-size:13px;color:var(--muted)}
-
-/* démo recherche auto */
-.demo-search{max-width:560px;margin:42px auto 0;text-align:left}
-.ds-field{display:flex;align-items:center;gap:12px;background:var(--card);border:1.5px solid rgba(44,33,20,.18);border-radius:14px;padding:15px 20px;box-shadow:0 10px 30px rgba(44,33,20,.12)}
-.ds-field svg{flex-shrink:0;stroke:var(--muted)}
-.ds-text{font-size:16px;color:var(--ink);min-height:24px}
-.ds-caret{display:inline-block;width:2px;height:18px;background:var(--copper);vertical-align:-3px;animation:blink 1s step-end infinite}
-@keyframes blink{50%{opacity:0}}
-.ds-card{margin-top:10px;background:var(--card);border:1px solid rgba(44,33,20,.12);border-left:4px solid var(--green);border-radius:12px;padding:14px 18px;box-shadow:0 14px 34px rgba(44,33,20,.14);opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s}
-.ds-card.show{opacity:1;transform:none}
-.ds-card-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:7px}
-.ds-card-title{font-family:var(--serif);font-size:19px;color:var(--green)}
-.ds-card-cat{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.ds-card-line{font-size:13.5px;color:var(--ink-soft)}
-.ds-card-line b{color:var(--copper);font-weight:600}
-@media (prefers-reduced-motion:reduce){.ds-caret{animation:none}}
-
-/* ─ Bande chiffres ─ */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:rgba(44,33,20,.12);border-block:1px solid rgba(44,33,20,.12);margin:30px 0 0}
-.stat{background:rgba(250,246,234,.6);text-align:center;padding:26px 14px}
-.stat b{font-family:var(--serif);font-weight:400;font-size:38px;color:var(--green);display:block;line-height:1}
-.stat span{font-size:13px;color:var(--muted)}
-
-/* ─ Sections ─ */
-section{padding:76px 0}
-.eyebrow{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--copper);font-weight:600;margin-bottom:12px}
-h2{font-family:var(--serif);font-size:clamp(28px,4vw,40px);line-height:1.15;color:var(--ink);margin-bottom:16px;max-width:640px}
-.lead{font-size:16.5px;color:var(--muted);max-width:600px}
-
-/* constat */
-.constat-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
-.sources-mess{display:flex;flex-wrap:wrap;gap:10px}
-.sm-chip{font-size:13px;padding:8px 15px;border-radius:10px;background:var(--card);border:1px solid rgba(44,33,20,.14);color:var(--muted);box-shadow:0 3px 8px rgba(44,33,20,.07)}
-.sm-chip:nth-child(odd){transform:rotate(-1.4deg)}
-.sm-chip:nth-child(even){transform:rotate(1.2deg)}
-.sm-arrow{width:100%;text-align:center;font-size:22px;color:var(--brass);padding:2px 0}
-.sm-one{font-size:14px;padding:12px 20px;border-radius:12px;background:var(--green);color:#f2ead4;font-weight:600;box-shadow:0 8px 22px rgba(21,64,44,.3);display:inline-flex;align-items:center;gap:9px}
-@media(max-width:820px){.constat-grid{grid-template-columns:1fr}}
-
-/* deux publics */
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:38px}
-.col-card{background:var(--card);border:1px solid rgba(44,33,20,.12);border-radius:18px;padding:32px;box-shadow:0 12px 32px rgba(44,33,20,.08)}
-.col-card h3{font-family:var(--serif);font-weight:400;font-size:25px;color:var(--ink);margin-bottom:6px}
-.col-card .who{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--copper);font-weight:600}
-.col-card ul{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:13px}
-.col-card li{font-size:14.5px;padding-left:26px;position:relative}
-.col-card li::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700}
-.col-card--green{border-top:4px solid var(--green)}
-.col-card--copper{border-top:4px solid var(--copper)}
-@media(max-width:820px){.cols{grid-template-columns:1fr}}
-
-/* ─ SIGNATURE : démo pilotage ─ */
-.pilotage{background:linear-gradient(165deg,var(--green) 0%,var(--green-dk) 100%);color:#e9e0c8;border-block:1px solid rgba(0,0,0,.2)}
-.pilotage .eyebrow{color:var(--brass-lt)}
-.pilotage h2{color:#f6efdc}
-.pilotage .lead{color:rgba(233,224,200,.75)}
-.plt-demo{margin-top:44px;background:rgba(255,255,255,.04);border:1px solid rgba(228,196,126,.25);border-radius:20px;padding:30px;backdrop-filter:blur(4px)}
-.plt-demo-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-bottom:22px}
-.plt-demo-title{font-family:var(--serif);font-size:21px;color:#f6efdc}
-.plt-demo-title small{display:block;font-family:var(--sans);font-size:12.5px;color:rgba(233,224,200,.65);margin-top:3px}
-.plt-strats{display:flex;gap:8px;flex-wrap:wrap}
-.plt-strat{border:1.5px solid rgba(228,196,126,.4);background:transparent;color:#e9e0c8;border-radius:999px;padding:9px 18px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:var(--sans);transition:background .18s,color .18s}
-.plt-strat:hover{background:rgba(228,196,126,.12)}
-.plt-strat.on{background:var(--brass-lt);color:var(--green-dk);border-color:var(--brass-lt)}
-.plt-fiche{background:var(--card);border-radius:14px;padding:20px 22px;color:var(--ink-soft)}
-.plt-fiche-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:13px}
-.plt-fiche-nom{font-family:var(--serif);font-size:22px;color:var(--green)}
-.plt-fiche-tag{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.plt-label{font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:9px}
-.plt-pills{display:flex;flex-direction:column;gap:8px}
-.plt-pill{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;border:1px solid rgba(44,33,20,.13);border-radius:11px;padding:10px 15px;font-size:14px;transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .3s}
-.plt-pill .fl{display:flex;gap:6px}
-.plt-pill .tag{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:999px;opacity:0;transition:opacity .3s}
-.plt-pill .tag.vis{opacity:1}
-.tag-m{background:rgba(21,64,44,.12);color:var(--green)}
-.tag-r{background:rgba(183,143,71,.18);color:#7a5c22}
-.tag-p{background:rgba(168,87,43,.14);color:var(--copper)}
-.plt-pill.top1{border-color:var(--brass);box-shadow:0 6px 16px rgba(183,143,71,.3)}
-.plt-demo-note{margin-top:18px;font-size:13.5px;color:rgba(233,224,200,.7);display:flex;gap:9px;align-items:flex-start}
-.plt-demo-note b{color:var(--brass-lt)}
-@media (prefers-reduced-motion:reduce){.plt-pill{transition:none}}
-
-/* ─ traçabilité ─ */
-.trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:36px}
-.trust-card{background:var(--card);border:1px solid rgba(44,33,20,.12);border-radius:16px;padding:26px}
-.trust-card .ic{width:42px;height:42px;border-radius:11px;background:rgba(21,64,44,.08);display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:20px}
-.trust-card h3{font-size:16.5px;color:var(--ink);margin-bottom:7px;font-weight:600}
-.trust-card p{font-size:13.5px;color:var(--muted)}
-.disclaimer{margin-top:34px;border:1.5px dashed var(--brass);border-radius:14px;padding:20px 24px;background:rgba(228,196,126,.1);font-size:14px;max-width:720px}
-.disclaimer b{color:var(--ink)}
-
-/* ─ tarifs ─ */
-.pricing-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:38px}
-.price-card{background:var(--card);border:1px solid rgba(44,33,20,.13);border-radius:18px;padding:30px;text-align:center;display:flex;flex-direction:column;gap:8px}
-.price-card.hl{border:2px solid var(--copper);box-shadow:0 16px 40px rgba(168,87,43,.16);position:relative}
-.price-card.hl::before{content:'Le plus choisi';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--copper);color:#fdf7ea;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 14px;border-radius:999px}
-.price-name{font-family:var(--serif);font-size:23px;color:var(--ink)}
-.price-val{font-family:var(--serif);font-size:46px;color:var(--green);line-height:1}
-.price-val sup{font-size:20px;vertical-align:22px}
-.price-per{font-size:12.5px;color:var(--muted)}
-.price-desc{font-size:13.5px;color:var(--muted);flex:1}
-.pricing-foot{text-align:center;margin-top:26px;font-size:14px;color:var(--muted)}
-
-/* ─ FAQ ─ */
-.faq{max-width:720px}
-.faq details{border-bottom:1px solid rgba(44,33,20,.14);padding:19px 4px}
-.faq summary{font-size:16px;font-weight:600;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:14px}
-.faq summary::after{content:'+';font-family:var(--serif);font-size:23px;color:var(--brass);transition:transform .2s}
-.faq details[open] summary::after{transform:rotate(45deg)}
-.faq p{margin-top:11px;font-size:14.5px;color:var(--muted);max-width:640px}
-
-/* ─ CTA final ─ */
-.final{text-align:center;padding:86px 0}
-.final h2{margin:0 auto 14px}
-.final .lead{margin:0 auto 32px}
-
-/* ─ footer ─ */
-footer{border-top:1px solid rgba(44,33,20,.14);padding:36px 0 44px;font-size:13px;color:var(--muted)}
-.foot-grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:22px;align-items:flex-start}
-.foot-links{display:flex;gap:20px;flex-wrap:wrap}
-.foot-links a{color:var(--muted);text-decoration:none}
-.foot-links a:hover{color:var(--copper)}
-.foot-disc{margin-top:20px;font-size:12px;opacity:.8;max-width:760px}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MediFiches — Assistant comptoir pour préparateurs en pharmacie. Conseils patients, contre-indications, régime alimentaire et matériel médical.">
+  <meta name="version" content="MVP-prod-1.0">
+  <!-- MediFiches MVP prod — Corrections critiques appliquées:
+       ✅ MF.Core : esc(), modal factory, Store v2, EventBus
+       ✅ localStorage schema v2 + migration auto mf- → mf_
+       ✅ MEDNAT_SIMPLE_DB encapsulée (hors window.*)
+       ✅ innerHTML : esc() sur données utilisateur
+       ✅ Backup : confirm() non-bloquant, export v2
+       ✅ 17 blocs JS validés node --check
+  -->
+  <meta name="theme-color" content="#1B6B52">
+  <meta name="color-scheme" content="light dark">
+  <title>MediFiches — Assistant comptoir</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/app.css">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/apothecary-hero.css">
+  <style>
+    /* Barre utilisateur */
+    #user-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 8000;
+      background: #8B1A14; color: white;
+      display: none; align-items: center; justify-content: space-between;
+      padding: 8px 20px; font-size: 12px; font-family: var(--font-body);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    body.has-user-bar .nav { top: 37px; }
+    #user-bar.visible { display: flex; }
+    #user-bar a, #user-bar button {
+      color: rgba(255,255,255,0.7); background: none; border: none;
+      cursor: pointer; font-family: var(--font-body); font-size: 12px;
+      text-decoration: none; padding: 4px 10px; border-radius: 4px;
+      transition: all 0.15s;
+    }
+    #user-bar a:hover, #user-bar button:hover {
+      background: rgba(255,255,255,0.12); color: white;
+    }
+    #user-bar .bar-admin {
+      background: rgba(255,255,255,0.15); color: white;
+      font-weight: 500; border: 1px solid rgba(255,255,255,0.2);
+    }
+  </style>
 </head>
 <body>
-
-<nav>
-  <div class="wrap nav-inner">
-    <a class="logo" href="#"><span class="logo-dot"></span>Medi<b>Fiches</b></a>
-    <div class="nav-links">
-      <a href="#modules">Modules</a>
-      <a href="#pilotage">Pilotage</a>
-      <a href="#tarifs">Tarifs</a>
-      <a href="#faq">FAQ</a>
-      <a href="/pages/login.html">Connexion</a>
-      <a href="/pages/login.html" class="btn btn-copper btn-sm">Essai gratuit 30 jours</a>
+<!-- Sprite SVG partagé des icônes de contenu — chargé une fois, référencé via <use> partout (cf. PATH_ICONS / contentIconSVG dans js/icons/icon-registry.js) -->
+<script>
+  fetch('icons/icons-sprite.svg').then(r => r.text()).then(svg => {
+    const div = document.createElement('div');
+    div.innerHTML = svg;
+    document.body.insertBefore(div.firstElementChild, document.body.firstChild);
+  }).catch(() => {});
+</script>
+<!-- Barre utilisateur (visible quand connecté) -->
+  <div id="user-bar">
+    <span id="user-bar-label" style="font-weight:600;letter-spacing:0.04em;">—</span>
+    <div style="display:flex;gap:4px;align-items:center;">
+      <a href="/pages/admin.html" id="user-bar-admin" class="bar-admin" style="display:none;">⚙️ Dashboard admin</a>
+      <button onclick="Auth.signOut()">Déconnexion</button>
     </div>
   </div>
-</nav>
 
-<main>
+  <div class="app-shell">
 
-<!-- ═══ HERO ═══ -->
-<header class="hero wrap">
-  <span class="badge">◆ Conçu par et pour l'officine</span>
-  <h1>Le bon conseil, patient en face,<br>en <em>moins de 30 secondes</em>.</h1>
-  <p class="hero-sub">MediFiches centralise le conseil au comptoir en fiches courtes, sourcées et immédiatement consultables — pour que la qualité de la réponse ne dépende plus de qui est de garde ce jour-là.</p>
-  <div class="hero-tags">
-    <span>Sources HAS / ANSM datées</span>
-    <span>Zéro installation</span>
-    <span>Tous les postes du comptoir</span>
-  </div>
-  <div class="hero-ctas">
-    <a class="btn btn-copper" href="/pages/login.html">Essayer gratuitement 30 jours</a>
-    <a class="btn btn-ghost" href="#pilotage">Voir le pilotage OTC</a>
-  </div>
-  <p class="hero-note">Sans carte bancaire · Sans engagement · Sans formation</p>
-
-  <!-- Démo recherche auto-animée -->
-  <div class="demo-search" aria-hidden="true">
-    <div class="ds-field">
-      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
-      <span class="ds-text" id="ds-text"></span><span class="ds-caret" id="ds-caret"></span>
-    </div>
-    <div class="ds-card" id="ds-card">
-      <div class="ds-card-head">
-        <span class="ds-card-title" id="ds-title"></span>
-        <span class="ds-card-cat" id="ds-cat"></span>
+  <!-- ═══ NAV ═══ -->
+  <nav class="nav" role="navigation">
+    <div class="nav__inner" style="position:relative;">
+      <a href="#" class="nav__logo" onclick="Router.navigate('pathologies'); return false;" style="flex-shrink:0;">
+        <div class="nav__logo-dot"></div>Medi<span class="nav__logo-accent">Fiches</span>
+      </a>
+      <div style="position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;">
+        <span class="nav__badge">Assistant comptoir</span>
+        <span class="nav__version">v1.0</span>
       </div>
-      <div class="ds-card-line" id="ds-line"></div>
+      <div style="display:flex;align-items:center;gap:8px;margin-left:auto;">
+        <button class="dark-toggle" id="btn-pilotage" onclick="Pilotage.open()" title="Pilotage des produits conseillés — marge, rotation, péremption" style="display:none;">⚖️ Pilotage</button>
+        <button class="dark-toggle" id="btn-export" onclick="Backup.exportData()" title="Exporter les personnalisations" style="display:none;">💾 Export</button>
+        <button class="dark-toggle" id="btn-import" onclick="document.getElementById('backup-file-input').click()" title="Importer des personnalisations" style="display:none;">📂 Import</button>
+        <input type="file" id="backup-file-input" accept=".json" style="display:none" onchange="Backup.importData(this)">
+        <span id="nav-user-label" style="display:none;font-size:12px;color:var(--text-2);font-weight:500;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"></span>
+        <button id="nav-signout-btn" onclick="Auth.signOut()" style="display:none;" class="dark-toggle">Déconnexion</button>
+        <a href="pages/pricing.html" class="dark-toggle" title="Voir les tarifs" style="text-decoration:none;font-size:13px;font-weight:500;">💳 Tarifs</a>
+        <button class="dark-toggle" id="dark-toggle" onclick="DarkMode.toggle()" title="Mode nuit / jour">
+          <span id="dark-icon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ PAGE NAV (router tabs) ═══ -->
+  <div class="page-nav" role="tablist">
+    <button class="page-nav__tab active" id="tab-pathologies" onclick="Router.navigate('pathologies')" role="tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px;"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>Pathologies</button>
+    <button class="page-nav__tab" id="tab-materiel" onclick="Router.navigate('materiel')" role="tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px;"><path d="M12 6v12M6 12h12"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg>Dispositifs</button>
+    <button class="page-nav__tab" id="tab-dermato" onclick="Router.navigate('dermato')" role="tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px;"><path d="M12 3c3.5 4.2 6 7.3 6 10.5a6 6 0 0 1-12 0C6 10.3 8.5 7.2 12 3Z"/></svg>Dermatologie</button>
+    <button class="page-nav__tab" id="tab-formation" onclick="Router.navigate('formation')" role="tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:5px;"><path d="M2.5 8 12 4l9.5 4L12 12 2.5 8Z"/><path d="M6 10v4.5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5V10"/><path d="M21.5 8v5"/></svg>Formation</button>
+  </div>
+
+  <!-- ═══ DISCLAIMER ═══ -->
+  <!-- ════════════════════════════
+       PAGE PATHOLOGIES
+  ════════════════════════════ -->
+  <div id="page-pathologies" class="page-view active">
+
+    <div class="apo">
+      <div class="apo__paper"></div>
+      <div class="apo__glow"></div>
+      <div class="apo__grain"></div>
+
+      <section class="apo-alert">
+        <div class="apo-alert__grain"></div>
+        <div class="apo-alert__inner">
+          <div class="apo-alert__title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fbe6c8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3Z"/><path d="M12 10v5M12 18h.01"/></svg>
+            Vérifier systématiquement avant tout conseil
+          </div>
+          <p class="apo-alert__disclaimer">Les informations fournies constituent une aide documentaire au conseil officinal et ne remplacent pas l'évaluation d'un professionnel de santé. En cas de doute ou de signes de gravité, orienter le patient vers un médecin.</p>
+          <div class="apo-alert__pills">
+            <span class="apo-pill">Âge</span>
+            <span class="apo-pill">Grossesse</span>
+            <span class="apo-pill">Traitements en cours</span>
+            <span class="apo-pill">Antécédents</span>
+            <span class="apo-pill">Allergies</span>
+            <span class="apo-pill">Contre-indications</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="apo-hero">
+        <div class="apo-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5.5L5.5 17a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 8.5V3"/><path d="M7.5 13h9"/></svg>
+          <span>Outil officinal</span>
+        </div>
+        <h1 class="apo-title">Votre assistant <em>comptoir</em></h1>
+        <div class="apo-sub">
+          <span>Conseils patients</span><span class="apo-sub__dot"></span>
+          <span>Contre-indications</span><span class="apo-sub__dot"></span>
+          <span>Conseil hygiéno-diététique</span><span class="apo-sub__dot"></span>
+          <span>Signes d'alerte</span>
+        </div>
+        <div class="search-block" role="search">
+          <div class="apo-search">
+            <div class="apo-search__field">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+              <input type="search" id="search-input" class="apo-search__input"
+                placeholder="Ex : diabète, allergie, rhinite, asthme…"
+                autocomplete="off" autocorrect="off" spellcheck="false"
+                aria-label="Rechercher une pathologie" />
+              <button id="search-btn" class="apo-search__btn" type="button">Rechercher</button>
+            </div>
+          </div>
+          <div id="autocomplete" class="autocomplete" role="listbox"></div>
+        </div>
+        <div class="apo-cats">
+          <a href="#" class="apo-cat apo-cat--pat apo-cat--active" onclick="return false;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>
+            Pathologies
+          </a>
+          <a href="#" class="apo-cat apo-cat--mad" onclick="Router.navigate('materiel'); return false;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v12M6 12h12"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
+            Dispositifs <span class="apo-cat__arrow">→</span>
+          </a>
+          <a href="#" class="apo-cat apo-cat--derm" onclick="Router.navigate('dermato'); return false;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.5 4.2 6 7.3 6 10.5a6 6 0 0 1-12 0C6 10.3 8.5 7.2 12 3Z"/></svg>
+            Dermatologie <span class="apo-cat__arrow">→</span>
+          </a>
+          <a href="#" class="apo-cat apo-cat--form" onclick="Router.navigate('formation'); return false;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8 12 4l9.5 4L12 12 2.5 8Z"/><path d="M6 10v4.5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5V10"/><path d="M21.5 8v5"/></svg>
+            Formation <span class="apo-cat__arrow">→</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="apo-green">
+        <div class="apo-green__grain"></div>
+        <svg class="apo-green__flourish apo-green__flourish--l" width="70" height="70" viewBox="0 0 80 80" fill="none" stroke="#c8a85a" stroke-width="1.1"><path d="M40 70C40 45 25 30 10 25M40 70C40 50 50 38 64 32M40 70V20"/><circle cx="10" cy="25" r="3"/><circle cx="64" cy="32" r="3"/></svg>
+        <svg class="apo-green__flourish apo-green__flourish--r" width="70" height="70" viewBox="0 0 80 80" fill="none" stroke="#c8a85a" stroke-width="1.1"><path d="M40 70C40 45 25 30 10 25M40 70C40 50 50 38 64 32M40 70V20"/><circle cx="10" cy="25" r="3"/><circle cx="64" cy="32" r="3"/></svg>
+        <div class="apo-green__inner">
+          <div class="apo-green__badge"><span>Conseil officinal</span></div>
+          <h2 class="apo-green__title">Pathologies <em>& thérapeutiques</em></h2>
+          <div class="apo-stats">
+            <div class="apo-stat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>
+              <span><strong>53</strong> pathologies</span>
+            </div>
+            <div class="apo-stats__sep"></div>
+            <div class="apo-stat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-6 4-9 4-13a4 4 0 0 0-8 0c0 4 4 7 4 13Z"/></svg>
+              <span>Médecine naturelle <strong>incluse</strong></span>
+            </div>
+            <div class="apo-stats__sep"></div>
+            <div class="apo-stat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="11" rx="2"/><path d="M9 8V6a3 3 0 0 1 6 0v2M12 12v3"/></svg>
+              <span>Médicaments <strong>OTC</strong></span>
+            </div>
+            <div class="apo-stats__sep"></div>
+            <div class="apo-stat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2 6 4-14 2 8h6"/></svg>
+              <span>Conseils <strong>régime</strong></span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <main class="main">
+      <div class="container">
+        <div id="fiche-result" class="fiche-result" role="region" aria-live="polite"></div>
+        <div id="no-result" class="no-result" role="alert"></div>
+
+        <!-- Filtres thématiques -->
+        <div class="theme-filters-wrap">
+          <div id="theme-filters" class="theme-filters"></div>
+        </div>
+
+        <!-- Section saisonnière (limitée à 6) -->
+        <section class="section" id="saison-section">
+          <div class="section__header">
+            <div class="section__label">📅 En ce moment</div>
+            <button onclick="UI.openSaisonEditor()" style="background:none;border:1px solid var(--brand-border);color:var(--brand-dark);border-radius:14px;padding:3px 10px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;">✏️ Modifier</button>
+          </div>
+          <div id="saison-grid" class="cards-grid" role="list"></div>
+        </section>
+
+        <hr class="divider" id="theme-divider">
+
+        <!-- Grille par thème -->
+        <section class="section">
+          <div class="section__header">
+            <div class="section__label" id="theme-label">📋 Toutes les pathologies</div>
+          </div>
+          <div id="theme-grid"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- ════════════════════════════
+       PAGE MATÉRIEL MÉDICAL
+  ════════════════════════════ -->
+  <div id="page-materiel" class="page-view">
+
+    <div class="apo">
+      <div class="apo__paper"></div><div class="apo__glow"></div><div class="apo__grain"></div>
+      <section class="apo-alert"><div class="apo-alert__grain"></div><div class="apo-alert__inner">
+        <div class="apo-alert__title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fbe6c8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3Z"/><path d="M12 10v5M12 18h.01"/></svg> Vérifier systématiquement avant toute délivrance <span class="apo-alert__count" id="mad-alert-count"></span></div>
+        <p class="apo-alert__disclaimer">Les informations fournies constituent une aide documentaire au conseil officinal et ne remplacent pas l'évaluation d'un professionnel de santé. En cas de doute ou de signes de gravité, orienter le patient vers un médecin.</p>
+        <div class="apo-alert__pills">
+          <span class="apo-pill">Âge</span><span class="apo-pill">Grossesse / allaitement</span><span class="apo-pill">Traitements en cours</span><span class="apo-pill">Pathologies associées</span><span class="apo-pill">Maintien à domicile</span>
+        </div>
+      </div></section>
+
+      <section class="apo-hero">
+        <div class="apo-badge apo-badge--mad">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5.5L5.5 17a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 8.5V3"/><path d="M7.5 13h9"/></svg>
+          <span>Outil officinal</span>
+        </div>
+        <h1 class="apo-title apo-title--mad">Votre assistant <em>comptoir</em></h1>
+        <div class="apo-sub"><span>Indications</span><span class="apo-sub__dot"></span><span>Conseils de délivrance</span><span class="apo-sub__dot"></span><span>Pathologies associées</span></div>
+        <div class="search-block hero-search" id="mad-search-block" role="search">
+          <div class="apo-search"><div class="apo-search__field">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+            <input class="apo-search__input" id="mad-search-input" type="search" placeholder="Rechercher dans le matériel médical…"
+              autocomplete="off" autocorrect="off" spellcheck="false"
+              oninput="MAD._filterSearch(this.value);Search.suggest(this.value,this)"
+              onkeydown="if(event.key==='Enter'){Search.closeAC();}if(event.key==='Escape'){this.value='';MAD._filterSearch('');Search.closeAC();}" />
+            <button class="apo-search__btn" type="button"
+              onclick="MAD._filterSearch(document.getElementById('mad-search-input').value);Search.closeAC()">Rechercher</button>
+          </div></div>
+        </div>
+        <div class="apo-cats">
+          <a href="#" class="apo-cat apo-cat--pat" onclick="Router.navigate('pathologies'); return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg> Pathologies <span class="apo-cat__arrow">→</span></a>
+          <a href="#" class="apo-cat apo-cat--mad apo-cat--active" onclick="return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v12M6 12h12"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg> Dispositifs</a>
+          <a href="#" class="apo-cat apo-cat--derm" onclick="Router.navigate('dermato'); return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.5 4.2 6 7.3 6 10.5a6 6 0 0 1-12 0C6 10.3 8.5 7.2 12 3Z"/></svg> Dermatologie <span class="apo-cat__arrow">→</span></a>
+          <a href="#" class="apo-cat apo-cat--form" onclick="Router.navigate('formation'); return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8 12 4l9.5 4L12 12 2.5 8Z"/><path d="M6 10v4.5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5V10"/><path d="M21.5 8v5"/></svg> Formation <span class="apo-cat__arrow">→</span></a>
+        </div>
+      </section>
+
+      <section class="apo-band apo-band--sapphire"><div class="apo-green__grain"></div>
+        <svg class="apo-green__flourish apo-green__flourish--l" width="70" height="70" viewBox="0 0 80 80" fill="none" stroke="#c8a85a" stroke-width="1.1"><path d="M40 70C40 45 25 30 10 25M40 70C40 50 50 38 64 32M40 70V20"/><circle cx="10" cy="25" r="3"/><circle cx="64" cy="32" r="3"/></svg>
+        <svg class="apo-green__flourish apo-green__flourish--r" width="70" height="70" viewBox="0 0 80 80" fill="none" stroke="#c8a85a" stroke-width="1.1"><path d="M40 70C40 45 25 30 10 25M40 70C40 50 50 38 64 32M40 70V20"/><circle cx="10" cy="25" r="3"/><circle cx="64" cy="32" r="3"/></svg>
+        <div class="apo-green__inner">
+          <div class="apo-green__badge"><span>Catalogue officinal</span></div>
+          <h2 class="apo-green__title">Dispositifs <em>& délivrance</em></h2>
+          <div class="apo-stats">
+            <div class="apo-stat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg><span><strong>32</strong> dispositifs</span></div>
+            <div class="apo-stats__sep"></div>
+            <div class="apo-stat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 12 3l9 6v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/></svg><span>Maintien à <strong>domicile</strong></span></div>
+            <div class="apo-stats__sep"></div>
+            <div class="apo-stat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg><span><strong>Dispositifs</strong> médicaux</span></div>
+            <div class="apo-stats__sep"></div>
+            <div class="apo-stat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4L3 21l1.1-3a8.4 8.4 0 1 1 16.9-6.5Z"/></svg><span>Conseils de <strong>délivrance</strong></span></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="mad-filters-wrap">
+      <div id="mad-filters"></div>
+    </div>
+
+    <div class="mad-main">
+      <div class="mad-section-header">
+        <div class="mad-section-label">Catalogue</div>
+        <div class="mad-count" id="mad-count"></div>
+      </div>
+      <div id="mad-detail" class="mad-detail" role="region" aria-live="polite"></div>
+      <div id="mad-grid"></div>
     </div>
   </div>
-</header>
 
-<!-- ═══ CHIFFRES ═══ -->
-<div class="stats" id="modules">
-  <div class="stat"><b>52</b><span>fiches pathologie courante</span></div>
-  <div class="stat"><b>32</b><span>fiches matériel à domicile</span></div>
-  <div class="stat"><b>22</b><span>fiches dermatologie · 22 laboratoires</span></div>
-  <div class="stat"><b>1</b><span>recherche unique sur tous les modules</span></div>
+  <!-- ════════════════════════════
+       PAGE DERMATOLOGIE
+  ════════════════════════════ -->
+  <div id="page-dermato" class="page-view">
+
+    <div class="apo">
+      <div class="apo__paper"></div><div class="apo__glow"></div><div class="apo__grain"></div>
+      <section class="apo-alert"><div class="apo-alert__grain"></div><div class="apo-alert__inner">
+        <div class="apo-alert__title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fbe6c8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3Z"/><path d="M12 10v5M12 18h.01"/></svg> Vérifier systématiquement avant tout conseil dermatologique <span class="apo-alert__count" id="derm-alert-count"></span></div>
+        <p class="apo-alert__disclaimer">Les informations fournies constituent une aide documentaire au conseil officinal et ne remplacent pas l'évaluation d'un professionnel de santé. En cas de doute ou de signes de gravité, orienter le patient vers un médecin.</p>
+        <div class="apo-alert__pills">
+          <span class="apo-pill">Âge</span><span class="apo-pill">Grossesse / allaitement</span><span class="apo-pill">Traitements en cours</span><span class="apo-pill">Produits utilisés</span><span class="apo-pill">Allergies cutanées</span>
+        </div>
+      </div></section>
+
+      <section class="apo-hero">
+        <div class="apo-badge apo-badge--derm">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5.5L5.5 17a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 8.5V3"/><path d="M7.5 13h9"/></svg>
+          <span>Outil officinal</span>
+        </div>
+        <h1 class="apo-title apo-title--derm">Votre assistant <em>comptoir</em></h1>
+        <div class="apo-sub"><span>Pathologies cutanées</span><span class="apo-sub__dot"></span><span>Crèmes adaptées</span><span class="apo-sub__dot"></span><span>Conseils pratiques</span></div>
+        <div class="search-block hero-search" id="derm-search-block" role="search">
+          <div class="apo-search"><div class="apo-search__field">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+            <input class="apo-search__input" id="derm-search-input" type="search" placeholder="Rechercher une pathologie cutanée…"
+              autocomplete="off" autocorrect="off" spellcheck="false"
+              oninput="DERMATO._filterSearch(this.value);Search.suggest(this.value,this)"
+              onkeydown="if(event.key==='Enter'){Search.closeAC();}if(event.key==='Escape'){this.value='';DERMATO._filterSearch('');Search.closeAC();}" />
+            <button class="apo-search__btn" type="button"
+              onclick="DERMATO._filterSearch(document.getElementById('derm-search-input').value);Search.closeAC()">Rechercher</button>
+          </div></div>
+        </div>
+        <div class="apo-cats">
+          <a href="#" class="apo-cat apo-cat--pat" onclick="Router.navigate('pathologies'); return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg> Pathologies <span class="apo-cat__arrow">→</span></a>
+          <a href="#" class="apo-cat apo-cat--mad" onclick="Router.navigate('materiel'); return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v12M6 12h12"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg> Dispositifs <span class="apo-cat__arrow">→</span></a>
+          <a href="#" class="apo-cat apo-cat--derm apo-cat--active" onclick="return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.5 4.2 6 7.3 6 10.5a6 6 0 0 1-12 0C6 10.3 8.5 7.2 12 3Z"/></svg> Dermatologie</a>
+          <a href="#" class="apo-cat apo-cat--form" onclick="Router.navigate('formation'); return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8 12 4l9.5 4L12 12 2.5 8Z"/><path d="M6 10v4.5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5V10"/><path d="M21.5 8v5"/></svg> Formation <span class="apo-cat__arrow">→</span></a>
+        </div>
+      </section>
+
+      <section class="apo-band apo-band--bordeaux"><div class="apo-green__grain"></div>
+        <svg class="apo-green__flourish apo-green__flourish--l" width="70" height="70" viewBox="0 0 80 80" fill="none" stroke="#c8a85a" stroke-width="1.1"><path d="M40 70C40 45 25 30 10 25M40 70C40 50 50 38 64 32M40 70V20"/><circle cx="10" cy="25" r="3"/><circle cx="64" cy="32" r="3"/></svg>
+        <svg class="apo-green__flourish apo-green__flourish--r" width="70" height="70" viewBox="0 0 80 80" fill="none" stroke="#c8a85a" stroke-width="1.1"><path d="M40 70C40 45 25 30 10 25M40 70C40 50 50 38 64 32M40 70V20"/><circle cx="10" cy="25" r="3"/><circle cx="64" cy="32" r="3"/></svg>
+        <div class="apo-green__inner">
+          <div class="apo-green__badge"><span>Conseil officinal</span></div>
+          <h2 class="apo-green__title">Peau <em>& cosmétologie</em></h2>
+          <div class="apo-stats">
+            <div class="apo-stat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg><span><strong>20</strong> pathologies cutanées</span></div>
+            <div class="apo-stats__sep"></div>
+            <div class="apo-stat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="3"/><path d="M9 3v4h6"/></svg><span>Crèmes <strong>adaptées</strong></span></div>
+            <div class="apo-stats__sep"></div>
+            <div class="apo-stat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4L3 21l1.1-3a8.4 8.4 0 1 1 16.9-6.5Z"/></svg><span>Conseils <strong>pratiques</strong></span></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="mad-filters-wrap">
+      <div id="dermato-filters"></div>
+    </div>
+
+    <div class="mad-main">
+      <div class="mad-section-header">
+        <div class="mad-section-label">Pathologies cutanées</div>
+        <div class="mad-count" id="dermato-count"></div>
+      </div>
+      <div id="dermato-grid"></div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════
+       PAGE FORMATION
+  ════════════════════════════ -->
+  <div id="page-formation" class="page-view">
+
+    <div class="apo">
+      <div class="apo__paper"></div><div class="apo__glow"></div><div class="apo__grain"></div>
+      <section class="apo-alert"><div class="apo-alert__grain"></div><div class="apo-alert__inner">
+        <div class="apo-alert__title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fbe6c8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3Z"/><path d="M12 10v5M12 18h.01"/></svg> Outils d'aide au conseil officinal</div>
+        <p class="apo-alert__disclaimer">Les informations fournies constituent une aide documentaire au conseil officinal et ne remplacent pas l'évaluation d'un professionnel de santé. En cas de doute ou de signes de gravité, orienter le patient vers un médecin.</p>
+        <div class="apo-alert__pills">
+          <span class="apo-pill">Formation continue</span><span class="apo-pill">Mécanismes d'action</span><span class="apo-pill">Classes pharmacologiques</span><span class="apo-pill">Ne remplace pas une prescription</span>
+        </div>
+      </div></section>
+
+      <section class="apo-hero">
+        <div class="apo-badge apo-badge--form">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5.5L5.5 17a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 8.5V3"/><path d="M7.5 13h9"/></svg>
+          <span>Outil officinal</span>
+        </div>
+        <h1 class="apo-title apo-title--form">Votre assistant <em>comptoir</em></h1>
+        <div class="apo-sub"><span>Physiopathologie</span><span class="apo-sub__dot"></span><span>Mécanismes d'action</span><span class="apo-sub__dot"></span><span>Classes pharmacologiques</span><span class="apo-sub__dot"></span><span>Points clés comptoir</span></div>
+        <div class="search-block hero-search" role="search">
+          <div class="apo-search"><div class="apo-search__field">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+            <input class="apo-search__input" id="form-search-input" type="search" placeholder="Rechercher une fiche de formation…"
+              autocomplete="off" autocorrect="off" spellcheck="false"
+              oninput="FORMATION._filterSearch(this.value);Search.suggest(this.value,this)"
+              onkeydown="if(event.key==='Enter'){Search.closeAC();}if(event.key==='Escape'){this.value='';FORMATION._filterSearch('');Search.closeAC();}" />
+            <button class="apo-search__btn" type="button"
+              onclick="FORMATION._filterSearch(document.getElementById('form-search-input').value);Search.closeAC()">Rechercher</button>
+          </div></div>
+        </div>
+        <div class="apo-cats">
+          <a href="#" class="apo-cat apo-cat--pat" onclick="Router.navigate('pathologies'); return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg> Pathologies <span class="apo-cat__arrow">→</span></a>
+          <a href="#" class="apo-cat apo-cat--mad" onclick="Router.navigate('materiel'); return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v12M6 12h12"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg> Dispositifs <span class="apo-cat__arrow">→</span></a>
+          <a href="#" class="apo-cat apo-cat--derm" onclick="Router.navigate('dermato'); return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.5 4.2 6 7.3 6 10.5a6 6 0 0 1-12 0C6 10.3 8.5 7.2 12 3Z"/></svg> Dermatologie <span class="apo-cat__arrow">→</span></a>
+          <a href="#" class="apo-cat apo-cat--form apo-cat--active" onclick="return false;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8 12 4l9.5 4L12 12 2.5 8Z"/><path d="M6 10v4.5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5V10"/><path d="M21.5 8v5"/></svg> Formation</a>
+        </div>
+      </section>
+
+      <section class="apo-band apo-band--aubergine"><div class="apo-green__grain"></div>
+        <svg class="apo-green__flourish apo-green__flourish--l" width="70" height="70" viewBox="0 0 80 80" fill="none" stroke="#c8a85a" stroke-width="1.1"><path d="M40 70C40 45 25 30 10 25M40 70C40 50 50 38 64 32M40 70V20"/><circle cx="10" cy="25" r="3"/><circle cx="64" cy="32" r="3"/></svg>
+        <svg class="apo-green__flourish apo-green__flourish--r" width="70" height="70" viewBox="0 0 80 80" fill="none" stroke="#c8a85a" stroke-width="1.1"><path d="M40 70C40 45 25 30 10 25M40 70C40 50 50 38 64 32M40 70V20"/><circle cx="10" cy="25" r="3"/><circle cx="64" cy="32" r="3"/></svg>
+        <div class="apo-green__inner">
+          <div class="apo-green__badge"><span>Formation continue</span></div>
+          <h2 class="apo-green__title">Pharmacologie <em>& mécanismes</em></h2>
+          <div class="apo-stats">
+            <div class="apo-stat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8 12 4l9.5 4L12 12 2.5 8Z"/><path d="M6 10v4.5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5V10"/></svg><span><strong>69</strong> fiches formation</span></div>
+            <div class="apo-stats__sep"></div>
+            <div class="apo-stat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg><span><strong>Mécanismes</strong> d'action</span></div>
+            <div class="apo-stats__sep"></div>
+            <div class="apo-stat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 12h16M4 19h10"/></svg><span><strong>Classes</strong> pharmacologiques</span></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="mad-filters-wrap">
+      <div id="formation-filters"></div>
+    </div>
+
+    <div class="formation-main">
+      <div class="formation-section-header">
+        <div class="mad-section-label">Fiches de formation <span style="font-size:12px;font-weight:400;color:var(--text-3);">(classées par ordre alphabétique)</span></div>
+        <div class="mad-count" id="formation-count"></div>
+      </div>
+      <div id="formation-list"></div>
+    </div>
+  </div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="footer__logo">Medi<span>Fiches</span></div>
+    <p class="footer__disclaimer">
+      Les informations fournies constituent une aide documentaire au conseil officinal et ne remplacent pas l'évaluation d'un professionnel de santé qualifié. En cas de doute ou de signes de gravité, orienter le patient vers un médecin. MediFiches n'est pas un outil de diagnostic médical.
+    </p>
+    <nav class="footer__nav" aria-label="Liens légaux">
+      <button class="footer__nav-link" onclick="LegalPages.open('mentions-legales')">Mentions légales</button>
+      <button class="footer__nav-link" onclick="LegalPages.open('cgu')">CGU</button>
+      <button class="footer__nav-link" onclick="LegalPages.open('cgv')">CGV</button>
+      <button class="footer__nav-link" onclick="LegalPages.open('confidentialite')">Politique de confidentialité</button>
+      <button class="footer__nav-link" onclick="LegalPages.open('contact')">Contact</button>
+    </nav>
+    <div class="footer__meta">© 2026 MediFiches · v1.0 · Normandie, France · <a href="pages/pricing.html" style="color:inherit;opacity:0.7;">Tarifs</a></div>
+  </footer>
+
+  <!-- ═══ PAGES LÉGALES (overlays SPA) ═══ -->
+  <div id="legal-overlay" class="legal-overlay" role="dialog" aria-modal="true" aria-labelledby="legal-page-title">
+    <header class="legal-header">
+      <button class="legal-header__back" onclick="LegalPages.close()" aria-label="Retour à l'application">
+        ← Retour
+      </button>
+      <span id="legal-page-title" class="legal-header__title"></span>
+      <span class="legal-header__badge">medifiches.fr</span>
+    </header>
+    <div id="legal-body" class="legal-body"></div>
+  </div>
+
 </div>
 
-<!-- ═══ CONSTAT ═══ -->
-<section>
-  <div class="wrap constat-grid">
-    <div>
-      <p class="eyebrow">Le constat</p>
-      <h2>Chaque jour, votre équipe reconstitue au comptoir un savoir dispersé.</h2>
-      <p class="lead">Recommandations HAS, fiches ANSM, codes LPP, habitudes internes, mémoire de chacun&nbsp;: la réponse varie selon le collaborateur présent, et la montée en compétence des nouveaux arrivants monopolise le titulaire ou l'adjoint.</p>
-    </div>
-    <div class="sources-mess" aria-hidden="true">
-      <span class="sm-chip">📄 Reco HAS imprimée en 2022</span>
-      <span class="sm-chip">🧠 « Demande à Sophie, elle sait »</span>
-      <span class="sm-chip">📚 Classeur de la réserve</span>
-      <span class="sm-chip">📝 Post-it sur l'écran</span>
-      <span class="sm-chip">🔎 Recherche Google entre deux patients</span>
-      <span class="sm-arrow">↓</span>
-      <span class="sm-one">◆ Une seule source, validée, à jour — MediFiches</span>
-    </div>
+  <!-- ═══ BOUTON SCROLL HAUT/BAS ═══ -->
+  <div id="scroll-fab" aria-label="Navigation rapide">
+    <button class="scroll-fab-btn" id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Haut de page" aria-label="Retour en haut">↑</button>
+    <button class="scroll-fab-btn" id="scroll-bot-btn" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})" title="Bas de page" aria-label="Aller en bas">↓</button>
   </div>
-</section>
 
-<!-- ═══ DEUX PUBLICS ═══ -->
-<section style="padding-top:0">
-  <div class="wrap">
-    <p class="eyebrow">Un outil, deux bénéfices</p>
-    <h2>Un comptoir plus serein pour l'équipe.<br>La maîtrise du contenu pour le titulaire.</h2>
-    <div class="cols">
-      <div class="col-card col-card--green">
-        <span class="who">Pour l'équipe</span>
-        <h3>Répondre vite, répondre juste</h3>
-        <ul>
-          <li>Réponse fiable en moins de 30 secondes — un seul champ de recherche couvre pathologie, matériel et dermatologie.</li>
-          <li>Conseil homogène quel que soit le préparateur de garde&nbsp;: tout le monde s'appuie sur les mêmes fiches.</li>
-          <li>Montée en compétence accélérée des alternants et étudiants, avec un module Formation intégré.</li>
-          <li>Zéro courbe d'apprentissage&nbsp;: une page web, sur n'importe quel poste, sans installation.</li>
-        </ul>
-      </div>
-      <div class="col-card col-card--copper">
-        <span class="who">Pour le titulaire</span>
-        <h3>Votre protocole d'officine, sous votre contrôle</h3>
-        <ul>
-          <li>Chaque fiche est sourcée (HAS, ANSM) et datée — un contenu traçable, pas une recommandation générique.</li>
-          <li>Créez vos fiches «&nbsp;maison&nbsp;» pour vos cas particuliers, vos habitudes de service, vos accords laboratoires.</li>
-          <li>Personnalisez les produits conseillés de chaque fiche selon votre catalogue réel.</li>
-          <li>Pilotez l'ordre des OTC selon vos priorités de gestion — marge, rotation, péremption.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js" defer></script>
+  <!-- Config & Auth (chargés en premier) -->
+  <script src="js/core/config.js" defer></script>
+  <!-- Scripts MediFiches -->
+  <!-- ═══ CORE — fondations partagées ═══ -->
+  <script src="js/core/mf-store.js" defer></script>
+  <!-- ═══ ICONS — registre SVG (extrait de mf-core.js — Phase 1 refactoring) ═══ -->
+  <script src="js/icons/icon-registry.js" defer></script>
+  <!-- mf-core.js conservé comme stub pour compatibilité ascendante -->
+  <script src="js/core/mf-core.js" defer></script>
+  <!-- ═══ ROUTER — navigation SPA (extrait de ui.js — Phase 1 refactoring) ═══ -->
+  <script src="js/core/router.js" defer></script>
+  <!-- ═══ DATA — données statiques ═══ -->
+  <script src="js/data/pathologies.js" defer></script>
+  <script src="js/data/materiel.js" defer></script>
+  <script src="js/data/mednat.js" defer></script>
+  <script src="js/data/dermato.js" defer></script>
+  <script src="js/data/schemas.js" defer></script>
+  <script src="js/data/schemas-extra.js" defer></script>
+  <script src="js/data/pathologies-extra.js" defer></script>
+  <script src="js/data/formation.js" defer></script>
+  <script src="js/data/formation-extra.js" defer></script>
+  <!-- formation-niveaux.js (~1 Mo) : chargé à la demande par FORMATION._ensureNiveaux()
+       à l'ouverture de l'onglet Formation — retiré du chemin critique du chargement initial. -->
+  <!-- <script src="js/data/formation-niveaux.js" defer></script> -->
 
-<!-- ═══ SIGNATURE : PILOTAGE ═══ -->
-<section class="pilotage" id="pilotage">
-  <div class="wrap">
-    <p class="eyebrow">L'atout différenciant</p>
-    <h2>Le conseil reste juste.<br>Votre gestion devient plus fine.</h2>
-    <p class="lead">Classez les produits conseillés selon vos priorités de gestion — pas seulement selon la pertinence clinique. La fiche reste identique pour toute l'équipe&nbsp;: seul l'ordre des suggestions s'adapte à votre stock réel, automatiquement, en arrière-plan.</p>
+  <!-- ═══ SERVICES — logique métier (Phase 2 refactoring) ═══ -->
+  <script src="js/services/search.service.js" defer></script>
+  <script src="js/services/analytics.service.js" defer></script>
+  <script src="js/services/pilotage.service.js" defer></script>
+  <!-- ═══ MODULES — UI par domaine ═══ -->
+  <script src="js/data/derm-brands.js" defer></script>
+  <script src="js/data/patho-meds.js" defer></script>
+  <script src="js/services/patho-catalog.service.js" defer></script>
+  <script src="js/customizer/patho-med-picker.js" defer></script>
+  <!-- Customizer : modules par responsabilité, chargés avant la façade js/modules/customizer.js -->
+  <script src="js/customizer/customizer-store.js" defer></script>
+  <script src="js/customizer/customizer-dom-helpers.js" defer></script>
+  <script src="js/customizer/path-editor.js" defer></script>
+  <script src="js/customizer/derma-editor.js" defer></script>
+  <script src="js/customizer/dermato-brand-picker.js" defer></script>
+  <script src="js/customizer/mad-editor.js" defer></script>
+  <script src="js/modules/customizer.js" defer></script>
+  <script src="js/modules/pilotage.js" defer></script>
+  <script src="js/modules/ui.js" defer></script>
+  <script src="js/modules/mad.js" defer></script>
+  <script src="js/modules/dermato.js" defer></script>
+  <script src="js/formation/formation-helpers.js" defer></script>
+  <script src="js/modules/formation.js" defer></script>
+  <script src="js/modules/darkmode.js" defer></script>
+  <script src="js/modules/fiche-documents.js" defer></script>
+  <script src="js/modules/backup.js" defer></script>
+  <script src="js/modules/legal.js" defer></script>
+  <!-- ═══ AUTH ═══ -->
+  <script src="js/core/auth.js" defer></script>
+  <script src="js/core/impersonate-bar.js" defer></script>
+  <script>
+  // Initialiser l'auth au chargement (non-bloquant)
+  document.addEventListener('DOMContentLoaded', async () => {
+    await Auth.init();
+    await Auth.requireAuth('/pages/login.html');
 
-    <div class="plt-demo">
-      <div class="plt-demo-head">
-        <div class="plt-demo-title">Essayez — choisissez votre priorité du moment
-          <small>Fiche «&nbsp;Constipation&nbsp;» · le contenu clinique ne bouge pas, l'ordre des produits si.</small>
-        </div>
-        <div class="plt-strats" role="group" aria-label="Choix de la stratégie de tri">
-          <button class="plt-strat on" data-strat="clinique">Ordre clinique</button>
-          <button class="plt-strat" data-strat="marge">Marge d'abord</button>
-          <button class="plt-strat" data-strat="rotation">Écouler le stock</button>
-          <button class="plt-strat" data-strat="peremption">Péremption proche</button>
-        </div>
-      </div>
-      <div class="plt-fiche">
-        <div class="plt-fiche-head">
-          <span class="plt-fiche-nom">Constipation</span>
-          <span class="plt-fiche-tag">Gastro-entérologie · sources HAS</span>
-        </div>
-        <div class="plt-label">💊 Produits conseillés associés</div>
-        <div class="plt-pills" id="plt-pills"></div>
-      </div>
-      <p class="plt-demo-note"><span>◆</span><span><b>Invisible pour l'équipe&nbsp;:</b> aucun réglage, aucune action supplémentaire au comptoir. Le titulaire définit ses priorités une fois — les fiches s'adaptent partout, instantanément.</span></p>
-    </div>
-  </div>
-</section>
+    // Sync données depuis Supabase → localStorage (source de vérité cloud)
+    await MF.Store.syncFromCloud();
 
-<!-- ═══ TRAÇABILITÉ ═══ -->
-<section>
-  <div class="wrap">
-    <p class="eyebrow">Confiance & responsabilité</p>
-    <h2>Un contenu que vous pouvez défendre.</h2>
-    <div class="trust-grid">
-      <div class="trust-card"><div class="ic">📚</div><h3>Sourcé et daté</h3><p>Chaque fiche cite ses sources — HAS, ANSM, sociétés savantes — avec sa date de mise à jour. Le contenu évolue avec les recommandations.</p></div>
-      <div class="trust-card"><div class="ic">🏠</div><h3>Vos fiches « maison »</h3><p>Vos protocoles internes, vos habitudes de service et vos particularités locales, structurés au même endroit que le reste.</p></div>
-      <div class="trust-card"><div class="ic">🔄</div><h3>Un contenu vivant</h3><p>Vous n'achetez pas un logiciel figé&nbsp;: les fiches sont entretenues dans la durée, avec vos retours d'usage.</p></div>
-    </div>
-    <div class="disclaimer">
-      <b>Un outil documentaire, pas un dispositif médical.</b> MediFiches structure le rappel des bonnes pratiques&nbsp;; la décision clinique reste entièrement entre les mains du professionnel de santé présent au comptoir.
-    </div>
-  </div>
-</section>
+    // Afficher la barre utilisateur
+    const user = Auth.getUser();
+    const profile = Auth.getProfile();
+    if (user) {
+      const bar    = document.getElementById('user-bar');
+      const label  = document.getElementById('user-bar-label');
+      const adminBtn = document.getElementById('user-bar-admin');
+      if (bar) { bar.classList.add('visible'); document.body.classList.add('has-user-bar'); }
 
-<!-- ═══ TARIFS ═══ -->
-<section id="tarifs" style="padding-top:0">
-  <div class="wrap">
-    <p class="eyebrow">Tarifs</p>
-    <h2>Un abonnement par pharmacie. Postes illimités.</h2>
-    <div class="pricing-cards">
-      <div class="price-card">
-        <span class="price-name">Standard</span>
-        <span class="price-val"><sup>€</sup>39</span>
-        <span class="price-per">HT / mois · sans engagement</span>
-        <p class="price-desc">L'accès complet aux fiches pathologie, matériel à domicile et dermatologie, mises à jour en continu.</p>
-        <a class="btn btn-ghost btn-sm" href="/pages/pricing.html">Détails de l'offre</a>
-      </div>
-      <div class="price-card hl">
-        <span class="price-name">Pro</span>
-        <span class="price-val"><sup>€</sup>59</span>
-        <span class="price-per">HT / mois · sans engagement</span>
-        <p class="price-desc">Tout Standard, plus les fiches «&nbsp;maison&nbsp;» personnalisées et le pilotage des OTC par marge, rotation et péremption.</p>
-        <a class="btn btn-copper btn-sm" href="/pages/pricing.html">Détails de l'offre</a>
-      </div>
-      <div class="price-card">
-        <span class="price-name">Groupement</span>
-        <span class="price-val" style="font-size:30px;padding:8px 0">Sur devis</span>
-        <span class="price-per">tarif dégressif multi-officines</span>
-        <p class="price-desc">Pour les réseaux et groupements&nbsp;: déploiement accompagné et facturation consolidée.</p>
-        <a class="btn btn-ghost btn-sm" href="mailto:nb.medifiches@gmail.com?subject=Demande de devis — Offre Groupement">Nous contacter</a>
-      </div>
-    </div>
-    <p class="pricing-foot">🎁 <b>30 jours d'essai gratuit</b> sur toutes les offres · Sans carte bancaire · Résiliable à tout moment</p>
-  </div>
-</section>
-
-<!-- ═══ FAQ ═══ -->
-<section id="faq" style="padding-top:0">
-  <div class="wrap">
-    <p class="eyebrow">Questions fréquentes</p>
-    <h2>Ce que les titulaires nous demandent.</h2>
-    <div class="faq">
-      <details>
-        <summary>Faut-il installer quelque chose ou changer de LGO&nbsp;?</summary>
-        <p>Non. MediFiches est une page web accessible depuis n'importe quel poste du comptoir, en complément de votre logiciel de gestion actuel (Smart Rx, LGPI, Winpharma…). Aucune installation, aucune négociation technique avec votre éditeur.</p>
-      </details>
-      <details>
-        <summary>Combien de temps pour former l'équipe&nbsp;?</summary>
-        <p>Aucune formation n'est nécessaire&nbsp;: un champ de recherche, des fiches. La mise en route tient dans une démonstration de quelques minutes sur votre poste de comptoir.</p>
-      </details>
-      <details>
-        <summary>Le tri des produits change-t-il le conseil clinique&nbsp;?</summary>
-        <p>Non. Le contenu de chaque fiche — conseils, contre-indications, signes d'alerte — reste strictement identique pour toute l'équipe. Seul l'ordre d'affichage des produits suggérés s'adapte à vos priorités de gestion, et vous pouvez le désactiver à tout moment.</p>
-      </details>
-      <details>
-        <summary>MediFiches est-il un dispositif médical&nbsp;?</summary>
-        <p>Non. C'est un outil documentaire d'aide à la pratique&nbsp;: il structure le rappel des bonnes pratiques, sans aucune fonction de diagnostic ni de décision automatisée. La décision clinique appartient toujours au professionnel de santé.</p>
-      </details>
-      <details>
-        <summary>Que se passe-t-il à la fin de l'essai&nbsp;?</summary>
-        <p>Rien d'automatique&nbsp;: aucune carte bancaire n'est demandée pour l'essai. Si l'outil vous a convaincu, vous choisissez votre offre&nbsp;; sinon, votre accès s'arrête simplement.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CTA FINAL ═══ -->
-<section class="final">
-  <div class="wrap">
-    <h2 class="serif">Une démonstration sur votre poste de comptoir<br>ne prend que <em>quelques minutes</em>.</h2>
-    <p class="lead">Testez MediFiches en conditions réelles, avec votre équipe, sur vos cas de tous les jours.</p>
-    <div class="hero-ctas">
-      <a class="btn btn-copper" href="/pages/login.html">Commencer l'essai gratuit</a>
-      <a class="btn btn-ghost" href="mailto:nb.medifiches@gmail.com?subject=Demande de démonstration MediFiches">Demander une démonstration</a>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <a class="logo" href="#" style="font-size:20px"><span class="logo-dot"></span>Medi<b>Fiches</b></a>
-        <p style="margin-top:8px">Conçu par et pour l'officine — Caen, France.</p>
-      </div>
-      <div class="foot-links">
-        <a href="/pages/pricing.html">Tarifs</a>
-        <a href="/pages/login.html">Connexion</a>
-        <a href="mailto:nb.medifiches@gmail.com">Contact</a>
-      </div>
-    </div>
-    <p class="foot-disc">MediFiches est un outil documentaire d'aide à la pratique officinale. Il ne constitue pas un dispositif médical et ne se substitue en aucun cas au jugement clinique du professionnel de santé. Sources documentaires&nbsp;: HAS, ANSM, sociétés savantes — citées et datées sur chaque fiche.</p>
-  </div>
-</footer>
-
-<script>
-/* ═══ Démo recherche auto-animée (hero) ═══ */
-(function(){
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const txt = document.getElementById('ds-text'),
-        card = document.getElementById('ds-card'),
-        t = document.getElementById('ds-title'),
-        c = document.getElementById('ds-cat'),
-        l = document.getElementById('ds-line');
-  const demos = [
-    { q:'brûlure légère', titre:'Brûlure du 1er degré', cat:'Pathologie · HAS', ligne:'<b>Refroidir 15 min à l\'eau tempérée</b> · pas de corps gras · signes d\'alerte : cloques étendues, visage, enfant < 5 ans → orientation médicale.' },
-    { q:'lit médicalisé', titre:'Lit médicalisé à domicile', cat:'Matériel · LPP', ligne:'<b>Conseils de délivrance</b> : hauteur variable, barrières, matelas adapté au risque d\'escarre · pathologies associées et accessoires.' },
-    { q:'eczéma du nourrisson', titre:'Dermatite atopique', cat:'Dermatologie', ligne:'<b>Émollient quotidien</b> en dehors des poussées · toilette courte tiède · produits adaptés par gamme et texture.' },
-    { q:'rhinite allergique', titre:'Allergie au pollen', cat:'Pathologie · HAS', ligne:'<b>AntiH1 2e génération en 1ère intention</b> · vigilance AINS si asthme associé · lavage nasal en vente complémentaire.' },
-  ];
-  if (reduced) { // version statique
-    txt.textContent = demos[0].q; t.textContent = demos[0].titre; c.textContent = demos[0].cat;
-    l.innerHTML = demos[0].ligne; card.classList.add('show'); return;
-  }
-  let i = 0;
-  function typeQuery(q, done){
-    let j = 0; txt.textContent = '';
-    const iv = setInterval(()=>{ txt.textContent = q.slice(0, ++j); if (j >= q.length){ clearInterval(iv); done(); } }, 65);
-  }
-  function cycle(){
-    const d = demos[i % demos.length]; i++;
-    card.classList.remove('show');
-    setTimeout(()=> typeQuery(d.q, ()=>{
-      t.textContent = d.titre; c.textContent = d.cat; l.innerHTML = d.ligne;
-      setTimeout(()=> card.classList.add('show'), 250);
-      setTimeout(cycle, 4600);
-    }), 500);
-  }
-  cycle();
-})();
-
-/* ═══ Démo interactive Pilotage (signature) ═══ */
-(function(){
-  const produits = [
-    { nom:'Macrogol (Forlax, Movicol)',  m:1, r:0, p:0 },
-    { nom:'Lactulose (Duphalac)',        m:3, r:0, p:0 },
-    { nom:'Psyllium blond (Métamucil)',  m:2, r:0, p:1 },
-    { nom:'Bisacodyl (Dulcolax)',        m:1, r:1, p:0 },
-    { nom:'Probiotiques transit',        m:3, r:1, p:0 },
-  ];
-  const box = document.getElementById('plt-pills');
-  const btns = document.querySelectorAll('.plt-strat');
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function tagsHTML(pr, strat){
-    const vis = f => (strat !== 'clinique' && ((f==='m'&&strat==='marge')||(f==='r'&&strat==='rotation')||(f==='p'&&strat==='peremption'))) ? 'vis' : '';
-    return `<span class="fl">
-      ${pr.m>1?`<span class="tag tag-m ${vis('m')}">Marge ${'€'.repeat(pr.m)}</span>`:''}
-      ${pr.r?`<span class="tag tag-r ${vis('r')}">À écouler</span>`:''}
-      ${pr.p?`<span class="tag tag-p ${vis('p')}">Péremption</span>`:''}
-    </span>`;
-  }
-  function order(strat){
-    const list = [...produits];
-    if (strat==='marge')      list.sort((a,b)=>b.m-a.m);
-    if (strat==='rotation')   list.sort((a,b)=>b.r-a.r);
-    if (strat==='peremption') list.sort((a,b)=>b.p-a.p);
-    return list;
-  }
-  function render(strat){
-    // FLIP : positions avant
-    const before = {};
-    box.querySelectorAll('.plt-pill').forEach(el=> before[el.dataset.n] = el.getBoundingClientRect().top);
-    const list = order(strat);
-    box.innerHTML = list.map((pr,idx)=>`
-      <div class="plt-pill ${idx===0&&strat!=='clinique'?'top1':''}" data-n="${pr.nom}">
-        <span>${pr.nom}</span>${tagsHTML(pr,strat)}
-      </div>`).join('');
-    if (reduced || !Object.keys(before).length) return;
-    // FLIP : animer depuis l'ancienne position
-    box.querySelectorAll('.plt-pill').forEach(el=>{
-      const prev = before[el.dataset.n];
-      if (prev === undefined) return;
-      const delta = prev - el.getBoundingClientRect().top;
-      if (!delta) return;
-      el.style.transition = 'none'; el.style.transform = `translateY(${delta}px)`;
-      requestAnimationFrame(()=>{ el.style.transition=''; el.style.transform=''; });
-    });
-  }
-  btns.forEach(b => b.addEventListener('click', ()=>{
-    btns.forEach(x=>x.classList.remove('on')); b.classList.add('on');
-    render(b.dataset.strat);
-  }));
-  render('clinique');
-})();
-</script>
-
-<script>
-  // Si l'utilisateur est déjà connecté → afficher un lien vers l'app
-  (function(){
-    try {
-      const KEY = Object.keys(localStorage).find(k => k.startsWith('sb-') && k.endsWith('-auth-token'));
-      if (KEY && JSON.parse(localStorage[KEY])?.access_token) {
-        const btn = document.createElement('a');
-        btn.href = '/app'; btn.className = 'btn btn-ghost btn-sm';
-        btn.textContent = 'Accéder à l\'app →';
-        document.querySelector('.nav-links')?.appendChild(btn);
-      }
-    } catch(e){}
-  })();
-</script>
+      // Afficher le label et vérifier le rôle admin
+      const refreshBar = async (attempt = 0) => {
+        const p = Auth.getProfile();
+        const role = p?.role || user.app_metadata?.role || user.user_metadata?.role;
+        // Pilotage OTC = outil de gestion du titulaire — masqué pour l'équipe (invited) et les expirés.
+        const btnPilotage = document.getElementById('btn-pilotage');
+        if (btnPilotage) btnPilotage.style.display = (Auth.canPilotage && Auth.canPilotage()) ? 'inline-flex' : 'none';
+        if (role === 'admin') {
+          // Admin → barre rouge en haut
+          if (label) label.textContent = 'Nima — ADMIN MODE';
+          if (adminBtn) adminBtn.style.display = 'inline-flex';
+          var btnExport = document.getElementById('btn-export');
+          var btnImport = document.getElementById('btn-import');
+          if (btnExport) btnExport.style.display = 'inline-flex';
+          if (btnImport) btnImport.style.display = 'inline-flex';
+        } else {
+          // User normal → email dans la nav, pas de barre rouge
+          var bar = document.getElementById('user-bar');
+          if (bar) { bar.style.display = 'none'; }
+          document.body.classList.remove('has-user-bar');
+          var navLabel = document.getElementById('nav-user-label');
+          var navSignout = document.getElementById('nav-signout-btn');
+          if (navLabel) { navLabel.textContent = user.email; navLabel.style.display = 'inline'; }
+          if (navSignout) navSignout.style.display = 'inline-flex';
+        }
+        // Max 5 tentatives (3 s) pour éviter une boucle infinie si profil absent
+        if (!p && attempt < 5) setTimeout(() => refreshBar(attempt + 1), 600);
+      };
+      refreshBar();
+    }
+    // Restaurer l'onglet actif + scroll top après tout le reste
+    setTimeout(() => { if (window.Router) Router.restore(); }, 50);
+  });
+  </script>
 </body>
 </html>

@@ -210,16 +210,12 @@ const MAD = {
 
     const rembHTML = remb ? `
       <div class="vm-section vm-section--remb">
-        <div class="vm-section__label">💶 Remboursement & délivrance</div>
+        <div class="vm-section__label">💶 Remboursement</div>
         <div class="vm-remb">
           <div class="vm-remb__mention">${remb.mention}</div>
           <ul class="vm-remb__list">
             ${remb.taux ? `<li class="vm-remb__li"><span class="vm-remb__key">Taux</span><span class="vm-remb__val">${remb.taux}</span></li>` : ''}
             ${remb.code_lppr ? `<li class="vm-remb__li"><span class="vm-remb__key">Code LPPR</span><span class="vm-remb__val">${remb.code_lppr}</span></li>` : ''}
-            ${m.achat_location ? `<li class="vm-remb__li"><span class="vm-remb__key">Achat / Location</span><span class="vm-remb__val">${m.achat_location}</span></li>` : ''}
-            ${m.prescripteur ? `<li class="vm-remb__li"><span class="vm-remb__key">Prescripteur</span><span class="vm-remb__val">${m.prescripteur}</span></li>` : ''}
-            ${m.accord_prealable === true ? `<li class="vm-remb__li vm-remb__li--dap"><span class="vm-remb__key">⚠️ Accord préalable</span><span class="vm-remb__val">Demande d'accord préalable (DAP) obligatoire</span></li>` : m.accord_prealable === false ? `<li class="vm-remb__li"><span class="vm-remb__key">Accord préalable</span><span class="vm-remb__val vm-remb__val--ok">Non requis</span></li>` : ''}
-            ${m.formalites ? `<li class="vm-remb__li"><span class="vm-remb__key">Formalités</span><span class="vm-remb__val">${m.formalites}</span></li>` : ''}
             ${(remb.note||'').split(/(?<=[.!?])\s+(?=[A-ZÀ-Ý\[])/).filter(s => s.trim()).map(s => `<li class="vm-remb__li vm-remb__li--note">${s.trim()}</li>`).join('')}
           </ul>
         </div>
@@ -265,7 +261,7 @@ const MAD = {
         <div class="fiche-sources">
           <span class="fiche-sources__label">📚 Sources</span>
           <div class="fiche-sources__links">
-            ${m.sources.map((s, i) => `<a href="${s.url}" target="_blank" rel="noopener" class="fiche-sources__link">${s.label}</a>${s.date ? `<span class="fiche-sources__date">${s.date}</span>` : ''}${i < m.sources.length - 1 ? '<span class="fiche-sources__sep">·</span>' : ''}`).join('')}
+            ${m.sources.map((s, i) => `<a href="${s.url}" target="_blank" rel="noopener" class="fiche-sources__link">${s.label}</a>${i < m.sources.length - 1 ? '<span class="fiche-sources__sep">·</span>' : ''}`).join('')}
           </div>
         </div>` : ''}
         ${MAD._renderCustomSections(m.slug)}
@@ -310,16 +306,12 @@ const MAD = {
 
     const rembHTML = remb ? `
       <div class="vm-section vm-section--remb">
-        <div class="vm-section__label">💶 Remboursement & délivrance</div>
+        <div class="vm-section__label">💶 Remboursement</div>
         <div class="vm-remb">
           <div class="vm-remb__mention">${remb.mention}</div>
           <ul class="vm-remb__list">
             ${remb.taux ? `<li class="vm-remb__li"><span class="vm-remb__key">Taux</span><span class="vm-remb__val">${remb.taux}</span></li>` : ''}
             ${remb.code_lppr ? `<li class="vm-remb__li"><span class="vm-remb__key">Code LPPR</span><span class="vm-remb__val">${remb.code_lppr}</span></li>` : ''}
-            ${m.achat_location ? `<li class="vm-remb__li"><span class="vm-remb__key">Achat / Location</span><span class="vm-remb__val">${m.achat_location}</span></li>` : ''}
-            ${m.prescripteur ? `<li class="vm-remb__li"><span class="vm-remb__key">Prescripteur</span><span class="vm-remb__val">${m.prescripteur}</span></li>` : ''}
-            ${m.accord_prealable === true ? `<li class="vm-remb__li vm-remb__li--dap"><span class="vm-remb__key">⚠️ Accord préalable</span><span class="vm-remb__val">Demande d'accord préalable (DAP) obligatoire</span></li>` : m.accord_prealable === false ? `<li class="vm-remb__li"><span class="vm-remb__key">Accord préalable</span><span class="vm-remb__val vm-remb__val--ok">Non requis</span></li>` : ''}
-            ${m.formalites ? `<li class="vm-remb__li"><span class="vm-remb__key">Formalités</span><span class="vm-remb__val">${m.formalites}</span></li>` : ''}
             ${(remb.note||'').split(/(?<=[.!?])\s+(?=[A-ZÀ-Ý\[])/).filter(s => s.trim()).map(s => `<li class="vm-remb__li vm-remb__li--note">${s.trim()}</li>`).join('')}
           </ul>
         </div>
