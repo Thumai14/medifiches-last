@@ -232,4 +232,12 @@ Voir `SETUP.md` pour le guide pas-à-pas complet (Supabase, Storage, Cloudflare 
 - [x] Sources vérifiées et datées sur les fiches pathologie — liens HAS/jcms et Ameli/thèmes contrôlés un à un (aucun lien vers l'accueil), champ `date` affiché (« consulté MM/AAAA »)
 - [x] Lazy-load formation-niveaux.js (≈1 Mo) — chargé à la demande par `FORMATION._ensureNiveaux()` à l'ouverture de l'onglet Formation. Retiré du chemin critique initial. ✅
 - [x] `admin.html` — `requireAdmin()` au chargement (fait)
+- [x] Enrichissement fiches dispositif (MAD) — 5 fiches mises à jour depuis mémos LPP officiels Ameli (lit médicalisé, CGM/FreeStyle Libre, lecteur glycémie capillaire, matelas anti-escarres, siège coquille) : prescripteurs exacts (médecins, ergothérapeutes, IPA), accord préalable, tarifs LPP réalignés, grilles de renouvellement par classe ✦ v2.15
+- [x] Correction fiche `m29` fauteuil-coquille — était marquée « Non remboursable » à tort ; corrigée : remboursable 532,54 €, soumis à accord préalable ✦ v2.15
+- [x] Grand nettoyage sources — pathologie (29 liens retirés : SNFGE, ANSM, SFR, SFEMC, CESPHARM, SFP, CNGOF, AFU, GINA, GOLD, Santé publique France + HAS insomnie erroné), dermato (slugs Ameli corrigés, 7 liens Dermato-info/HAS retirés sur 6 fiches ciblées), dispositif (30 liens HAS morts + Ameli 404 retirés, mémos LPP officiels conservés) ✦ v2.25
+- [x] Correction fiche vergetures — clés `conseils_comptoir`/`produits_conseil`/`alertes` renommées en `conseils`/`produits`/`signes_alerte` (moteur de rendu) ; fiche s'ouvrait à blanc ✦ v2.25
+- [x] Landing page `accueil.html` — exemples de démo animée corrigés : 3 exemples cohérents (requête = résultat = conseil issu de la vraie fiche) : Allergie au pollen · Lit médicalisé · Vergetures. Badge « HAS » erroné remplacé par « Ameli » ✦ v2.26
+- [ ] Liens sources manquants — ~20 fiches dispositif sans source après nettoyage (URLs à fournir pour réintégration)
+- [ ] Coussins anti-escarres — mémo LPP fourni, fiche `materiel.js` à créer (décision à prendre)
 - [ ] Module pédiatrie (NUK et marques bébé à réintégrer depuis le catalogue dermato)
+- [ ] Plaquettes commerciales — mention RPPS à retirer (fonctionnalité non implémentée)
