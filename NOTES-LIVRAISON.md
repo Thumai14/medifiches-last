@@ -482,3 +482,26 @@ Tous les autres fichiers (landing, auth, CSS, dermato, pathologies) → nôtre c
 - 6 mémos Ameli cités en sources (URLs Documents officiels)
 - fauteuil-coquille accord_prealable = true ✅
 - Syntaxe JS OK
+
+## v2.24 — Correction des liens Ameli dermato (audit complet 19 URLs)
+Audit systématique des 19 URLs Ameli dans js/data/dermato.js (base v2.23).
+
+### Suppressions (3 thèmes sans page Ameli dédiée)
+- secheresse-cutanee (fiche xérose) — Ameli n'a pas de page sécheresse cutanée corporelle
+- vergetures (fiches cicatrices-vergetures + vergetures) — aucune entrée dans l'index Ameli
+- perleche — aucune entrée Ameli ; sujet mentionné uniquement dans la page mycose
+
+### Corrections de slug (7 URLs redirigées — Ameli a restructuré ses URLs)
+- eczema-de-contact → eczema-contact
+- dermatite-atopique-eczema-atopique → eczema-atopique
+- pellicules-dermite-seborrheique → dermatite-seborrheique (×2)
+- couperose-rosacee → rosacee-couperose
+- mycose-cutanee → mycose-cutanee-peau
+- coup-de-soleil → coup-soleil
+- verrue → verrues
+
+### Inchangées (9 URLs vivantes confirmées)
+acne, demangeaisons-anales, herpes-labial, impetigo, ongle-incarne, psoriasis, urticaire,
+varicelle, zona.
+
+Résultat : 16 URLs Ameli valides dans dermato.js · 0 lien mort · syntaxe OK.

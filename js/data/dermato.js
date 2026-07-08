@@ -49,7 +49,7 @@ const DERMATO_DB = [
       {nom: 'Cold Cream Corps (Avène)', usage: 'Protection contre le froid et sécheresse', texture: 'Crème protectrice', gamme: 'Avène'},
       {nom: '🌿 Huile de coco vierge + aloe vera', usage: 'Alternative naturelle — beurre karité mélangé à HE lavande diluée', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: [{label: 'Ameli — Sécheresse cutanée', url: 'https://www.ameli.fr/assure/sante/themes/secheresse-cutanee', date: 'consulté 07/2026'}, {label: 'Dermato-info — Xérose cutanée (peau sèche)', url: 'https://dermato-info.fr/les-maladies-de-la-peau/les-maladies-connaitre-par-tranches-dages', date: 'consulté 07/2026'}]
+    sources: [{label: 'Dermato-info — Xérose cutanée (peau sèche)', url: 'https://dermato-info.fr/les-maladies-de-la-peau/les-maladies-connaitre-par-tranches-dages', date: 'consulté 07/2026'}]
   },
 
   {
@@ -92,7 +92,7 @@ const DERMATO_DB = [
       {nom: 'Cicalfate+ Mains (Avène)', usage: 'Crevasses et fissures profondes mains', texture: 'Crème réparatrice', gamme: 'Avène'},
       {nom: '🌿 Beurre de karité pur + HE camomille', usage: 'Alternative naturelle — massage mains soir', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: [{label: 'Dermato-info — Eczéma de contact', url: 'https://dermato-info.fr/les-maladies-de-la-peau/les-maladies-connaitre-par-tranches-dages', date: 'consulté 07/2026'}, {label: 'Ameli — Eczéma de contact', url: 'https://www.ameli.fr/assure/sante/themes/eczema-de-contact', date: 'consulté 07/2026'}]
+    sources: [{label: 'Dermato-info — Eczéma de contact', url: 'https://dermato-info.fr/les-maladies-de-la-peau/les-maladies-connaitre-par-tranches-dages', date: 'consulté 07/2026'}, {label: 'Ameli — Eczéma de contact', url: 'https://www.ameli.fr/assure/sante/themes/eczema-contact', date: 'consulté 07/2026'}]
   },
 
   {
@@ -136,7 +136,7 @@ const DERMATO_DB = [
       {nom: 'Trixéra+ Selectiose (Avène)', usage: 'Émollient peau atopique — tolérance maximale', texture: 'Émollient', gamme: 'Avène'},
       {nom: '🌿 Huile de bourrache + HE camomille romaine', usage: 'Alternative naturelle — restaure la barrière cutanée', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: [{label: 'Dermato-info — Dermatite atopique', url: 'https://dermato-info.fr/les-maladies-de-la-peau/dermatite-atopique', date: 'MàJ 2025 · consulté 07/2026'}, {label: 'Ameli — Dermatite atopique', url: 'https://www.ameli.fr/assure/sante/themes/dermatite-atopique-eczema-atopique', date: 'consulté 07/2026'}]
+    sources: [{label: 'Dermato-info — Dermatite atopique', url: 'https://dermato-info.fr/les-maladies-de-la-peau/dermatite-atopique', date: 'MàJ 2025 · consulté 07/2026'}, {label: 'Ameli — Dermatite atopique', url: 'https://www.ameli.fr/assure/sante/themes/eczema-atopique', date: 'consulté 07/2026'}]
   },
 
   // ══════════════════════════════
@@ -225,7 +225,7 @@ const DERMATO_DB = [
       {nom: 'Cicalfate+ DS crème (Avène)', usage: 'Zones rouges et squameuses du visage', texture: 'Crème apaisante', gamme: 'Avène'},
       {nom: '🌿 HE tea tree + HE lavande dans huile jojoba', usage: 'Alternative naturelle — application locale zones touchées', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: [{label: 'Dermato-info — Dermite séborrhéique', url: 'https://dermato-info.fr/les-maladies-de-la-peau/dermite-seborrheique', date: 'consulté 07/2026'}, {label: 'Ameli — Pellicules et dermite séborrhéique', url: 'https://www.ameli.fr/assure/sante/themes/pellicules-dermite-seborrheique', date: 'consulté 07/2026'}]
+    sources: [{label: 'Dermato-info — Dermite séborrhéique', url: 'https://dermato-info.fr/les-maladies-de-la-peau/dermite-seborrheique', date: 'consulté 07/2026'}, {label: 'Ameli — Pellicules et dermite séborrhéique', url: 'https://www.ameli.fr/assure/sante/themes/dermatite-seborrheique', date: 'consulté 07/2026'}]
   },
 
   // ══════════════════════════════
@@ -271,7 +271,7 @@ const DERMATO_DB = [
       {nom: 'Antirougeurs jour SPF 30 (Avène)', usage: 'Hydratation + réduction rougeurs + protection', texture: 'Émulsion légère', gamme: 'Avène'},
       {nom: '🌿 Eau florale de camomille + aloe vera gel', usage: 'Alternative naturelle — brumisation apaisante', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: [{label: 'Dermato-info — Rosacée', url: 'https://dermato-info.fr/les-maladies-de-la-peau/rosacee-0', date: 'consulté 07/2026'}, {label: 'Ameli — Couperose et rosacée', url: 'https://www.ameli.fr/assure/sante/themes/couperose-rosacee', date: 'consulté 07/2026'}]
+    sources: [{label: 'Dermato-info — Rosacée', url: 'https://dermato-info.fr/les-maladies-de-la-peau/rosacee-0', date: 'consulté 07/2026'}, {label: 'Ameli — Couperose et rosacée', url: 'https://www.ameli.fr/assure/sante/themes/rosacee-couperose', date: 'consulté 07/2026'}]
   },
 
   {
@@ -403,7 +403,7 @@ const DERMATO_DB = [
       {nom: 'Amorolfine 5% vernis (Locéryl)', usage: 'Onychomycose — traitement ongles', texture: 'Vernis', gamme: 'Galderma'},
       {nom: '🌿 HE tea tree pure + bicarbonate de soude', usage: 'Alternative naturelle — bain de pied antifongique', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: [{label: 'Dermato-info — Mycoses cutanées', url: 'https://dermato-info.fr/les-maladies-de-la-peau/mycoses-cutanees', date: 'consulté 07/2026'}, {label: 'Ameli — Mycose cutanée', url: 'https://www.ameli.fr/assure/sante/themes/mycose-cutanee', date: 'consulté 07/2026'}]
+    sources: [{label: 'Dermato-info — Mycoses cutanées', url: 'https://dermato-info.fr/les-maladies-de-la-peau/mycoses-cutanees', date: 'consulté 07/2026'}, {label: 'Ameli — Mycose cutanée', url: 'https://www.ameli.fr/assure/sante/themes/mycose-cutanee-peau', date: 'consulté 07/2026'}]
   },
 
   {
@@ -445,7 +445,7 @@ const DERMATO_DB = [
       {nom: 'Bio-Oil Specialist', usage: 'Vergetures et cicatrices — massage régulier', texture: 'Huile sèche', gamme: 'Bio-Oil'},
       {nom: '🌿 Huile de rose musquée bio + vitamine E', usage: 'Alternative naturelle — massage matin/soir', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: [{label: 'Dermato-info — Cicatrices et vergetures', url: 'https://dermato-info.fr/les-maladies-de-la-peau/les-maladies-connaitre-par-tranches-dages', date: 'consulté 07/2026'}, {label: 'Ameli — Vergetures', url: 'https://www.ameli.fr/assure/sante/themes/vergetures', date: 'consulté 07/2026'}]
+    sources: [{label: 'Dermato-info — Cicatrices et vergetures', url: 'https://dermato-info.fr/les-maladies-de-la-peau/les-maladies-connaitre-par-tranches-dages', date: 'consulté 07/2026'}]
   },
   {
     id: 'd21', slug: 'vergetures', nom: 'Vergetures',
@@ -467,7 +467,7 @@ const DERMATO_DB = [
       'Trétinoïne topique (vergetures rouges) : CI absolue grossesse et allaitement — prescription uniquement.',
       'Vergetures associées à une prise de poids rapide et une hypertension → évoquer un Cushing.',
     ],
-    sources: [{label: 'Ameli — Vergetures', url: 'https://www.ameli.fr/assure/sante/themes/vergetures', date: 'consulté 07/2026'}, {label: 'Dermato-info — Cicatrices et vergetures', url: 'https://dermato-info.fr/les-maladies-de-la-peau/les-maladies-connaitre-par-tranches-dages', date: 'consulté 07/2026'}],
+    sources: [{label: 'Dermato-info — Cicatrices et vergetures', url: 'https://dermato-info.fr/les-maladies-de-la-peau/les-maladies-connaitre-par-tranches-dages', date: 'consulté 07/2026'}],
   },
 
   {
@@ -648,7 +648,7 @@ const DERMATO_DB = [
       {nom: 'Cicalfate+ (Avène)', usage: 'Si début de phlyctène — protection antiseptique + réparation', texture: 'Crème réparatrice', gamme: 'Avène'},
       {nom: '🌿 Gel aloe vera pur réfrigéré + eau florale de lavande', usage: 'Alternative naturelle — application généreuse immédiate, très efficace au stade 1er degré', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: [{label: 'Ameli — Coup de soleil', url: 'https://www.ameli.fr/assure/sante/themes/coup-de-soleil', date: 'consulté 07/2026'}, {label: 'Dermato-info — Coups de soleil', url: 'https://dermato-info.fr/les-maladies-de-la-peau/les-maladies-connaitre-par-tranches-dages', date: 'consulté 07/2026'}]
+    sources: [{label: 'Ameli — Coup de soleil', url: 'https://www.ameli.fr/assure/sante/themes/coup-soleil', date: 'consulté 07/2026'}, {label: 'Dermato-info — Coups de soleil', url: 'https://dermato-info.fr/les-maladies-de-la-peau/les-maladies-connaitre-par-tranches-dages', date: 'consulté 07/2026'}]
   },
 
   {
@@ -747,7 +747,7 @@ const DERMATO_DB = [
       {nom: 'Sébium Pore Refiner (Bioderma)', usage: 'Resserrement des pores + matification durable', texture: 'Soin matifiant', gamme: 'Bioderma'},
       {nom: '🌿 Eau florale de romarin + argile blanche kaolin', usage: 'Alternative naturelle — tonique + masque hebdomadaire assainissant doux', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: [{label: 'Dermato-info — Dermite séborrhéique / Séborrhée', url: 'https://dermato-info.fr/les-maladies-de-la-peau/dermite-seborrheique', date: 'consulté 07/2026'}, {label: 'Ameli — Pellicules et dermite séborrhéique', url: 'https://www.ameli.fr/assure/sante/themes/pellicules-dermite-seborrheique', date: 'consulté 07/2026'}]
+    sources: [{label: 'Dermato-info — Dermite séborrhéique / Séborrhée', url: 'https://dermato-info.fr/les-maladies-de-la-peau/dermite-seborrheique', date: 'consulté 07/2026'}, {label: 'Ameli — Pellicules et dermite séborrhéique', url: 'https://www.ameli.fr/assure/sante/themes/dermatite-seborrheique', date: 'consulté 07/2026'}]
   },
 
   // ══════════════════════════════
@@ -798,7 +798,7 @@ const DERMATO_DB = [
       {nom: 'Compeed verrues plantaires', usage: 'Patch protecteur + acide salicylique — confort de marche', texture: 'Patch', gamme: 'Compeed'},
       {nom: '🌿 HE Thuja occidentalis diluée 5% dans huile végétale', usage: 'Alternative naturelle — 1 goutte sur la verrue 2x/jour sous pansement occlusif (hors visage)', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: [{label: 'Ameli — Verrues', url: 'https://www.ameli.fr/assure/sante/themes/verrue', date: 'consulté 07/2026'}, {label: 'Dermato-info — Verrues', url: 'https://dermato-info.fr/les-maladies-de-la-peau/verrues', date: 'consulté 07/2026'}]
+    sources: [{label: 'Ameli — Verrues', url: 'https://www.ameli.fr/assure/sante/themes/verrues', date: 'consulté 07/2026'}, {label: 'Dermato-info — Verrues', url: 'https://dermato-info.fr/les-maladies-de-la-peau/verrues', date: 'consulté 07/2026'}]
   },
 
   {
@@ -842,7 +842,7 @@ const DERMATO_DB = [
       {nom: 'Bépanthène Plus crème', usage: 'Si composante bactérienne — antibactérien + cicatrisant', texture: 'Crème', gamme: 'Bayer'},
       {nom: '🌿 Huile de coco vierge + HE tea tree 1% + vitamine B2 orale', usage: 'Alternative naturelle — antifongique doux + traitement de la carence', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: [{label: 'Ameli — Perlèche', url: 'https://www.ameli.fr/assure/sante/themes/perleche', date: 'consulté 07/2026'}, {label: 'Dermato-info — Perlèche', url: 'https://dermato-info.fr/les-maladies-de-la-peau/perleche', date: 'consulté 07/2026'}]
+    sources: [{label: 'Dermato-info — Perlèche', url: 'https://dermato-info.fr/les-maladies-de-la-peau/perleche', date: 'consulté 07/2026'}]
   },
 
   {
