@@ -26,7 +26,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Propolis spray buccal', raison:'Antibactérien naturel voies respiratoires'},
       {produit:'Sirop miel-thym', raison:'Antitussif naturel bien toléré'},
     ],
-    sources:[{label:'HAS — Antibiothérapie : exacerbations aiguës de BPCO', url:'https://www.has-sante.fr/jcms/p_3528903/fr/choix-et-durees-d-antibiotherapie-dans-les-exacerbations-aigues-de-bronchopneumopathie-chronique-obstructive-eabpco', date:'MàJ 12/2024 · consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label: "Ameli — Bronchite : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/bronchite/consultation-traitement-medical", date: "consulté 07/2026"}]
+    sources:[{label:'HAS — Antibiothérapie : exacerbations aiguës de BPCO', url:'https://www.has-sante.fr/jcms/p_3528903/fr/choix-et-durees-d-antibiotherapie-dans-les-exacerbations-aigues-de-bronchopneumopathie-chronique-obstructive-eabpco', date:'MàJ 12/2024 · consulté 07/2026'},{label: "Ameli — Bronchite : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/bronchite/consultation-traitement-medical", date: "consulté 07/2026"}]
   },
 
   {
@@ -48,7 +48,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'N-acétylcystéine (Mucomyst®)', raison:'Fluidifiant bronchique + antioxydant'},
       {produit:'Chambre d\'inhalation', raison:'Optimise l\'efficacité des bronchodilatateurs'},
     ],
-    sources:[{label:'HAS — Antibiothérapie : exacerbations aiguës de BPCO', url:'https://www.has-sante.fr/jcms/p_3528903/fr/choix-et-durees-d-antibiotherapie-dans-les-exacerbations-aigues-de-bronchopneumopathie-chronique-obstructive-eabpco', date:'consulté 07/2026'},{label:'GOLD Guidelines 2024', url:'https://goldcopd.org'},{label: "Ameli — Traitement de la BPCO", url: "https://www.ameli.fr/assure/sante/themes/bpco-bronchite-chronique/traitement", date: "consulté 07/2026"}]
+    sources:[{label:'HAS — Antibiothérapie : exacerbations aiguës de BPCO', url:'https://www.has-sante.fr/jcms/p_3528903/fr/choix-et-durees-d-antibiotherapie-dans-les-exacerbations-aigues-de-bronchopneumopathie-chronique-obstructive-eabpco', date:'consulté 07/2026'},{label: "Ameli — Traitement de la BPCO", url: "https://www.ameli.fr/assure/sante/themes/bpco-bronchite-chronique/traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -92,7 +92,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Inhalateur vapeur', raison:'Inhalations décongestionantes à domicile'},
       {produit:'Sinupret® (phytothérapie)', raison:'Décongestionnant sinusien naturel prouvé'},
     ],
-    sources:[{label:'HAS — Antibiothérapie : sinusite de l\'adulte', url:'https://www.has-sante.fr/jcms/c_2722806/fr/choix-et-durees-d-antibiotherapies-sinusite-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'HAS — Sinusites de l\'enfant', url:'https://www.has-sante.fr/jcms/c_2722824/fr/choix-et-durees-d-antibiotherapies-sinusites-de-l-enfant', date:'MàJ 05/2025 · consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label: "Ameli — Sinusite : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/sinusite/consultation-traitement", date: "consulté 07/2026"}]
+    sources:[{label:'HAS — Antibiothérapie : sinusite de l\'adulte', url:'https://www.has-sante.fr/jcms/c_2722806/fr/choix-et-durees-d-antibiotherapies-sinusite-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'HAS — Sinusites de l\'enfant', url:'https://www.has-sante.fr/jcms/c_2722824/fr/choix-et-durees-d-antibiotherapies-sinusites-de-l-enfant', date:'MàJ 05/2025 · consulté 07/2026'},{label: "Ameli — Sinusite : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/sinusite/consultation-traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -114,7 +114,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Pastilles antiseptiques (Lysopaïne®)', raison:'Antisepsie locale et antalgie de la gorge'},
       {produit:'Spray propolis', raison:'Antibactérien naturel local'},
     ],
-    sources:[{label:'HAS — Antibiothérapie : angine aiguë de l\'adulte', url:'https://www.has-sante.fr/jcms/p_3529230/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'HAS — Angine aiguë de l\'enfant', url:'https://www.has-sante.fr/jcms/p_3529229/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-enfant', date:'MàJ 05/2025 · consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label: "Ameli — Traitement de l'angine", url: "https://www.ameli.fr/assure/sante/themes/angine/traitement", date: "consulté 07/2026"}]
+    sources:[{label:'HAS — Antibiothérapie : angine aiguë de l\'adulte', url:'https://www.has-sante.fr/jcms/p_3529230/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'HAS — Angine aiguë de l\'enfant', url:'https://www.has-sante.fr/jcms/p_3529229/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-enfant', date:'MàJ 05/2025 · consulté 07/2026'},{label: "Ameli — Traitement de l'angine", url: "https://www.ameli.fr/assure/sante/themes/angine/traitement", date: "consulté 07/2026"}]
   },
 
   // ══════════ CARDIOVASCULAIRE / MÉTABOLIQUE ══════════
@@ -181,7 +181,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Eau de Vichy Saint-Yorre', raison:'Alcalinisation urinaire — favorise excrétion urate'},
       {produit:'Céleri extrait (Arkogélules)', raison:'Drainant urique naturel'},
     ],
-    sources:[{label:'SFR — Recommandations goutte', url:'https://www.larhumato.fr'},{label: "Ameli — Traitement de la goutte", url: "https://www.ameli.fr/assure/sante/themes/goutte/traitement", date: "consulté 07/2026"}]
+    sources:[{label: "Ameli — Traitement de la goutte", url: "https://www.ameli.fr/assure/sante/themes/goutte/traitement", date: "consulté 07/2026"}]
   },
 
   // ══════════ DIGESTIF ══════════
@@ -225,7 +225,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Zinc-carnosine (Zinco-Carnogel®)', raison:'Cicatrisant muqueux gastrique prouvé'},
       {produit:'Probiotiques (Lactobacillus reuteri)', raison:'Adjuvant de l\'éradication H. pylori'},
     ],
-    sources:[{label:'HAS — H. pylori : traitement guidé (adulte)', url:'https://www.has-sante.fr/jcms/p_3282789/fr/choix-et-durees-d-antibiotherapies-traitement-guide-de-l-infection-par-helicobacter-pylori-chez-l-adulte', date:'MàJ 2024 · consulté 07/2026'},{label:'HAS — H. pylori : traitement probabiliste (adulte)', url:'https://www.has-sante.fr/jcms/p_3282793/fr/choix-et-durees-d-antibiotherapies-traitement-probabiliste-de-l-infection-par-helicobacter-pylori-chez-l-adulte', date:'MàJ 2024 · consulté 07/2026'},{label:'SNFGE', url:'https://www.snfge.org'},{label: "Ameli — Traitement de l'ulcère gastroduodénal", url: "https://www.ameli.fr/assure/sante/themes/ulcere-estomac-duodenum/traitement", date: "consulté 07/2026"}]
+    sources:[{label:'HAS — H. pylori : traitement guidé (adulte)', url:'https://www.has-sante.fr/jcms/p_3282789/fr/choix-et-durees-d-antibiotherapies-traitement-guide-de-l-infection-par-helicobacter-pylori-chez-l-adulte', date:'MàJ 2024 · consulté 07/2026'},{label:'HAS — H. pylori : traitement probabiliste (adulte)', url:'https://www.has-sante.fr/jcms/p_3282793/fr/choix-et-durees-d-antibiotherapies-traitement-probabiliste-de-l-infection-par-helicobacter-pylori-chez-l-adulte', date:'MàJ 2024 · consulté 07/2026'},{label: "Ameli — Traitement de l'ulcère gastroduodénal", url: "https://www.ameli.fr/assure/sante/themes/ulcere-estomac-duodenum/traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -292,7 +292,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Ceinture lombaire de soutien', raison:'Soutien mécanique temporaire'},
       {produit:'Harpagophytum (Arkogélules®)', raison:'Anti-inflammatoire naturel prouvé'},
     ],
-    sources:[{label:'HAS — Lombalgie commune : prise en charge', url:'https://www.has-sante.fr/jcms/c_2961499/fr/prise-en-charge-du-patient-presentant-une-lombalgie-commune', date:'consulté 07/2026'},{label:'SFR', url:'https://www.larhumato.fr'},{label: "Ameli — Lombalgie : traitement et prévention", url: "https://www.ameli.fr/assure/sante/themes/lombalgie-aigue/traitement-prevention", date: "consulté 07/2026"}]
+    sources:[{label:'HAS — Lombalgie commune : prise en charge', url:'https://www.has-sante.fr/jcms/c_2961499/fr/prise-en-charge-du-patient-presentant-une-lombalgie-commune', date:'consulté 07/2026'},{label: "Ameli — Lombalgie : traitement et prévention", url: "https://www.ameli.fr/assure/sante/themes/lombalgie-aigue/traitement-prevention", date: "consulté 07/2026"}]
   },
 
   {
@@ -358,7 +358,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Vitamine K2 MK-7 100µg', raison:'Oriente le calcium vers les os — synergie vit D'},
       {produit:'Semelles amortissantes', raison:'Réduction de la charge sur les vertèbres'},
     ],
-    sources:[{label:'HAS — Ostéoporose : méthodes diagnostiques et indications', url:'https://www.has-sante.fr/jcms/c_271924/fr/l-osteoporose-chez-les-femmes-menopausees-et-chez-les-sujets-traites-par-corticoides-methodes-diagnostiques-et-indications', date:'consulté 07/2026'},{label:'SFR — Recommandations', url:'https://www.larhumato.fr'},{label: "Ameli — Traitement de l'ostéoporose", url: "https://www.ameli.fr/assure/sante/themes/osteoporose/traitement-medical", date: "consulté 07/2026"}]
+    sources:[{label:'HAS — Ostéoporose : méthodes diagnostiques et indications', url:'https://www.has-sante.fr/jcms/c_271924/fr/l-osteoporose-chez-les-femmes-menopausees-et-chez-les-sujets-traites-par-corticoides-methodes-diagnostiques-et-indications', date:'consulté 07/2026'},{label: "Ameli — Traitement de l'ostéoporose", url: "https://www.ameli.fr/assure/sante/themes/osteoporose/traitement-medical", date: "consulté 07/2026"}]
   },
 
   // ══════════ NEUROLOGIE / PSYCHIATRIE ══════════
@@ -424,7 +424,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Bracelet d\'identification médicale', raison:'Identification lors d\'une crise — sécurité'},
       {produit:'Pilulier alarme programmable', raison:'Rappel prise médicament — observance critique'},
     ],
-    sources:[{label:'HAS — Parcours de soins épilepsie', url:'https://www.has-sante.fr/jcms/p_3444925/fr/guides-du-parcours-de-sante-de-l-adulte-et-de-l-enfant-avec-epilepsie', date:'consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label: "Ameli — Traitement de l'épilepsie", url: "https://www.ameli.fr/assure/sante/themes/epilepsie/traitement", date: "consulté 07/2026"}]
+    sources:[{label:'HAS — Parcours de soins épilepsie', url:'https://www.has-sante.fr/jcms/p_3444925/fr/guides-du-parcours-de-sante-de-l-adulte-et-de-l-enfant-avec-epilepsie', date:'consulté 07/2026'},{label: "Ameli — Traitement de l'épilepsie", url: "https://www.ameli.fr/assure/sante/themes/epilepsie/traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -491,7 +491,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'D-mannose 2g (Manucran®)', raison:'Alternative naturelle E. coli — efficacité prouvée'},
       {produit:'Canneberge PAC 36mg (Cys-Control®)', raison:'Prévention des récidives — cure de 3 mois'},
     ],
-    sources:[{label:'HAS — Antibiothérapie : cystite aiguë simple de la femme', url:'https://www.has-sante.fr/jcms/c_2722827/fr/choix-et-durees-d-antibiotherapies-cystite-aigue-simple-a-risque-de-complication-ou-recidivante-de-la-femme', date:'MàJ 05/2025 · consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label: "Ameli — Cystite : diagnostic et traitement", url: "https://www.ameli.fr/assure/sante/themes/cystite/diagnostic-traitement-evolution", date: "consulté 07/2026"}]
+    sources:[{label:'HAS — Antibiothérapie : cystite aiguë simple de la femme', url:'https://www.has-sante.fr/jcms/c_2722827/fr/choix-et-durees-d-antibiotherapies-cystite-aigue-simple-a-risque-de-complication-ou-recidivante-de-la-femme', date:'MàJ 05/2025 · consulté 07/2026'},{label: "Ameli — Cystite : diagnostic et traitement", url: "https://www.ameli.fr/assure/sante/themes/cystite/diagnostic-traitement-evolution", date: "consulté 07/2026"}]
   },
 
   {
@@ -513,7 +513,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Zinc 30mg', raison:'Soutien de la santé prostatique'},
       {produit:'Lycopène 10mg', raison:'Antioxydant protecteur prostatique'},
     ],
-    sources:[{label:'AFU — Association Française d\'Urologie', url:'https://www.urofrance.org'},{label: "Ameli — Traitement de l'adénome de la prostate", url: "https://www.ameli.fr/assure/sante/themes/adenome-prostate/traitements", date: "consulté 07/2026"}]
+    sources:[{label: "Ameli — Traitement de l'adénome de la prostate", url: "https://www.ameli.fr/assure/sante/themes/adenome-prostate/traitements", date: "consulté 07/2026"}]
   },
 
   {
@@ -535,7 +535,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Oméga-3 EPA/DHA concentré', raison:'Anti-inflammatoire prouvé — réduction des douleurs'},
       {produit:'Magnésium bisglycinate 300mg', raison:'Antispasmodique utérin naturel'},
     ],
-    sources:[{label:'HAS — Prise en charge de l’endométriose', url:'https://www.has-sante.fr/jcms/c_2819733/fr/prise-en-charge-de-l-endometriose', date:'consulté 07/2026'},{label:'CNGOF', url:'https://cngof.fr'},{label: "Ameli — Traitement de l'endométriose", url: "https://www.ameli.fr/assure/sante/themes/endometriose/traitement", date: "consulté 07/2026"}]
+    sources:[{label:'HAS — Prise en charge de l’endométriose', url:'https://www.has-sante.fr/jcms/c_2819733/fr/prise-en-charge-de-l-endometriose', date:'consulté 07/2026'},{label: "Ameli — Traitement de l'endométriose", url: "https://www.ameli.fr/assure/sante/themes/endometriose/traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -579,7 +579,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Sérum physiologique unidoses nourrisson', raison:'DRP — désobstruction nasale 6× par jour'},
       {produit:'Aspirateur nasal électrique (Nosiboo®)', raison:'DRP efficace — mieux que l\'aspirateur buccal'},
     ],
-    sources:[{label:'HAS — Bronchiolite aiguë du nourrisson (<12 mois)', url:'https://www.has-sante.fr/jcms/p_3118113/fr/prise-en-charge-du-1er-episode-de-bronchiolite-aigue-chez-le-nourrisson-de-moins-de-12-mois', date:'RBP 11/2019 · consulté 07/2026'},{label:'SFP', url:'https://www.sfpediatrie.com'},{label: "Ameli — Bronchiolite : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/bronchiolite/traitement", date: "consulté 07/2026"}]
+    sources:[{label:'HAS — Bronchiolite aiguë du nourrisson (<12 mois)', url:'https://www.has-sante.fr/jcms/p_3118113/fr/prise-en-charge-du-1er-episode-de-bronchiolite-aigue-chez-le-nourrisson-de-moins-de-12-mois', date:'RBP 11/2019 · consulté 07/2026'},{label: "Ameli — Bronchiolite : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/bronchiolite/traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -600,7 +600,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Paracétamol en suspension buvable adapté au poids', raison:'Antalgie de 1ère intention'},
       {produit:'Sérum physiologique nourrisson', raison:'DRP — désobstruction rhinopharyngée'},
     ],
-    sources:[{label:'HAS — Otite moyenne aiguë purulente de l\'enfant', url:'https://www.has-sante.fr/jcms/c_2722749/fr/choix-et-durees-d-antibiotherapies-otite-moyenne-aigue-purulente-de-l-enfant', date:'MàJ 05/2025 · consulté 07/2026'},{label:'HAS — Otite moyenne aiguë purulente de l\'adulte', url:'https://www.has-sante.fr/jcms/c_2722670/fr/choix-et-durees-d-antibiotherapies-otite-moyenne-aigue-purulente-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'SFP', url:'https://www.sfpediatrie.com'},{label: "Ameli — Otite : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/otite-moyenne-aigue/consultation-traitement-evolution", date: "consulté 07/2026"}]
+    sources:[{label:'HAS — Otite moyenne aiguë purulente de l\'enfant', url:'https://www.has-sante.fr/jcms/c_2722749/fr/choix-et-durees-d-antibiotherapies-otite-moyenne-aigue-purulente-de-l-enfant', date:'MàJ 05/2025 · consulté 07/2026'},{label:'HAS — Otite moyenne aiguë purulente de l\'adulte', url:'https://www.has-sante.fr/jcms/c_2722670/fr/choix-et-durees-d-antibiotherapies-otite-moyenne-aigue-purulente-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label: "Ameli — Otite : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/otite-moyenne-aigue/consultation-traitement-evolution", date: "consulté 07/2026"}]
   },
 
   {
@@ -621,7 +621,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Thermomètre frontal ou auriculaire', raison:'Prise de température rapide et sans contact'},
       {produit:'Paracétamol suspension buvable (Doliprane®, Efferalgan®)', raison:'Adapté au poids — dose précise'},
     ],
-    sources:[{label:'HAS — Prise en charge de la fièvre chez l\'enfant', url:'https://www.has-sante.fr/jcms/c_2674284/fr/prise-en-charge-de-la-fievre-chez-l-enfant', date:'Fiche mémo 2016 · consulté 07/2026'},{label:'SFP', url:'https://www.sfpediatrie.com'},{label: "Ameli — Fièvre de l'enfant : les médicaments", url: "https://www.ameli.fr/assure/sante/themes/fievre-enfant/medicaments", date: "consulté 07/2026"}]
+    sources:[{label:'HAS — Prise en charge de la fièvre chez l\'enfant', url:'https://www.has-sante.fr/jcms/c_2674284/fr/prise-en-charge-de-la-fievre-chez-l-enfant', date:'Fiche mémo 2016 · consulté 07/2026'},{label: "Ameli — Fièvre de l'enfant : les médicaments", url: "https://www.ameli.fr/assure/sante/themes/fievre-enfant/medicaments", date: "consulté 07/2026"}]
   },
 
   // ══════════ INFECTIOLOGIE ══════════
@@ -731,7 +731,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Streptatest® (TDR)', raison:'Diagnostic rapide avant antibiotique — 5 min'},
       {produit:'Pastilles antiseptiques', raison:'Confort local adjuvant'},
     ],
-    sources:[{label:'HAS — Antibiothérapie : angine aiguë de l\'adulte', url:'https://www.has-sante.fr/jcms/p_3529230/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'HAS — Angine aiguë de l\'enfant', url:'https://www.has-sante.fr/jcms/p_3529229/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-enfant', date:'MàJ 05/2025 · consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label: "Ameli — Angine : traitement", url: "https://www.ameli.fr/assure/sante/themes/angine/traitement", date: "consulté 07/2026"}]
+    sources:[{label:'HAS — Antibiothérapie : angine aiguë de l\'adulte', url:'https://www.has-sante.fr/jcms/p_3529230/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'HAS — Angine aiguë de l\'enfant', url:'https://www.has-sante.fr/jcms/p_3529229/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-enfant', date:'MàJ 05/2025 · consulté 07/2026'},{label: "Ameli — Angine : traitement", url: "https://www.ameli.fr/assure/sante/themes/angine/traitement", date: "consulté 07/2026"}]
   },
 
   {
@@ -754,7 +754,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Répulsif IR3535 (Cinq sur Cinq)', raison:'Prévention — vente croisée avant sortie'},
       {produit:'Bracelets répulsifs citronnelle (enfants)', raison:'Alternative douce chez les enfants'},
     ],
-    sources:[{label:'ANSM — Répulsifs cutanés', url:'https://ansm.sante.fr'},{label:'Santé publique France', url:'https://www.santepubliquefrance.fr'},{label:'Ameli — Maladies transmises par les moustiques', url:'https://www.ameli.fr/assure/sante/themes/piqure-moustique-maladies', date:'consulté 07/2026'}]
+    sources:[{label:'Ameli — Maladies transmises par les moustiques', url:'https://www.ameli.fr/assure/sante/themes/piqure-moustique-maladies', date:'consulté 07/2026'}]
   },
   {
     id:55, slug:'poux', nom:'Poux de tête (pédiculose)', icone:'__SVG__poux.svg__', categorie:'Dermatologie / Parasitologie',
@@ -776,7 +776,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Spray répulsif capillaire (Paranix Protect)', raison:'Prévention en collectivité'},
       {produit:'Shampoing entretien post-traitement', raison:'Nettoyage complet après cure'},
     ],
-    sources:[{label:'VIDAL Reco — Pédiculoses', url:'https://www.vidal.fr/maladies/recommandations/pediculoses-3397.html', date:'consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label:'Ameli', url:'https://www.ameli.fr/assure/sante/themes/poux'}]
+    sources:[{label:'VIDAL Reco — Pédiculoses', url:'https://www.vidal.fr/maladies/recommandations/pediculoses-3397.html', date:'consulté 07/2026'},{label:'Ameli', url:'https://www.ameli.fr/assure/sante/themes/poux'}]
   },
   {
     id:56, slug:'conjonctivite', nom:'Conjonctivite', icone:'__SVG__Categorie Opthalmologie et conjonctivite.svg__', categorie:'Ophtalmologie',
@@ -819,7 +819,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Oreiller anti-reflux', raison:'Surélévation nocturne efficace'},
       {produit:'Réglisse DGL (gélules)', raison:'Protection muqueuse naturelle sans glycyrrhizine'},
     ],
-    sources:[{label:'Ameli — RGO : diagnostic et traitement', url:'https://www.ameli.fr/assure/sante/themes/rgo-adulte/diagnostic-traitements', date:'consulté 07/2026'},{label:'SNFGE', url:'https://www.snfge.org'},{label: "HAS — Bon usage des IPP", url: "https://www.has-sante.fr/jcms/p_3372966/fr/fiche-bon-usage-des-inhibiteurs-de-la-pompe-a-protons-ipp", date: "consulté 07/2026"}]
+    sources:[{label:'Ameli — RGO : diagnostic et traitement', url:'https://www.ameli.fr/assure/sante/themes/rgo-adulte/diagnostic-traitements', date:'consulté 07/2026'},{label: "HAS — Bon usage des IPP", url: "https://www.has-sante.fr/jcms/p_3372966/fr/fiche-bon-usage-des-inhibiteurs-de-la-pompe-a-protons-ipp", date: "consulté 07/2026"}]
   },
   {
     id:59, slug:'crampes-musculaires', nom:'Crampes musculaires', icone:'__SVG__bas de contention.svg__', categorie:'Rhumatologie / Neurologie',
@@ -862,7 +862,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'HE Petit grain bigarade (rollerball)', raison:'Gestion immédiate de la crise d\'angoisse'},
       {produit:'Ashwagandha KSM-66 600 mg', raison:'Adaptogène — forte demande actuelle'},
     ],
-    sources:[{label:'Ameli — Traitement des troubles anxieux', url:'https://www.ameli.fr/assure/sante/themes/troubles-anxieux-anxiete/traitement', date:'consulté 07/2026'},{label:'CESPHARM', url:'https://www.cespharm.fr'},{label: "HAS — ALD 23 : troubles anxieux graves", url: "https://www.has-sante.fr/jcms/c_556489/fr/ald-n-23-troubles-anxieux-graves", date: "consulté 07/2026"}]
+    sources:[{label:'Ameli — Traitement des troubles anxieux', url:'https://www.ameli.fr/assure/sante/themes/troubles-anxieux-anxiete/traitement', date:'consulté 07/2026'},{label: "HAS — ALD 23 : troubles anxieux graves", url: "https://www.has-sante.fr/jcms/c_556489/fr/ald-n-23-troubles-anxieux-graves", date: "consulté 07/2026"}]
   },
   {
     id:62, slug:'fatigue-asthenie', nom:'Fatigue / Asthénie', icone:'__SVG__fatigue asthenie.svg__', categorie:'Médecine générale',
@@ -906,7 +906,7 @@ const PATHOLOGIES_EXTRA = [
       {produit:'Spray buccal antiseptique', raison:'Action locale ciblée, complément aux pastilles'},
       {produit:'Tisane gorge (thym-miel-citron)', raison:'Hydratation et adoucissement associés'},
     ],
-    sources:[{label:'HAS — Antibiothérapie : angine aiguë de l\'adulte', url:'https://www.has-sante.fr/jcms/p_3529230/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label:'ANSM', url:'https://ansm.sante.fr'},{label: "Ameli — Mal de gorge : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/mal-gorge/consultation-traitement", date: "consulté 07/2026"}]
+    sources:[{label:'HAS — Antibiothérapie : angine aiguë de l\'adulte', url:'https://www.has-sante.fr/jcms/p_3529230/fr/choix-et-durees-d-antibiotherapies-angine-aigue-de-l-adulte', date:'MàJ 05/2025 · consulté 07/2026'},{label: "Ameli — Mal de gorge : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/mal-gorge/consultation-traitement", date: "consulté 07/2026"}]
   },
 
   {

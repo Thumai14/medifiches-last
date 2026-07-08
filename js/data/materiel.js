@@ -34,7 +34,7 @@ const MATERIEL_DB = [
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · Classe prescrite obligatoirement mentionnée · Renouvellement selon durée (classe 2 : tous les 6 mois habituellement)',
-sources: [{label: "HAS — Compression médicale en insuffisance veineuse", url: "https://www.has-sante.fr/jcms/c_272500/fr/la-compression-medicale"}, , {label: "Ameli — Mémo LPP Bandages multitypes (MàJ 24/07/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/08-bandages-multitypes-contention-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
+sources: [{label: "Ameli — Mémo LPP Bandages multitypes (MàJ 24/07/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/08-bandages-multitypes-contention-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
   { id: 'm9', slug: 'oxymetre-pouls', nom: 'Oxymètre de pouls', categorie: 'cardiaque', icone: '__SVG__oxymetre de pouls.svg__',
     description: 'Pléthysmographe portable mesurant par voie transcutanée (au doigt généralement) la saturation pulsée en oxygène (SpO2) et la fréquence cardiaque, par absorption différentielle de lumière à deux longueurs d\'onde. Mesure instantanée, non invasive, en quelques secondes.',
     indication: 'Surveillance à domicile de patients asthmatiques, BPCO, insuffisants cardiaques ou respiratoires chroniques ; suivi des infections respiratoires (grippe, bronchiolite, COVID) pour repérer une désaturation ; usage sportif ou altitude (non médical).',
@@ -60,7 +60,7 @@ sources: [{label: "HAS — Compression médicale en insuffisance veineuse", url:
     accord_prealable: false,
     achat_location: 'Achat uniquement · Non remboursable sur la LPPR en usage courant',
     formalites: 'Dispositif de surveillance — pas d\'ordonnance requise pour la vente · Non remboursable hors protocoles spécifiques (ex. Covid)',
-sources: [{label: "Ameli — Autosurveillance et dispositifs de mesure à domicile", url: "https://www.ameli.fr/assure/remboursements/rembourse/medicaments-vaccins-dispositifs-medicaux/dispositifs-medicaux", date: "consulté 07/2026"}] },
+sources: [] },
   { id: 'm10', slug: 'tensiometre-bras', nom: 'Tensiomètre bras homologué', categorie: 'cardiaque', icone: '__SVG__Tensiometre de bras homologue.svg__',
     description: 'Appareil automatique de mesure de la pression artérielle par brassard huméral (bras), homologué selon la norme NF C 74-313. Certains modèles intègrent une détection de fibrillation auriculaire et une mémoire de plusieurs dizaines de mesures avec moyennage automatique.',
     indication: 'Hypertension artérielle connue ou suspectée, automesure tensionnelle dans le cadre du suivi cardiologique (règle des 3), dépistage à domicile, suivi de l\'efficacité d\'un traitement antihypertenseur.',
@@ -86,7 +86,7 @@ sources: [{label: "Ameli — Autosurveillance et dispositifs de mesure à domici
     accord_prealable: false,
     achat_location: 'Achat uniquement · Non remboursable',
     formalites: 'Pas d\'ordonnance requise · Appareil validé ANSM recommandé · Préférer le bras au poignet',
-sources: [{label: "HAS — Automesure tensionnelle", url: "https://www.has-sante.fr/jcms/c_1600164/fr/fiche-de-bon-usage-automesure-tensionnelle"}, ] },
+sources: [] },
 
   // ─── DIABÈTE & SURVEILLANCE ───
   { id: 'm11', slug: 'capteur-glycemie-continue', nom: 'Capteur de glycémie en continu (CGM)', categorie: 'diabete', icone: '__SVG__capteur de glycemie.svg__',
@@ -118,7 +118,7 @@ sources: [{label: "HAS — Automesure tensionnelle", url: "https://www.has-sante
     accord_prealable: false,
     achat_location: 'Achat uniquement · Vente exclusivement en pharmacie (pas de remboursement si achat sur Internet)',
     formalites: 'Ordonnance simple · Période d\'essai 1 à 3 mois avant prescription long terme · Éducation thérapeutique préalable obligatoire · FSL1 radié de la LPPR le 05/10/2023',
-sources: [{label: "HAS — Capteurs de glycémie en continu", url: "https://www.has-sante.fr/jcms/p_3361754/fr/systemes-de-mesure-en-continu-du-glucose-interstitiel"}, , {label: "Ameli — Mémo LPP FreeStyle Libre (MàJ 24/07/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/11b-glycemie-FSL-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
+sources: [{label: "Ameli — Mémo LPP FreeStyle Libre (MàJ 24/07/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/11b-glycemie-FSL-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
   { id: 'm12', slug: 'lecteur-glycemie', nom: 'Lecteur de glycémie', categorie: 'diabete', icone: '__SVG__lecteur de glycemie.svg__',
     description: 'Appareil de mesure de la glycémie capillaire par prélèvement au doigt (bandelette réactive + autopiqueur), résultat en quelques secondes. Mémoire de plusieurs centaines de mesures avec courbes de tendance, certains modèles transmettent les données par Bluetooth.',
     indication: 'Diabète de type 1 et de type 2 traités par insuline ou par sulfamides hypoglycémiants, surveillance des hypoglycémies, vérification ponctuelle en complément d\'un capteur de glycémie en continu (CGM).',
@@ -144,7 +144,7 @@ sources: [{label: "HAS — Capteurs de glycémie en continu", url: "https://www.
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Prescription précisant le nombre d\'ASG par jour · 1 lecteur tous les 4 ans (adulte), 2 tous les 4 ans (enfant < 18 ans) · Pris en charge une seule fois si inclus dans un set',
-sources: [{label: "HAS — Autosurveillance glycémique", url: "https://www.has-sante.fr/jcms/c_1242816/fr/autosurveillance-glycemique"}, , {label: "Ameli — Mémo LPP Glycémie capillaire (MàJ 04/08/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/11a-glycemie_DM-mesure-capillaire-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
+sources: [{label: "Ameli — Mémo LPP Glycémie capillaire (MàJ 04/08/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/11a-glycemie_DM-mesure-capillaire-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
   { id: 'm13', slug: 'stylo-insuline', nom: 'Stylo injecteur d\'insuline', categorie: 'diabete', icone: '__SVG__stylo-a-insuline.svg__',
     description: 'Dispositif d\'injection sous-cutanée d\'insuline, réutilisable (avec cartouche remplaçable) ou jetable pré-rempli, à dose réglable par crans. Aiguille fine et courte adaptable, à usage unique.',
     indication: 'Diabète insulino-requérant (type 1 ou type 2 en échec des traitements oraux), nécessitant une ou plusieurs injections quotidiennes d\'insuline.',
@@ -172,7 +172,7 @@ sources: [{label: "HAS — Autosurveillance glycémique", url: "https://www.has-
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · Prescription précisant le type d\'insuline et le dispositif adapté',
-sources: [{label: "HAS — Insulinothérapie", url: "https://www.has-sante.fr/jcms/c_1242557/fr/strategie-medicamenteuse-du-controle-glycemique-du-diabete-de-type-2"}, ] },
+sources: [] },
 
   // ─── HYGIÈNE & CONFORT ───
   { id: 'm14', slug: 'lit-medicalise', nom: 'Lit médicalisé électrique', categorie: 'hygiene', icone: '__SVG__lit medicalise.svg__',
@@ -201,7 +201,7 @@ sources: [{label: "HAS — Insulinothérapie", url: "https://www.has-sante.fr/jc
     accord_prealable: false,
     achat_location: 'Location (standard) · Achat (lit spécifique sur devis — besoins particuliers)',
     formalites: 'Ordonnance particulière indépendante des prescriptions pharmaceutiques · Poids du patient requis sur l\'ordonnance si > 135 kg · Achat sur devis uniquement',
-sources: [, {label: "Ameli — Mémo LPP Lits médicaux (MàJ 24/07/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/05-lits-medicaux-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
+sources: [{label: "Ameli — Mémo LPP Lits médicaux (MàJ 24/07/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/05-lits-medicaux-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
   { id: 'm15', slug: 'protections-incontinence', nom: 'Protections anatomiques incontinence', categorie: 'hygiene', icone: '__SVG__couche.svg__',
     description: 'Protections absorbantes anatomiques à usage unique (forme culotte, change complet ou protection anatomique avec filet de maintien), discrètes sous les vêtements, avec indice d\'absorption croissant selon le niveau de fuite (léger, modéré, fort, très fort).',
     indication: 'Incontinence urinaire ou mixte (urinaire et fécale) légère à sévère, période post-opératoire urologique ou gynécologique, perte d\'autonomie, troubles neurologiques avec incontinence.',
@@ -226,7 +226,7 @@ sources: [, {label: "Ameli — Mémo LPP Lits médicaux (MàJ 24/07/2025)", url:
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · Quantité mensuelle limitée selon le conditionnement · 60 unités maximum par mois pour la majorité des références',
-sources: [{label: "HAS — Incontinence urinaire de la femme", url: "https://www.has-sante.fr/jcms/c_1511578/fr/incontinence-urinaire-de-la-femme"}, , {label: "Ameli — Incontinence urinaire", url: "https://www.ameli.fr/assure/sante/themes/incontinence-urinaire", date: "consulté 07/2026"}] },
+sources: [{label: "Ameli — Incontinence urinaire", url: "https://www.ameli.fr/assure/sante/themes/incontinence-urinaire", date: "consulté 07/2026"}] },
   { id: 'm16', slug: 'siege-de-bain', nom: 'Siège de bain / douche', categorie: 'hygiene', icone: '__SVG__siege de bain.svg__',
     description: 'Siège ou tabouret antidérapant, hauteur réglable, à poser dans la baignoire ou la douche pour sécuriser la toilette en position assise. Fixation par ventouses ou pieds antidérapants, poids maximal supporté généralement autour de 130 kg selon les modèles.',
     indication: 'Perte d\'autonomie, période post-opératoire (notamment orthopédique), personnes âgées, troubles de l\'équilibre, prévention des chutes dans la salle de bain.',
@@ -250,7 +250,7 @@ sources: [{label: "HAS — Incontinence urinaire de la femme", url: "https://www
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · Non remboursable par l\'Assurance Maladie (aide possible via MDPH/CPAM selon situation)',
-sources: [{label: "Ameli — Aides à la mobilité et au maintien à domicile", url: "https://www.ameli.fr/assure/sante/medicaments/droits-remboursements/remboursements-aide-mobilite", date: "consulté 07/2026"}] },
+sources: [] },
 
   // ─── MOBILITÉ ───
   { id: 'm1', slug: 'canne-ergonomique', nom: 'Canne ergonomique réglable', categorie: 'mobilite', icone: '__SVG__cane.svg__',
@@ -279,7 +279,7 @@ sources: [{label: "Ameli — Aides à la mobilité et au maintien à domicile", 
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple',
-sources: [{label: "Ameli — Cannes et béquilles : remboursement", url: "https://www.ameli.fr/assure/remboursements/rembourse/medicaments-vaccins-dispositifs-medicaux/canne-bequille-prise-en-charge", date: "consulté 07/2026"}] },
+sources: [] },
   { id: 'm2', slug: 'deambulateur', nom: 'Déambulateur 4 roues', categorie: 'mobilite', icone: '__SVG__deambulateur 4 roues.svg__',
     description: 'Cadre de marche sur 4 roues pivotantes, avec siège intégré, panier de rangement et freins de type vélo (frein de parking à l\'arrêt). Plus fluide à manier que le 2 roues, adapté aux sols réguliers.',
     indication: 'Troubles de l\'équilibre, faiblesse musculaire des membres inférieurs, suites d\'AVC, besoin de sécurisation de la marche sur de longues distances ou pour les sorties à l\'extérieur.',
@@ -307,7 +307,7 @@ sources: [{label: "Ameli — Cannes et béquilles : remboursement", url: "https:
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple',
-sources: [{label: "Ameli — Déambulateurs et rollators", url: "https://www.ameli.fr/assure/remboursements/rembourse/medicaments-vaccins-dispositifs-medicaux/deambulateur-rollator-prise-en-charge", date: "consulté 07/2026"}] },
+sources: [] },
   { id: 'm3', slug: 'fauteuil-roulant', nom: 'Fauteuil roulant manuel', categorie: 'mobilite', icone: '__SVG__fauteuil roulant.svg__',
     description: 'Fauteuil roulant pliant léger à propulsion manuelle, repose-pieds amovibles, accoudoirs rabattables facilitant les transferts. Catégorie FMP (fauteuil manuel pliant) dans la classification officielle, la plus simple et la plus courante.',
     indication: 'Incapacité à la marche prolongée ou totale, période post-opératoire, pathologies neurologiques limitant la mobilité, besoin de déplacement autonome ou avec tierce assistance.',
@@ -334,7 +334,7 @@ sources: [{label: "Ameli — Déambulateurs et rollators", url: "https://www.ame
     accord_prealable: true,
     achat_location: 'Achat · Location longue durée (LLD) ou courte durée (LCD) selon le type de VPH',
     formalites: 'Imprimé Cerfa 11164*04 pour DAP (fauteuils modulaires) · Fiche d\'évaluation et de préconisation · Essai du véhicule obligatoire pour les modèles modulaires et électriques · Envoi dématérialisé via téléservices ameli pro',
-sources: [{label: "HAS — Fauteuils roulants", url: "https://www.has-sante.fr/jcms/c_1739369/fr/fauteuils-roulants-et-autres-vehicules-pour-personnes-handicapees"}, ] },
+sources: [] },
   { id: 'm4', slug: 'semelles-orthopediques', nom: 'Semelles orthopédiques sur mesure', categorie: 'mobilite', icone: '__SVG__semelle orthopedique.svg__',
     description: 'Orthèses plantaires thermoformées, réalisées sur mesure après examen podologique (podoscope, podogramme), corrigeant la posture du pied et répartissant les zones d\'appui plantaire. À distinguer des semelles de confort en vente libre, non personnalisées.',
     indication: 'Arthrose du genou ou de la hanche avec trouble de l\'appui, pied diabétique à risque (décharge des zones de pression), fasciite plantaire, troubles de la statique du pied (pied plat, pied creux), métatarsalgies.',
@@ -391,7 +391,7 @@ sources: [{label: "Ameli — Semelles orthopédiques : prise en charge", url: "h
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · Première prescription ≤ 1 mois · Renouvellements ≤ 3 mois · Uniquement adultes dénutris avec fonction intestinale normale',
-sources: [{label: "HAS — Compléments nutritionnels oraux", url: "https://www.has-sante.fr/jcms/c_1264980/fr/complementation-nutritionnelle-orale"}, , {label: "Ameli — Mémo LPP prescription des CNO", url: "https://www.ameli.fr/sites/default/files/Documents/12-complements-nutritionnels-oraux-LPP-memoPS.pdf", date: "consulté 07/2026"}, {label: "Légifrance — Arrêté du 25 avril 2025 (prescription IPA)", url: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051533034", date: "consulté 07/2026"}] },
+sources: [{label: "Ameli — Mémo LPP prescription des CNO", url: "https://www.ameli.fr/sites/default/files/Documents/12-complements-nutritionnels-oraux-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
   { id: 'm18', slug: 'epaississants', nom: 'Épaississants alimentaires', categorie: 'nutrition', icone: '__SVG__nutrition.svg__',
     description: 'Poudre instantanée sans saveur ajoutée, à diluer dans les liquides ou aliments pour en modifier la texture selon plusieurs niveaux de consistance (nectar, miel, pudding/crème) afin de sécuriser la déglutition.',
     indication: 'Troubles de la déglutition oropharyngée (dysphagie) chez les personnes de plus de 3 ans, le plus souvent dans un contexte post-AVC, maladie neurologique (Parkinson, sclérose en plaques) ou démence évoluée.',
@@ -418,7 +418,7 @@ sources: [{label: "HAS — Compléments nutritionnels oraux", url: "https://www.
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · Troubles de déglutition documentés',
-sources: [{label: "HAS — Troubles de la déglutition", url: "https://www.has-sante.fr/jcms/c_1260376/fr/prise-en-charge-de-la-dysphagie"}, ] },
+sources: [] },
 
   // ─── POST-OPÉRATOIRE ───
   { id: 'm19', slug: 'attelle-poignet', nom: 'Attelle de repos poignet', categorie: 'mobilite', icone: '__SVG__atelle de repos poignet.svg__',
@@ -447,7 +447,7 @@ sources: [{label: "HAS — Troubles de la déglutition", url: "https://www.has-s
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple mentionnant le type d\'orthèse, le côté et l\'indication · Codes LPPR spécifiques selon le modèle',
-sources: [, , {label: "Ameli — Orthèses et appareillage : remboursement", url: "https://www.ameli.fr/assure/remboursements/rembourse/medicaments-vaccins-dispositifs-medicaux/appareillage", date: "consulté 07/2026"}] },
+sources: [] },
   { id: 'm20', slug: 'bequilles', nom: 'Béquilles axillaires / avant-bras', categorie: 'mobilite', icone: '__SVG__Bequilles axillaires.svg__',
     description: 'Béquilles réglables en aluminium, modèle axillaire (appui sous le bras, avec barre de préhension) ou modèle avant-bras dit "canadienne" (appui sur l\'avant-bras avec poignée), selon la prescription et le type d\'appui recherché.',
     indication: 'Fracture du membre inférieur, suites de chirurgie orthopédique (prothèse de hanche ou de genou), entorse grave de la cheville ou du genou, décharge totale ou partielle d\'un membre.',
@@ -474,7 +474,7 @@ sources: [, , {label: "Ameli — Orthèses et appareillage : remboursement", url
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · Prescription sur ordonnance indépendante des médicaments',
-sources: [, , {label: "Ameli — Cannes et béquilles : remboursement", url: "https://www.ameli.fr/assure/remboursements/rembourse/medicaments-vaccins-dispositifs-medicaux/canne-bequille-prise-en-charge", date: "consulté 07/2026"}] },
+sources: [] },
 
   // ─── RESPIRATOIRE ───
   { id: 'm5', slug: 'aerosol-compresseur', nom: 'Aérosolthérapie par compresseur', categorie: 'respiratoire', icone: '__SVG__aerosol therapy.svg__',
@@ -503,7 +503,7 @@ sources: [, , {label: "Ameli — Cannes et béquilles : remboursement", url: "ht
     accord_prealable: false,
     achat_location: 'Achat ou location (selon la durée du traitement)',
     formalites: 'Ordonnance simple · Médicaments associés prescrits séparément · Appareil + accessoires (chambre d\'inhalation) pris en charge séparément',
-sources: [{label: "HAS — Aérosolthérapie", url: "https://www.has-sante.fr/jcms/c_272507/fr/asthme-et-rhinite-allergique"}, , {label: "CRAMIF — Aérosolthérapie : prescription et prise en charge", url: "https://www.cramif.fr/actualites/aerosoltherapie-prescription-et-prise-en-charge-des-medicaments-et-des-dispositifs", date: "consulté 07/2026"}] },
+sources: [{label: "CRAMIF — Aérosolthérapie : prescription et prise en charge", url: "https://www.cramif.fr/actualites/aerosoltherapie-prescription-et-prise-en-charge-des-medicaments-et-des-dispositifs", date: "consulté 07/2026"}] },
   { id: 'm6', slug: 'aspirateur-nasal', nom: 'Aspirateur nasal électrique', categorie: 'respiratoire', icone: '__SVG__sinusite aigue.svg__',
     description: 'Dispositif d\'aspiration douce des sécrétions nasales par embout adapté, puissance réglable selon l\'âge et la tolérance, à pile ou sur secteur selon les modèles (à distinguer du mouche-bébé manuel buccal).',
     indication: 'Nourrissons et jeunes enfants ne sachant pas se moucher seuls, rhinite allergique sévère encombrante, sinusite chronique avec sécrétions difficiles à évacuer.',
@@ -529,7 +529,7 @@ sources: [{label: "HAS — Aérosolthérapie", url: "https://www.has-sante.fr/jc
     accord_prealable: false,
     achat_location: 'Achat uniquement · Remboursement partiel possible pour certains modèles médicaux',
     formalites: 'Ordonnance simple si remboursement souhaité',
-sources: [{label: "HAS — Rhinopharyngites du nourrisson", url: "https://www.has-sante.fr/jcms/c_272486/fr/rhinopharyngite-aigue-du-nourrisson"}, ] },
+sources: [] },
   { id: 'm7', slug: 'peak-flow-meter', nom: 'Peak-flow meter', categorie: 'respiratoire', icone: '__SVG__peakflow meter.svg__',
     description: 'Débitmètre de pointe portable mesurant le débit expiratoire maximal (DEP) lors d\'une expiration forcée, outil simple d\'autosurveillance permettant de détecter une dégradation de la fonction respiratoire avant l\'apparition de symptômes francs.',
     indication: 'Asthme modéré à sévère, suivi à domicile de la fonction respiratoire, adaptation du traitement de fond en lien avec le médecin, identification précoce d\'une exacerbation.',
@@ -554,7 +554,7 @@ sources: [{label: "HAS — Rhinopharyngites du nourrisson", url: "https://www.ha
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · 1 appareil par patient, renouvelable annuellement si usage quotidien documenté',
-sources: [{label: "HAS — Suivi de l'asthme à domicile", url: "https://www.has-sante.fr/jcms/c_1005214/fr/asthme"}, {label: "Ameli — Asthme de l'adulte", url: "https://www.ameli.fr/assure/sante/themes/asthme-adulte", date: "consulté 07/2026"}] },
+sources: [{label: "Ameli — Asthme de l'adulte", url: "https://www.ameli.fr/assure/sante/themes/asthme-adulte", date: "consulté 07/2026"}] },
 
   // ─── MATERNITÉ & PÉRINÉE ───
   { id: 'm21', slug: 'tire-lait', nom: 'Tire-lait électrique', categorie: 'maternite', icone: '__SVG__tire lait.svg__',
@@ -584,7 +584,7 @@ sources: [{label: "HAS — Suivi de l'asthme à domicile", url: "https://www.has
     accord_prealable: false,
     achat_location: 'Location (tire-lait double pompe électrique) · Achat (accessoires)',
     formalites: 'Ordonnance simple · Location prise en charge les 28 premiers jours en cas d\'hospitalisation du nourrisson ou prématurité · Accessoires (kit personnel) pris en charge séparément',
-sources: [{label: "HAS — Allaitement maternel", url: "https://www.has-sante.fr/jcms/c_1729367/fr/allaitement-maternel"}, ] },
+sources: [] },
   { id: 'm22', slug: 'urostimulateur', nom: 'Urostimulateur (rééducation périnéale)', categorie: 'maternite', icone: '__SVG__neurostim.svg__',
     description: 'Dispositif d\'électrostimulation des muscles du plancher pelvien par sonde vaginale (femme) ou anale (homme/femme), permettant un renforcement musculaire périnéal actif en complément ou en relais d\'une rééducation manuelle.',
     indication: 'Incontinence urinaire d\'effort, rééducation périnéale post-partum, prolapsus débutant (stade peu avancé), incontinence post-prostatectomie chez l\'homme.',
@@ -612,7 +612,7 @@ sources: [{label: "HAS — Allaitement maternel", url: "https://www.has-sante.fr
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · Bilan kinésithérapique préalable souvent requis · Programme de rééducation associé',
-sources: [{label: "HAS — Stimulation nerf tibial", url: "https://www.has-sante.fr/jcms/p_3208766/fr/stimulation-du-nerf-tibial-posterieur"}, ] },
+sources: [] },
 
   // ─── DOULEUR & NEUROSTIMULATION ───
   { id: 'm23', slug: 'neurostimulateur', nom: 'Neurostimulateur électrique transcutané (TENS)', categorie: 'douleur', icone: '__SVG__neurostim.svg__',
@@ -643,7 +643,7 @@ sources: [{label: "HAS — Stimulation nerf tibial", url: "https://www.has-sante
     accord_prealable: false,
     achat_location: 'Achat ou location (≤ 6 mois) — non cumulables',
     formalites: 'Ordonnance simple · Test d\'efficacité/essai préalable requis · Location limitée à 6 mois maximum · Câbles et accessoires facturés séparément',
-sources: [{label: "HAS — Neurostimulation transcutanée (TENS)", url: "https://www.has-sante.fr/jcms/c_1066790/fr/douleur-chronique"}, ] },
+sources: [] },
 
   // ─── HYGIÈNE & CONFORT (ajouts) ───
   { id: 'm24', slug: 'table-de-lit', nom: 'Table de lit réglable', categorie: 'hygiene', icone: '__SVG__table-de-lit.svg__',
@@ -669,7 +669,7 @@ sources: [{label: "HAS — Neurostimulation transcutanée (TENS)", url: "https:/
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · Prescrit en accessoire d\'un lit médicalisé (non pris en charge séparément dans la LPP)',
-sources: [, , {label: "Ameli — LPP : liste des produits et prestations remboursables", url: "https://www.ameli.fr/medecin/exercice-liberal/facturation-remuneration/consultations-actes/nomenclatures-codage/liste-produits-prestations-lpp", date: "consulté 07/2026"}] },
+sources: [] },
   { id: 'm25', slug: 'potence-de-lit', nom: 'Potence de lit (lève-personne d\'appoint)', categorie: 'hygiene', icone: '__SVG__potence.svg__',
     description: 'Structure verticale fixée au cadre ou au sommier du lit, équipée d\'une poignée suspendue (trapèze ou anneau), permettant au patient de se redresser ou de se hisser seul en position assise grâce à la force des bras.',
     indication: 'Perte d\'autonomie modérée, suites de chirurgie orthopédique, maintien à domicile, difficulté à se redresser seul dans le lit sans aide complète.',
@@ -694,7 +694,7 @@ sources: [, , {label: "Ameli — LPP : liste des produits et prestations rembour
     accord_prealable: false,
     achat_location: 'Location uniquement',
     formalites: 'Ordonnance particulière · Non prise en charge si lit médicalisé déjà remboursé (incluse dans le forfait lit) · Location hebdomadaire : ≤ 65 sem. 2,29€ (1273415) puis 1,52€ (1201858)',
-sources: [, , {label: "Ameli — LPP : liste des produits et prestations remboursables", url: "https://www.ameli.fr/medecin/exercice-liberal/facturation-remuneration/consultations-actes/nomenclatures-codage/liste-produits-prestations-lpp", date: "consulté 07/2026"}] },
+sources: [] },
 
   // ─── MOBILITÉ (ajouts) ───
   { id: 'm26', slug: 'deambulateur-2-roues', nom: 'Déambulateur 2 roues', categorie: 'mobilite', icone: '__SVG__deambulateur 2 roues.svg__',
@@ -722,7 +722,7 @@ sources: [, , {label: "Ameli — LPP : liste des produits et prestations rembour
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple',
-sources: [, , {label: "Ameli — Déambulateurs et rollators", url: "https://www.ameli.fr/assure/remboursements/rembourse/medicaments-vaccins-dispositifs-medicaux/deambulateur-rollator-prise-en-charge", date: "consulté 07/2026"}] },
+sources: [] },
   { id: 'm27', slug: 'fauteuil-transfert', nom: 'Fauteuil de transfert', categorie: 'mobilite', icone: '__SVG__fauteuil de transfert.svg__',
     description: 'Fauteuil roulant léger et pliable, conçu pour des déplacements courts et des transferts ponctuels (lit-fauteuil, domicile-véhicule), généralement plus compact et moins confortable qu\'un fauteuil roulant principal destiné à un usage prolongé.',
     indication: 'Transferts ponctuels, sorties courtes (rendez-vous médical, transport), perte d\'autonomie temporaire, complément à un fauteuil roulant principal pour les déplacements occasionnels hors domicile.',
@@ -746,7 +746,7 @@ sources: [, , {label: "Ameli — Déambulateurs et rollators", url: "https://www
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple',
-sources: [, , {label: "HAS — Fauteuils roulants et VPH", url: "https://www.has-sante.fr/jcms/c_1739369/fr/fauteuils-roulants-et-autres-vehicules-pour-personnes-handicapees-vph", date: "consulté 07/2026"}] },
+sources: [] },
   { id: 'm28', slug: 'fauteuil-releveur', nom: 'Fauteuil releveur électrique', categorie: 'mobilite', icone: '__SVG__fauteuil-inclinable.svg__',
     description: 'Fauteuil de repos avec assise motorisée s\'inclinant et se relevant progressivement pour faciliter le passage assis-debout et debout-assis, télécommande de réglage de l\'inclinaison du dossier et de l\'assise.',
     indication: 'Perte d\'autonomie, arthrose sévère des membres inférieurs ou du rachis, difficulté majeure à se relever d\'un fauteuil standard, besoin de confort prolongé en position assise/semi-allongée.',
@@ -771,7 +771,7 @@ sources: [, , {label: "HAS — Fauteuils roulants et VPH", url: "https://www.has
     accord_prealable: false,
     achat_location: 'Achat uniquement · Non remboursable sur la LPPR (aide possible via CPAM/MDPH selon situation)',
     formalites: 'Ordonnance médicale recommandée · Aide financière possible via caisse de retraite ou MDPH',
-sources: [, , {label: "Ameli — Aides à l'autonomie et maintien à domicile", url: "https://www.ameli.fr/assure/sante/themes/perte-autonomie", date: "consulté 07/2026"}] },
+sources: [] },
   { id: 'm29', slug: 'fauteuil-coquille', nom: 'Fauteuil coquille (maintien postural)', categorie: 'mobilite', icone: '__SVG__fauteuil.svg__',
     description: 'Fauteuil à coque enveloppante avec inclinaison réglable, conçu pour assurer un maintien postural global chez les patients à mobilité très réduite ne pouvant se maintenir assis sans soutien latéral et dorsal important.',
     indication: 'Troubles neurologiques sévères (séquelles d\'AVC majeur, maladies neurodégénératives avancées), perte d\'autonomie majeure, patients ne pouvant se maintenir assis sans soutien complet du tronc et de la tête.',
@@ -795,7 +795,7 @@ sources: [, , {label: "Ameli — Aides à l'autonomie et maintien à domicile", 
     accord_prealable: true,
     achat_location: 'Achat uniquement',
     formalites: 'DAP obligatoire (Cerfa 11164*04) · Indications : patients âgés ne pouvant se maintenir en position assise sans soutien et sans autonomie de déplacement · Délai de renouvellement : 5 ans',
-sources: [, {label: "Ameli — Mémo LPP Siège coquille de série (MàJ 24/07/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/09a-siege-coquille-serie-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
+sources: [{label: "Ameli — Mémo LPP Siège coquille de série (MàJ 24/07/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/09a-siege-coquille-serie-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
 
   // ─── HYGIÈNE & CONFORT (ajouts prévention escarres) ───
   { id: 'm30', slug: 'matelas-classe2-anti-escarres', nom: 'Matelas anti-escarres classe 2', categorie: 'hygiene', icone: '__SVG__matelas classe 2.svg__',
@@ -824,7 +824,7 @@ sources: [, {label: "Ameli — Mémo LPP Siège coquille de série (MàJ 24/07/2
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple · Score Norton ≤ 14 ou antécédent d\'escarre requis · 1 matelas de même classe pris en charge tous les 3 ans',
-sources: [{label: "HAS — Prévention et traitement des escarres", url: "https://www.has-sante.fr/jcms/c_272971/fr/prevention-et-traitement-des-escarres-de-l-adulte-et-du-sujet-age"}, , {label: "Ameli — Mémo LPP Matelas anti-escarres (MàJ 24/07/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/06-matelas-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
+sources: [{label: "Ameli — Mémo LPP Matelas anti-escarres (MàJ 24/07/2025)", url: "https://www.ameli.fr/sites/default/files/Documents/06-matelas-LPP-memoPS.pdf", date: "consulté 07/2026"}] },
   { id: 'm31', slug: 'matelas-a-air', nom: 'Matelas à air motorisé', categorie: 'hygiene', icone: '__SVG__matelas-a air.svg__',
     description: 'Matelas ou surmatelas à air motorisé à pression alternée, associé à un compresseur réglable qui gonfle et dégonfle alternativement des cellules d\'air pour répartir et faire varier les zones d\'appui dans le temps, offrant un niveau de prévention/traitement supérieur à la mousse simple.',
     indication: 'Aide à la prévention de l\'escarre chez les patients à risque moyen à élevé (selon jugement clinique et échelles), alités plus de 15 heures par jour, aide au traitement ou en post-chirurgie d\'escarre chez des patients à risque moyen à élevé avec escarres de stade 1 à 4 selon localisation.',
@@ -852,7 +852,7 @@ sources: [{label: "HAS — Prévention et traitement des escarres", url: "https:
     accord_prealable: false,
     achat_location: 'Achat uniquement (surmatelas à air : location hebdomadaire possible — 10,88€)',
     formalites: 'Score Norton ≤ 14 ou lésions médullaires · 1 matelas par classe pris en charge (classe 1A : chaque année)',
-sources: [{label: "HAS — Supports anti-escarres", url: "https://www.has-sante.fr/jcms/c_272971/fr/prevention-et-traitement-des-escarres-de-l-adulte-et-du-sujet-age"}, ] },
+sources: [] },
 
   // ─── MOBILITÉ (ajout déambulateur fixe) ───
   { id: 'm32', slug: 'deambulateur-sans-roues', nom: 'Déambulateur sans roues (fixe)', categorie: 'mobilite', icone: '__SVG__deambulateur.svg__',
@@ -881,7 +881,7 @@ sources: [{label: "HAS — Supports anti-escarres", url: "https://www.has-sante.
     accord_prealable: false,
     achat_location: 'Achat uniquement',
     formalites: 'Ordonnance simple',
-sources: [, , {label: "Ameli — Déambulateurs et rollators", url: "https://www.ameli.fr/assure/remboursements/rembourse/medicaments-vaccins-dispositifs-medicaux/deambulateur-rollator-prise-en-charge", date: "consulté 07/2026"}] }];
+sources: [] }];
 
 // Tri alphabétique dans chaque catégorie
 MATERIEL_DB.sort((a, b) => a.nom.localeCompare(b.nom, 'fr'));

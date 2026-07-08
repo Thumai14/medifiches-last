@@ -23,7 +23,7 @@ const PATHOLOGIES_DB = [
       {produit: "Purificateur d'air HEPA", raison: "Filtration des allergènes à domicile"},
       {produit: "Compléments vitamine C + quercétine", raison: "Effet antihistaminique naturel"},
     ],
-    sources: [{label: "Santé.fr — Rhinite allergique", url: "https://www.sante.fr/rhinite-allergique-rhume-des-foins", date: "MàJ 08/2025 · consulté 07/2026"},{label: "ANSM", url: "https://ansm.sante.fr"},{label: "Ameli — Traitement de l'allergie", url: "https://www.ameli.fr/assure/sante/themes/allergie/traitement-allergie", date: "consulté 07/2026"}]
+    sources: [{label: "Santé.fr — Rhinite allergique", url: "https://www.sante.fr/rhinite-allergique-rhume-des-foins", date: "MàJ 08/2025 · consulté 07/2026"},{label: "Ameli — Traitement de l'allergie", url: "https://www.ameli.fr/assure/sante/themes/allergie/traitement-allergie", date: "consulté 07/2026"}]
   },
   {
     id: 7, slug: "asthme", nom: "Asthme",
@@ -45,7 +45,7 @@ const PATHOLOGIES_DB = [
       {produit: "Housse anti-acariens matelas + oreiller", raison: "Réduction des allergènes déclencheurs"},
       {produit: "Compléments vitamine D + magnésium", raison: "Déficits fréquents dans l'asthme"},
     ],
-    sources: [{label: "Ameli — Prise en charge de l'asthme", url: "https://www.ameli.fr/assure/sante/themes/asthme-adulte/asthme-traitement/la-prise-en-charge-de-l-asthme", date: "consulté 07/2026"},{label: "VIDAL Reco — Asthme de l'adulte", url: "https://www.vidal.fr/maladies/recommandations/asthme-de-l-adulte-1457.html", date: "MàJ 05/2024 · consulté 07/2026"},{label: "GINA Guidelines 2024", url: "https://ginasthma.org"},{label: "HAS — Suivi médical des patients asthmatiques", url: "https://www.has-sante.fr/jcms/c_272363/fr/recommandations-pour-le-suivi-medical-des-patients-asthmatiques-adultes-et-adolescents", date: "consulté 07/2026"}]
+    sources: [{label: "Ameli — Prise en charge de l'asthme", url: "https://www.ameli.fr/assure/sante/themes/asthme-adulte/asthme-traitement/la-prise-en-charge-de-l-asthme", date: "consulté 07/2026"},{label: "VIDAL Reco — Asthme de l'adulte", url: "https://www.vidal.fr/maladies/recommandations/asthme-de-l-adulte-1457.html", date: "MàJ 05/2024 · consulté 07/2026"},{label: "HAS — Suivi médical des patients asthmatiques", url: "https://www.has-sante.fr/jcms/c_272363/fr/recommandations-pour-le-suivi-medical-des-patients-asthmatiques-adultes-et-adolescents", date: "consulté 07/2026"}]
   },
   {
     id: 9, slug: "constipation", nom: "Constipation",
@@ -67,7 +67,7 @@ const PATHOLOGIES_DB = [
       {produit: "Pruneaux d'Agen", raison: "Efficacité clinique prouvée"},
       {produit: "Probiotiques spécifiques transit", raison: "Régulation de la flore intestinale"},
     ],
-    sources: [{label: "SNFGE", url: "https://www.snfge.org"},{label: "Ameli — Constipation : diagnostic et traitement", url: "https://www.ameli.fr/assure/sante/themes/constipation-adulte/diagnostic-traitement-evolution", date: "consulté 07/2026"}]
+    sources: [{label: "Ameli — Constipation : diagnostic et traitement", url: "https://www.ameli.fr/assure/sante/themes/constipation-adulte/diagnostic-traitement-evolution", date: "consulté 07/2026"}]
   },
   {
     id: 3, slug: "diabete-type-2", nom: "Diabète type 2",
@@ -111,7 +111,7 @@ const PATHOLOGIES_DB = [
       {produit: "Compléments curcuma + pipérine", raison: "Anti-inflammatoire naturel bien toléré"},
       {produit: "Huile de CBD topique", raison: "Soulagement articulaire naturel — forte demande"},
     ],
-    sources: [{label: "Ameli — Traitement de l'arthrose", url: "https://www.ameli.fr/assure/sante/themes/arthrose-genou/traitement-medical-chirurgical", date: "consulté 07/2026"},{label: "SFR", url: "https://www.larhumato.fr"},{label: "HAS — Arthrose : paracétamol en 1re intention", url: "https://www.has-sante.fr/jcms/pprd_2974704/fr/arthrose-le-paracetamol-en-1re-intention-lors-des-crises-douloureuses", date: "consulté 07/2026"}]
+    sources: [{label: "Ameli — Traitement de l'arthrose", url: "https://www.ameli.fr/assure/sante/themes/arthrose-genou/traitement-medical-chirurgical", date: "consulté 07/2026"},{label: "HAS — Arthrose : paracétamol en 1re intention", url: "https://www.has-sante.fr/jcms/pprd_2974704/fr/arthrose-le-paracetamol-en-1re-intention-lors-des-crises-douloureuses", date: "consulté 07/2026"}]
   },
   {
     id: 5, slug: "gastro-enterite", nom: "Gastro-entérite aiguë",
@@ -133,7 +133,7 @@ const PATHOLOGIES_DB = [
       {produit: "Gel hydroalcoolique familial", raison: "Prévention de la contagion intrafamiliale"},
       {produit: "Thermomètre digital", raison: "Surveillance température si fièvre associée"},
     ],
-    sources: [{label: "SNFGE", url: "https://www.snfge.org"},{label: "Ameli — Gastro-entérite : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/gastro-enterite-adulte/consultation-traitement", date: "consulté 07/2026"}]
+    sources: [{label: "Ameli — Gastro-entérite : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/gastro-enterite-adulte/consultation-traitement", date: "consulté 07/2026"}]
   },
   {
     id: 4, slug: "hypertension", nom: "Hypertension artérielle",
@@ -177,7 +177,7 @@ const PATHOLOGIES_DB = [
       {produit: "Huile essentielle lavande vraie", raison: "Effet anxiolytique et sédatif léger"},
       {produit: "Magnésium bisglycinate (soir)", raison: "Détente musculaire et nerveuse"},
     ],
-    sources: [{label: "HAS/SFTG — Insomnie en médecine générale", url: "https://www.has-sante.fr/jcms/c_937775/fr/plaintes-du-sommeil-insomnie", date: "consulté 07/2026"},{label: "Ameli — Traitement de l'insomnie", url: "https://www.ameli.fr/assure/sante/themes/insomnie-adulte/traitement-medical", date: "consulté 07/2026"}]
+    sources: [{label: "Ameli — Traitement de l'insomnie", url: "https://www.ameli.fr/assure/sante/themes/insomnie-adulte/traitement-medical", date: "consulté 07/2026"}]
   },
   {
     id: 12, slug: "migraine", nom: "Migraine",
@@ -199,7 +199,7 @@ const PATHOLOGIES_DB = [
       {produit: "Compléments magnésium 400mg/jour", raison: "Prophylaxie — efficacité clinique prouvée"},
       {produit: "HE menthe poivrée", raison: "Alternative non médicamenteuse — tempes"},
     ],
-    sources: [{label: "Ameli — Migraine : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/migraine/diagnostic-traitement", date: "MàJ 01/2026 · consulté 07/2026"},{label: "SFEMC", url: "https://www.sf-neuro.org"},{label: "HAS — Prise en charge de la migraine", url: "https://www.has-sante.fr/jcms/c_272212/fr/prise-en-charge-diagnostique-et-therapeutique-de-la-migraine-chez-l-adulte-et-chez-l-enfant-aspects-cliniques-et-economiques", date: "consulté 07/2026"}]
+    sources: [{label: "Ameli — Migraine : consultation et traitement", url: "https://www.ameli.fr/assure/sante/themes/migraine/diagnostic-traitement", date: "MàJ 01/2026 · consulté 07/2026"},{label: "HAS — Prise en charge de la migraine", url: "https://www.has-sante.fr/jcms/c_272212/fr/prise-en-charge-diagnostique-et-therapeutique-de-la-migraine-chez-l-adulte-et-chez-l-enfant-aspects-cliniques-et-economiques", date: "consulté 07/2026"}]
   },
   {
     id: 2, slug: "rhinite-allergique", nom: "Rhinite allergique",
@@ -220,7 +220,7 @@ const PATHOLOGIES_DB = [
       {produit: "Humidificateur d'air", raison: "Muqueuses nasales moins irritées"},
       {produit: "Probiotiques (Lactobacillus rhamnosus)", raison: "Modulation de la réponse allergique"},
     ],
-    sources: [{label: "Santé.fr — Rhinite allergique", url: "https://www.sante.fr/rhinite-allergique-rhume-des-foins", date: "MàJ 08/2025 · consulté 07/2026"},{label: "ANSM", url: "https://ansm.sante.fr"},{label: "Ameli — Traitement de l'allergie", url: "https://www.ameli.fr/assure/sante/themes/allergie/traitement-allergie", date: "consulté 07/2026"}]
+    sources: [{label: "Santé.fr — Rhinite allergique", url: "https://www.sante.fr/rhinite-allergique-rhume-des-foins", date: "MàJ 08/2025 · consulté 07/2026"},{label: "Ameli — Traitement de l'allergie", url: "https://www.ameli.fr/assure/sante/themes/allergie/traitement-allergie", date: "consulté 07/2026"}]
   },
 ];
 

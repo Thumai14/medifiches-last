@@ -159,13 +159,36 @@ Fonctionnalités :
 - Les clés `mf_bp::` et `mf_bp_sel::` sont **exclues** de la synchronisation
   Supabase (`syncFromCloud` / `_migrateLocalToCloud`) pour rester strictement locales
 
-## Sources fiches dispositif (MAD)
+## Sources cliquables (pathologie · dermatologie · dispositif)
 
-Chaque fiche dispositif affiche en bas une bande **📚 Sources** cliquable
-(même style que les fiches pathologie — classe `fiche-sources`), avec 3 liens
-par fiche : HAS, Nomenclature LPP (ameli.fr), et société savante ou ANSM selon
-le dispositif. Les sources sont définies dans `js/data/materiel.js` sous la clé
-`sources: [{label, url}, ...]` sur chacune des 32 fiches.
+Chaque fiche affiche en bas une bande **📚 Sources** cliquable (classe
+`fiche-sources`). Le rendu est **tolérant au vide** : `sources: []` ou absence
+de clé masque simplement la bande (`sources?.length ?` dans `ui.js`,
+`dermato.js`, `mad.js`) — aucune fiche ne casse si elle n'a plus de source.
+
+Les sources sont définies par fiche sous la clé `sources: [{label, url, date}, ...]`
+dans `js/data/pathologies.js`, `pathologies-extra.js`, `dermato.js` et `materiel.js`.
+
+### Politique de liens (nettoyage v2.25)
+
+Suite à un audit complet, tous les liens morts/404 ou pointant vers une page
+d'accueil générique ont été **supprimés plutôt que laissés cassés** :
+
+- **Pathologie** : retrait des renvois « société savante » et ANSM non pérennes
+  (SNFGE, SFR, SFEMC, CESPHARM, SFP, CNGOF, AFU, GINA, GOLD, Santé publique France,
+  ANSM génériques) + lien HAS insomnie erroné. Les liens **Ameli** (thème précis)
+  et **HAS** vérifiés vivants sont conservés.
+- **Dermatologie** : slugs Ameli corrigés (Ameli ayant restructuré ses URLs) et
+  liens `dermato-info.fr` / HAS non pérennes retirés. 16 liens Ameli vivants.
+- **Dispositif (MAD)** : retrait des liens HAS `/jcms/` morts, des pages Ameli
+  génériques (perte-autonomie, LPP, appareillage…) et 404. Les **mémos LPP Ameli**
+  (`/sites/default/files/Documents/*-LPP-memoPS.pdf`) — sources officielles et
+  stables — sont conservés comme référence principale.
+
+**Règle** : ne jamais reconstruire une URL de mémoire. Une URL n'est ajoutée que
+si elle provient d'un résultat de recherche réel et répond (pas de 404). Les
+fiches dont le bon lien reste à trouver sont volontairement laissées **sans
+source** en attendant une URL vérifiée, plutôt qu'avec un lien cassé.
 
 ## Documents annexes par fiche
 

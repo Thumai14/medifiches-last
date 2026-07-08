@@ -49,7 +49,7 @@ const DERMATO_DB = [
       {nom: 'Cold Cream Corps (Avène)', usage: 'Protection contre le froid et sécheresse', texture: 'Crème protectrice', gamme: 'Avène'},
       {nom: '🌿 Huile de coco vierge + aloe vera', usage: 'Alternative naturelle — beurre karité mélangé à HE lavande diluée', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: [{label: 'Dermato-info — Xérose cutanée (peau sèche)', url: 'https://dermato-info.fr/les-maladies-de-la-peau/les-maladies-connaitre-par-tranches-dages', date: 'consulté 07/2026'}]
+    sources: []
   },
 
   {
@@ -314,7 +314,7 @@ const DERMATO_DB = [
       {nom: 'Eau Thermale spray + Toleriane (Avène)', usage: 'Duo nettoyage + soin peau ultra-sensible', texture: 'Spray + Crème', gamme: 'Avène'},
       {nom: '🌿 Eau florale de rose + huile de jojoba', usage: 'Alternative naturelle — hydratation douce sans allergène', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: [{label: 'Dermato-info — Maladies de peau (SFD)', url: 'https://dermato-info.fr/sommaire/la_peau_malade', date: 'consulté 07/2026'}]
+    sources: []
   },
 
   // ══════════════════════════════
@@ -445,7 +445,7 @@ const DERMATO_DB = [
       {nom: 'Bio-Oil Specialist', usage: 'Vergetures et cicatrices — massage régulier', texture: 'Huile sèche', gamme: 'Bio-Oil'},
       {nom: '🌿 Huile de rose musquée bio + vitamine E', usage: 'Alternative naturelle — massage matin/soir', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: [{label: 'Dermato-info — Cicatrices et vergetures', url: 'https://dermato-info.fr/les-maladies-de-la-peau/les-maladies-connaitre-par-tranches-dages', date: 'consulté 07/2026'}]
+    sources: []
   },
   {
     id: 'd21', slug: 'vergetures', nom: 'Vergetures',
@@ -548,7 +548,7 @@ const DERMATO_DB = [
       {nom: 'Paracétamol 1g + compresses stériles', usage: 'Antalgique + nettoyage doux des lésions', texture: 'Comprimé + Matériel', gamme: 'Générique'},
       {nom: '🌿 Compresses aloé vera gel + HE lavande diluée', usage: 'Alternative naturelle — apaisement local vésicules', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: [{label: 'Dermato-info — Zona', url: 'https://dermato-info.fr/les-maladies-de-la-peau/zona', date: 'consulté 07/2026'}, {label: 'Ameli — Zona', url: 'https://www.ameli.fr/assure/sante/themes/zona', date: 'consulté 07/2026'}, {label: 'HAS — Herpès cutané, varicelle, zona', url: 'https://www.has-sante.fr/jcms/c_2608703/fr/', date: 'consulté 07/2026'}]
+    sources: [{label: 'Dermato-info — Zona', url: 'https://dermato-info.fr/les-maladies-de-la-peau/zona', date: 'consulté 07/2026'}, {label: 'Ameli — Zona', url: 'https://www.ameli.fr/assure/sante/themes/zona', date: 'consulté 07/2026'}]
   },
 
   // ══ EXTENSION — d13 à d20 ══
@@ -598,7 +598,7 @@ const DERMATO_DB = [
       {nom: 'Stick lèvres SPF 50+ (Avène)', usage: 'Prévention récidive solaire — protection labiale totale', texture: 'Stick', gamme: 'Avène'},
       {nom: '🌿 HE Tea tree 1 goutte pure localement + Lysine 1g/j', usage: 'Alternative naturelle — antivirale topique + acide aminé inhibiteur de la réplication virale', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: [{label: 'Dermato-info — Herpès labial', url: 'https://dermato-info.fr/les-maladies-de-la-peau/les-maladies-connaitre-par-tranches-dages', date: 'consulté 07/2026'}, {label: 'Ameli — Herpès labial', url: 'https://www.ameli.fr/assure/sante/themes/herpes-labial', date: 'consulté 07/2026'}, {label: 'HAS — Herpès cutané, varicelle, zona', url: 'https://www.has-sante.fr/jcms/c_2608703/fr/', date: 'consulté 07/2026'}]
+    sources: [{label: 'Ameli — Herpès labial', url: 'https://www.ameli.fr/assure/sante/themes/herpes-labial', date: 'consulté 07/2026'}, {label: 'HAS — Herpès cutané, varicelle, zona', url: 'https://www.has-sante.fr/jcms/c_2608703/fr/', date: 'consulté 07/2026'}]
   },
 
   {
@@ -648,7 +648,7 @@ const DERMATO_DB = [
       {nom: 'Cicalfate+ (Avène)', usage: 'Si début de phlyctène — protection antiseptique + réparation', texture: 'Crème réparatrice', gamme: 'Avène'},
       {nom: '🌿 Gel aloe vera pur réfrigéré + eau florale de lavande', usage: 'Alternative naturelle — application généreuse immédiate, très efficace au stade 1er degré', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: [{label: 'Ameli — Coup de soleil', url: 'https://www.ameli.fr/assure/sante/themes/coup-soleil', date: 'consulté 07/2026'}, {label: 'Dermato-info — Coups de soleil', url: 'https://dermato-info.fr/les-maladies-de-la-peau/les-maladies-connaitre-par-tranches-dages', date: 'consulté 07/2026'}]
+    sources: [{label: 'Ameli — Coup de soleil', url: 'https://www.ameli.fr/assure/sante/themes/coup-soleil', date: 'consulté 07/2026'}]
   },
 
   {
@@ -938,7 +938,7 @@ const DERMATO_DB = [
       {nom: 'Bepanthol lotion lavante', usage: 'Hygiène douce quotidienne péri-anale', texture: 'Lotion lavante', gamme: 'Bayer'},
       {nom: '🌿 Liniment oléocalcaire + eau de rose', usage: 'Alternative naturelle — nettoyage doux et apaisant, idéal si peau très irritée', texture: 'Naturel', gamme: 'Naturel'},
     ],
-    sources: [{label: 'Dermato-info — Prurit anal', url: 'https://dermato-info.fr/les-maladies-de-la-peau/les-maladies-connaitre-par-tranches-dages', date: 'consulté 07/2026'}, {label: 'Ameli — Démangeaisons anales', url: 'https://www.ameli.fr/assure/sante/themes/demangeaisons-anales', date: 'consulté 07/2026'}]
+    sources: [{label: 'Ameli — Démangeaisons anales', url: 'https://www.ameli.fr/assure/sante/themes/demangeaisons-anales', date: 'consulté 07/2026'}]
   },
 
   {

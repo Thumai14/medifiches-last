@@ -505,3 +505,40 @@ acne, demangeaisons-anales, herpes-labial, impetigo, ongle-incarne, psoriasis, u
 varicelle, zona.
 
 Résultat : 16 URLs Ameli valides dans dermato.js · 0 lien mort · syntaxe OK.
+
+## v2.25 — Grand nettoyage des liens sources (pathologie + dermato + dispositif)
+Audit complet suite au signalement : liens vers pages d'accueil ou 404.
+
+### Pathologie (29 objets retirés + 1)
+- SNFGE (angine), ANSM (13 fiches : angine, angine-strepto, mal-de-gorge, piqûre-moustique,
+  sinusite, épilepsie, poux, allergie-pollen, bronchite, rhinite, toux, toux-grasse, cystite),
+  Santé publique France (piqûre-moustique), GINA (asthme), GOLD (bpco), SFEMC (migraine),
+  CESPHARM (stress-anxiete), SFP (bronchiolite, fièvre, otite), SFR (arthrose, entorse, goutte,
+  lombalgie, ostéoporose, tendinite), CNGOF (endométriose, mycose-vaginale, spm), AFU (hbp),
+  + lien HAS insomnie erroné (c_937775).
+
+### Dermatologie (7 objets retirés)
+- Dermato-info : xérose, peau-sensible, cicatrices-vergetures, coup-de-soleil, herpès, prurit-anal.
+- HAS herpès (c_2608703) retiré. Fiche vergetures vérifiée intègre (le souci venait du lien Ameli
+  mort déjà retiré en v2.24 ; structure JS OK, rendu tolérant au sources vide).
+
+### Dispositif / MAD (30 objets retirés + 17 virgules orphelines corrigées)
+- HAS morts/faux : bas-contention, tensiomètre, CGM, lecteur-glycémie, stylo-insuline,
+  protections, fauteuil-roulant, épaississants, aérosol, aspirateur-nasal, peak-flow, tire-lait,
+  urostimulateur, neurostimulateur, fauteuil-transfert, matelas anti-escarres, matelas-à-air.
+- Ameli 404/génériques : oxymètre, siège-de-bain, canne, béquilles, déambulateur ×3, attelle-poignet,
+  table-de-lit, potence, fauteuil-releveur.
+- CNO : liens HAS + Légifrance retirés (conservé : mémo LPP Ameli CNO).
+
+### Conservés (liens vérifiés vivants)
+- Mémos LPP Ameli officiels (memoPS.pdf) sur bas-contention, CGM, lecteur-glycémie, lit, CNO,
+  siège-coquille, matelas, glycémie capillaire.
+- Liens Ameli thème précis (incontinence, semelles, asthme adulte…), CRAMIF aérosol.
+
+### Contrôles
+- node --check OK sur les 4 fichiers ; exécution réelle (pathologies.js + extra chargés ensemble,
+  dermato.js, materiel.js) OK ; rendu tolérant aux `sources: []`.
+- Fiches laissées sans source = en attente d'URL vérifiée fournie par l'utilisateur.
+
+### README
+- Section « Sources » réécrite (politique de liens, tolérance au vide, règle anti-URL-de-mémoire).
