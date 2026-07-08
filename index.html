@@ -445,10 +445,9 @@ footer{border-top:1px solid rgba(44,33,20,.14);padding:36px 0 44px;font-size:13p
         c = document.getElementById('ds-cat'),
         l = document.getElementById('ds-line');
   const demos = [
-    { q:'brûlure légère', titre:'Brûlure du 1er degré', cat:'Pathologie · HAS', ligne:'<b>Refroidir 15 min à l\'eau tempérée</b> · pas de corps gras · signes d\'alerte : cloques étendues, visage, enfant < 5 ans → orientation médicale.' },
-    { q:'lit médicalisé', titre:'Lit médicalisé à domicile', cat:'Matériel · LPP', ligne:'<b>Conseils de délivrance</b> : hauteur variable, barrières, matelas adapté au risque d\'escarre · pathologies associées et accessoires.' },
-    { q:'eczéma du nourrisson', titre:'Dermatite atopique', cat:'Dermatologie', ligne:'<b>Émollient quotidien</b> en dehors des poussées · toilette courte tiède · produits adaptés par gamme et texture.' },
-    { q:'rhinite allergique', titre:'Allergie au pollen', cat:'Pathologie · HAS', ligne:'<b>AntiH1 2e génération en 1ère intention</b> · vigilance AINS si asthme associé · lavage nasal en vente complémentaire.' },
+    { q:'allergie au pollen', titre:'Allergie au pollen', cat:'Pathologie · Ameli', ligne:'<b>Antihistaminiques 2e génération (cétirizine, loratadine) en 1ère intention</b> · éviter les sorties entre 6h et 10h · douche après exposition extérieure.' },
+    { q:'lit médicalisé', titre:'Lit médicalisé électrique', cat:'Matériel · LPP', ligne:'<b>Matelas ou surmatelas anti-escarres à associer</b> en cas d\'alitement prolongé · hauteur ajustée pour les transferts · prescripteurs : médecin, ergothérapeute, IPA.' },
+    { q:'vergetures', titre:'Vergetures', cat:'Dermatologie', ligne:'<b>Vergetures rouges = agir vite</b> : seule la phase active répond aux soins · massage quotidien à l\'huile · en prévention grossesse dès le 4e mois.' },
   ];
   if (reduced) { // version statique
     txt.textContent = demos[0].q; t.textContent = demos[0].titre; c.textContent = demos[0].cat;
