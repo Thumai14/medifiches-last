@@ -547,3 +547,21 @@ Audit complet suite au signalement : liens vers pages d'accueil ou 404.
 
 ### README
 - Section « Sources » réécrite (politique de liens, tolérance au vide, règle anti-URL-de-mémoire).
+
+## v2.26 — Correction des exemples animés de la landing page (accueil.html)
+Problème signalé : les exemples de la démo recherche affichaient des couples requête/résultat
+incohérents (« rhinite allergique » → « Allergie au pollen », « eczéma du nourrisson » →
+« Dermatite atopique ») et un badge « HAS » sur une fiche sans source HAS.
+
+Remplacement par 3 exemples cohérents, avec un vrai conseil issu de chaque fiche :
+- Allergie au pollen (Pathologie · Ameli) → « Antihistaminiques 2e génération en 1ère intention… »
+- Lit médicalisé électrique (Matériel · LPP) → « Matelas/surmatelas anti-escarres à associer… »
+- Vergetures (Dermatologie) → « Vergetures rouges = agir vite… »
+
+Badges corrigés (Allergie au pollen n'a pas de source HAS → « Ameli »). Le badge « HAS » n'existait
+que dans cette démo statique ; le rendu réel de l'app affiche p.categorie, pas de badge dérivé.
+
+### Nettoyages résiduels (base v2.23 re-uploadée)
+- Fiche vergetures : source Dermato-info restante retirée + clés corrigées (conseils/produits/signes_alerte).
+- NB : ce dossier v2.23 contient encore des liens à retirer d'après les consignes précédentes
+  (SNFGE ×3, SFR ×2, CNGOF ×2, ANSM, HAS herpès c_2608703) — à re-nettoyer dans une passe dédiée.

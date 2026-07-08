@@ -467,7 +467,7 @@ const DERMATO_DB = [
       'Trétinoïne topique (vergetures rouges) : CI absolue grossesse et allaitement — prescription uniquement.',
       'Vergetures associées à une prise de poids rapide et une hypertension → évoquer un Cushing.',
     ],
-    sources: [{label: 'Dermato-info — Cicatrices et vergetures', url: 'https://dermato-info.fr/les-maladies-de-la-peau/les-maladies-connaitre-par-tranches-dages', date: 'consulté 07/2026'}],
+    sources: [],
   },
 
   {
