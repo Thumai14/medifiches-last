@@ -507,6 +507,11 @@ varicelle, zona.
 Résultat : 16 URLs Ameli valides dans dermato.js · 0 lien mort · syntaxe OK.
 
 ## v2.25 — Grand nettoyage des liens sources (pathologie + dermato + dispositif)
+
+### Correction fiche vergetures (ne s'ouvrait pas)
+Cause identifiée : la fiche utilisait les clés `conseils_comptoir`, `produits_conseil`
+et `alertes` — alors que le moteur de rendu dermato.js attend `conseils`, `produits` et
+`signes_alerte`. Les clés ont été renommées. Aucune autre fiche dermato n'avait ce problème.
 Audit complet suite au signalement : liens vers pages d'accueil ou 404.
 
 ### Pathologie (29 objets retirés + 1)

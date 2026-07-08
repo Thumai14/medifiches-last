@@ -452,18 +452,18 @@ const DERMATO_DB = [
     categorie: 'specifique', icone: '/icons/dermatologie/vergetures.svg',
     description: 'Stries atrophiques du derme (striae distensae) dues à une distension rapide de la peau : grossesse, croissance, prise de poids. Deux phases : rouge/violette (active) puis blanche nacrée (définitive).',
     symptomes: ['Stries rouges ou violettes (phase inflammatoire)', 'Stries blanches nacrées (phase atrophique)', 'Localisation : ventre, seins, hanches, cuisses, fesses'],
-    conseils_comptoir: [
+    conseils: [
       'Vergetures rouges = agir vite : seule la phase active répond aux soins.',
       'Massage quotidien avec huile ou crème : améliore l\'élasticité et la microcirculation.',
       'Prévention grossesse : commencer dès le 4e mois avec une huile adaptée (amande douce, argan).',
       'Vergetures blanches = irréversibles cosmétiquement → orienter vers dermatologue pour laser.',
     ],
-    produits_conseil: [
+    produits: [
       {nom: 'Mustela Maternité huile', usage: 'Prévention vergetures grossesse', texture: 'Huile', gamme: 'Mustela'},
       {nom: 'Cicalfate+ Vergetures (Avène)', usage: 'Prévention et soin vergetures actives', texture: 'Crème', gamme: 'Avène'},
       {nom: 'Klorane Maternité huile sèche', usage: 'Prévention vergetures — usage quotidien', texture: 'Huile sèche', gamme: 'Klorane'},
     ],
-    alertes: [
+    signes_alerte: [
       'Trétinoïne topique (vergetures rouges) : CI absolue grossesse et allaitement — prescription uniquement.',
       'Vergetures associées à une prise de poids rapide et une hypertension → évoquer un Cushing.',
     ],
